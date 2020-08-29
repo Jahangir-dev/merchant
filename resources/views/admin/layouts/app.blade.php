@@ -9,18 +9,24 @@
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
     <title>{{ $pageTitle ?? config('app.name', 'Admin') }}</title>
- 
-      <!-- Font Awesome -->
-      <link rel="stylesheet" href="{{ asset('plugins/fontawesome-free/css/all.min.css') }}">
+
+       <link rel="stylesheet" href="{{ asset('plugins/fontawesome-free/css/all.min.css') }}">
       <!-- Ionicons -->
       <link rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
+      <!-- icheck bootstrap -->
+      <link rel="stylesheet" href="{{ asset('plugins/icheck-bootstrap/icheck-bootstrap.min.css') }}">
       <!-- Theme style -->
       <link rel="stylesheet" href="{{ asset('css/adminlte.min.css') }}">
       <!-- Google Font: Source Sans Pro -->
       <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700" rel="stylesheet">
 </head>
+    @if (Auth::check())
 <body>
+    @else
+<body class="hold-transition login-page">
+    @endif
     <div id="app">
+        @if (Auth::check())
         <nav class="navbar navbar-expand-md navbar-light navbar-laravel">
             <div class="container">
                 <a class="navbar-brand" href="{{ route('admin.home') }}">
@@ -62,10 +68,16 @@
                 </div>
             </div>
         </nav>
-
+        @endif
         <main class="py-4">
             @yield('content')
         </main>
     </div>
 </body>
+<!-- jQuery -->
+<script src="{{ asset('plugins/jquery/jquery.min.js') }}"></script>
+<!-- Bootstrap 4 -->
+<script src="{{ asset('plugins/bootstrap/js/bootstrap.bundle.min.js') }}"></script>
+<!-- AdminLTE App -->
+<script src="{{ asset('js/adminlte.min.js') }}"></script>
 </html>
