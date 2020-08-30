@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers\Admin\Auth;
+namespace App\Http\Controllers\Customer\Auth;
 
 use App\Http\Controllers\Controller;
 use App\User;
@@ -28,7 +28,7 @@ class LoginController extends Controller
      *
      * @var string
      */
-    protected $redirectTo = '/admin';
+    protected $redirectTo = '/customer';
 
     /**
      * Create a new controller instance.
@@ -37,13 +37,11 @@ class LoginController extends Controller
      */
     public function __construct()
     {
-        $this->middleware('guest:admin')->except('logout');
+        $this->middleware('guest:customer')->except('logout');
     }
 
     public function showLoginForm() {
-//        dd(Auth::user()->role()->first()->type);
-
-        return view('admin.auth.login');
+        return view('customer.auth.login');
     }
 
     /**
@@ -58,7 +56,7 @@ class LoginController extends Controller
 
         $request->session()->invalidate();
 
-        return redirect()->route('admin.login');
+        return redirect()->route('merchant.login');
     }
 
      /**
@@ -68,7 +66,7 @@ class LoginController extends Controller
      */
     protected function guard()
     {
-        return Auth::guard('admin');
+        return Auth::guard('customer');
     }
 
 }

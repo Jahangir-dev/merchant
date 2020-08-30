@@ -50,6 +50,16 @@ return [
             'driver'=>'session',
             'provider' => 'admins'
 
+        ],
+        'merchant' => [
+            'driver'=>'session',
+            'provider' => 'merchants'
+
+        ],
+        'customer' => [
+            'driver'=>'session',
+            'provider' => 'customers'
+
         ]
     ],
 
@@ -78,6 +88,16 @@ return [
          'admins' => [
             'driver' => 'eloquent',
             'model' => App\Admin::class
+
+        ],
+         'merchants' => [
+            'driver' => 'eloquent',
+            'model' => App\Merchant::class
+
+        ],
+         'customers' => [
+            'driver' => 'eloquent',
+            'model' => App\Customer::class
 
         ]
 
