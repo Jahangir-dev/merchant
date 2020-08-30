@@ -25,7 +25,7 @@
                                 @foreach($users as $index => $user)
                                     @if($user->role->name === 'Customer')
                                     <tr>
-                                        <td>{{$index}}</td>
+                                        <td>{{$user->id}}</td>
                                         <td>{{$user->first_name}}</td>
                                         <td>{{$user->last_name}}</td>
                                         <td>{{$user->email}}</td>
@@ -34,6 +34,7 @@
                                             <input type="radio"> Active
                                             <input type="radio"> Block
                                             <a href="{{route('admin.customer.delete', $user->id)}}" class="danger btn btn-danger"><i class="fa fa-trash" aria-hidden="true"></i></a>
+                                            <a href="{{route('admin.customer.edit', $user->id)}}" class="btn btn-secondary"><i class="fa fa-pen" aria-hidden="true"></i></a>
                                         </td>
                                     </tr>
                                 @endif

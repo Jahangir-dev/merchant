@@ -1,4 +1,4 @@
-@include('admin.master')
+@extends('admin.master')
 @section('content')
     <section class="content">
         <div class="container-fluid">
@@ -6,7 +6,7 @@
                 <div class="col-12">
                     <div class="card">
                         <div class="card-header">
-                            <h3 class="card-title">All Customers</h3>
+                            <h3 class="card-title">All Blocked IP</h3>
                         </div>
                         <!-- /.card-header -->
                         <div class="card-body">
@@ -21,11 +21,10 @@
                                 <tbody>
                                 @foreach($ips as $index => $ip)
                                         <tr>
-                                            <td>{{$index}}</td>
-                                            <td>{{$ip->ip}}</td>
+                                            <td>{{ $index + 1 }}</td>
+                                            <td>{{$ip->ip_address}}</td>
                                             <td>
                                                 <a href="{{route('admin.ip.delete', $ip->id)}}" class="danger btn btn-danger"><i class="fa fa-trash" aria-hidden="true"></i></a>
-
                                             </td>
                                 @endforeach
                             </table>

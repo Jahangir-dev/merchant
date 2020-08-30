@@ -15,6 +15,8 @@ class IPAddressController extends Controller
     public function index()
     {
         //
+        $ips = IPAddress::all();
+        return view('admin.ip.index', compact('ips'));
     }
 
     /**

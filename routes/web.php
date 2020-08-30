@@ -20,15 +20,17 @@ Auth::routes(['verify' => true]);
 Route::get('/home', 'HomeController@index')->name('home');
 
 /*Admin Routes*/
+Route::get('/ip', 'IPAddressController@index')->name('admin.ip');
+Route::get('/ip/delete/{id}', 'IPAddressController@destroy')->name('admin.ip.delete');
 Route::namespace("Admin")->prefix('admin')->group(function() {
 	Route::get('/', 'HomeController@index')->name('admin.home');
 	Route::get('/merchants', 'HomeController@merchantsList')->name('admin.merchant.list');
 	Route::get('/customers', 'HomeController@customersList')->name('admin.customer.list');
 	Route::get('/merchant/delete/{id}', 'HomeController@delete')->name('admin.merchant.delete');
+	Route::get('/merchant/edit/{id}', 'HomeController@edit')->name('admin.merchant.edit');
 	Route::get('/customer/delete/{id}', 'HomeController@delete')->name('admin.customer.delete');
-
-	Route::get('/ip', 'IPAddressController@ip')->name('admin.ip');
-	Route::get('/ip/delete/{id}', 'IPAddressController@ipDelete')->name('admin.ip.delete');
+	Route::get('/customer/edit/{id}', 'HomeController@edit')->name('admin.customer.edit');
+	Route::post('/profile/update/{id}', 'HomeController@updateUser')->name('admin.profile.update');
 
 	Route::namespace('Auth')->group(function() {
 		Route::get('/login', 'LoginController@showLoginForm')->name('admin.login');
