@@ -62,7 +62,7 @@
                 <div class="mfp-content">
                     <div id="login-dialog" class="mfp-with-anim mfp-dialog clearfix">
                         <i class="icon-signin dialog-icon"></i>
-                        <h3>{{ __('Customer Login') }}</h3>
+                        <h3>{{ __('Merchant Login') }}</h3>
                         <div class="row-fluid">
                             <form method="POST" action="{{ route('login') }}">
                                 @csrf
