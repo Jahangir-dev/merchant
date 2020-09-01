@@ -6,6 +6,7 @@ use App\Role;
 use App\User;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Hash;
 
 class HomeController extends Controller
 {
@@ -51,7 +52,18 @@ class HomeController extends Controller
 
     public function updateUser(Request $request, $id) {
         if ($request->password !== null) {
-
+            if ($request['password'] == $request['confirm-password']) {
+                User::where('id', $id)->update([
+                    'first_name' => $request->first_name,
+                    'last_name' => $request->last_name,
+                    'email' => $request->email,
+                    'password' => Hash::make($request['password']),
+                    'role_id' => $request->role,
+                ]);
+            }
+            else {
+                return redirect()->back()->with('error','password not matched');
+            }
         }
         else {
             User::where('id', $id)->update([
@@ -61,6 +73,6 @@ class HomeController extends Controller
                 'role_id' => $request->role,
             ]);
         }
-        return redirect()->route('admin.home');
+        return redirect()->route('admin.home')->with('success','User Updated Successfully');
     }
 }

@@ -52,11 +52,23 @@ class RegisterController extends Controller
     public function update(Request $request) {
 
         $ip_address = \Request::ip();
-        if ($request->password !== '') {
+        $user = User::where('id', Auth::user()->id)->first();
 
+        if ($request->password !== null) {
+            if ($request['password'] == $request['confirm-password']) {
+                User::where('id', $user->id)->update([
+                    'first_name' => $request->first_name,
+                    'last_name' => $request->last_name,
+                    'email' => $request->email,
+                    'password' => Hash::make($request['password']),
+                    'role_id' => $request->role,
+                ]);
+            }
+            else {
+                return redirect()->back()->with('error','password not matched');
+            }
         }
         else {
-            $user = User::where('id', Auth::user()->id)->first();
             User::where('id', $user->id)->update([
                'first_name' => $request->first_name,
                'last_name' => $request->last_name,
@@ -64,6 +76,6 @@ class RegisterController extends Controller
                'ip_address' => $ip_address,
             ]);
         }
-        return redirect()->back();
+        return redirect()->back()->with('success','User Updated Successfully');
     }
 }
