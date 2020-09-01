@@ -1,5 +1,5 @@
-@include('merchant.layouts.app')
-
+@extends('merchant.master')
+@section('content')
 <form method="POST" action="{{ route('merchant.profile.update') }}">
     @csrf
     <div class="form-group">
@@ -25,3 +25,4 @@
 
     <button type="submit" class="btn btn-primary">Submit</button>
 </form>
+@endsection
