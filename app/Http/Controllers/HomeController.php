@@ -15,6 +15,7 @@ class HomeController extends Controller
      */
     public function __construct()
     {
+
 //        $this->middleware('guest');
     }
 
@@ -38,5 +39,10 @@ class HomeController extends Controller
     {
         $user = User::where('id', Auth::id())->with('role')->first();
         return view('customer.home', compact('user'));
+    }
+
+    public function logout() {
+        Auth::logout();
+        redirect()->route('home');
     }
 }
