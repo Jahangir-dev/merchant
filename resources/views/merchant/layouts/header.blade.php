@@ -170,9 +170,19 @@
                 \Auth::logout();
                 @endphp
                 @if(Auth::user())
-                    <ul class="login-register">
+                    <ul>
                         <li>
-                            <a class="popup-text" href="{{route('logout')}}" data-effect="mfp-move-from-top"><i class="icon-signout"></i>Sign Out</a>
+                         <a class="dropdown-item"
+                                       onclick="event.preventDefault();
+                                                     document.getElementById('logout-form').submit();">
+                                                     <i class="icon-signout"></i>
+                                        {{ __('Logout') }}
+                                    </a>
+
+                                    <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
+                                        @csrf
+                                    </form>
+                            
                         </li>
                     </ul>
                 @else
