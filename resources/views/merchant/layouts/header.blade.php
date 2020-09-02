@@ -166,12 +166,19 @@
             </div>
             <div class="span2">
                 <!-- LOGIN REGISTER LINKS -->
-                <ul class="login-register">
-                    <li><a class="popup-text" href="#login-dialog" data-effect="mfp-move-from-top"><i class="icon-signin"></i>Sign in</a>
-                    </li>
-                    <li><a class="popup-text" href="#register-dialog" data-effect="mfp-move-from-top"><i class="icon-edit"></i>Sign up</a>
-                    </li>
-                </ul>
+                @if(Auth::user())
+                    <ul class="login-register">
+                        <li><a class="popup-text" href="{{route('logout')}}" data-effect="mfp-move-from-top"><i class="icon-signout"></i>Sign Out</a>
+                        </li>
+                    </ul>
+                @else
+                    <ul class="login-register">
+                        <li><a class="popup-text" href="{{route('login')}}" data-effect="mfp-move-from-top"><i class="icon-signin"></i>Sign in</a>
+                        </li>
+                        <li><a class="popup-text" href="{{route('register')}}" data-effect="mfp-move-from-top"><i class="icon-edit"></i>Sign up</a>
+                        </li>
+                    </ul>
+                @endif
             </div>
         </div>
     </div>

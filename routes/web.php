@@ -50,28 +50,20 @@ Route::namespace("Admin")->prefix('admin')->group(function() {
 /*Merchants Routes*/
 Route::middleware(['restrictIp'])->prefix('merchant')->group(function() {
 	Route::get('/', 'HomeController@index')->name('merchant.home');
-    Route::namespace('Auth')->group(function() {
+	Route::get('/edit', 'HomeController@merchant')->name('merchant.edit');
 
-		Route::get('/register', 'RegisterController@showMerchantRegisterForm')->name('merchant.register');
-		Route::post('/register', 'RegisterController@createMerchent')->name('merchant.register');
+	Route::namespace('Auth')->group(function() {
 		Route::post('/profile/update', 'RegisterController@update')->name('merchant.profile.update');
-		Route::get('/login', 'LoginController@showMerchantLoginForm')->name('merchant.login');
-		Route::post('/login', 'LoginController@login');
-		Route::post('logout', 'LoginController@logout')->name('merchant.logout');
     });
 });
 
 /*Customers Routes*/
 Route::middleware(['restrictIp'])->prefix('customer')->group(function() {
 	Route::get('/', 'HomeController@index')->name('customer.home');
-    Route::namespace('Auth')->group(function() {
+	Route::get('/edit', 'HomeController@customer')->name('customer.edit');
 
-		Route::get('/register', 'RegisterController@showCustomerRegisterForm')->name('customer.register');
-		Route::post('/register', 'RegisterController@createMerchent')->name('customer.register');
+	Route::namespace('Auth')->group(function() {
 		Route::post('/profile/update', 'RegisterController@update')->name('customer.profile.update');
-		Route::get('/login', 'LoginController@showCustomerLoginForm')->name('customer.login');
-		Route::post('/login', 'LoginController@login');
-		Route::post('logout', 'LoginController@logout')->name('customer.logout');
     });
 });
 
