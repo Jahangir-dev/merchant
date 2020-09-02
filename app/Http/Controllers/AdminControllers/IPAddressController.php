@@ -1,12 +1,17 @@
 <?php
-
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Admin;
+use App\Http\Controllers\Controller;
 
 use App\IPAddress;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
 
 class IPAddressController extends Controller
 {
+     public function __construct()
+    {
+        $this->middleware('auth:admin');
+    }
     /**
      * Display a listing of the resource.
      *

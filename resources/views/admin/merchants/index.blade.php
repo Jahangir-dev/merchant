@@ -1,6 +1,11 @@
 @extends('admin.master')
 @section('content')
     <section class="content">
+        @if(session()->has('success'))
+    <div class="alert alert-success">
+        {{ session()->get('success') }}
+    </div>
+@endif  
         <div class="container-fluid">
             <div class="row">
                 <div class="col-12">
@@ -38,8 +43,8 @@
                                                 <input type="radio" name="optradio{{$index}}">Block
                                             </label>
                                                 
-                                            <a href="{{route('admin.merchant.delete', $user->id)}}" class="danger btn btn-danger"><i class="fa fa-trash" aria-hidden="true"></i></a>
-                                            <a href="{{route('admin.merchant.edit', $user->id)}}" class="btn btn-secondary"><i class="fa fa-pen" aria-hidden="true"></i></a>
+                                            <a href="{{route('admin.merchants.delete', $user->id)}}" class="danger btn btn-danger"><i class="fa fa-trash" aria-hidden="true"></i></a>
+                                            <a href="{{route('admin.merchants.edit', $user->id)}}" class="btn btn-secondary"><i class="fa fa-pen" aria-hidden="true"></i></a>
                                         </td>
                                     </tr>
                                 @endif

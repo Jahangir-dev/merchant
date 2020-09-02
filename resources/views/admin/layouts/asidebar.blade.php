@@ -4,7 +4,7 @@
     <a href="index3.html" class="brand-link">
         <img src="/img/AdminLTELogo.png" alt="AdminLTE Logo" class="brand-image img-circle elevation-3"
              style="opacity: .8">
-        <span class="brand-text font-weight-light">AdminLTE 3</span>
+        <span class="brand-text font-weight-light">Merchant</span>
     </a>
 
     <!-- Sidebar -->
@@ -15,7 +15,7 @@
                 <img src="/img/user2-160x160.jpg" class="img-circle elevation-2" alt="User Image">
             </div>
             <div class="info">
-                <a href="#" class="d-block">Alexander Pierce</a>
+                <a href="#" class="d-block">{{Auth::user()->first_name}} {{Auth::user()->last_name}}</a>
             </div>
         </div>
 
@@ -34,26 +34,26 @@
                     </a>
                     <ul class="nav nav-treeview">
                         <li class="nav-item">
-                            <a href="{{route('admin.merchant.list')}}" class="nav-link {{ Request::segment(2) === 'merchants' ? 'active' : null }}">
+                            <a href="{{route('admin.merchants.list')}}" class="nav-link {{ Request::segment(2) === 'merchants' ? 'active' : null }}">
                                 <i class="far fa-circle nav-icon"></i>
                                 <p>Merchents</p>
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a href="{{route('admin.customer.list')}}" class="nav-link {{ Request::segment(2) === 'customers' ? 'active' : null }}">
+                            <a href="{{route('admin.customers.list')}}" class="nav-link {{ Request::segment(2) === 'customers' ? 'active' : null }}">
                                 <i class="far fa-circle nav-icon"></i>
                                 <p>Customers</p>
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a href="{{route('admin.ip')}}" class="nav-link {{ Request::segment(1) === 'ip' ? 'active' : null }}">
+                            <a href="{{route('admin.ip')}}" class="nav-link {{ Request::segment(2) === 'ip' ? 'active' : null }}">
                                 <i class="far fa-circle nav-icon"></i>
                                 <p>Blocked IP</p>
                             </a>
                         </li>
                     </ul>
                 </li>
-                <li class="nav-item">
+               <!--  <li class="nav-item">
                     <a href="pages/widgets.html" class="nav-link">
                         <i class="nav-icon fas fa-th"></i>
                         <p>
@@ -546,6 +546,18 @@
                     <a href="#" class="nav-link">
                         <i class="nav-icon far fa-circle text-info"></i>
                         <p>Informational</p>
+                    </a>
+                </li> -->
+                <li class="nav-item">
+                    <a href="{{ route('logout') }}" class="nav-link" title="Sign Out" onclick="event.preventDefault();
+                                                     document.getElementById('logout-form').submit();">
+                        <i class="nav-icon far fa-circle text-info"></i>
+                                                     <span>Sign Out</span></a></li>
+                                                     <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                                        @csrf
+                                    </form>
+                    <a href="#" class="nav-link">
+                        
                     </a>
                 </li>
             </ul>

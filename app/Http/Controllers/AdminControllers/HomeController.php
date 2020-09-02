@@ -73,6 +73,37 @@ class HomeController extends Controller
                 'role_id' => $request->role,
             ]);
         }
-        return redirect()->route('admin.home')->with('success','User Updated Successfully');
+        return redirect()->back()->with('success','User Updated Successfully');
+    }
+
+    public function updateProfile(Request $request, $id)
+    {
+                if ($request->password !== null) {
+            if ($request['password'] == $request['confirm-password']) {
+                User::where('id', $id)->update([
+                    'first_name' => $request->first_name,
+                    'last_name' => $request->last_name,
+                    'email' => $request->email,
+                    'password' => Hash::make($request['password']),
+                ]);
+            }
+            else {
+                return redirect()->back()->with('error','password not matched');
+            }
+        }
+        else {
+            User::where('id', $id)->update([
+                'first_name' => $request->first_name,
+                'last_name' => $request->last_name,
+                'email' => $request->email,
+            ]);
+        }
+        return redirect()->route('admin.home')->with('success','Profile Updated Successfully');
+    }
+    public function myProfile()
+    {
+        $id = Auth::user()->id;
+        $user = User::where('id', $id)->with('role')->first();
+        return view('admin.profile.edit', compact('user'));
     }
 }

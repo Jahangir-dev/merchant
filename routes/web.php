@@ -20,16 +20,24 @@ Auth::routes(['verify' => true]);
 Route::get('/', 'HomeController@index')->name('home');
 
 /*Admin Routes*/
-Route::get('/ip', 'IPAddressController@index')->name('admin.ip');
-Route::get('/ip/delete/{id}', 'IPAddressController@destroy')->name('admin.ip.delete');
 Route::namespace("Admin")->prefix('admin')->group(function() {
+
+	Route::get('/profile', 'HomeController@myProfile')->name('admin.profile');
+	Route::post('/myprofile/update/{id}', 'HomeController@updateProfile')->name('admin.myprofile.update');
+
+	Route::get('/ip', 'IPAddressController@index')->name('admin.ip');
+	Route::get('/ip/delete/{id}', 'IPAddressController@destroy')->name('admin.ip.delete');
+	
 	Route::get('/', 'HomeController@index')->name('admin.home');
-	Route::get('/merchants', 'HomeController@merchantsList')->name('admin.merchant.list');
-	Route::get('/customers', 'HomeController@customersList')->name('admin.customer.list');
-	Route::get('/merchant/delete/{id}', 'HomeController@delete')->name('admin.merchant.delete');
-	Route::get('/merchant/edit/{id}', 'HomeController@edit')->name('admin.merchant.edit');
-	Route::get('/customer/delete/{id}', 'HomeController@delete')->name('admin.customer.delete');
-	Route::get('/customer/edit/{id}', 'HomeController@edit')->name('admin.customer.edit');
+	
+	Route::get('/merchants', 'HomeController@merchantsList')->name('admin.merchants.list');
+	Route::get('/merchants/edit/{id}', 'HomeController@edit')->name('admin.merchants.edit');
+	Route::get('/merchants/delete/{id}', 'HomeController@delete')->name('admin.merchants.delete');
+	
+	Route::get('/customers', 'HomeController@customersList')->name('admin.customers.list');
+	Route::get('/customers/delete/{id}', 'HomeController@delete')->name('admin.customers.delete');
+	Route::get('/customers/edit/{id}', 'HomeController@edit')->name('admin.customers.edit');
+	
 	Route::post('/profile/update/{id}', 'HomeController@updateUser')->name('admin.profile.update');
 
 	Route::namespace('Auth')->group(function() {
