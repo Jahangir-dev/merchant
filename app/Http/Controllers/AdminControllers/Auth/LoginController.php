@@ -41,6 +41,7 @@ class LoginController extends Controller
     }
 
     public function showLoginForm() {
+        dd('here');
 //        dd(Auth::user()->role()->first()->type);
 
         return view('admin.auth.login');

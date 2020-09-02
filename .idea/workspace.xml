@@ -5,18 +5,15 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="1898c8e0-c9ed-476e-b9b4-11a187216257" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/resources/views/admin/forms/edit.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/AdminControllers/HomeController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/AdminControllers/HomeController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/IPAddressController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/IPAddressController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/admin/customers/index.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/admin/customers/index.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/admin/forms/advanced.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/admin/forms/editors.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/admin/forms/general.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/admin/forms/validation.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/admin/ip/index.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/admin/ip/index.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/admin/layouts/asidebar.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/admin/layouts/asidebar.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/admin/merchants/index.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/admin/merchants/index.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/AdminControllers/Auth/LoginController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/AdminControllers/Auth/LoginController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Auth/LoginController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Auth/LoginController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Auth/RegisterController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Auth/RegisterController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/CustomerControllers/Auth/LoginController.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/CustomerControllers/Auth/RegisterController.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/MerchantControllers/Auth/LoginController.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/MerchantControllers/Auth/RegisterController.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/merchant/auth/login.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/merchant/auth/login.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/routes/web.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/web.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -154,20 +151,22 @@
   <component name="PropertiesComponent">
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/resources/views/admin/customers" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
     <property name="nodejs_package_manager_path" value="npm" />
+    <property name="vue.rearranger.settings.migration" value="true" />
   </component>
   <component name="RecentsManager">
-    <key name="CopyFile.RECENT_KEYS">
-      <recent name="D:\laragon\www\merchant\resources\views\admin\customers" />
-      <recent name="D:\laragon\www\merchant\resources\views\merchant" />
-      <recent name="D:\laragon\www\merchant\resources\views\merchant\auth" />
-    </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="D:\laragon\www\merchant\app\Http\Controllers\AdminControllers" />
       <recent name="D:\laragon\www\merchant\app\Http\Controllers\MerchantControllers\Auth" />
+    </key>
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="D:\laragon\www\merchant\public\frontend" />
+      <recent name="D:\laragon\www\merchant\resources\views\admin\customers" />
+      <recent name="D:\laragon\www\merchant\resources\views\merchant" />
+      <recent name="D:\laragon\www\merchant\resources\views\merchant\auth" />
     </key>
   </component>
   <component name="RunManager">
@@ -185,7 +184,9 @@
       <option name="presentableId" value="Default" />
       <updated>1598710268959</updated>
       <workItem from="1598710270182" duration="19015000" />
-      <workItem from="1598773429492" duration="15440000" />
+      <workItem from="1598773429492" duration="15715000" />
+      <workItem from="1598889713260" duration="660000" />
+      <workItem from="1598981261162" duration="7465000" />
     </task>
     <servers />
   </component>
@@ -193,10 +194,10 @@
     <option name="version" value="3" />
   </component>
   <component name="WindowStateProjectService">
-    <state x="499" y="167" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog" timestamp="1598730036969">
+    <state x="499" y="167" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog" timestamp="1598988198342">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state x="499" y="167" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog/0.0.1536.824@0.0.1536.824" timestamp="1598730036969" />
+    <state x="499" y="167" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog/0.0.1536.824@0.0.1536.824" timestamp="1598988198342" />
     <state x="549" y="167" key="FileChooserDialogImpl" timestamp="1598776048462">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
@@ -209,9 +210,9 @@
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state x="425" y="187" key="run.anything.popup/0.0.1536.824@0.0.1536.824" timestamp="1598773898638" />
-    <state x="425" y="66" width="672" height="678" key="search.everywhere.popup" timestamp="1598802516989">
+    <state x="425" y="66" width="672" height="678" key="search.everywhere.popup" timestamp="1598988723898">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state x="425" y="66" width="672" height="678" key="search.everywhere.popup/0.0.1536.824@0.0.1536.824" timestamp="1598802516989" />
+    <state x="425" y="66" width="672" height="678" key="search.everywhere.popup/0.0.1536.824@0.0.1536.824" timestamp="1598988723898" />
   </component>
 </project>
