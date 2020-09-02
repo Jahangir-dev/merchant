@@ -18,7 +18,7 @@ Auth::routes();
 Auth::routes(['verify' => true]);
 
 Route::get('/', 'HomeController@index')->name('home');
-Route::get('/', 'HomeController@logout')->name('home');
+Route::get('/', 'HomeController@logout')->name('logout');
 
 /*Admin Routes*/
 Route::namespace("Admin")->prefix('admin')->group(function() {
