@@ -10,7 +10,7 @@
                         </div>
                         <!-- /.card-header -->
                         <div class="card-body">
-                            <table id="example2" class="table table-bordered table-hover">
+                        <table id="example1" class="table example1 table-bordered table-striped">
                                 <thead>
                                 <tr>
                                     <th>#</th>
@@ -26,7 +26,16 @@
                                             <td>
                                                 <a href="{{route('admin.ip.delete', $ip->id)}}" class="danger btn btn-danger"><i class="fa fa-trash" aria-hidden="true"></i></a>
                                             </td>
+                                        </tr>
                                 @endforeach
+                                </tbody>
+                                <tfoot>
+                                    <tr>
+                                    <th>#</th>
+                                    <th>Ip Address</th>
+                                    <th>Action</th>
+                                </tr>
+                                </tfoot>
                             </table>
                         </div>
                         <!-- /.card-body -->

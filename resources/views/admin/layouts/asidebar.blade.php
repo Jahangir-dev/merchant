@@ -34,19 +34,19 @@
                     </a>
                     <ul class="nav nav-treeview">
                         <li class="nav-item">
-                            <a href="{{route('admin.merchant.list')}}" class="nav-link">
+                            <a href="{{route('admin.merchant.list')}}" class="nav-link {{ Request::segment(2) === 'merchants' ? 'active' : null }}">
                                 <i class="far fa-circle nav-icon"></i>
                                 <p>Merchents</p>
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a href="{{route('admin.customer.list')}}" class="nav-link active">
+                            <a href="{{route('admin.customer.list')}}" class="nav-link {{ Request::segment(2) === 'customers' ? 'active' : null }}">
                                 <i class="far fa-circle nav-icon"></i>
                                 <p>Customers</p>
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a href="{{route('admin.ip')}}" class="nav-link">
+                            <a href="{{route('admin.ip')}}" class="nav-link {{ Request::segment(1) === 'ip' ? 'active' : null }}">
                                 <i class="far fa-circle nav-icon"></i>
                                 <p>Blocked IP</p>
                             </a>
