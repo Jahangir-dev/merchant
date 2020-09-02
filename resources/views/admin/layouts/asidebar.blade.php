@@ -552,14 +552,12 @@
                     <a href="{{ route('logout') }}" class="nav-link" title="Sign Out" onclick="event.preventDefault();
                                                      document.getElementById('logout-form').submit();">
                         <i class="nav-icon far fa-circle text-info"></i>
-                                                     <span>Sign Out</span></a></li>
-                                                     <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
-                                        @csrf
-                                    </form>
-                    <a href="#" class="nav-link">
-                        
-                    </a>
+                        <span>Sign Out</span></a>
                 </li>
+                <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                    @csrf
+                </form>
+                <a href="#" class="nav-link"></a>
             </ul>
         </nav>
         <!-- /.sidebar-menu -->

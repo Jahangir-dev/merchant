@@ -18,7 +18,7 @@ Auth::routes();
 Auth::routes(['verify' => true]);
 
 Route::get('/', 'HomeController@index')->name('home');
-Route::get('/', 'HomeController@logout')->name('logout');
+Route::get('/logout', 'HomeController@logout')->name('logout');
 
 /*Admin Routes*/
 Route::namespace("Admin")->prefix('admin')->group(function() {
@@ -28,6 +28,12 @@ Route::namespace("Admin")->prefix('admin')->group(function() {
 
 	Route::get('/ip', 'IPAddressController@index')->name('admin.ip');
 	Route::get('/ip/delete/{id}', 'IPAddressController@destroy')->name('admin.ip.delete');
+
+	Route::get('/user/block/{id}', 'HomeController@userBlock')->name('admin.user.block');
+	Route::get('/user/unblock/{id}', 'HomeController@userUnBlock')->name('admin.user.unblock');
+
+	Route::get('/user/block/ip/{id}', 'HomeController@userIpBlock')->name('admin.user.block.ip');
+	Route::get('/user/unblock/ip/{id}', 'HomeController@userIpUnBlock')->name('admin.user.unblock.ip');
 
 	Route::get('/', 'HomeController@index')->name('admin.home');
 

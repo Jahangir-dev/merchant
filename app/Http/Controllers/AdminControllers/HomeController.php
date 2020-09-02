@@ -32,11 +32,13 @@ class HomeController extends Controller
 
     public function merchantsList() {
         $users = User::with('role')->get();
-        return view('admin.merchants.index', compact('users'));
+        $ips = IPAddress::all();
+        return view('admin.merchants.index', compact('users', 'ips'));
     }
     public function customersList() {
         $users = User::with('role')->get();
-        return view('admin.customers.index', compact('users'));
+        $ips = IPAddress::all();
+        return view('admin.customers.index', compact('users', 'ips'));
     }
 
     public function delete($id) {
@@ -105,5 +107,27 @@ class HomeController extends Controller
         $id = Auth::user()->id;
         $user = User::where('id', $id)->with('role')->first();
         return view('admin.profile.edit', compact('user'));
+    }
+
+    public function userBlock($id) {
+        User::where('id', $id)->update(['status' => '1']);
+        return redirect()->back();
+    }
+    public function userUnBlock($id) {
+        User::where('id', $id)->update(['status' => '0']);
+        return redirect()->back();
+    }
+    public function userIpBlock($id) {
+        $user = User::where('id', $id)->first();
+        IPAddress::create([
+            'ip_address' => $user->ip_address,
+        ]);
+        return redirect()->back();
+    }
+
+    public function userIpUnBlock ($id) {
+        $user = User::where('id', $id)->first();
+        IPAddress::where('ip_address', $user->ip_address)->delete();
+        return redirect()->back();
     }
 }
