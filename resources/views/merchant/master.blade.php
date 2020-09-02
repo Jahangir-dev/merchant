@@ -64,7 +64,7 @@
 
 @include('merchant.layouts.footer')
 
-
+@yield('script')
 
 <!-- Scripts queries -->
 <script src="{{asset('frontend/js/jquery.js')}}"></script>

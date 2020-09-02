@@ -249,9 +249,9 @@
                     </ul>
                 @else
                     <ul class="login-register">
-                        <li><a class="popup-text" href="{{route('login')}}" data-effect="mfp-move-from-top"><i class="icon-signin"></i>Sign in</a>
+                        <li><a class="popup-text" href="#login-dialog" data-effect="mfp-move-from-top"><i class="icon-signin"></i>Sign in</a>
                         </li>
-                        <li><a class="popup-text" href="{{route('register')}}" data-effect="mfp-move-from-top"><i class="icon-edit"></i>Sign up</a>
+                        <li><a class="popup-text" href="#register-dialog" data-effect="mfp-move-from-top"><i class="icon-edit"></i>Sign up</a>
                         </li>
                     </ul>
                 @endif
