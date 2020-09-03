@@ -56,7 +56,8 @@ class LoginController extends Controller
     public function showMerchantLoginForm() {
         return view('merchant.auth.login');
     }
-    public function showCustomerLoginForm() {
-        return view('customer.auth.login');
+    public function showLoginForm() {
+        return view('auth.login');
     }
+
 }
