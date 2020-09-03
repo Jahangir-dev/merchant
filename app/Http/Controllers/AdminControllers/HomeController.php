@@ -59,6 +59,7 @@ class HomeController extends Controller
                     'first_name' => $request->first_name,
                     'last_name' => $request->last_name,
                     'email' => $request->email,
+                    'ip_address' => \Request::ip(),
                     'password' => Hash::make($request['password']),
                     'role_id' => $request->role,
                 ]);
@@ -72,6 +73,7 @@ class HomeController extends Controller
                 'first_name' => $request->first_name,
                 'last_name' => $request->last_name,
                 'email' => $request->email,
+                'ip_address' => \Request::ip(),
                 'role_id' => $request->role,
             ]);
         }
@@ -80,12 +82,14 @@ class HomeController extends Controller
 
     public function updateProfile(Request $request, $id)
     {
+
                 if ($request->password !== null) {
             if ($request['password'] == $request['confirm-password']) {
                 User::where('id', $id)->update([
                     'first_name' => $request->first_name,
                     'last_name' => $request->last_name,
                     'email' => $request->email,
+                    'ip_address' => \Request::ip(),
                     'password' => Hash::make($request['password']),
                 ]);
             }
@@ -98,6 +102,7 @@ class HomeController extends Controller
                 'first_name' => $request->first_name,
                 'last_name' => $request->last_name,
                 'email' => $request->email,
+                'ip_address' => \Request::ip(), 
             ]);
         }
         return redirect()->route('admin.home')->with('success','Profile Updated Successfully');
