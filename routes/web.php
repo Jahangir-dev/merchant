@@ -54,23 +54,7 @@ Route::namespace("Admin")->prefix('admin')->group(function() {
 	});
 });
 
-/*Merchants Routes*/
-Route::middleware(['restrictIp'])->prefix('merchant')->group(function() {
-	Route::get('/', 'HomeController@index')->name('merchant.home');
-	Route::get('/edit', 'HomeController@merchant')->name('merchant.edit');
 
-	Route::namespace('Auth')->group(function() {
-		Route::post('/profile/update', 'RegisterController@update')->name('merchant.profile.update');
-    });
-});
 
-/*Customers Routes*/
-Route::middleware(['restrictIp'])->prefix('customer')->group(function() {
-	Route::get('/', 'HomeController@index')->name('customer.home');
-	Route::get('/edit', 'HomeController@customer')->name('customer.edit');
 
-	Route::namespace('Auth')->group(function() {
-		Route::post('/profile/update', 'RegisterController@update')->name('customer.profile.update');
-    });
-});
 

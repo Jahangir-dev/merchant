@@ -1,0 +1,27 @@
+<?php
+
+/*
+|--------------------------------------------------------------------------
+| Web Routes
+|--------------------------------------------------------------------------
+|
+| Here is where you can register web routes for your application. These
+| routes are loaded by the RouteServiceProvider within a group which
+| contains the "web" middleware group. Now create something great!
+|
+*/
+
+Route::prefix('merchant')->group(function() {
+    Route::get('/', 'MerchantController@index');
+});
+
+
+
+/*Merchants Routes*/
+Route::middleware(['restrictIp'])->prefix('merchant')->group(function() {
+	Route::get('/edit', 'HomeController@merchant')->name('merchant.edit');
+
+	Route::namespace('Auth')->group(function() {
+		Route::post('/profile/update', 'RegisterController@update')->name('merchant.profile.update');
+    });
+});
