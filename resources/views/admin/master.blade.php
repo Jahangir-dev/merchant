@@ -30,6 +30,7 @@
     <link rel="stylesheet" href="{{asset('plugins/summernote/summernote-bs4.css')}}">
     <!-- Google Font: Source Sans Pro -->
     <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700" rel="stylesheet">
+        @notifyCss
 </head>
 <body class="hold-transition sidebar-mini layout-fixed">
 <div class="wrapper">
@@ -49,6 +50,17 @@
         @include('admin.layouts.footer')
 
 </div>
+     @include('notify::messages')
+        
+        <x:notify-messages />
+        @notifyJs
+<style type="text/css">
+    .w-full {
+        position: absolute !important;
+        bottom: 30px !important;
+    }
+</style>
+
 <!-- ./wrapper -->
 
 <!-- jQuery -->
@@ -92,6 +104,7 @@
 <script src="{{asset('/js/demo.js')}}"></script>
 <script>
   $(function () {
+    $('.w-full').delay(3000).fadeOut('slow');
     $(".example1").DataTable({
       "responsive": true,
       "autoWidth": false,

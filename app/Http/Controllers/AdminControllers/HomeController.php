@@ -65,6 +65,7 @@ class HomeController extends Controller
                 ]);
             }
             else {
+                notify()->error('Password not matched');
                 return redirect()->back()->with('error','password not matched');
             }
         }
@@ -77,6 +78,7 @@ class HomeController extends Controller
                 'role_id' => $request->role,
             ]);
         }
+        notify()->success('User Updated Successfully');
         return redirect()->back()->with('success','User Updated Successfully');
     }
 
@@ -94,6 +96,7 @@ class HomeController extends Controller
                 ]);
             }
             else {
+                notify()->error('Password not matched');
                 return redirect()->back()->with('error','password not matched');
             }
         }
@@ -105,6 +108,7 @@ class HomeController extends Controller
                 'ip_address' => \Request::ip(), 
             ]);
         }
+        notify()->success('Profile Updated Successfully');
         return redirect()->route('admin.home')->with('success','Profile Updated Successfully');
     }
     public function myProfile()

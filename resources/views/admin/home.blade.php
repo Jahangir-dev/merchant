@@ -1,11 +1,7 @@
 @extends('admin.master')
 
 @section('content')
-@if(session()->has('success'))
-    <div class="alert alert-success">
-        {{ session()->get('success') }}
-    </div>
-@endif  
+
 <!-- Content Header (Page header) -->
     <div class="content-header">
       <div class="container-fluid">
