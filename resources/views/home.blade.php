@@ -267,21 +267,50 @@
     <h3>Member Login</h3>
     <h5>Welcome back, friend. Login to get started</h5>
     <div class="row-fluid">
-        <form class="dialog-form">
-            <label>E-mail</label>
-            <input type="text" placeholder="email@domain.com" class="span12">
-            <label>Password</label>
-            <input type="password" placeholder="My secret password" class="span12">
-            <label class="checkbox">
-                <input type="checkbox">Remember me
-            </label>
-            <input type="submit" value="Sign in" class="btn btn-primary">
-        </form>
+        <form method="POST" class="dialog-form" action="{{ route('login') }}">
+                        @csrf
+
+                        
+                            <label for="email" >{{ __('E-Mail Address') }}</label>
+
+                            
+                                <input id="email" type="email" class="span12 @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" required autocomplete="email" autofocus>
+
+                                @error('email')
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                @enderror
+                           
+                        
+
+                        
+                            <label for="password">{{ __('Password') }}</label>
+
+                            
+                                <input id="password" type="password" class="span12 @error('password') is-invalid @enderror" name="password" required autocomplete="current-password">
+
+                                @error('password')
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                @enderror
+                         <label class="checkbox">
+                            <input type="checkbox" name="remember" id="remember" {{ old('remember') ? 'checked' : '' }}>{{ __('Remember Me') }}
+                        </label>
+                        <button type="submit" class="btn btn-primary">
+                                    {{ __('Login') }}
+                                </button>
+                            
+                    </form>
     </div>
     <ul class="dialog-alt-links">
         <li><a class="popup-text" href="#register-dialog" data-effect="mfp-zoom-out">Not member yet</a>
         </li>
-        <li><a class="popup-text" href="#password-recover-dialog" data-effect="mfp-zoom-out">Forgot password</a>
+        <li>
+                @if (Route::has('password.request'))
+                    <a class="popup-text" href="#password-recover-dialog" data-effect="mfp-zoom-out">{{ __('Forgot Your Password?') }}</a>
+                @endif
         </li>
     </ul>
 </div>
@@ -292,7 +321,7 @@
     <h3>Member Register</h3>
     <h5>Ready to get best offers? Let's get started!</h5>
     <div class="row-fluid">
-        <form class="dialog-form">
+        <!-- <form class="dialog-form">
             <label>E-mail</label>
             <input type="text" placeholder="email@domain.com" class="span12">
             <label>Password</label>
@@ -313,7 +342,73 @@
                 <input type="checkbox">Get hot offers via e-mail
             </label>
             <input type="submit" value="Sign up" class="btn btn-primary">
-        </form>
+        </form> -->
+
+        <form method="POST" class="dialog-form" action="{{ route('register') }}">
+                        @csrf
+
+                        
+                            <label for="first_name">{{ __('First Name') }}</label>
+
+                            
+                                <input id="first_name" type="text" class="span12 @error('first_name') is-invalid @enderror" name="first_name" value="{{ old('first_name') }}" required autocomplete="first_name" autofocus>
+
+                                @error('first_name')
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                @enderror
+                         
+
+                        
+                            <label for="last_name">{{ __('Last Name') }}</label>
+
+                            
+                                <input id="last_name" type="text" class="span12 @error('last_name') is-invalid @enderror" name="last_name" value="{{ old('last_name') }}" required autocomplete="last_name" autofocus>
+
+                                @error('last_name')
+                                <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                @enderror
+                            
+                        
+                            <label for="email">{{ __('E-Mail Address') }}</label>
+                           
+                                <input id="email" type="email" class="span12 @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" required autocomplete="email">
+                                @error('email')
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                @enderror
+                            
+                        
+                            <label for="password" >{{ __('Password') }}</label>
+
+                            
+                                <input id="password" type="password" class="span12 @error('password') is-invalid @enderror" name="password" required autocomplete="new-password">
+
+                                @error('password')
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                @enderror
+                            
+
+                        <input type="hidden" name="role_id" value="2">
+
+                        
+                            <label for="password-confirm" >{{ __('Confirm Password') }}</label>
+
+                            
+                                <input id="password-confirm" type="password" class="span12" name="password_confirmation" required autocomplete="new-password">
+                           
+                       
+                                <button type="submit" class="btn btn-primary">
+                                    {{ __('Register') }}
+                                </button>
+                            
+                    </form>
     </div>
     <ul class="dialog-alt-links">
         <li><a class="popup-text" href="#login-dialog" data-effect="mfp-zoom-out">Already member</a>
@@ -327,9 +422,9 @@
     <h3>Password Recovery</h3>
     <h5>Fortgot your password? Don't worry we can deal with it</h5>
     <div class="row-fluid">
-        <form class="dialog-form">
+        <form class="dialog-form" action="{{ route('password.request') }}">
             <label>E-mail</label>
-            <input type="text" placeholder="email@domain.com" class="span12">
+            <input type="text" required="" placeholder="email@domain.com" class="span12">
             <input type="submit" value="Request new password" class="btn btn-primary">
         </form>
     </div>
@@ -865,7 +960,6 @@
 
 <!-- Custom scripts -->
 <script src="{{asset('frontend/js/custom.js')}}"></script>
-<script src="{{asset('frontend/js/main.js')}}"></script>
 <script src="{{asset('frontend/js/switcher.js')}}"></script>
 </body>
 </html>

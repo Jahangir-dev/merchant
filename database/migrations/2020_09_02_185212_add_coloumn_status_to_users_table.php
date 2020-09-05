@@ -15,7 +15,7 @@ class AddColoumnStatusToUsersTable extends Migration
     {
         Schema::table('users', function (Blueprint $table) {
             //
-            $table->boolean('status');
+            $table->boolean('status')->default(0);
 
         });
     }

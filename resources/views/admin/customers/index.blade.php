@@ -34,14 +34,32 @@
                                         <td>{{$user->first_name}}</td>
                                         <td>{{$user->last_name}}</td>
                                         <td>{{$user->email}}</td>
-                                        <td>{{$user->ip_address}}</td>
                                         <td>
-                                             <label class="radio-inline">
-                                                <input type="radio" name="optradio{{$index}}" >Active
-                                            </label>
+                                            {{$user->ip_address}}
+                                            @if($ips->contains('ip_address', $user->ip_address))
+                                                <a href="{{route('admin.user.unblock.ip', $user->id)}}" class="btn btn-success">
+                                                    <i class="fa fa-unlock" aria-hidden="true"></i>
+                                                </a>
+                                            @else
+                                                <a href="{{route('admin.user.block.ip', $user->id)}}" class="danger btn btn-danger">
+                                                    <i class="fa fa-ban" aria-hidden="true"></i>
+                                                </a>
+                                            @endif
+                                        </td>
+                                        <td>
                                             <label class="radio-inline">
-                                                <input type="radio" name="optradio{{$index}}">Block
+
+                                                @if(!$user->status)
+                                                <a href="{{route('admin.user.block', $user->id)}}" class="danger btn btn-danger">
+                                                    <i class="fa fa-ban" aria-hidden="true"></i>
+                                                </a>
+                                                @else
+                                                <a href="{{route('admin.user.unblock', $user->id)}}" class="btn btn-success">
+                                                    <i class="fa fa-unlock" aria-hidden="true"></i>
+                                                </a>
+                                                @endif
                                             </label>
+
                                             <a href="{{route('admin.customers.delete', $user->id)}}" class="danger btn btn-danger"><i class="fa fa-trash" aria-hidden="true"></i></a>
                                             <a href="{{route('admin.customers.edit', $user->id)}}" class="btn btn-secondary"><i class="fa fa-pen" aria-hidden="true"></i></a>
                                         </td>
