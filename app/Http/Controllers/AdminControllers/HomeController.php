@@ -131,12 +131,14 @@ class HomeController extends Controller
         IPAddress::create([
             'ip_address' => $user->ip_address,
         ]);
+        notify()->success('Ip Blocked Successfully');
         return redirect()->back();
     }
 
     public function userIpUnBlock ($id) {
         $user = User::where('id', $id)->first();
         IPAddress::where('ip_address', $user->ip_address)->delete();
+        notify()->success('Ip Unblocked Successfully');
         return redirect()->back();
     }
 }
