@@ -18,14 +18,14 @@ Auth::routes();
 Auth::routes(['verify' => true]);
 
 Route::get('/', 'HomeController@index')->name('home');
-Route::post('/setTarget', 'HomeController@setTarget');
+/*Route::post('/setTarget', 'HomeController@setTarget');
 
 Route::get('/logout', 'HomeController@logout')->name('logout');
 Route::namespace('Auth')->group(function() {
 	Route::get('/login', 'LoginController@showLoginForm')->name('login');
 });
 /*Admin Routes*/
-Route::namespace("Admin")->prefix('admin')->group(function() {
+/*Route::namespace("Admin")->prefix('admin')->group(function() {
 
 	Route::get('/profile', 'HomeController@myProfile')->name('admin.profile');
 	Route::post('/myprofile/update/{id}', 'HomeController@updateProfile')->name('admin.myprofile.update');
@@ -56,7 +56,7 @@ Route::namespace("Admin")->prefix('admin')->group(function() {
 		Route::post('/login', 'LoginController@login');
 		Route::post('logout', 'LoginController@logout')->name('admin.logout');
 	});
-});
+});*/
 
 
 

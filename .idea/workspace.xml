@@ -5,139 +5,29 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="1898c8e0-c9ed-476e-b9b4-11a187216257" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/Modules/Customer/Resources/views/layouts/banner.blade.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Modules/Customer/Resources/views/layouts/footer.blade.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Modules/Customer/Resources/views/layouts/header.blade.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Modules/Merchant/Resources/views/master.blade.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Modules/Web/Resources/views/master.blade.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/views/master.blade.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Modules/Customer/Resources/views/auth/register.blade.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Modules/Customer/Resources/views/profile/index.blade.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Modules/Merchant/Resources/views/auth/register.blade.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Modules/Merchant/Resources/views/profile/index.blade.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Modules/Web/Http/Controllers/RegisterController.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Modules/Web/Resources/views/auth/register.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/merchant.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/merchant.iml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/php.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/php.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Modules/Customer/Resources/views/layouts/header.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/Modules/Customer/Resources/views/layouts/header.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Modules/Customer/Resources/views/layouts/master.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/Modules/Customer/Resources/views/layouts/master.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Modules/Customer/Routes/web.php" beforeDir="false" afterPath="$PROJECT_DIR$/Modules/Customer/Routes/web.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Modules/Merchant/Resources/views/layouts/header.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/Modules/Merchant/Resources/views/layouts/header.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Modules/Merchant/Resources/views/layouts/master.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/Modules/Merchant/Resources/views/layouts/master.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Modules/Merchant/Routes/web.php" beforeDir="false" afterPath="$PROJECT_DIR$/Modules/Merchant/Routes/web.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Modules/Web/Resources/views/layouts/header.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/Modules/Web/Resources/views/layouts/header.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Modules/Web/Routes/web.php" beforeDir="false" afterPath="$PROJECT_DIR$/Modules/Web/Routes/web.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Auth/RegisterController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Auth/RegisterController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/User.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/User.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/composer.json" beforeDir="false" afterPath="$PROJECT_DIR$/composer.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/composer.lock" beforeDir="false" afterPath="$PROJECT_DIR$/composer.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/frontend/css/boostrap.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/frontend/css/boostrap_responsive.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/frontend/css/font_awesome.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/frontend/css/mystyles.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/frontend/css/schemes/atlantis.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/frontend/css/schemes/blaze-orange.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/frontend/css/schemes/curious-blue.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/frontend/css/schemes/de-york.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/frontend/css/schemes/downy.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/frontend/css/schemes/gold.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/frontend/css/schemes/hot-pink.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/frontend/css/schemes/jgger.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/frontend/css/schemes/mexican-red.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/frontend/css/schemes/orient.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/frontend/css/schemes/pink.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/frontend/css/schemes/pomegranate.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/frontend/css/schemes/red.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/frontend/css/schemes/teal.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/frontend/css/schemes/violet-red.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/frontend/css/schemes/violet.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/frontend/css/styles.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/frontend/css/switcher.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/frontend/fonts/fontawesome-webfont.svg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/frontend/fonts/fontawesome-webfontd41d.eot" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/frontend/fonts/fontawesome-webfontf77b.eot" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/frontend/fonts/fontawesome-webfontf77b.ttf" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/frontend/fonts/fontawesome-webfontf77b.woff" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/frontend/img/a_dreamy_jump_100x100.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/frontend/img/a_dreamy_jump_800x450.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/frontend/img/a_dreamy_jump_800x600.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/frontend/img/a_dreamy_jump_960x540.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/frontend/img/a_turn_100x100.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/frontend/img/a_turn_800x600.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/frontend/img/afro_50x50.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/frontend/img/afro_800x600.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/frontend/img/amaze_150x150.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/frontend/img/amaze_50x50.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/frontend/img/amaze_800x600.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/frontend/img/ana_29_50x50.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/frontend/img/ana_29_800x600.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/frontend/img/andrea_150x150.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/frontend/img/andrea_50x50.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/frontend/img/andrea_800x450.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/frontend/img/andrea_800x600.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/frontend/img/aspen_lounge_chair_800x600.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/frontend/img/autumn_rain_800x600.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/frontend/img/bigplay.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/frontend/img/bigplay.svg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/frontend/img/bubbles_50x50.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/frontend/img/bubbles_800x600.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/frontend/img/cascada_800x600.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/frontend/img/cascada_960x540.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/frontend/img/chiara_50x50.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/frontend/img/chiara_800x600.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/frontend/img/controls.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/frontend/img/controls.svg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/frontend/img/drifting_days_100x100.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/frontend/img/drifting_days_800x600.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/frontend/img/early_winter_100x100.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/frontend/img/early_winter_800x600.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/frontend/img/end_of_the_day_100x100.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/frontend/img/end_of_the_day_800x600.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/frontend/img/food_is_pride_800x600.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/frontend/img/gamer_chick_50x50.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/frontend/img/gamer_chick_800x600.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/frontend/img/glyphicons-halflings-white.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/frontend/img/glyphicons-halflings.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/frontend/img/going_out_tonight_150x150.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/frontend/img/going_out_tonight_800x450.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/frontend/img/green_furniture_800x600.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/frontend/img/happy_bokeh_day_150x150.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/frontend/img/happy_bokeh_day_800x600.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/frontend/img/hot_mixer_800x600.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/frontend/img/ijump_150x150.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/frontend/img/in_the_bokeh_forest_150x150.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/frontend/img/iphone_5_ipad_mini_ipad_3_1200x480.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/frontend/img/iphone_5_ipad_mini_ipad_3_800x600.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/frontend/img/japanise_bush_800x600.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/frontend/img/lack_of_blue_depresses_me_100x100.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/frontend/img/lack_of_blue_depresses_me_800x600.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/frontend/img/loading.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/frontend/img/logo-small.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/frontend/img/logo.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/frontend/img/luca_800x600.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/frontend/img/me_800x600.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/frontend/img/me_with_the_uke_50x50.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/frontend/img/me_with_the_uke_800x600.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/frontend/img/my_ice_cream_and_your_ice_cream_spoons_800x600.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/frontend/img/old_no7_1200x480.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/frontend/img/old_no7_800x600.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/frontend/img/our_coffee_miss_u_150x150.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/frontend/img/our_coffee_miss_u_800x600.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/frontend/img/stuck_on_800x600.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/frontend/img/sweet_escape_100x100.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/frontend/img/sweet_escape_800x600.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/frontend/img/switcher/color.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/frontend/img/the_best_mode_of_transport_here_in_maldives_1200x480.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/frontend/img/the_best_mode_of_transport_here_in_maldives_800x600.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/frontend/img/the_best_mode_of_transport_here_in_maldives_960x540.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/frontend/img/the_hidden_power_of_the_heart_800x600.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/frontend/img/the_journey_home_100x100.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/frontend/img/the_journey_home_800x600.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/frontend/img/the_violin_800x600.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/frontend/img/urbex_esch_lux_with_laney_and_laaaaag_800x600.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/frontend/img/waipio_valley_800x600.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/frontend/img/waipio_valley_960x540.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/frontend/js/boostrap.min.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/frontend/js/countdown.min.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/frontend/js/custom.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/frontend/js/fitvids.min.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/frontend/js/flexnav.min.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/frontend/js/gmap3.min.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/frontend/js/jquery.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/frontend/js/magnific.min.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/frontend/js/mail.min.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/frontend/js/mediaelement.min.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/frontend/js/nivo_slider.min.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/frontend/js/switcher.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/frontend/js/tweet.min.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/frontend/js/wilto_slider.min.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/frontend/media/echo-hereweare.mp4" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/frontend/media/preview.mp3" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/config/notify.php" beforeDir="false" afterPath="$PROJECT_DIR$/config/notify.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/frontend/css/main.css" beforeDir="false" afterPath="$PROJECT_DIR$/public/frontend/css/main.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/routes/web.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/web.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -266,6 +156,8 @@
       <path value="$PROJECT_DIR$/vendor/laravel/socialite" />
       <path value="$PROJECT_DIR$/vendor/league/oauth1-client" />
       <path value="$PROJECT_DIR$/vendor/nwidart/laravel-modules" />
+      <path value="$PROJECT_DIR$/vendor/mckenziearts/laravel-notify" />
+      <path value="$PROJECT_DIR$/vendor/akibtanjim/google-translate" />
     </include_path>
   </component>
   <component name="ProjectId" id="1gmCEUpGhH8KWVilvfZE3fbYaj0" />
@@ -276,23 +168,23 @@
   <component name="PropertiesComponent">
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/Modules/Web/Resources/views" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../knockdoc" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
     <property name="nodejs_package_manager_path" value="npm" />
     <property name="vue.rearranger.settings.migration" value="true" />
   </component>
   <component name="RecentsManager">
-    <key name="CopyFile.RECENT_KEYS">
-      <recent name="D:\laragon\www\merchant\Modules\Web\Resources\views" />
-      <recent name="D:\laragon\www\merchant\Modules\Merchant\Resources\views" />
-      <recent name="D:\laragon\www\merchant\Modules\Customer\Resources\views" />
-      <recent name="D:\laragon\www\merchant\Modules\Customer\Http" />
-      <recent name="D:\laragon\www\merchant\Modules\Customer\Routes" />
-    </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="D:\laragon\www\merchant\app\Http\Controllers\AdminControllers" />
       <recent name="D:\laragon\www\merchant\app\Http\Controllers\MerchantControllers\Auth" />
+    </key>
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="D:\laragon\www\merchant\Modules\Merchant\Resources\views" />
+      <recent name="D:\laragon\www\merchant\Modules\Customer\Resources\views" />
+      <recent name="D:\laragon\www\merchant\Modules\Web\Resources\views" />
+      <recent name="D:\laragon\www\merchant\Modules\Customer\Http" />
+      <recent name="D:\laragon\www\merchant\Modules\Customer\Routes" />
     </key>
   </component>
   <component name="RunManager">
@@ -323,25 +215,25 @@
     <option name="version" value="3" />
   </component>
   <component name="WindowStateProjectService">
-    <state x="499" y="167" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog" timestamp="1599069690754">
+    <state x="499" y="167" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog" timestamp="1600374741602">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state x="499" y="167" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog/0.0.1536.824@0.0.1536.824" timestamp="1599069690754" />
-    <state x="549" y="167" key="FileChooserDialogImpl" timestamp="1598776048462">
+    <state x="499" y="167" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog/0.0.1536.824@0.0.1536.824" timestamp="1600374741602" />
+    <state x="549" y="167" key="FileChooserDialogImpl" timestamp="1600367729679">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state x="549" y="167" key="FileChooserDialogImpl/0.0.1536.824@0.0.1536.824" timestamp="1598776048462" />
-    <state x="478" y="145" width="579" height="534" key="find.popup" timestamp="1599296856764">
+    <state x="549" y="167" key="FileChooserDialogImpl/0.0.1536.824@0.0.1536.824" timestamp="1600367729679" />
+    <state x="478" y="145" width="579" height="534" key="find.popup" timestamp="1600364878681">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state x="478" y="145" width="579" height="534" key="find.popup/0.0.1536.824@0.0.1536.824" timestamp="1599296856764" />
-    <state x="425" y="187" key="run.anything.popup" timestamp="1599303876677">
+    <state x="478" y="145" width="579" height="534" key="find.popup/0.0.1536.824@0.0.1536.824" timestamp="1600364878681" />
+    <state x="425" y="187" key="run.anything.popup" timestamp="1600370364181">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state x="425" y="187" key="run.anything.popup/0.0.1536.824@0.0.1536.824" timestamp="1599303876677" />
-    <state x="425" y="66" width="672" height="678" key="search.everywhere.popup" timestamp="1599302636328">
+    <state x="425" y="187" key="run.anything.popup/0.0.1536.824@0.0.1536.824" timestamp="1600370364181" />
+    <state x="425" y="66" width="672" height="678" key="search.everywhere.popup" timestamp="1600375139811">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state x="425" y="66" width="672" height="678" key="search.everywhere.popup/0.0.1536.824@0.0.1536.824" timestamp="1599302636328" />
+    <state x="425" y="66" width="672" height="678" key="search.everywhere.popup/0.0.1536.824@0.0.1536.824" timestamp="1600375139811" />
   </component>
 </project>

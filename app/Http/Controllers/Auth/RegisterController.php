@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
+use App\Profile;
 use App\Providers\RouteServiceProvider;
 use App\User;
 use Illuminate\Foundation\Auth\RegistersUsers;
@@ -36,10 +37,10 @@ class RegisterController extends Controller
     protected function redirectTo() {
         $user = Auth::user()->role_id;
         if ($user == '2') {
-            return '/merchant';
+            return '/merchant/profile';
         }
         else {
-            return '/customer';
+            return '/customer/profile';
 
         }
     }
@@ -77,7 +78,7 @@ class RegisterController extends Controller
      */
     protected function create(array $data)
     {
-        return User::create([
+         $user = User::create([
             'first_name' => $data['first_name'],
             'last_name' => $data['last_name'],
             'email' => $data['email'],
@@ -85,6 +86,14 @@ class RegisterController extends Controller
             'ip_address' => \Request::ip(),
             'role_id' => $data['role_id']
         ]);
+        $profile = new Profile([
+            'user_id' => $user->id,
+            'phone_number' => $data['phone'],
+            'gender' => $data['gender'],
+
+        ]);
+        $user->profile()->save($profile);
+        return $user;
     }
 
 
