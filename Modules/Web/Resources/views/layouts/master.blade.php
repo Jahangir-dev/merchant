@@ -59,5 +59,22 @@
     <script src="{{asset('frontend/js/vendor/owl.carousel.min.js')}}"></script>
     <script src="{{asset('frontend/js/vendor/jquery.ui.touch-punch.js')}}"></script>
     <script src="{{asset('frontend/js/main.js')}}"></script>
+    <script type="text/javascript">
+    $('.target').on('change',function(){
+          var target = $(this).val();
+          $.ajax({
+              url:"{{url('/setTarget')}}",
+              type:"POST",
+              dataType:'json',
+              data:{"_token": "{{ csrf_token() }}","target":target},
+              success: function(data) {
+                location.reload();
+              },
+              error: function(e) {
+
+              }
+          });
+      });
+  </script>
     </body>
 </html>

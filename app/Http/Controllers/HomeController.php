@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use App\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
-
+use Session;
 class HomeController extends Controller
 {
     /**
@@ -26,8 +26,16 @@ class HomeController extends Controller
      */
     public function index()
     {
-        return view('home');
+
+        return redirect('/web');
     }
+    
+    public function setTarget(Request $request){
+        
+        Session::put('target',$request->target);
+        return 1;
+    }
+
 
     public function merchant()
     {

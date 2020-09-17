@@ -4,6 +4,13 @@
         <strong class="sl-main-header__logo">
             <a href="index.html"><img src="{{asset('frontend/images/main-logo.png')}}" alt="Logo"></a>
         </strong>
+         Language: 
+  <select name="target" class="target">
+    <option>Select</option>
+    <option value="en" @if(Session::get("target") == "en") selected="selected" @endif>English</option>
+    <option value="zh-CN" @if(Session::get("target") == "zh-CN") selected="selected" @endif>Chinese</option>
+  </select><br>
+
         <div class="sl-main-header__content">
             <div class="sl-main-header__upper">
                 <form class="sl-main-form">
@@ -171,10 +178,17 @@
                         </div>
                     </div>
                 </div>
+                 @guest
+                     <div class="sl-user">
+                        <a href="javascript:void(0);" data-toggle="modal" data-target="#loginpopup">
+                                <span class="sl-user__description"><em class="d-block">{{translateText('Login')}}</em></span>
+                        </a>
+                    </div>
+                 @else
                 <div class="sl-user sl-userdropdown">
                     <a href="javascript:void(0);">
                         <img src="{{asset('frontend/images/insight/user-img.jpg')}}" alt="Image Description">
-                        <span class="sl-user__description"><em class="d-block">Evening!</em>Stephnie</span>
+                        <span class="sl-user__description"><em class="d-block">{{ Auth::user()->name }}</em>Stephnie</span>
                         <i class="ti-angle-down"></i>
                     </a>
                     <ul class="sl-usermenu">
@@ -243,12 +257,18 @@
                             </a>
                         </li>
                         <li>
-                            <a href="index.html">
-                                <i class="ti-key"></i><span>Logout</span>
+                            <a class="dropdown-item" href="{{ route('logout') }}"
+                                       onclick="event.preventDefault();
+                                                     document.getElementById('logout-form').submit();">
+                                        {{ __('Logout') }}
                             </a>
+                            <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
+                                        @csrf
+                                    </form>
                         </li>
                     </ul>
                 </div>
+                @endguest
                 <div class="sl-main-upperBackbtn">
                     <a href="javascript:void(0);"><i class="ti-close"></i></a>
                 </div>
@@ -1043,7 +1063,7 @@
             <div class="modal-dialog modal-dialog-centered" role="document">
                 <div class="sl-modalcontent modal-content">
                     <div class="sl-popuptitle">
-                        <h4>Login</h4>
+                        <h4>{{translateText('Login') }}</h4>
                         <a href="javascript:void(0);" class="sl-closebtn close"><i class="lnr lnr-cross" data-dismiss="modal"></i></a>
                     </div>
                     <div class="modal-body">
@@ -1056,10 +1076,10 @@
                                     <input type="password" class="form-control sl-form-control" placeholder="Password*" value="user@domain.com">
                                 </div>
                                 <div class="form-group sl-btnarea">
-                                    <a href="dashboard-insight.html" class="btn sl-btn">login</a>
+                                    <a href="dashboard-insight.html" class="btn sl-btn">{{translateText('login')}}</a>
                                     <div class="sl-checkbox">
                                         <input id="remember" type="checkbox">
-                                        <label for="remember">Remember me here</label>
+                                        <label for="remember">{{translateText('Remember me here') }}</label>
                                     </div>
                                 </div>
                             </fieldset>
@@ -1067,18 +1087,18 @@
                         <span class="sl-optionsbar"><em>or</em></span>
                         <div class="sl-loginicon">
                             <ul>
-                                <li><a href="javascript:void(0);" class="sl-facebookbox"><i class="fab fa-facebook-f"></i>Via facebook</a></li>
-                                <li><a href="javascript:void(0);" class="sl-googlebox"><i class="fab fa-google"></i>Via google</a></li>
+                                <li><a href="javascript:void(0);" class="sl-facebookbox"><i class="fab fa-facebook-f"></i>{{translateText('Via facebook') }}</a></li>
+                                <li><a href="javascript:void(0);" class="sl-googlebox"><i class="fab fa-google"></i>{{translateText('Via google') }}</a></li>
                             </ul>
                         </div>
                     </div>
                     <div class="modal-footer">
                         <div class="sl-popup-footerterms">
-                            <span>By signing in  you agree to these <a href="legalprivacy.html"> Terms &amp; Conditions</a> &amp; consent to<a href="legalprivacy.html"> Cookie Policy &amp; Privacy Policy.</a></span>
+                            <span>{{translateText('By signing in  you agree to these')}} <a href="legalprivacy.html"> {{translateText('Terms &amp; Conditions</a> &amp; consent to')}}<a href="legalprivacy.html">{{ translateText('Cookie Policy &amp; Privacy Policy.')}}</a></span>
                         </div>
                         <div class="sl-loginfooterinfo">
-                            <a href="javascript:void(0);"><em>Not a member?</em> Signup Now</a>
-                            <a href="javascript:;" class="sl-forgot-password">Forgot password?</a>
+                            <a href="javascript:void(0);"><em>{{translateText('Not a member?')}}</em> {{translateText('Signup Now')}}</a>
+                            <a href="javascript:;" class="sl-forgot-password">{{translateText('Forgot password?')}}</a>
                         </div>
                     </div>
                 </div>

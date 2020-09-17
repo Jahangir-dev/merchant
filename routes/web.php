@@ -18,6 +18,8 @@ Auth::routes();
 Auth::routes(['verify' => true]);
 
 Route::get('/', 'HomeController@index')->name('home');
+Route::post('/setTarget', 'HomeController@setTarget');
+
 Route::get('/logout', 'HomeController@logout')->name('logout');
 Route::namespace('Auth')->group(function() {
 	Route::get('/login', 'LoginController@showLoginForm')->name('login');
