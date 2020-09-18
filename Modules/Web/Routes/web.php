@@ -12,5 +12,8 @@
 */
 
 Route::prefix('web')->group(function() {
+
     Route::get('/', 'WebController@index');
+    Route::get('/register', 'RegisterController@index');
+
 });

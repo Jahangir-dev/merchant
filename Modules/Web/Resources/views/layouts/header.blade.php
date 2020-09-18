@@ -4,7 +4,7 @@
         <strong class="sl-main-header__logo">
             <a href="index.html"><img src="{{asset('frontend/images/main-logo.png')}}" alt="Logo"></a>
         </strong>
-         Language: 
+         Language:
   <select name="target" class="target">
     <option>Select</option>
     <option value="en" @if(Session::get("target") == "en") selected="selected" @endif>English</option>
@@ -185,10 +185,13 @@
                         </a>
                     </div>
                  @else
+                     @php
+                     $user = \App\User::where('id', Auth::user()->id)->with('role')->first()
+                     @endphp
                 <div class="sl-user sl-userdropdown">
                     <a href="javascript:void(0);">
                         <img src="{{asset('frontend/images/insight/user-img.jpg')}}" alt="Image Description">
-                        <span class="sl-user__description"><em class="d-block">{{ Auth::user()->name }}</em>Stephnie</span>
+                        <span class="sl-user__description"><em class="d-block">{{ $user->first_name }}</em>{{ $user->last_name }}</span>
                         <i class="ti-angle-down"></i>
                     </a>
                     <ul class="sl-usermenu">
@@ -260,7 +263,7 @@
                             <a class="dropdown-item" href="{{ route('logout') }}"
                                        onclick="event.preventDefault();
                                                      document.getElementById('logout-form').submit();">
-                                        {{ __('Logout') }}
+                                        {{ translateText('Logout') }}
                             </a>
                             <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
                                         @csrf

@@ -47,4 +47,13 @@ class User extends Authenticatable implements MustVerifyEmail
     public function role() {
         return $this->hasOne('App\Role', 'id', 'role_id');
     }
+
+    public function profile() {
+        return $this->hasOne('App\Profile');
+    }
+
+    public function media() {
+        return $this->hasMany('App\Media', 'user_id', 'id');
+    }
+
 }
