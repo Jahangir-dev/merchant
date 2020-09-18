@@ -176,6 +176,7 @@ return [
         App\Providers\RouteServiceProvider::class,
         Mckenziearts\Notify\LaravelNotifyServiceProvider::class,
         Akib\Translate\GoogleTranslateServiceProvider::class,
+        Gabievi\Promocodes\PromocodesServiceProvider::class,
 
 
     ],
@@ -230,6 +231,8 @@ return [
         'Validator' => Illuminate\Support\Facades\Validator::class,
         'View' => Illuminate\Support\Facades\View::class,
         'TranslateText'=>Akib\Translate\Facades\GoogleTranslate::class,
+        'Promocodes' => Gabievi\Promocodes\Facades\Promocodes::class
+
 
 
     ],

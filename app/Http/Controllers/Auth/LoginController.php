@@ -59,5 +59,9 @@ class LoginController extends Controller
     public function showLoginForm() {
         return view('customer.auth.login');
     }
+    public function forgetPassword()
+    {
+        return view('admin.auth.email');
+    }
 
 }

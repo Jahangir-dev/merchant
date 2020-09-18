@@ -18,7 +18,8 @@
         "laravel/tinker": "^2.0",
         "laravel/ui": "^2.2",
         "mckenziearts/laravel-notify": "^2.0",
-        "nwidart/laravel-modules": "^7.2"
+        "nwidart/laravel-modules": "^7.2",
+        "zgabievi/promocodes": "^8.1"
     },
     "require-dev": {
         "facade/ignition": "^2.0",
