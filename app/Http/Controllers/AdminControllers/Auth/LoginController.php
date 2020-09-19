@@ -37,11 +37,12 @@ class LoginController extends Controller
      */
     public function __construct()
     {
+
         $this->middleware('guest:admin')->except('logout');
     }
 
     public function showLoginForm() {
-        
+
 //        dd(Auth::user()->role()->first()->type);
 
         return view('admin.auth.login');

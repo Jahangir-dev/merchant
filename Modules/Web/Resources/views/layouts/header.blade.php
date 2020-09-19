@@ -1070,16 +1070,28 @@
                         <a href="javascript:void(0);" class="sl-closebtn close"><i class="lnr lnr-cross" data-dismiss="modal"></i></a>
                     </div>
                     <div class="modal-body">
-                        <form class="sl-formtheme sl-formlogin">
+                        <form method="POST" action="{{ route('login') }}" class="sl-formtheme sl-formlogin">
+                            @csrf
                             <fieldset>
                                 <div class="form-group">
-                                    <input type="text" name="email" class="form-control sl-form-control" placeholder="Your Email*" value="user@domain.com">
+                                    <input type="text" name="email" value="{{ old('email') }}" required autocomplete="email" autofocus class="form-control sl-form-control" placeholder="Your Email*">
                                 </div>
+
+                                @error('email')
+                                <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                @enderror
                                 <div class="form-group">
-                                    <input type="password" class="form-control sl-form-control" placeholder="Password*" value="user@domain.com">
+                                    <input name="password" required autocomplete="current-password" type="password" class="form-control sl-form-control @error('password') is-invalid @enderror" placeholder="Password*">
                                 </div>
+                                @error('password')
+                                <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                @enderror
                                 <div class="form-group sl-btnarea">
-                                    <a href="dashboard-insight.html" class="btn sl-btn">{{translateText('login')}}</a>
+                                    <button type="submit" class="btn sl-btn">{{translateText('login')}}</button>
                                     <div class="sl-checkbox">
                                         <input id="remember" type="checkbox">
                                         <label for="remember">{{translateText('Remember me here') }}</label>
@@ -1100,8 +1112,8 @@
                             <span>{{translateText('By signing in  you agree to these')}} <a href="legalprivacy.html"> {{translateText('Terms &amp; Conditions</a> &amp; consent to')}}<a href="legalprivacy.html">{{ translateText('Cookie Policy &amp; Privacy Policy.')}}</a></span>
                         </div>
                         <div class="sl-loginfooterinfo">
-                            <a href="javascript:void(0);"><em>{{translateText('Not a member?')}}</em> {{translateText('Signup Now')}}</a>
-                            <a href="javascript:;" class="sl-forgot-password">{{translateText('Forgot password?')}}</a>
+                            <a href="{{route('web.register')}}"><em>{{translateText('Not a member?')}}</em> {{translateText('Signup Now')}}</a>
+                            <a href="{{route('web.forgot-password')}}" class="sl-forgot-password">{{translateText('Forgot password?')}}</a>
                         </div>
                     </div>
                 </div>

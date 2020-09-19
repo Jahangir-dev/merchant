@@ -5,7 +5,8 @@
         <div class="sl-main-section">
             <div class="container">
                 <div class="row">
-                    <div class="col-lg-4 col-xl-3">
+                    @include('merchant::layouts.asidebar')
+                    {{--<div class="col-lg-4 col-xl-3">
                         <aside id="sl-asidebar" class="sl-asidebar">
                             <div class="sl-asideholder sl-dashboardAsideholder">
                                 <a href="javascript:void(0);" id="sl-closeasidebar" class="sl-closeasidebar">
@@ -38,7 +39,21 @@
                                         </div>
                                         <nav id="sl-navdashboard" class="sl-navdashboard">
                                             <ul>
-                                                <li>
+                                                <li class="{{ (\Request::route()->getName() == 'merchant.profile') ? 'sl-active' : '' }}">
+                                                    <a href="dashboard-profile-settings.html">
+                                                        <i class="ti-user"></i><span>Profile Settings</span>
+                                                    </a>
+                                                </li>
+                                                <li class="{{ (\Request::route()->getName() == '') ? 'active' : '' }}">
+                                                    <a href="dashboard-profile-settings.html">
+                                                        <i class="ti-user"></i><span>{{translateText('Coupons')}}</span>
+                                                    </a>
+                                                </li>
+
+
+
+
+--}}{{--                                                <li>
                                                     <a href="dashboard-insight.html">
                                                         <i class="ti-dashboard"></i><span>Insights</span>
                                                     </a>
@@ -58,11 +73,6 @@
                                                         <li><a href="dashboard-manage-time-slots.html">Manage Time Slots</a></li>
                                                         <li><a href="dashboard-manage-services.html">Manage Services &amp; Prices</a></li>
                                                     </ul>
-                                                </li>
-                                                <li class="sl-active">
-                                                    <a href="dashboard-profile-settings.html">
-                                                        <i class="ti-user"></i><span>Profile Settings</span>
-                                                    </a>
                                                 </li>
                                                 <li class="menu-item-has-children page_item_has_children">
                                                     <a href="javascript:void(0);">
@@ -112,7 +122,7 @@
                                                         @csrf
                                                     </form>
 
-                                                </li>
+                                                </li>--}}{{--
                                             </ul>
                                         </nav>
                                     </div>
@@ -123,7 +133,7 @@
                                 </div>
                             </div>
                         </aside>
-                    </div>
+                    </div>--}}
                     <div class="col-lg-8 col-xl-9">
                         <div class="sl-tab sl-profileSetting">
                             <nav class="nav">

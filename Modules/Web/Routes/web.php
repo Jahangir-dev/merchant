@@ -13,7 +13,8 @@
 
 Route::prefix('web')->group(function() {
 
-    Route::get('/', 'WebController@index');
-    Route::get('/register', 'RegisterController@index');
+    Route::get('/', 'WebController@index')->name('web.index');
+    Route::get('/register', 'RegisterController@index')->name('web.register');
+    Route::get('/forgot-password', 'RegisterController@forgot')->name('web.forgot-password');
 
 });
