@@ -276,6 +276,12 @@
                     <a href="javascript:void(0);"><i class="ti-close"></i></a>
                 </div>
             </div>
+
+            @php
+                $categories = App\Models\Category::where('menu', true)->with('products')->get();
+            @endphp
+
+
             <div class="sl-main-header__lower">
                 <nav class="navbar-expand-lg">
                     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#slMainNavbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -289,10 +295,14 @@
                                     <ul class="mega-menu-row">
                                         <li class="mega-menu-col mega-menu-nav">
                                             <ul class="nav nav-tabs">
-                                                <li class="nav-item nav-link">
-                                                    <a data-toggle="tab" href="#smartphones" class="active">Smartphones &amp; Gadgets</a>
-                                                </li>
-                                                <li class="nav-item nav-link">
+                                                @foreach($categories as $index => $category)
+                                                    @if($index < 10)
+                                                        <li class="nav-item nav-link">
+                                                            <a data-toggle="tab" href="#{{$category->slug}}" class="@if($index == 0) active @endif">{{ translateText($category->name) }}</a>
+                                                        </li>
+                                                    @endif
+                                                @endforeach
+                                                {{--<li class="nav-item nav-link">
                                                     <a data-toggle="tab" href="#jewelry">Jewelry and Watches</a>
                                                 </li>
                                                 <li class="nav-item nav-link">
@@ -309,42 +319,46 @@
                                                 </li>
                                                 <li class="nav-item nav-link">
                                                     <a data-toggle="tab" href="#health">Health &amp; Beauty</a>
-                                                </li>
+                                                </li>--}}
                                             </ul>
                                         </li>
                                         <li class="mega-menu-col sl-viewproducts-holder tab-content">
-                                            <div id="smartphones" class="tab-pane fade active show" >
-                                                <div class="sl-productstab">
+                                            @foreach($categories as $index => $category)
+                                                @if($index < 10)
+                                                    <div id="{{$category->slug}}" class="tab-pane fade @if($index == 0) active show @endif" >
+                                                    <div class="sl-productstab">
                                                     <div class="sl-viewproducts">
                                                         <figure class="sl-viewproducts__img">
                                                             <img src="{{asset('frontend/images/img-02.jpg')}}" alt="img description">
                                                             <a href="javascript:void(0);" class="sl-sellertag"><em>Best Seller</em></a>
                                                         </figure>
                                                         <div class="sl-viewproducts__content">
-                                                            <h3>Office Mentor</h3>
+                                                            <h3>{{$category->name}}</h3>
                                                             <div class="sl-featureRating">
                                                                 <span class="sl-featureRating__stars"><span></span></span>
-                                                                <em>(1648 Feedback)</em>
+                                                                <em>({{translateText('1648 Feedback')}})</em>
                                                             </div>
-                                                            <a href="vendor-single.html" class="btn sl-btn">View Products</a>
+                                                            <a href="vendor-single.html" class="btn sl-btn">{{ translateText('View Product') }}</a>
                                                         </div>
                                                     </div>
                                                     <div class="sl-productsinfo">
                                                         <div class="sl-dropdown__cart">
                                                             <div class="sl-productsinfo__title">
                                                                 <h6>Audio and Television</h6>
-                                                                <a href="vendor-single.html">Show All</a>
+                                                                <a href="vendor-single.html">{{translateText('Show All')}}</a>
                                                             </div>
                                                             <ul>
+                                                                @foreach($category->products as $index => $product)
                                                                 <li>
                                                                     <img src="{{asset('frontend/images/index/cart/img-01.png')}}" alt="Image Description">
                                                                     <div class="sl-dropdown__cart__description">
-                                                                        <a class="sl-cart-title" href="javascript:void(0);">Earbuds Earphones Stereo</a>
-                                                                        <span class="sl-cart-price">$11.19</span>
-                                                                        <a class="sl-soldby" href="javascript:void(0);"><em>Sold by</em> Life Simplify</a>
+                                                                        <a class="sl-cart-title" href="javascript:void(0);">{{ translateText($product->name) }}</a>
+                                                                        <span class="sl-cart-price">{{translateText($product->price)}}</span>
+                                                                        <a class="sl-soldby" href="javascript:void(0);"><em>{{translateText('Sold by')}}</em> {{translateText('Life Simplify')}}</a>
                                                                     </div>
                                                                 </li>
-                                                                <li>
+                                                                @endforeach
+                                                                {{--<li>
                                                                     <img src="{{asset('frontend/images/index/cart/img-02.png')}}" alt="Image Description">
                                                                     <div class="sl-dropdown__cart__description">
                                                                         <a class="sl-cart-title" href="javascript:void(0);">Vintage Round Sunglasses</a>
@@ -383,13 +397,15 @@
                                                                         <span class="sl-cart-price">$8.30</span>
                                                                         <a class="sl-soldby" href="javascript:void(0);"><em>Sold by</em> Crown Lost Group</a>
                                                                     </div>
-                                                                </li>
+                                                                </li>--}}
                                                             </ul>
                                                         </div>
                                                     </div>
                                                 </div>
                                             </div>
-                                            <div id="jewelry" class="tab-pane fade">
+                                                @endif
+                                            @endforeach
+                                            {{--<div id="jewelry" class="tab-pane fade">
                                                 <div class="sl-productstab">
                                                     <div class="sl-viewproducts">
                                                         <figure class="sl-viewproducts__img">
@@ -844,7 +860,7 @@
                                                         </div>
                                                     </div>
                                                 </div>
-                                            </div>
+                                            </div>--}}
                                         </li>
                                     </ul>
                                 </div>

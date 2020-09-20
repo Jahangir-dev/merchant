@@ -2,15 +2,12 @@
 
 namespace Modules\Web\Http\Controllers;
 
-use App\Models\Brand;
-use App\Models\Category;
 use App\Models\Product;
-use App\User;
 use Illuminate\Contracts\Support\Renderable;
 use Illuminate\Http\Request;
 use Illuminate\Routing\Controller;
 
-class WebController extends Controller
+class ProductController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -18,11 +15,7 @@ class WebController extends Controller
      */
     public function index()
     {
-        $merchants = User::where('role_id', '2')->with('products')->get();
-        $categories = Category::where('menu', '1')->get();
-        $brands = Brand::all();
-        $products = Product::with('categories')->with('brand')->with('user')->get();
-        return view('web::index', compact('products', 'categories', 'brands', 'merchants'));
+        return view('web::index');
     }
 
     /**
@@ -51,7 +44,8 @@ class WebController extends Controller
      */
     public function show($id)
     {
-        return view('web::show');
+        $product = Product::where('slug', $id)->with('categories')->with('brand')->with('user')->with('images')->first();
+        return view('web::product.show', compact('product'));
     }
 
     /**
