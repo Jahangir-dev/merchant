@@ -9,10 +9,8 @@ Route::group(['prefix'  =>  'admin'], function () {
 
     Route::group(['middleware' => ['auth:admin']], function () {
 
-        Route::get('/', function () {
-            return view('admin.home');
-        })->name('admin.home');
-
+        Route::get('/','Admin\HomeController@index')->name('admin.home');
+        Route::post('/setTarget', 'Admin\HomeController@setTarget');
         Route::get('/settings', 'Admin\SettingController@index')->name('admin.settings');
         Route::post('/settings', 'Admin\SettingController@update')->name('admin.settings.update');
 

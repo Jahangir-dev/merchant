@@ -1,11 +1,11 @@
 @extends('admin.master')
-@section('title') {{ $pageTitle }} @endsection
+@section('title') {{translateText( $pageTitle )}} @endsection
 =@section('content')
 <div class="container-fluid">
   <div class="row user">
     <div class="app-title col-md-12">
         <div>
-            <h1><i class="fa fa-shopping-bag"></i> {{ $pageTitle }} - {{ $subTitle }}</h1>
+            <h1><i class="fa fa-shopping-bag"></i> {{translateText(  $pageTitle )}} - {{translateText(  $subTitle ) }}</h1>
         </div>
     </div>
     
@@ -16,11 +16,11 @@
                     <div class="tile">
                         <form action="{{ route('admin.products.store') }}" method="POST" role="form">
                             @csrf
-                            <h3 class="tile-title">Product Information</h3>
+                            <h3 class="tile-title">{{translateText( 'Product Information') }}</h3>
                             <hr>
                             <div class="tile-body">
                                 <div class="form-group">
-                                    <label class="control-label" for="name">Name</label>
+                                    <label class="control-label" for="name">{{translateText( 'Name')}}</label>
                                     <input
                                         class="form-control @error('name') is-invalid @enderror"
                                         type="text"
@@ -30,13 +30,13 @@
                                         value="{{ old('name') }}"
                                     />
                                     <div class="invalid-feedback active">
-                                        <i class="fa fa-exclamation-circle fa-fw"></i> @error('name') <span>{{ $message }}</span> @enderror
+                                        <i class="fa fa-exclamation-circle fa-fw"></i> @error('name') <span>{{translateText( $message )}}</span> @enderror
                                     </div>
                                 </div>
                                 <div class="row">
                                     <div class="col-md-6">
                                         <div class="form-group">
-                                            <label class="control-label" for="sku">SKU</label>
+                                            <label class="control-label" for="sku">{{translateText( 'SKU')}}</label>
                                             <input
                                                 class="form-control @error('sku') is-invalid @enderror"
                                                 type="text"
@@ -46,7 +46,7 @@
                                                 value="{{ old('sku') }}"
                                             />
                                             <div class="invalid-feedback active">
-                                                <i class="fa fa-exclamation-circle fa-fw"></i> @error('sku') <span>{{ $message }}</span> @enderror
+                                                <i class="fa fa-exclamation-circle fa-fw"></i> @error('sku') <span>{{translateText(  $message )}}</span> @enderror
                                             </div>
                                         </div>
                                     </div>
@@ -54,13 +54,13 @@
                                         <div class="form-group">
                                             <label class="control-label" for="brand_id">Brand</label>
                                             <select name="brand_id" id="brand_id" class="form-control @error('brand_id') is-invalid @enderror">
-                                                <option value="0">Select a brand</option>
+                                                <option value="0">{{translateText(' Select a brand')}}</option>
                                                 @foreach($brands as $brand)
-                                                    <option value="{{ $brand->id }}">{{ $brand->name }}</option>
+                                                    <option value="{{ $brand->id }}">{{translateText( $brand->name) }}</option>
                                                 @endforeach
                                             </select>
                                             <div class="invalid-feedback active">
-                                                <i class="fa fa-exclamation-circle fa-fw"></i> @error('brand_id') <span>{{ $message }}</span> @enderror
+                                                <i class="fa fa-exclamation-circle fa-fw"></i> @error('brand_id') <span>{{translateText(  $message) }}</span> @enderror
                                             </div>
                                         </div>
                                     </div>
@@ -68,10 +68,10 @@
                                 <div class="row">
                                     <div class="col-md-12">
                                         <div class="form-group">
-                                            <label class="control-label" for="categories">Categories</label>
+                                            <label class="control-label" for="categories">{{translateText( 'Categories')}}</label>
                                             <select name="categories[]" id="categories" class="form-control" multiple>
                                                 @foreach($categories as $category)
-                                                    <option value="{{ $category->id }}">{{ $category->name }}</option>
+                                                    <option value="{{ $category->id }}">{{translateText(  $category->name )}}</option>
                                                 @endforeach
                                             </select>
                                         </div>
@@ -96,7 +96,7 @@
                                     </div>
                                     <div class="col-md-6">
                                         <div class="form-group">
-                                            <label class="control-label" for="special_price">Special Price</label>
+                                            <label class="control-label" for="special_price">{{translateText( 'Special Price')}}</label>
                                             <input
                                                 class="form-control"
                                                 type="text"
@@ -111,7 +111,7 @@
                                 <div class="row">
                                     <div class="col-md-6">
                                         <div class="form-group">
-                                            <label class="control-label" for="quantity">Quantity</label>
+                                            <label class="control-label" for="quantity">{{translateText( 'Quantity')}}</label>
                                             <input
                                                 class="form-control @error('quantity') is-invalid @enderror"
                                                 type="number"
@@ -121,13 +121,13 @@
                                                 value="{{ old('quantity') }}"
                                             />
                                             <div class="invalid-feedback active">
-                                                <i class="fa fa-exclamation-circle fa-fw"></i> @error('quantity') <span>{{ $message }}</span> @enderror
+                                                <i class="fa fa-exclamation-circle fa-fw"></i> @error('quantity') <span>{{translateText(  $message )}}</span> @enderror
                                             </div>
                                         </div>
                                     </div>
                                     <div class="col-md-6">
                                         <div class="form-group">
-                                            <label class="control-label" for="weight">Weight</label>
+                                            <label class="control-label" for="weight">{{translateText( 'Weight')}}</label>
                                             <input
                                                 class="form-control"
                                                 type="text"
@@ -140,7 +140,7 @@
                                     </div>
                                 </div>
                                 <div class="form-group">
-                                    <label class="control-label" for="description">Description</label>
+                                    <label class="control-label" for="description">{{translateText( 'Description')}}</label>
                                     <textarea name="description" id="description" rows="8" class="form-control"></textarea>
                                 </div>
                                 <div class="form-group">
@@ -150,7 +150,7 @@
                                                    type="checkbox"
                                                    id="status"
                                                    name="status"
-                                                />Status
+                                                />{{translateText( 'Status')}}
                                         </label>
                                     </div>
                                 </div>
@@ -161,7 +161,7 @@
                                                    type="checkbox"
                                                    id="featured"
                                                    name="featured"
-                                                />Featured
+                                                />{{translateText( 'Featured')}}
                                         </label>
                                     </div>
                                 </div>
@@ -169,8 +169,8 @@
                             <div class="tile-footer">
                                 <div class="row d-print-none mt-2">
                                     <div class="col-12 text-right">
-                                        <button class="btn btn-success" type="submit"><i class="fa fa-fw fa-lg fa-check-circle"></i>Save Product</button>
-                                        <a class="btn btn-danger" href="{{ route('admin.products.index') }}"><i class="fa fa-fw fa-lg fa-arrow-left"></i>Go Back</a>
+                                        <button class="btn btn-success" type="submit"><i class="fa fa-fw fa-lg fa-check-circle"></i>{{translateText( 'Save Product')}}</button>
+                                        <a class="btn btn-danger" href="{{ route('admin.products.index') }}"><i class="fa fa-fw fa-lg fa-arrow-left"></i>{{translateText( 'Go Back')}}</a>
                                     </div>
                                 </div>
                             </div>

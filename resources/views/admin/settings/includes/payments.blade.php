@@ -1,18 +1,18 @@
 <div class="tile">
     <form action="{{ route('admin.settings.update') }}" method="POST" role="form">
         @csrf
-        <h3 class="tile-title">Payment Settings</h3>
+        <h3 class="tile-title">{{translateText('Payment Settings')}}</h3>
         <hr>
         <div class="tile-body">
             <div class="form-group">
-                <label class="control-label" for="stripe_payment_method">Stripe Payment Method</label>
+                <label class="control-label" for="stripe_payment_method">{{translateText('Stripe Payment Method')}}</label>
                 <select name="stripe_payment_method" id="stripe_payment_method" class="form-control">
                     <option value="1" {{ (config('settings.stripe_payment_method')) == 1 ? 'selected' : '' }}>Enabled</option>
                     <option value="0" {{ (config('settings.stripe_payment_method')) == 0 ? 'selected' : '' }}>Disabled</option>
                 </select>
             </div>
             <div class="form-group">
-                <label class="control-label" for="stripe_key">Key</label>
+                <label class="control-label" for="stripe_key">{{translateText('Key')}}</label>
                 <input
                     class="form-control"
                     type="text"
@@ -23,7 +23,7 @@
                 />
             </div>
             <div class="form-group pb-2">
-                <label class="control-label" for="stripe_secret_key">Secret Key</label>
+                <label class="control-label" for="stripe_secret_key">{{translateText('Secret Key')}}</label>
                 <input
                     class="form-control"
                     type="text"
@@ -35,14 +35,14 @@
             </div>
             <hr>
             <div class="form-group pt-2">
-                <label class="control-label" for="paypal_payment_method">PayPal Payment Method</label>
+                <label class="control-label" for="paypal_payment_method">{{translateText('PayPal Payment Method')}}</label>
                 <select name="paypal_payment_method" id="paypal_payment_method" class="form-control">
-                    <option value="1" {{ (config('settings.paypal_payment_method')) == 1 ? 'selected' : '' }}>Enabled</option>
-                    <option value="0" {{ (config('settings.paypal_payment_method')) == 0 ? 'selected' : '' }}>Disabled</option>
+                    <option value="1" {{ (config('settings.paypal_payment_method')) == 1 ? 'selected' : '' }}>{{translateText('Enabled')}}</option>
+                    <option value="0" {{ (config('settings.paypal_payment_method')) == 0 ? 'selected' : '' }}>{{translateText('Disabled')}}</option>
                 </select>
             </div>
             <div class="form-group">
-                <label class="control-label" for="paypal_client_id">Client ID</label>
+                <label class="control-label" for="paypal_client_id">{{translateText('Client ID')}}</label>
                 <input
                     class="form-control"
                     type="text"
@@ -53,7 +53,7 @@
                 />
             </div>
             <div class="form-group">
-                <label class="control-label" for="paypal_secret_id">Secret ID</label>
+                <label class="control-label" for="paypal_secret_id">{{translateText('Secret ID')}}</label>
                 <input
                     class="form-control"
                     type="text"
@@ -67,7 +67,7 @@
         <div class="tile-footer">
             <div class="row d-print-none mt-2">
                 <div class="col-12 text-right">
-                    <button class="btn btn-success" type="submit"><i class="fa fa-fw fa-lg fa-check-circle"></i>Update Settings</button>
+                    <button class="btn btn-success" type="submit"><i class="fa fa-fw fa-lg fa-check-circle"></i>{{translateText('Update Settings')}}</button>
                 </div>
             </div>
         </div>

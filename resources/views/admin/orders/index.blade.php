@@ -1,14 +1,15 @@
-@extends('admin.app')
+@extends('admin.master')
 @section('title') {{ $pageTitle }} @endsection
 @section('content')
-    <div class="app-title">
+<div class="row">
+    <div class="app-title col-md-12">
         <div>
             <h1><i class="fa fa-bar-chart"></i> {{ $pageTitle }}</h1>
             <p>{{ $subTitle }}</p>
         </div>
     </div>
-    <div class="row">
-        <div class="col-md-12">
+    
+        <div class="col-md-12 mt-3">
             <div class="tile">
                 <div class="tile-body">
                     <table class="table table-hover table-bordered" id="sampleTable">

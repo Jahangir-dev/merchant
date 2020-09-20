@@ -1,11 +1,11 @@
 <div class="tile">
     <form action="{{ route('admin.settings.update') }}" method="POST" role="form">
         @csrf
-        <h3 class="tile-title">General Settings</h3>
+        <h3 class="tile-title">{{translateText('General Settings')}}</h3>
         <hr>
         <div class="tile-body">
             <div class="form-group">
-                <label class="control-label" for="site_name">Site Name</label>
+                <label class="control-label" for="site_name">{{translateText('Site Name')}}</label>
                 <input
                     class="form-control"
                     type="text"
@@ -16,7 +16,7 @@
                 />
             </div>
             <div class="form-group">
-                <label class="control-label" for="site_title">Site Title</label>
+                <label class="control-label" for="site_title">{{translateText('Site Title')}}</label>
                 <input
                     class="form-control"
                     type="text"
@@ -27,7 +27,7 @@
                 />
             </div>
             <div class="form-group">
-                <label class="control-label" for="default_email_address">Default Email Address</label>
+                <label class="control-label" for="default_email_address">{{translateText('Default Email Address')}}</label>
                 <input
                     class="form-control"
                     type="email"
@@ -38,7 +38,7 @@
                 />
             </div>
             <div class="form-group">
-                <label class="control-label" for="currency_code">Currency Code</label>
+                <label class="control-label" for="currency_code">{{translateText('Currency Code')}}</label>
                 <input
                     class="form-control"
                     type="text"
@@ -49,7 +49,7 @@
                 />
             </div>
             <div class="form-group">
-                <label class="control-label" for="currency_symbol">Currency Symbol</label>
+                <label class="control-label" for="currency_symbol">{{translateText('Currency Symbol')}}</label>
                 <input
                     class="form-control"
                     type="text"
@@ -63,7 +63,7 @@
         <div class="tile-footer">
             <div class="row d-print-none mt-2">
                 <div class="col-12 text-right">
-                    <button class="btn btn-success" type="submit"><i class="fa fa-fw fa-lg fa-check-circle"></i>Update Settings</button>
+                    <button class="btn btn-success" type="submit"><i class="fa fa-fw fa-lg fa-check-circle"></i>{{translateText(' Settings')}}</button>
                 </div>
             </div>
         </div>
