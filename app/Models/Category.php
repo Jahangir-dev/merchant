@@ -64,4 +64,8 @@ class Category extends Model
     {
         return $this->belongsToMany(Product::class, 'product_categories', 'category_id', 'product_id')->with('brand');
     }
+
+    public function user() {
+        return $this->hasOne('App\User', 'id', 'user_id');
+    }
 }
