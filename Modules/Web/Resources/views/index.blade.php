@@ -181,7 +181,7 @@
                     <div class="sl-slider">
                         <figure>
                             <a href="javascript:void(0);"><img src="{{asset('/storage/'. count($product->images) > 0 ? $product->images[0]->full : 'null')}}" alt="Image Description"></a>
-                            <a href="javascript:void(0);"><img src="{{asset($product->user->profile->image)}}" alt="Image Description"></a>
+                            <a href="javascript:void(0);"><img src="{{asset(isset($product->user->profile->image))}}" alt="Image Description"></a>
                             <a href="javascript:void(0);" class="sl-like"><i class="far fa-heart"></i></a>
                         </figure>
                         <div class="sl-slider__content">
