@@ -4,12 +4,6 @@
         <strong class="sl-main-header__logo">
             <a href="index.html"><img src="{{asset('frontend/images/main-logo.png')}}" alt="Logo"></a>
         </strong>
-         Language:
-  <select name="target" class="target">
-    <option>Select</option>
-    <option value="en" @if(Session::get("target") == "en") selected="selected" @endif>English</option>
-    <option value="zh-CN" @if(Session::get("target") == "zh-CN") selected="selected" @endif>Chinese</option>
-  </select><br>
 
         <div class="sl-main-header__content">
             <div class="sl-main-header__upper">
@@ -1069,13 +1063,23 @@
                         </ul>
                     </div>
                 </div>
+               
                 <div class="sl-main-header__lower--btn">
                     <a href="javascript:void(0);" class="btn sl-btn sl-btn-active">More Info</a>
                 </div>
                 <div class="sl-main-lowerBackbtn">
                     <a href="javascript:void(0);"><i class="ti-close"></i></a>
                 </div>
+             <div class="sl-main-header">
+                           Language:
+                  <select name="target" class="target">
+                    <option>Select</option>
+                    <option value="en" @if(Session::get("target") == "en") selected="selected" @endif>English</option>
+                    <option value="zh-CN" @if(Session::get("target") == "zh-CN") selected="selected" @endif>Chinese</option>
+                  </select>
+                </div>
             </div>
+
         </div>
         <!-- Login Popup Start-->
         <div class="modal fade sl-loginpopup" tabindex="-1" role="dialog" id="loginpopup" data-backdrop="static">
