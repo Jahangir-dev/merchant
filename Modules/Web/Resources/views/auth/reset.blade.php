@@ -1,4 +1,5 @@
 
+
 <!doctype html>
 <!--[if lt IE 7]>		<html class="no-js lt-ie9 lt-ie8 lt-ie7" lang=""> <![endif]-->
 <!--[if IE 7]>			<html class="no-js lt-ie9 lt-ie8" lang=""> <![endif]-->
@@ -46,25 +47,17 @@
                         <div class="sl-registerarea">
                             <div class="sl-registersignarea">
                                 <div class="sl-registersignarea__title">
-                                    <h3>{{translateText('Reset Password')}}</h3>
+                                    <h3>{{translateText('Reset Your Password')}}</h3>
                                 </div>
                                 <div class="tab-content sl-signup" id="pills-tabContent">
                                     <div class="tab-pane fade show active" id="signupcustomer" role="tabpanel" aria-labelledby="sl-signupcustomer">
-                                        <form method="POST" action="{{ route('password.update') }}" class="sl-formtheme sl-signupform">
+                                        <form method="POST" action="{{ route('password.email') }}" class="sl-formtheme sl-signupform">
                                             @csrf
-                                            <input type="hidden" name="token" value="{{ $token }}">
-
                                             <fieldset>
                                                 <div class="sl-signupform-wrap">
 
                                                     <div class="form-group">
                                                         <input id="email" type="email" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ $email ?? old('email') }}" required autocomplete="email" autofocus>
-                                                    </div>
-                                                    <div class="form-group">
-                                                        <input id="password" type="password" class="form-control @error('password') is-invalid @enderror" name="password" placeholder="New Password" required autocomplete="new-password">
-                                                    </div>
-                                                    <div class="form-group">
-                                                        <input id="password-confirm" type="password" class="form-control" name="password_confirmation" placeholder="New Confirm Password" required autocomplete="new-password">
                                                     </div>
 
                                                     <div class="form-group sl-btnarea">
@@ -129,5 +122,4 @@
 
 <!-- Mirrored from amentotech.com/htmls/servosell/register.html by HTTrack Website Copier/3.x [XR&CO'2014], Fri, 04 Sep 2020 07:57:58 GMT -->
 </html>
-
 

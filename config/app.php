@@ -182,6 +182,7 @@ return [
         App\Providers\ViewComposerServiceProvider::class,
 
 
+
     ],
 
     /*
@@ -235,6 +236,8 @@ return [
         'View' => Illuminate\Support\Facades\View::class,
         'TranslateText'=>Akib\Translate\Facades\GoogleTranslate::class,
         'Promocodes' => Gabievi\Promocodes\Facades\Promocodes::class
+
+
 
 
 

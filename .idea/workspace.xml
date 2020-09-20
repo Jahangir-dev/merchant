@@ -5,30 +5,51 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="1898c8e0-c9ed-476e-b9b4-11a187216257" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/Modules/Customer/Resources/views/auth/register.blade.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Modules/Customer/Resources/views/profile/index.blade.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Modules/Merchant/Resources/views/auth/register.blade.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Modules/Merchant/Resources/views/profile/index.blade.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Modules/Web/Http/Controllers/RegisterController.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Modules/Web/Resources/views/auth/register.blade.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Modules/Merchant/Resources/views/layouts/asidebar.blade.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Modules/Web/Resources/views/auth/reset.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/jsLibraryMappings.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/jsLibraryMappings.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/merchant.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/merchant.iml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/php.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/php.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Modules/Customer/Resources/views/layouts/header.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/Modules/Customer/Resources/views/layouts/header.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Modules/Customer/Resources/views/layouts/master.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/Modules/Customer/Resources/views/layouts/master.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Modules/Customer/Routes/web.php" beforeDir="false" afterPath="$PROJECT_DIR$/Modules/Customer/Routes/web.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Modules/Merchant/Resources/views/layouts/header.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/Modules/Merchant/Resources/views/layouts/header.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Modules/Customer/Resources/views/auth/register.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/Modules/Customer/Resources/views/auth/register.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Modules/Merchant/Resources/views/layouts/master.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/Modules/Merchant/Resources/views/layouts/master.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Modules/Merchant/Resources/views/profile/index.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/Modules/Merchant/Resources/views/profile/index.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Modules/Merchant/Routes/web.php" beforeDir="false" afterPath="$PROJECT_DIR$/Modules/Merchant/Routes/web.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Modules/Web/Http/Controllers/RegisterController.php" beforeDir="false" afterPath="$PROJECT_DIR$/Modules/Web/Http/Controllers/RegisterController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Modules/Web/Resources/views/auth/register.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/Modules/Web/Resources/views/auth/register.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Modules/Web/Resources/views/index.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/Modules/Web/Resources/views/index.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Modules/Web/Resources/views/layouts/header.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/Modules/Web/Resources/views/layouts/header.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Modules/Web/Resources/views/layouts/master.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/Modules/Web/Resources/views/layouts/master.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Modules/Web/Routes/web.php" beforeDir="false" afterPath="$PROJECT_DIR$/Modules/Web/Routes/web.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Auth/RegisterController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Auth/RegisterController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Deal.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Deal.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/AdminControllers/Auth/LoginController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/AdminControllers/Auth/LoginController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Auth/LoginController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Auth/LoginController.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/User.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/User.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/composer.json" beforeDir="false" afterPath="$PROJECT_DIR$/composer.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/composer.lock" beforeDir="false" afterPath="$PROJECT_DIR$/composer.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/config/notify.php" beforeDir="false" afterPath="$PROJECT_DIR$/config/notify.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/frontend/css/main.css" beforeDir="false" afterPath="$PROJECT_DIR$/public/frontend/css/main.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/routes/web.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/web.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/config/app.php" beforeDir="false" afterPath="$PROJECT_DIR$/config/app.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/migrations/2020_09_17_174941_create_promocodes_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/2020_09_17_174941_create_promocodes_table.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/js/bootstrap.js" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/bootstrap.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/auth/passwords/reset.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/auth/passwords/reset.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/modules/customer/.gitkeep" beforeDir="false" afterPath="$PROJECT_DIR$/Modules/Merchant/Resources/views/deals/create.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/modules/customer/index.blade.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/modules/customer/layouts/banner.blade.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/modules/customer/layouts/footer.blade.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/modules/customer/layouts/header.blade.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/modules/customer/layouts/master.blade.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/modules/merchant/.gitkeep" beforeDir="false" afterPath="$PROJECT_DIR$/Modules/Merchant/Resources/views/deals/edit.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/modules/merchant/index.blade.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/modules/merchant/layouts/banner.blade.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/modules/merchant/layouts/footer.blade.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/modules/merchant/layouts/header.blade.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/modules/merchant/layouts/master.blade.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/modules/merchant/master.blade.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/modules/web/.gitkeep" beforeDir="false" afterPath="$PROJECT_DIR$/Modules/Merchant/Resources/views/deals/index.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/modules/web/index.blade.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/modules/web/layouts/banner.blade.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/modules/web/layouts/footer.blade.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/modules/web/layouts/header.blade.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/modules/web/layouts/master.blade.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/modules/web/master.blade.php" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -158,6 +179,26 @@
       <path value="$PROJECT_DIR$/vendor/nwidart/laravel-modules" />
       <path value="$PROJECT_DIR$/vendor/mckenziearts/laravel-notify" />
       <path value="$PROJECT_DIR$/vendor/akibtanjim/google-translate" />
+      <path value="$PROJECT_DIR$/vendor/doctrine/dbal" />
+      <path value="$PROJECT_DIR$/vendor/doctrine/event-manager" />
+      <path value="$PROJECT_DIR$/vendor/zgabievi/promocodes" />
+      <path value="$PROJECT_DIR$/vendor/doctrine/cache" />
+      <path value="$PROJECT_DIR$/vendor/yajra/laravel-datatables-oracle" />
+      <path value="$PROJECT_DIR$/vendor/maennchen/zipstream-php" />
+      <path value="$PROJECT_DIR$/vendor/psr/http-factory" />
+      <path value="$PROJECT_DIR$/vendor/psr/http-client" />
+      <path value="$PROJECT_DIR$/vendor/phpoffice/phpspreadsheet" />
+      <path value="$PROJECT_DIR$/vendor/markbaker/matrix" />
+      <path value="$PROJECT_DIR$/vendor/markbaker/complex" />
+      <path value="$PROJECT_DIR$/vendor/laravelcollective/html" />
+      <path value="$PROJECT_DIR$/vendor/myclabs/php-enum" />
+      <path value="$PROJECT_DIR$/vendor/league/fractal" />
+      <path value="$PROJECT_DIR$/vendor/yajra/laravel-datatables-buttons" />
+      <path value="$PROJECT_DIR$/vendor/yajra/laravel-datatables-editor" />
+      <path value="$PROJECT_DIR$/vendor/yajra/laravel-datatables-html" />
+      <path value="$PROJECT_DIR$/vendor/yajra/laravel-datatables" />
+      <path value="$PROJECT_DIR$/vendor/yajra/laravel-datatables-fractal" />
+      <path value="$PROJECT_DIR$/vendor/maatwebsite/excel" />
     </include_path>
   </component>
   <component name="ProjectId" id="1gmCEUpGhH8KWVilvfZE3fbYaj0" />
@@ -168,23 +209,23 @@
   <component name="PropertiesComponent">
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/../knockdoc" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../testing" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
     <property name="nodejs_package_manager_path" value="npm" />
     <property name="vue.rearranger.settings.migration" value="true" />
   </component>
   <component name="RecentsManager">
-    <key name="MoveFile.RECENT_KEYS">
-      <recent name="D:\laragon\www\merchant\app\Http\Controllers\AdminControllers" />
-      <recent name="D:\laragon\www\merchant\app\Http\Controllers\MerchantControllers\Auth" />
-    </key>
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="D:\laragon\www\merchant" />
       <recent name="D:\laragon\www\merchant\Modules\Merchant\Resources\views" />
       <recent name="D:\laragon\www\merchant\Modules\Customer\Resources\views" />
       <recent name="D:\laragon\www\merchant\Modules\Web\Resources\views" />
       <recent name="D:\laragon\www\merchant\Modules\Customer\Http" />
-      <recent name="D:\laragon\www\merchant\Modules\Customer\Routes" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="D:\laragon\www\merchant\app\Http\Controllers\AdminControllers" />
+      <recent name="D:\laragon\www\merchant\app\Http\Controllers\MerchantControllers\Auth" />
     </key>
   </component>
   <component name="RunManager">
@@ -208,6 +249,7 @@
       <workItem from="1599022308060" duration="51000" />
       <workItem from="1599063781286" duration="11903000" />
       <workItem from="1599293234124" duration="10377000" />
+      <workItem from="1600496659890" duration="35051000" />
     </task>
     <servers />
   </component>
@@ -219,21 +261,21 @@
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state x="499" y="167" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog/0.0.1536.824@0.0.1536.824" timestamp="1600374741602" />
-    <state x="549" y="167" key="FileChooserDialogImpl" timestamp="1600367729679">
+    <state x="549" y="167" key="FileChooserDialogImpl" timestamp="1600538485952">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state x="549" y="167" key="FileChooserDialogImpl/0.0.1536.824@0.0.1536.824" timestamp="1600367729679" />
-    <state x="478" y="145" width="579" height="534" key="find.popup" timestamp="1600364878681">
+    <state x="549" y="167" key="FileChooserDialogImpl/0.0.1536.824@0.0.1536.824" timestamp="1600538485952" />
+    <state x="478" y="145" width="579" height="534" key="find.popup" timestamp="1600498749608">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state x="478" y="145" width="579" height="534" key="find.popup/0.0.1536.824@0.0.1536.824" timestamp="1600364878681" />
+    <state x="478" y="145" width="579" height="534" key="find.popup/0.0.1536.824@0.0.1536.824" timestamp="1600498749608" />
     <state x="425" y="187" key="run.anything.popup" timestamp="1600370364181">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state x="425" y="187" key="run.anything.popup/0.0.1536.824@0.0.1536.824" timestamp="1600370364181" />
-    <state x="425" y="66" width="672" height="678" key="search.everywhere.popup" timestamp="1600375139811">
+    <state x="425" y="66" width="672" height="678" key="search.everywhere.popup" timestamp="1600540257992">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state x="425" y="66" width="672" height="678" key="search.everywhere.popup/0.0.1536.824@0.0.1536.824" timestamp="1600375139811" />
+    <state x="425" y="66" width="672" height="678" key="search.everywhere.popup/0.0.1536.824@0.0.1536.824" timestamp="1600540257992" />
   </component>
 </project>

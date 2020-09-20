@@ -42,15 +42,6 @@
         <div class="container">
             <div class="row">
                 <!--  Error handle -->
-                @if($errors->any())
-                    <div class="row collapse">
-                        <ul class="alert-box warning radius">
-                            @foreach($errors->all() as $error)
-                                <li> {{ $error }} </li>
-                            @endforeach
-                        </ul>
-                    </div>
-                @endif
                 <div class="col-12">
                     <div class="sl-register-holder">
                         <div class="sl-registerarea">
@@ -195,7 +186,7 @@
                                 </p>
                             </div>
                             <div class="sl-registerarea__footer">
-                                <p> Already a member? <a href="index.html"> {{translateText('Sigin Now')}}</a></p>
+                                <p> Already a member? <a href="{{ route('web.index') }}"> {{translateText('Sigin Now')}}</a></p>
                             </div>
                         </div>
                         <div class="sl-registercontent">

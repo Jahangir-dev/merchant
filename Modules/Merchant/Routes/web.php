@@ -14,12 +14,22 @@
 Route::prefix('merchant')->group(function() {
     Route::get('/', 'MerchantController@index')->name('merchant');
     Route::get('/register', 'RegisterController@index')->name('merchant.register');
+
+//    Profile
     Route::get('/profile', 'UserController@index')->name('merchant.profile');
-//    Profile Update
     Route::post('/profile/basic/update', 'UserController@update')->name('merchant.profile.basic.update');
     Route::post('/profile/about/update', 'UserController@updateAbout')->name('merchant.profile.about.update');
+
+//    Deals
+    Route::get('/deals', 'DealsController@index')->name('merchant.deals');
+    Route::get('/deals/create', 'DealsController@create')->name('merchant.deals.create');
+    Route::post('/deals/store', 'DealsController@store')->name('merchant.deals.store');
+    Route::get('/deals/edit/{id}', 'DealsController@edit')->name('merchant.deals.edit');
+    Route::post('/deals/update/{id}', 'DealsController@update')->name('merchant.deals.update');
+
 //    Route::post('/profile/experience/update', 'UserController@updateAbout')->name('merchant.profile.experience.update');
     Route::post('/profile/media/update', 'UserController@updateMedia')->name('merchant.profile.media.update');
+
 });
 
 

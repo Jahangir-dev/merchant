@@ -35,10 +35,10 @@ class LoginController extends Controller
             return '/admin';
         }
         else if ($user == '2') {
-            return '/merchant';
+            return '/merchant/profile';
         }
         else {
-            return '/customer';
+            return '/customer/profile';
 
         }
     }
@@ -50,7 +50,7 @@ class LoginController extends Controller
      */
     public function __construct()
     {
-        $this->middleware('guest')->except('logout');
+//        $this->middleware('guest')->except('logout');
     }
 
     public function showMerchantLoginForm() {

@@ -7,4 +7,10 @@ use Illuminate\Database\Eloquent\Model;
 class Deal extends Model
 {
     //
+    protected $guarded = [];
+
+    public function user() {
+        $this->hasOne('App\User');
+    }
+
 }
