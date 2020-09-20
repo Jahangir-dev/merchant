@@ -6,9 +6,13 @@
   <component name="ChangeListManager">
     <list default="true" id="1898c8e0-c9ed-476e-b9b4-11a187216257" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Models/Brand.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/Brand.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Models/Category.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/Category.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/User.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/User.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Modules/Customer/Resources/views/layouts/header.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/Modules/Customer/Resources/views/layouts/header.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Modules/Merchant/Resources/views/deals/index.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/Modules/Merchant/Resources/views/deals/index.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Modules/Merchant/Resources/views/layouts/asidebar.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/Modules/Merchant/Resources/views/layouts/asidebar.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Modules/Merchant/Resources/views/layouts/header.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/Modules/Merchant/Resources/views/layouts/header.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Modules/Web/Resources/views/index.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/Modules/Web/Resources/views/index.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Modules/Web/Resources/views/layouts/header.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/Modules/Web/Resources/views/layouts/header.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Models/Product.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/Product.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -214,7 +218,7 @@
       <workItem from="1599293234124" duration="10377000" />
       <workItem from="1600496659890" duration="35051000" />
       <workItem from="1600627014252" duration="519000" />
-      <workItem from="1600627741324" duration="3643000" />
+      <workItem from="1600627741324" duration="7238000" />
     </task>
     <servers />
   </component>

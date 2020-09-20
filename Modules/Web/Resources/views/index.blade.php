@@ -26,14 +26,14 @@
                         @if($index < 10)
                     <div class="sl-col sl-col-sm-1-of-2 sl-col-md-1-of-3 sl-col-lg-1-of-4 sl-col-xl-1-of-5">
                         <div class="sl-category__service">
-                            <img src="{{asset('frontend/images/index/category/img-0'.$index.'.jpg')}}" alt="image Description">
+                            <img src="{{asset('/storage/'.$category->image)}}" alt="image Description">
                             <div class="sl-category__description">
                                 <a href="{{route('web.category.show', ['slug' => $category->slug])}}">
                                     <h5>{{ translateText($category->name) }}</h5>
                                 </a>
                                 <span>{{translateText('12,568 Providers')}}</span>
                             </div>
-                            <a href="javascript:void(0);" class="sl-category__icon"><i class="ti-arrow-right"></i></a>
+                            <a href="{{route('web.category.show', ['slug' => $category->slug])}}" class="sl-category__icon"><i class="ti-arrow-right"></i></a>
                         </div>
                     </div>
                         @endif
@@ -180,8 +180,8 @@
                 <div class="item">
                     <div class="sl-slider">
                         <figure>
-                            <a href="javascript:void(0);"><img src="{{asset('frontend/images/index/service-provider/img-0'.$index.'.jpg')}}" alt="Image Description"></a>
-                            <a href="javascript:void(0);"><img src="{{asset('frontend/images/index/service-provider/user-icon/img-0'.$index.'.jpg')}}" alt="Image Description"></a>
+                            <a href="javascript:void(0);"><img src="{{asset('/storage/'. count($product->images) > 0 ? $product->images[0]->full : 'null')}}" alt="Image Description"></a>
+                            <a href="javascript:void(0);"><img src="{{asset($product->user->profile->image)}}" alt="Image Description"></a>
                             <a href="javascript:void(0);" class="sl-like"><i class="far fa-heart"></i></a>
                         </figure>
                         <div class="sl-slider__content">
@@ -729,7 +729,7 @@
                             <div class="col-sm-6 col-lg-4 col-xl-3">
                                 <div class="sl-featuredProducts--post">
                                     <figure>
-                                        <img src="{{asset('frontend/images/index/featured-products/img-02.jpg')}}" alt="Image Description">
+                                        <img src="{{asset('/storage/'. count($product->images) > 0 ? $product->images[0]->full : 'null')}}" alt="Image Description">
                                         <figcaption>
                                             <div class="sl-slider__tags">
 {{--                                                <span class="sl-bg-red-orange">10% OFF</span>--}}

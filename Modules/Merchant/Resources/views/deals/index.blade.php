@@ -16,6 +16,7 @@
                                     <thead>
                                     <tr>
                                         <th>{{translateText('Data')}}</th>
+                                        <th>{{translateText('Code')}}</th>
                                         <th>{{translateText('Details')}}</th>
                                         <th>{{translateText('Action')}}</th>
                                     </tr>
@@ -39,12 +40,16 @@
                                                 </div>
                                             </div>
                                         </td>
-                                        <td>{!! $deal->title !!}</td>
+                                        <td>
+                                            {{$deal->promo}}
+                                        </td>
+                                        @php         $promocodes = DB::table('promocodes')->where('code', $deal->promo)->first(); @endphp
+                                        <td>{!! $promocodes->data !!}</td>
                                         <td>
                                             <div class="sl-newAppointments__services">
-                                                <div class="sl-newAppointments__services--description">
+                                                {{--<div class="sl-newAppointments__services--description">
                                                     <h6> {{translateText('Services:')}}</h6>
-                                                </div>
+                                                </div>--}}
                                                 <a href="{{route('merchant.deals.edit', ['id' => $deal->id])}}" class="btn sl-btn sl-btn-md">{{translateText('edit')}}</a>
                                             </div>
                                         </td>

@@ -15,7 +15,7 @@
                             </svg>
                             <span class="sl-percentage">80% Profile Completed</span>
                             <figure class="sl-userprofileimg">
-                                <img src="{{asset($user->profile->image)}}" alt="img description">
+                                <img src="{{asset($user->profile->image ? $user->profile->image : 'null')}}" alt="img description">
                             </figure>
                         </div>
                         <div class="sl-title">

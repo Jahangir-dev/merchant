@@ -2,7 +2,7 @@
 <header>
     <div class="sl-main-header">
         <strong class="sl-main-header__logo">
-            <a href="index.html"><img src="{{asset('frontend/images/main-logo.png')}}" alt="Logo"></a>
+            <a href="{{route('web.index')}}"><img src="{{asset('frontend/images/main-logo.png')}}" alt="Logo"></a>
         </strong>
         Language:
         <select name="target" class="target">
@@ -195,7 +195,7 @@
                             <i class="ti-angle-down"></i>
                         </a>
                         <ul class="sl-usermenu">
-                            <li>
+                            {{--<li>
                                 <a href="dashboard-insight.html">
                                     <i class="ti-dashboard"></i><span>Insights</span>
                                 </a>
@@ -215,13 +215,31 @@
                                     <li><a href="dashboard-manage-time-slots.html">Manage Time Slots</a></li>
                                     <li><a href="dashboard-manage-services.html">Manage Services &amp; Prices</a></li>
                                 </ul>
-                            </li>
-                            <li>
-                                <a href="dashboard-profile-settings.html">
-                                    <i class="ti-user"></i><span>Profile Settings</span>
-                                </a>
-                            </li>
-                            <li class="menu-item-has-children page_item_has_children">
+                            </li>--}}
+
+                            @if($user->role->name == 'Merchant')
+                                <li>
+                                    <a href="{{route('merchant.profile')}}">
+                                        <i class="ti-user"></i><span>Profile Settings</span>
+                                    </a>
+                                </li>
+                            @endif
+                            @if($user->role->name == 'Customer')
+                                <li>
+                                    <a href="{{route('customer.profile')}}">
+                                        <i class="ti-user"></i><span>Profile Settings</span>
+                                    </a>
+                                </li>
+                            @endif
+                            @if($user->role->name == 'Merchant')
+                                <li>
+                                    <a href="{{route('merchant.deals')}}">
+                                        <i class="ti-user"></i><span>Deals</span>
+                                    </a>
+                                </li>
+                            @endif
+
+                            {{--<li class="menu-item-has-children page_item_has_children">
                                 <a href="javascript:void(0);">
                                     <i class="ti-bookmark-alt"></i><span>Manage Articles</span>
                                 </a>
@@ -258,7 +276,7 @@
                                 <a href="dashboard-accountprivacy.html">
                                     <i class="ti-lock"></i><span>Account &amp; Privacy</span>
                                 </a>
-                            </li>
+                            </li>--}}
                             <li>
                                 <a class="dropdown-item" href="{{ route('logout') }}"
                                    onclick="event.preventDefault();
@@ -276,6 +294,12 @@
                     <a href="javascript:void(0);"><i class="ti-close"></i></a>
                 </div>
             </div>
+
+            @php
+                $categories = App\Models\Category::where('menu', true)->with('products')->get();
+            @endphp
+
+
             <div class="sl-main-header__lower">
                 <nav class="navbar-expand-lg">
                     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#slMainNavbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -289,10 +313,14 @@
                                     <ul class="mega-menu-row">
                                         <li class="mega-menu-col mega-menu-nav">
                                             <ul class="nav nav-tabs">
-                                                <li class="nav-item nav-link">
-                                                    <a data-toggle="tab" href="#smartphones" class="active">Smartphones &amp; Gadgets</a>
-                                                </li>
-                                                <li class="nav-item nav-link">
+                                                @foreach($categories as $index => $category)
+                                                    @if($index < 10)
+                                                        <li class="nav-item nav-link">
+                                                            <a data-toggle="tab" href="#{{$category->slug}}" class="@if($index == 0) active @endif">{{ translateText($category->name) }}</a>
+                                                        </li>
+                                                    @endif
+                                                @endforeach
+                                                {{--<li class="nav-item nav-link">
                                                     <a data-toggle="tab" href="#jewelry">Jewelry and Watches</a>
                                                 </li>
                                                 <li class="nav-item nav-link">
@@ -309,87 +337,93 @@
                                                 </li>
                                                 <li class="nav-item nav-link">
                                                     <a data-toggle="tab" href="#health">Health &amp; Beauty</a>
-                                                </li>
+                                                </li>--}}
                                             </ul>
                                         </li>
                                         <li class="mega-menu-col sl-viewproducts-holder tab-content">
-                                            <div id="smartphones" class="tab-pane fade active show" >
-                                                <div class="sl-productstab">
-                                                    <div class="sl-viewproducts">
-                                                        <figure class="sl-viewproducts__img">
-                                                            <img src="{{asset('frontend/images/img-02.jpg')}}" alt="img description">
-                                                            <a href="javascript:void(0);" class="sl-sellertag"><em>Best Seller</em></a>
-                                                        </figure>
-                                                        <div class="sl-viewproducts__content">
-                                                            <h3>Office Mentor</h3>
-                                                            <div class="sl-featureRating">
-                                                                <span class="sl-featureRating__stars"><span></span></span>
-                                                                <em>(1648 Feedback)</em>
+                                            @foreach($categories as $index => $category)
+                                                @if($index < 10)
+                                                    <div id="{{$category->slug}}" class="tab-pane fade @if($index == 0) active show @endif" >
+                                                        <div class="sl-productstab">
+                                                            <div class="sl-viewproducts">
+                                                                <figure class="sl-viewproducts__img">
+                                                                    <img src="{{asset('frontend/images/img-02.jpg')}}" alt="img description">
+                                                                    <a href="javascript:void(0);" class="sl-sellertag"><em>Best Seller</em></a>
+                                                                </figure>
+                                                                <div class="sl-viewproducts__content">
+                                                                    <h3>{{$category->name}}</h3>
+                                                                    <div class="sl-featureRating">
+                                                                        <span class="sl-featureRating__stars"><span></span></span>
+                                                                        <em>({{translateText('1648 Feedback')}})</em>
+                                                                    </div>
+                                                                    <a href="vendor-single.html" class="btn sl-btn">{{ translateText('View Product') }}</a>
+                                                                </div>
                                                             </div>
-                                                            <a href="vendor-single.html" class="btn sl-btn">View Products</a>
+                                                            <div class="sl-productsinfo">
+                                                                <div class="sl-dropdown__cart">
+                                                                    <div class="sl-productsinfo__title">
+                                                                        <h6>Audio and Television</h6>
+                                                                        <a href="vendor-single.html">{{translateText('Show All')}}</a>
+                                                                    </div>
+                                                                    <ul>
+                                                                        @foreach($category->products as $index => $product)
+                                                                            <li>
+                                                                                <img src="{{asset('frontend/images/index/cart/img-01.png')}}" alt="Image Description">
+                                                                                <div class="sl-dropdown__cart__description">
+                                                                                    <a class="sl-cart-title" href="javascript:void(0);">{{ translateText($product->name) }}</a>
+                                                                                    <span class="sl-cart-price">{{translateText($product->price)}}</span>
+                                                                                    <a class="sl-soldby" href="javascript:void(0);"><em>{{translateText('Sold by')}}</em> {{translateText('Life Simplify')}}</a>
+                                                                                </div>
+                                                                            </li>
+                                                                        @endforeach
+                                                                        {{--<li>
+                                                                            <img src="{{asset('frontend/images/index/cart/img-02.png')}}" alt="Image Description">
+                                                                            <div class="sl-dropdown__cart__description">
+                                                                                <a class="sl-cart-title" href="javascript:void(0);">Vintage Round Sunglasses</a>
+                                                                                <span class="sl-cart-price">$13.50</span>
+                                                                                <a class="sl-soldby" href="javascript:void(0);"><em>Sold by</em> Life Simplify</a>
+                                                                            </div>
+                                                                        </li>
+                                                                        <li>
+                                                                            <img src="{{asset('frontend/images/index/cart/img-03.png')}}" alt="Image Description">
+                                                                            <div class="sl-dropdown__cart__description">
+                                                                                <a class="sl-cart-title" href="javascript:void(0);">Phone Holder for Car</a>
+                                                                                <span class="sl-cart-price">$8.30</span>
+                                                                                <a class="sl-soldby" href="javascript:void(0);"><em>Sold by</em> Ryan &amp; John</a>
+                                                                            </div>
+                                                                        </li>
+                                                                        <li>
+                                                                            <img src="{{asset('frontend/images/index/cart/img-04.png')}}" alt="Image Description">
+                                                                            <div class="sl-dropdown__cart__description">
+                                                                                <a class="sl-cart-title" href="javascript:void(0);">Earbuds Earphones Stereo</a>
+                                                                                <span class="sl-cart-price">$11.19</span>
+                                                                                <a class="sl-soldby" href="javascript:void(0);"><em>Sold by</em> Ryan &amp; John</a>
+                                                                            </div>
+                                                                        </li>
+                                                                        <li>
+                                                                            <img src="{{asset('frontend/images/index/cart/img-05.png')}}" alt="Image Description">
+                                                                            <div class="sl-dropdown__cart__description">
+                                                                                <a class="sl-cart-title" href="javascript:void(0);">Vintage Round Sunglasses</a>
+                                                                                <span class="sl-cart-price">$13.50</span>
+                                                                                <a class="sl-soldby" href="javascript:void(0);"><em>Sold by</em> Crown Lost Group</a>
+                                                                            </div>
+                                                                        </li>
+                                                                        <li>
+                                                                            <img src="{{asset('frontend/images/index/cart/img-06.png')}}" alt="Image Description">
+                                                                            <div class="sl-dropdown__cart__description">
+                                                                                <a class="sl-cart-title" href="javascript:void(0);">Phone Holder for Car</a>
+                                                                                <span class="sl-cart-price">$8.30</span>
+                                                                                <a class="sl-soldby" href="javascript:void(0);"><em>Sold by</em> Crown Lost Group</a>
+                                                                            </div>
+                                                                        </li>--}}
+                                                                    </ul>
+                                                                </div>
+                                                            </div>
                                                         </div>
                                                     </div>
-                                                    <div class="sl-productsinfo">
-                                                        <div class="sl-dropdown__cart">
-                                                            <div class="sl-productsinfo__title">
-                                                                <h6>Audio and Television</h6>
-                                                                <a href="vendor-single.html">Show All</a>
-                                                            </div>
-                                                            <ul>
-                                                                <li>
-                                                                    <img src="{{asset('frontend/images/index/cart/img-01.png')}}" alt="Image Description">
-                                                                    <div class="sl-dropdown__cart__description">
-                                                                        <a class="sl-cart-title" href="javascript:void(0);">Earbuds Earphones Stereo</a>
-                                                                        <span class="sl-cart-price">$11.19</span>
-                                                                        <a class="sl-soldby" href="javascript:void(0);"><em>Sold by</em> Life Simplify</a>
-                                                                    </div>
-                                                                </li>
-                                                                <li>
-                                                                    <img src="{{asset('frontend/images/index/cart/img-02.png')}}" alt="Image Description">
-                                                                    <div class="sl-dropdown__cart__description">
-                                                                        <a class="sl-cart-title" href="javascript:void(0);">Vintage Round Sunglasses</a>
-                                                                        <span class="sl-cart-price">$13.50</span>
-                                                                        <a class="sl-soldby" href="javascript:void(0);"><em>Sold by</em> Life Simplify</a>
-                                                                    </div>
-                                                                </li>
-                                                                <li>
-                                                                    <img src="{{asset('frontend/images/index/cart/img-03.png')}}" alt="Image Description">
-                                                                    <div class="sl-dropdown__cart__description">
-                                                                        <a class="sl-cart-title" href="javascript:void(0);">Phone Holder for Car</a>
-                                                                        <span class="sl-cart-price">$8.30</span>
-                                                                        <a class="sl-soldby" href="javascript:void(0);"><em>Sold by</em> Ryan &amp; John</a>
-                                                                    </div>
-                                                                </li>
-                                                                <li>
-                                                                    <img src="{{asset('frontend/images/index/cart/img-04.png')}}" alt="Image Description">
-                                                                    <div class="sl-dropdown__cart__description">
-                                                                        <a class="sl-cart-title" href="javascript:void(0);">Earbuds Earphones Stereo</a>
-                                                                        <span class="sl-cart-price">$11.19</span>
-                                                                        <a class="sl-soldby" href="javascript:void(0);"><em>Sold by</em> Ryan &amp; John</a>
-                                                                    </div>
-                                                                </li>
-                                                                <li>
-                                                                    <img src="{{asset('frontend/images/index/cart/img-05.png')}}" alt="Image Description">
-                                                                    <div class="sl-dropdown__cart__description">
-                                                                        <a class="sl-cart-title" href="javascript:void(0);">Vintage Round Sunglasses</a>
-                                                                        <span class="sl-cart-price">$13.50</span>
-                                                                        <a class="sl-soldby" href="javascript:void(0);"><em>Sold by</em> Crown Lost Group</a>
-                                                                    </div>
-                                                                </li>
-                                                                <li>
-                                                                    <img src="{{asset('frontend/images/index/cart/img-06.png')}}" alt="Image Description">
-                                                                    <div class="sl-dropdown__cart__description">
-                                                                        <a class="sl-cart-title" href="javascript:void(0);">Phone Holder for Car</a>
-                                                                        <span class="sl-cart-price">$8.30</span>
-                                                                        <a class="sl-soldby" href="javascript:void(0);"><em>Sold by</em> Crown Lost Group</a>
-                                                                    </div>
-                                                                </li>
-                                                            </ul>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div id="jewelry" class="tab-pane fade">
+                                                @endif
+                                            @endforeach
+                                            {{--<div id="jewelry" class="tab-pane fade">
                                                 <div class="sl-productstab">
                                                     <div class="sl-viewproducts">
                                                         <figure class="sl-viewproducts__img">
@@ -844,7 +878,7 @@
                                                         </div>
                                                     </div>
                                                 </div>
-                                            </div>
+                                            </div>--}}
                                         </li>
                                     </ul>
                                 </div>
@@ -1070,16 +1104,28 @@
                         <a href="javascript:void(0);" class="sl-closebtn close"><i class="lnr lnr-cross" data-dismiss="modal"></i></a>
                     </div>
                     <div class="modal-body">
-                        <form class="sl-formtheme sl-formlogin">
+                        <form method="POST" action="{{ route('login') }}" class="sl-formtheme sl-formlogin">
+                            @csrf
                             <fieldset>
                                 <div class="form-group">
-                                    <input type="text" name="email" class="form-control sl-form-control" placeholder="Your Email*" value="user@domain.com">
+                                    <input type="text" name="email" value="{{ old('email') }}" required autocomplete="email" autofocus class="form-control sl-form-control" placeholder="Your Email*">
                                 </div>
+
+                                @error('email')
+                                <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                @enderror
                                 <div class="form-group">
-                                    <input type="password" class="form-control sl-form-control" placeholder="Password*" value="user@domain.com">
+                                    <input name="password" required autocomplete="current-password" type="password" class="form-control sl-form-control @error('password') is-invalid @enderror" placeholder="Password*">
                                 </div>
+                                @error('password')
+                                <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                @enderror
                                 <div class="form-group sl-btnarea">
-                                    <a href="dashboard-insight.html" class="btn sl-btn">{{translateText('login')}}</a>
+                                    <button type="submit" class="btn sl-btn">{{translateText('login')}}</button>
                                     <div class="sl-checkbox">
                                         <input id="remember" type="checkbox">
                                         <label for="remember">{{translateText('Remember me here') }}</label>
@@ -1100,8 +1146,8 @@
                             <span>{{translateText('By signing in  you agree to these')}} <a href="legalprivacy.html"> {{translateText('Terms &amp; Conditions</a> &amp; consent to')}}<a href="legalprivacy.html">{{ translateText('Cookie Policy &amp; Privacy Policy.')}}</a></span>
                         </div>
                         <div class="sl-loginfooterinfo">
-                            <a href="javascript:void(0);"><em>{{translateText('Not a member?')}}</em> {{translateText('Signup Now')}}</a>
-                            <a href="javascript:;" class="sl-forgot-password">{{translateText('Forgot password?')}}</a>
+                            <a href="{{route('web.register')}}"><em>{{translateText('Not a member?')}}</em> {{translateText('Signup Now')}}</a>
+                            <a href="{{route('web.forgot-password')}}" class="sl-forgot-password">{{translateText('Forgot password?')}}</a>
                         </div>
                     </div>
                 </div>
