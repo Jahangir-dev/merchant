@@ -57,7 +57,7 @@
                                                 <div class="sl-signupform-wrap">
 
                                                     <div class="form-group">
-                                                        <input id="email" type="email" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ $email ?? old('email') }}" required autocomplete="email" autofocus>
+                                                        <input id="email" type="email" class="form-control @error('email') is-invalid @enderror" name="email" placeholder="{{translateText('Email')}}" value="{{ $email ?? old('email') }}" required autocomplete="email" autofocus>
                                                     </div>
 
                                                     <div class="form-group sl-btnarea">

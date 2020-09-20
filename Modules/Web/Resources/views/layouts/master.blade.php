@@ -19,6 +19,8 @@
     <link rel="stylesheet" href="{{asset('frontend/css/tipso.css')}}">
     <link rel="stylesheet" href="{{asset('frontend/css/select2.min.css')}}">
     <link rel="stylesheet" href="{{asset('frontend/css/main.css')}}">
+    <link rel="stylesheet" href="{{asset('frontend/css/prettyPhoto.css')}}">
+
 </head>
     <body class="sl-home">
     <!-- Preloader Start -->
@@ -32,9 +34,7 @@
     <!-- HEADER START -->
     @include('web::layouts.header')
     <!-- HEADER END -->
-    <!-- BANNER START -->
-    @include('web::layouts.banner')
-    <!-- BANNER END -->
+
     <!-- MAIN START -->
         @yield('content')
     <!-- MAIN END -->
@@ -58,6 +58,10 @@
     <script src="{{asset('frontend/js/vendor/tipso.js')}}"></script>
     <script src="{{asset('frontend/js/vendor/owl.carousel.min.js')}}"></script>
     <script src="{{asset('frontend/js/vendor/jquery.ui.touch-punch.js')}}"></script>
+
+    <script src="{{asset('frontend/js/vendor/prettyPhoto.js')}}"></script>
+    <script src="{{asset('frontend/js/vendor/jquery.ui.touch-punch.js')}}"></script>
+
     <script src="{{asset('frontend/js/main.js')}}"></script>
     <script type="text/javascript">
     $('.target').on('change',function(){

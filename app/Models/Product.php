@@ -70,4 +70,8 @@ class Product extends Model
     {
         return $this->hasMany(ProductAttribute::class);
     }
+
+    public function user() {
+        return $this->hasOne('App\User', 'id', 'user_id');
+    }
 }
