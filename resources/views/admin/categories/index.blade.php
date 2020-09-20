@@ -1,14 +1,14 @@
 @extends('admin.master')
-@section('title') {{ $pageTitle }} @endsection
+@section('title') {{translateText( $pageTitle) }} @endsection
 @section('content')
 <div class="container-fluid">
     <div class="row">
     <div class="app-title col-md-12">
         <div>
-            <h1><i class="fa fa-tags"></i> {{ $pageTitle }}</h1>
-            <p>{{ $subTitle }}</p>
+            <h1><i class="fa fa-tags"></i> {{translateText( $pageTitle) }}</h1>
+            <p>{{translateText( $subTitle )}}</p>
         </div>
-        <a href="{{ route('admin.categories.create') }}" class="btn btn-primary pull-right">Add Category</a>
+        <a href="{{ route('admin.categories.create') }}" class="btn btn-primary pull-right">{{translateText('Add Category') }}</a>
     </div>
         <div class="col-md-12 mt-3">
             <div class="tile">
@@ -17,12 +17,12 @@
                         <thead>
                             <tr>
                                 <th> # </th>
-                                <th> Name </th>
-                                <th> Slug </th>
-                                <th class="text-center"> Parent </th>
-                                <th class="text-center"> Featured </th>
-                                <th class="text-center"> Menu </th>
-                                <th class="text-center"> Order </th>
+                                <th> {{translateText('Name')}} </th>
+                                <th> {{translateText('Slug')}} </th>
+                                <th class="text-center"> {{translateText('Parent')}} </th>
+                                <th class="text-center"> {{translateText('Featured')}} </th>
+                                <th class="text-center"> {{translateText('Menu')}} </th>
+                                <th class="text-center"> {{translateText('Order')}} </th>
                                 <th style="width:100px; min-width:100px;" class="text-center text-danger"><i class="fa fa-bolt"> </i></th>
                             </tr>
                         </thead>
@@ -31,21 +31,21 @@
                                 @if ($category->id)
                                     <tr>
                                         <td>{{ $category->id }}</td>
-                                        <td>{{ $category->name }}</td>
-                                        <td>{{ $category->slug }}</td>
-                                        <td>{{ $category->parent->name ?? 'none' }}</td>
+                                        <td>{{translateText( $category->name )}}</td>
+                                        <td>{{translateText( $category->slug )}}</td>
+                                        <td>{{translateText($category->parent->name ?? 'none' )}}</td>
                                         <td class="text-center">
                                             @if ($category->featured == 1)
-                                                <span class="badge badge-success">Yes</span>
+                                                <span class="badge badge-success">{{translateText('Yes')}}</span>
                                             @else
-                                                <span class="badge badge-danger">No</span>
+                                                <span class="badge badge-danger">{{translateText('No')}}</span>
                                             @endif
                                         </td>
                                         <td class="text-center">
                                             @if ($category->menu == 1)
-                                                <span class="badge badge-success">Yes</span>
+                                                <span class="badge badge-success">{{translateText('Yes')}}</span>
                                             @else
-                                                <span class="badge badge-danger">No</span>
+                                                <span class="badge badge-danger">{{translateText('No')}}</span>
                                             @endif
                                         </td>
                                         <td class="text-center">

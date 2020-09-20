@@ -108,6 +108,23 @@
 
 
 @stack('scripts')
+ <script type="text/javascript">
+    $('.target').on('change',function(){
+          var target = $(this).val();
+          $.ajax({
+              url:"{{url('admin/setTarget')}}",
+              type:"POST",
+              dataType:'json',
+              data:{"_token": "{{ csrf_token() }}","target":target},
+              success: function(data) {
+                location.reload();
+              },
+              error: function(e) {
+
+              }
+          });
+      });
+  </script>
 <script>
   $(function () {
     $('.w-full').delay(3000).fadeOut('slow');

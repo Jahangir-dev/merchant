@@ -6,12 +6,13 @@
         {{ session()->get('success') }}
     </div>
 @endif
+<br>
         <div class="container-fluid">
             <div class="row">
                 <div class="col-12">
                     <div class="card">
                         <div class="card-header">
-                            <h3 class="card-title">All Merchants</h3>
+                            <h3 class="card-title">{{translateText('All Merchants')}}</h3>
                         </div>
                         <!-- /.card-header -->
                         <div class="card-body">
@@ -19,29 +20,29 @@
                                 <thead>
                                 <tr>
                                     <th>#</th>
-                                    <th>First Name</th>
-                                    <th>Last Name</th>
-                                    <th>Email</th>
-                                    <th>Ip Address</th>
-                                    <th>Actions</th>
+                                    <th>{{translateText('First Name')}}</th>
+                                    <th>{{translateText('Last Name')}}</th>
+                                    <th>{{translateText('Email')}}</th>
+                                    <th>{{translateText('Ip Address')}}</th>
+                                    <th>{{translateText('Actions')}}</th>
                                 </tr>
                                 </thead>
                                 <tbody>
                                 @foreach($users as $index => $user)
                                     @if($user->role->name === 'Merchant')
                                     <tr>
-                                        <td>{{$user->id}}</td>
-                                        <td>{{$user->first_name}}</td>
-                                        <td>{{$user->last_name}}</td>
-                                        <td>{{$user->email}}</td>
+                                        <td>{{translateText($user->id)}}</td>
+                                        <td>{{translateText($user->first_name)}}</td>
+                                        <td>{{translateText($user->last_name)}}</td>
+                                        <td>{{translateText($user->email)}}</td>
                                         <td>
-                                            {{$user->ip_address}}
+                                           {{translateText($user->ip_address)}}
                                             @if($ips->contains('ip_address', $user->ip_address))
                                                 <a href="{{route('admin.user.unblock.ip', $user->id)}}" class="btn btn-success">
                                                     <i class="fa fa-unlock" aria-hidden="true"></i>
                                                 </a>
                                             @else
-                                                <a href="{{route('admin.user.block.ip', $user->id)}}" class="danger btn btn-danger">
+                                                <a href="{{route('admin.user.block.ip', $user->id)}}" class="btn btn-sm btn-danger">
                                                     <i class="fa fa-ban" aria-hidden="true"></i>
                                                 </a>
                                             @endif
@@ -50,7 +51,7 @@
                                             <label class="radio-inline">
 
                                                 @if(!$user->status)
-                                                <a href="{{route('admin.user.block', $user->id)}}" class="danger btn btn-danger">
+                                                <a href="{{route('admin.user.block', $user->id)}}" class="btn btn-sm btn-danger">
                                                     <i class="fa fa-ban" aria-hidden="true"></i>
                                                 </a>
                                                 @else
@@ -60,8 +61,8 @@
                                                 @endif
                                             </label>
 
-                                            <a href="{{route('admin.merchants.delete', $user->id)}}" class="danger btn btn-danger"><i class="fa fa-trash" aria-hidden="true"></i></a>
-                                            <a href="{{route('admin.merchants.edit', $user->id)}}" class="btn btn-secondary"><i class="fa fa-pen" aria-hidden="true"></i></a>
+                                            <a href="{{route('admin.merchants.delete', $user->id)}}" class="btn btn-sm btn-danger"><i class="fa fa-trash" aria-hidden="true"></i></a>
+                                            <a href="{{route('admin.merchants.edit', $user->id)}}" class="btn btn-sm btn-primary"><i class="fa fa-pen" aria-hidden="true"></i></a>
                                         </td>
                                     </tr>
                                 @endif
@@ -70,11 +71,11 @@
                             <tfoot>
                                     <tr>
                                     <th>#</th>
-                                    <th>First Name</th>
-                                    <th>Last Name</th>
-                                    <th>Email</th>
-                                    <th>Ip Address</th>
-                                    <th>Actions</th>
+                                    <th>{{translateText('First Name')}}</th>
+                                    <th>{{translateText('Last Name')}}</th>
+                                    <th>{{translateText('Email')}}</th>
+                                    <th>{{translateText('Ip Address')}}</th>
+                                    <th>{{translateText('Actions')}}</th>
                                 </tr>
                             </tfoot>
                             </table>

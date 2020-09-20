@@ -1,14 +1,14 @@
 @extends('admin.master')
-@section('title') {{ $pageTitle }} @endsection
+@section('title') {{translateText( $pageTitle )}} @endsection
 @section('content')
 <div class="container-fluid">
     <div class="row">
     <div class="app-title col-md-12">
         <div>
-            <h1><i class="fa fa-tags"></i> {{ $pageTitle }}</h1>
+            <h1><i class="fa fa-tags"></i> {{translateText( $pageTitle) }}</h1>
             <p>{{ $subTitle }}</p>
         </div>
-        <a href="{{ route('admin.attributes.create') }}" class="btn btn-primary pull-right">Add Attribute</a>
+        <a href="{{ route('admin.attributes.create') }}" class="btn btn-primary pull-right">{{translateText('Add Attribute')}}</a>
     </div>
         <div class="col-md-12 mt-3">
             <div class="tile">
@@ -16,11 +16,11 @@
                     <table class="table table-hover table-bordered" id="sampleTable">
                         <thead>
                         <tr>
-                            <th> Code </th>
+                            <th> {{translateText('Code')}} </th>
                             <th> Name </th>
-                            <th class="text-center"> Frontend Type </th>
-                            <th class="text-center"> Filterable </th>
-                            <th class="text-center"> Required </th>
+                            <th class="text-center"> {{translateText('Frontend Type')}} </th>
+                            <th class="text-center"> {{translateText('Filterable')}} </th>
+                            <th class="text-center"> {{translateText('Required')}} </th>
                             <th style="width:100px; min-width:100px;" class="text-center text-danger"><i class="fa fa-bolt"> </i></th>
                         </tr>
                         </thead>
@@ -28,20 +28,20 @@
                             @foreach($attributes as $attribute)
                                 <tr>
                                     <td>{{ $attribute->code }}</td>
-                                    <td>{{ $attribute->name }}</td>
-                                    <td>{{ $attribute->frontend_type }}</td>
+                                    <td>{{translateText( $attribute->name )}}</td>
+                                    <td>{{translateText( $attribute->frontend_type )}}</td>
                                     <td class="text-center">
                                         @if ($attribute->is_filterable == 1)
-                                            <span class="badge badge-success">Yes</span>
+                                            <span class="badge badge-success">{{translateText('Yes')}}</span>
                                         @else
-                                            <span class="badge badge-danger">No</span>
+                                            <span class="badge badge-danger">{{translateText('No')}}</span>
                                         @endif
                                     </td>
                                     <td class="text-center">
                                         @if ($attribute->is_required == 1)
-                                            <span class="badge badge-success">Yes</span>
+                                            <span class="badge badge-success">{{translateText('Yes')}}</span>
                                         @else
-                                            <span class="badge badge-danger">No</span>
+                                            <span class="badge badge-danger">{{translateText('No')}}</span>
                                         @endif
                                     </td>
                                     <td class="text-center">

@@ -1,14 +1,14 @@
 @extends('admin.master')
-@section('title') {{ $pageTitle }} @endsection
+@section('title') {{translateText(  $pageTitle) }} @endsection
 @section('content')
 <div class="container-fluid">
     <div class="row">
     <div class="app-title col-md-12">
         <div>
-            <h1><i class="fa fa-briefcase"></i> {{ $pageTitle }}</h1>
-            <p>{{ $subTitle }}</p>
+            <h1><i class="fa fa-briefcase"></i> {{translateText(  $pageTitle ) }}</h1>
+            <p>{{translateText(  $subTitle )}}</p>
         </div>
-        <a href="{{ route('admin.brands.create') }}" class="btn btn-primary pull-right">Add Brand</a>
+        <a href="{{ route('admin.brands.create') }}" class="btn btn-primary pull-right">{{translateText( 'Add Brand')}}</a>
     </div>
         <div class="col-md-12 mt-3">
             <div class="tile">
@@ -17,8 +17,8 @@
                         <thead>
                         <tr>
                             <th> # </th>
-                            <th> Name </th>
-                            <th> Slug </th>
+                            <th>{{translateText('Name')}} </th>
+                            <th> {{translateText( 'Slug')}} </th>
                             <th style="width:100px; min-width:100px;" class="text-center text-danger"><i class="fa fa-bolt"> </i></th>
                         </tr>
                         </thead>
@@ -26,8 +26,8 @@
                         @foreach($brands as $brand)
                             <tr>
                                 <td>{{ $brand->id }}</td>
-                                <td>{{ $brand->name }}</td>
-                                <td>{{ $brand->slug }}</td>
+                                <td>{{translateText(  $brand->name )}}</td>
+                                <td>{{translateText( $brand->slug) }}</td>
                                 <td class="text-center">
                                     <div class="btn-group" role="group" aria-label="Second group">
                                         <a href="{{ route('admin.brands.edit', $brand->id) }}" class="btn btn-sm btn-primary"><i class="fa fa-edit"></i></a>

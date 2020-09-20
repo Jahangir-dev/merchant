@@ -4,7 +4,7 @@
     <a href="index3.html" class="brand-link">
         <img src="{{ asset('/img/AdminLTELogo.png') }}" alt="AdminLTE Logo" class="brand-image img-circle elevation-3"
              style="opacity: .8">
-        <span class="brand-text font-weight-light">Merchant</span>
+        <span class="brand-text font-weight-light">{{translateText('Admin')}}</span>
     </a>
 
     <!-- Sidebar -->
@@ -15,7 +15,7 @@
                 <img src="{{asset('/img/user2-160x160.jpg') }}" class="img-circle elevation-2" alt="User Image">
             </div>
             <div class="info">
-                <a href="#" class="d-block">{{Auth::user()->first_name}} {{Auth::user()->last_name}}</a>
+                <a href="#" class="d-block">{{translateText(Auth::user()->first_name)}} {{translateText(Auth::user()->last_name)}}</a>
             </div>
         </div>
 
@@ -24,78 +24,78 @@
             <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
                 <!-- Add icons to the links using the .nav-icon class
                      with font-awesome or any other icon font library -->
-                <li class="nav-item has-treeview menu-open">
-                    <a href="#" class="nav-link active">
+                <li class="nav-item">
+                    <a href="{{route('admin.home')}}" class="nav-link {{ Route::currentRouteName() == 'admin.home' ? 'active' : null }}">
                         <i class="nav-icon fas fa-tachometer-alt"></i>
                         <p>
-                            Dashboard
-                            <i class="right fas fa-angle-left"></i>
+                        {{translateText('Dashboard')}}
+                            
                         </p>
                     </a>
-                    <ul class="nav nav-treeview">
+                    </li>
                         <li class="nav-item">
                             <a href="{{route('admin.merchants.list')}}" class="nav-link {{ Request::segment(2) === 'merchants' ? 'active' : null }}">
-                                <i class="far fa-circle nav-icon"></i>
-                                <p>Merchents</p>
+                                <i class="far fa-user nav-icon"></i>
+                                <p>{{translateText('Merchents')}}</p>
                             </a>
                         </li>
                         <li class="nav-item">
                             <a href="{{route('admin.customers.list')}}" class="nav-link {{ Request::segment(2) === 'customers' ? 'active' : null }}">
-                                <i class="far fa-circle nav-icon"></i>
-                                <p>Customers</p>
+                                <i class="fa fa-users nav-icon"></i>
+                                <p>{{translateText('Customers')}}</p>
                             </a>
                         </li>
                         <li class="nav-item">
                             <a href="{{route('admin.ip')}}" class="nav-link {{ Request::segment(2) === 'ip' ? 'active' : null }}">
-                                <i class="far fa-circle nav-icon"></i>
-                                <p>Blocked IP</p>
+                                <i class="fa fa-map-marker nav-icon"></i>
+                                <p>{{translateText('Blocked IP')}}</p>
                             </a>
                         </li>
-                    </ul>
-                </li>
+                    
+                
                  <li class="nav-item">
                     <a href="{{route('admin.deal')}}" class="nav-link {{ Request::segment(2) === 'deal' ? 'active' : null }}">
                         <i class="nav-icon fas fa-th"></i>
                         <p>
-                            Deals
+                            {{translateText('Deals')}}
                         </p>
                     </a>
                 </li>
-            
+
         <li class="nav-item">
-            <a class="nav-link {{ Route::currentRouteName() == 'admin.orders.index' ? 'active' : '' }}" href="{{ route('admin.orders.index') }}">
-                <i class="app-menu__icon fa fa-bar-chart"></i>
-                <span class="app-menu__label">Orders</span>
+            <a class="nav-link {{ Request::segment(2) === 'orders' ? 'active' : '' }}" href="{{ route('admin.orders.index') }}">
+                <i class="nav-icon fa fa-tasks"></i>
+                <span class="app-menu__label">{{translateText('Orders')}}</span>
             </a>
         </li>
         <li class="nav-item">
-            <a class="nav-link {{ Route::currentRouteName() == 'admin.products.index' ? 'active' : '' }}" href="{{ route('admin.products.index') }}">
-                <i class="app-menu__icon fa fa-shopping-bag"></i>
-                <span class="app-menu__label">Products</span>
+            <a class="nav-link {{ Request::segment(2) === 'products' ? 'active' : '' }}" href="{{ route('admin.products.index') }}">
+                <i class="nav-icon fa fa-shopping-bag"></i>
+                <span class="app-menu__label">{{translateText('Products')}}</span>
             </a>
         </li>
         <li class="nav-item">
-            <a class="nav-link {{ Route::currentRouteName() == 'admin.brands.index' ? 'active' : '' }}" href="{{ route('admin.brands.index') }}">
-                <i class="app-menu__icon fa fa-briefcase"></i>
-                <span class="app-menu__label">Brands</span>
+            <a class="nav-link {{ Request::segment(2) === 'brands' ? 'active' : '' }}" href="{{ route('admin.brands.index') }}">
+                <i class="nav-icon fa fa-briefcase"></i>
+                <span class="app-menu__label">{{translateText('Brands')}}</span>
             </a>
         </li>
         <li class="nav-item">
-            <a class="nav-link {{ Route::currentRouteName() == 'admin.categories.index' ? 'active' : '' }}" href="{{ route('admin.categories.index') }}">
-                <i class="app-menu__icon fa fa-tags"></i>
-                <span class="app-menu__label">Categories</span>
+            <a class="nav-link {{ Request::segment(2) === 'categories' ? 'active' : '' }}" href="{{ route('admin.categories.index') }}">
+                <i class="nav-icon fa fa-tags"></i>
+                <span class="app-menu__label">{{translateText('Categories')}}</span>
             </a>
         </li>
         <li class="nav-item">
-            <a class="nav-link {{ Route::currentRouteName() == 'admin.attributes.index' ? 'active' : '' }}" href="{{ route('admin.attributes.index') }}">
-                <i class="app-menu__icon fa fa-th"></i>
-                <span class="app-menu__label">Attributes</span>
+            <a class="nav-link {{ Request::segment(2) === 'attributes' ? 'active' : '' }}" href="{{ route('admin.attributes.index') }}">
+                <i class="nav-icon fa fa-th"></i>
+                <span class="app-menu__label">{{translateText('Attributes')}}</span>
             </a>
         </li>
         <li class="nav-item">
-            <a class="nav-link {{ Route::currentRouteName() == 'admin.settings' ? 'active' : '' }}" href="{{ route('admin.settings') }}">
-                <i class="app-menu__icon fa fa-cogs"></i>
-                <span class="app-menu__label">Settings</span>
+            <a class="nav-link {{ Request::segment(2) === 'settings' ? 'active' : '' }}" href="{{ route('admin.settings') }}">
+                <i class="nav-icon fa fa-cogs"></i>
+                <span class="app-menu__label">{{translateText('Settings')}}</span>
             </a>
         </li>
                 <!--<li class="nav-item has-treeview">

@@ -1,11 +1,11 @@
 <div class="tile">
     <form action="{{ route('admin.settings.update') }}" method="POST" role="form">
         @csrf
-        <h3 class="tile-title">Footer &amp; SEO</h3>
+        <h3 class="tile-title">{{translateText('Footer SEO')}}</h3>
         <hr>
         <div class="tile-body">
             <div class="form-group">
-                <label class="control-label" for="footer_copyright_text">Footer Copyright Text</label>
+                <label class="control-label" for="footer_copyright_text">{{translateText('Footer Copyright Text')}}</label>
                 <textarea
                     class="form-control"
                     rows="4"
@@ -15,7 +15,7 @@
                 >{{ config('settings.footer_copyright_text') }}</textarea>
             </div>
             <div class="form-group">
-                <label class="control-label" for="seo_meta_title">SEO Meta Title</label>
+                <label class="control-label" for="seo_meta_title">{{translateText('SEO Meta Title')}}</label>
                 <input
                     class="form-control"
                     type="text"
@@ -26,7 +26,7 @@
                 />
             </div>
             <div class="form-group">
-                <label class="control-label" for="seo_meta_description">SEO Meta Description</label>
+                <label class="control-label" for="seo_meta_description">{{translateText('SEO Meta Description')}}</label>
                 <textarea
                     class="form-control"
                     rows="4"
@@ -39,7 +39,7 @@
         <div class="tile-footer">
             <div class="row d-print-none mt-2">
                 <div class="col-12 text-right">
-                    <button class="btn btn-success" type="submit"><i class="fa fa-fw fa-lg fa-check-circle"></i>Update Settings</button>
+                    <button class="btn btn-success" type="submit"><i class="fa fa-fw fa-lg fa-check-circle"></i>{{translateText('Update Settings')}}</button>
                 </div>
             </div>
         </div>

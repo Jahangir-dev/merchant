@@ -4,9 +4,12 @@ use App\Http\Controllers\Controller;
 use App\IPAddress;
 use App\Role;
 use App\User;
+use App\Contracts\ProductContract;
+use App\Contracts\OrderContract;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
+use Session;
 
 class HomeController extends Controller
 {
@@ -15,8 +18,11 @@ class HomeController extends Controller
      *
      * @return void
      */
-    public function __construct()
+    protected $productRepository;
+    public function __construct(ProductContract $productRepository,OrderContract $orderRepository)
     {
+        $this->productRepository = $productRepository;
+        $this->orderRepository = $orderRepository;
         $this->middleware('auth:admin');
     }
     /**
@@ -27,9 +33,22 @@ class HomeController extends Controller
     public function index()
     {
         $users = User::where('id', Auth::id())->with('role')->get();
-        return view('admin.home', compact('users'));
-    }
+        $products = $this->productRepository->listProducts();
+        $orders = $this->orderRepository->listOrders();
+        $customers = User::whereHas('role', function($q){
+             $q->where('name', 'customer');
+        })->get();
+        $merchant = User::whereHas('role', function($q){
+             $q->where('name', 'merchant');
+        })->get();
 
+        return view('admin.home', compact('users','products','customers','merchant','orders'));
+    }
+    public function setTarget(Request $request){
+        
+        Session::put('target',$request->target);
+        return 1;
+    }
     public function merchantsList() {
         $users = User::with('role')->get();
         $ips = IPAddress::all();
