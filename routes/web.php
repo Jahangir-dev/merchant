@@ -23,13 +23,13 @@ Route::get('/', 'HomeController@index')->name('home');
 Route::post('/setTarget', 'HomeController@setTarget');
 
 
-/*Route::namespace('Auth')->group(function() {
+Route::namespace('Auth')->group(function() {
 	Route::get('/login', 'LoginController@showLoginForm')->name('login');
 	Route::get('/forget', 'LoginController@forgetPassword')->name('forget');
 
-});*/
+});
 
-/*Admin Routes*/
+/*
 Route::namespace("Admin")->prefix('admin')->group(function() {
 
 	Route::get('/profile', 'HomeController@myProfile')->name('admin.profile');
@@ -57,10 +57,9 @@ Route::namespace("Admin")->prefix('admin')->group(function() {
 
 	Route::post('/profile/update/{id}', 'HomeController@updateUser')->name('admin.profile.update');
 
-	/*Deals*/
+
 		Route::get('/deal', 'DealsController@index')->name('admin.deal');
 		Route::get('/deal/create', 'DealsController@create')->name('admin.deal.create');
-	/*Deals End*/
 
 	Route::namespace('Auth')->group(function() {
 		Route::get('/login', 'LoginController@showLoginForm')->name('admin.login');
@@ -68,8 +67,9 @@ Route::namespace("Admin")->prefix('admin')->group(function() {
 		Route::post('logout', 'LoginController@logout')->name('admin.logout');
 	});
 });
+*/
 
 
-
+require 'admin.php';
 
 

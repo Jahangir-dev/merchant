@@ -19,6 +19,9 @@
         "laravel/ui": "^2.2",
         "mckenziearts/laravel-notify": "^2.0",
         "nwidart/laravel-modules": "^7.2",
+        "paypal/rest-api-sdk-php": "^1.14",
+        "spatie/laravel-newsletter": "^4.8",
+        "typicms/nestablecollection": "^1.1",
         "zgabievi/promocodes": "^8.1"
     },
     "require-dev": {

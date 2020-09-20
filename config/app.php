@@ -177,6 +177,9 @@ return [
         Mckenziearts\Notify\LaravelNotifyServiceProvider::class,
         Akib\Translate\GoogleTranslateServiceProvider::class,
         Gabievi\Promocodes\PromocodesServiceProvider::class,
+        App\Providers\SettingServiceProvider::class,
+        App\Providers\RepositoryServiceProvider::class,
+        App\Providers\ViewComposerServiceProvider::class,
 
 
     ],

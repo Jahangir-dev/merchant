@@ -23,7 +23,7 @@
     <link rel="stylesheet" href="{{asset('/css/adminlte.min.css')}}">
     <!-- overlayScrollbars -->
     <link rel="stylesheet" href="{{asset('plugins/overlayScrollbars/css/OverlayScrollbars.min.css')}}">
-   
+   <link rel="stylesheet" type="text/css" href="{{ asset('backend/css/main.css') }}" />
     <!-- Daterange picker -->
     <link rel="stylesheet" href="{{asset('plugins/daterangepicker/daterangepicker.css')}}">
     <!-- summernote -->
@@ -31,6 +31,7 @@
     <!-- Google Font: Source Sans Pro -->
     <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700" rel="stylesheet">
         @notifyCss
+        @yield('styles')
 </head>
 <body class="hold-transition sidebar-mini layout-fixed">
 <div class="wrapper">
@@ -38,7 +39,7 @@
     @include('admin.layouts.navbar')
     @include('admin.layouts.asidebar')
 
-    <div class="content-wrapper">
+    <div class="content-wrapper" id="app">
         @yield('content')
     </div>
 
@@ -103,6 +104,10 @@
 <script src="{{('/js/pages/dashboard.js')}}"></script>
 <!-- AdminLTE for demo purposes -->
 <script src="{{asset('/js/demo.js')}}"></script>
+
+
+
+@stack('scripts')
 <script>
   $(function () {
     $('.w-full').delay(3000).fadeOut('slow');
