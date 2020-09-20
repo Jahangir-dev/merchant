@@ -4,16 +4,6 @@
         <strong class="sl-main-header__logo">
             <a href="{{route('web.index')}}"><img src="{{asset('frontend/images/main-logo.png')}}" alt="Logo"></a>
         </strong>
-<<<<<<< HEAD
-        Language:
-        <select name="target" class="target">
-            <option>Select</option>
-            <option value="en" @if(Session::get("target") == "en") selected="selected" @endif>English</option>
-            <option value="zh-CN" @if(Session::get("target") == "zh-CN") selected="selected" @endif>Chinese</option>
-        </select><br>
-=======
->>>>>>> 1c79f255ddaa08262318adabd1c1adf1805384cc
-
         <div class="sl-main-header__content">
             <div class="sl-main-header__upper">
                 <form class="sl-main-form">

@@ -151,27 +151,27 @@
                                                     </div>
                                                     <div class="form-group form-group-half">
                                                         <label class="sl-profileSetting__toltip">
-                                                            <input class="form-control sl-form-control" name="company_name" value="{{$user->profile->company_name}}" type="text" placeholder="Company Title">
+                                                            <input class="form-control sl-form-control" name="company_name" value="{{isset($user->profile->company_name)}}" type="text" placeholder="Company Title">
                                                             <i class="ti-help-alt toltip-content" data-tipso="name"></i>
                                                         </label>
                                                     </div>
                                                     <div class="form-group form-group-half">
                                                         <label class="sl-profileSetting__toltip">
-                                                            <input class="form-control sl-form-control" name="slogan" value="{{$user->profile->slogan}}" type="text" placeholder="Add Slogan Here">
+                                                            <input class="form-control sl-form-control" name="slogan" value="{{isset($user->profile->slogan)}}" type="text" placeholder="Add Slogan Here">
                                                             <i class="ti-help-alt toltip-content" data-tipso="name"></i>
                                                         </label>
                                                     </div>
                                                     <div class="form-group form-group-half">
-                                                        <input class="form-control sl-form-control" name="phone_number" value="{{$user->profile->phone_number}}" type="number" placeholder="Phone">
+                                                        <input class="form-control sl-form-control" name="phone_number" value="{{isset($user->profile->phone_number)}}" type="number" placeholder="Phone">
                                                     </div>
                                                     <div class="form-group form-group-half">
                                                         <input class="form-control sl-form-control" name="email" value="{{$user->email}}" type="email" placeholder="Email*">
                                                     </div>
                                                     <div class="form-group form-group-half">
-                                                        <input class="form-control sl-form-control" name="mobile" value="{{$user->profile->mobile}}" type="number" placeholder="Mobile">
+                                                        <input class="form-control sl-form-control" name="mobile" value="{{isset($user->profile->mobile)}}" type="number" placeholder="Mobile">
                                                     </div>
                                                     <div class="form-group form-group-half">
-                                                        <input class="form-control sl-form-control" name="website" value="{{$user->profile->website}}" type="text" placeholder="Website Url">
+                                                        <input class="form-control sl-form-control" name="website" value="{{isset($user->profile->website)}}" type="text" placeholder="Website Url">
                                                     </div>
                                                     {{--<div class="form-group sl-profileSetting__socialmedia">
                                                         <label class="sl-input-group sl-facebook">
@@ -243,7 +243,7 @@
                                                             <div class="sl-aboutDescription__title">
                                                                 <h6>About You Or Your Company</h6>
                                                             </div>
-                                                            <textarea name="description" id="sl-tinymceeditor1" class="sl-tinymceeditor" placeholder="Description">{{$user->profile->description}}</textarea>
+                                                            <textarea name="description" id="sl-tinymceeditor1" class="sl-tinymceeditor" placeholder="Description">{{isset($user->profile->description)}}</textarea>
                                                         </div>
                                                     </div>
                                                     <div class="sl-aboutDescription__content">
@@ -252,7 +252,7 @@
                                                                 <h6>Add Your Languages</h6>
                                                             </div>
                                                             <label class="sl-aboutDescription__inputBtn">
-                                                                <select value="{{$user->profile->languages}}" name="languages[]" id="sl-languages" class="form-control sl-form-control" multiple="multiple">
+                                                                <select value="{{isset($user->profile->languages)}}" name="languages[]" id="sl-languages" class="form-control sl-form-control" multiple="multiple">
                                                                     <option value="chinese">Chinese</option>
                                                                     <option value="english">English</option>
                                                                     <option value="urdu">Urdu</option>
