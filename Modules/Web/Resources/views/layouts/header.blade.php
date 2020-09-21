@@ -350,7 +350,7 @@
                                                                         <span class="sl-featureRating__stars"><span></span></span>
                                                                         <em>({{translateText('1648 Feedback')}})</em>
                                                                     </div>
-                                                                    <a href="vendor-single.html" class="btn sl-btn">{{ translateText('View Product') }}</a>
+                                                                    <a href="" class="btn sl-btn">{{ translateText('View Product') }}</a>
                                                                 </div>
                                                             </div>
                                                             <div class="sl-productsinfo">
