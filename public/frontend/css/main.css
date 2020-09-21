@@ -6214,3 +6214,8 @@ i.at-color6 {
         margin-top: 10px; } }
 
 /*# sourceMappingURL=main.css.map */
+
+.tox-notification--in {
+
+  display: none !important;
+}

@@ -45,7 +45,15 @@
                                                         <i class="ti-user"></i><span>Profile Settings</span>
                                                     </a>
                                                 </li>
-                                                
+                                                <li>
+                                <a href="dashboard-my-favorites.html">
+                                    <i class="ti-heart"></i><span>My Favorites</span>
+                                </a>
+                            </li><li>
+                                <a href="dashboard-notifications.html">
+                                    <i class="ti-layers"></i><span>Orders</span>
+                                </a>
+                            </li>
                                                 <li>
                                                     <a href="{{ route('logout') }}"
                                                        onclick="event.preventDefault();

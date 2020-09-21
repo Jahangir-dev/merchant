@@ -170,7 +170,7 @@
     <div class="sl-footerLower">
         <div class="container">
             <div class="sl-footerLower__content">
-                <p>Copyrights © 2019. All Rights Reserved by <a href="javascript:void(0);">Amentotech</a>.</p>
+                <p>Copyrights © 2019. All Rights Reserved by <a href="javascript:void(0);"></a>.</p>
                 <ul class="sl-payments">
                     <li><a href="javascript:void(0);"><img src="{{asset('frontend/images/index/footer/payments/img-01.jpg')}}" alt="Image Description"></a></li>
                     <li><a href="javascript:void(0);"><img src="{{asset('frontend/images/index/footer/payments/img-02.jpg')}}" alt="Image Description"></a></li>
