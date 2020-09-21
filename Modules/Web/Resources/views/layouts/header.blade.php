@@ -49,7 +49,7 @@
                     <a href="javascript:void(0);" class="btn sl-btn sl-btn-active"><i class="ti-search"></i></a>
                 </div>
                 <div class="sl-topbar-notify">
-                    <div class="sl-topbar-notify__icons dropdown sl-dropdown">
+                    <!-- <div class="sl-topbar-notify__icons dropdown sl-dropdown">
                         <a href="javascript:void(0);" class="sl-topbar-notify__anchor" id="slMessages" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                             <i class="ti-email"></i>
                             <span class="sl-topbar-notify__circle">
@@ -108,7 +108,7 @@
                                 <a href="javascript:void(0);" class="sl-dropdown__notify__showall">Show All</a>
                             </li>
                         </ul>
-                    </div>
+                    </div> -->
                     <div class="sl-topbar-notify__icons dropdown">
                         <a href="javascript:void(0);" class="sl-topbar-notify__anchor" id="slCart" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                             <i class="ti-shopping-cart"></i>
@@ -174,6 +174,7 @@
                 @guest
                     <div class="sl-user">
                         <a href="javascript:void(0);" data-toggle="modal" data-target="#loginpopup">
+                            <i class="fa fa-user"></i>
                             <span class="sl-user__description"><em class="d-block">{{translateText('Login')}}</em></span>
                         </a>
                     </div>
@@ -313,7 +314,7 @@
                                                         </li>
                                                     @endif
                                                 @endforeach
-                                                {{--<li class="nav-item nav-link">
+                                                <!-- <li class="nav-item nav-link">
                                                     <a data-toggle="tab" href="#jewelry">Jewelry and Watches</a>
                                                 </li>
                                                 <li class="nav-item nav-link">
@@ -330,7 +331,7 @@
                                                 </li>
                                                 <li class="nav-item nav-link">
                                                     <a data-toggle="tab" href="#health">Health &amp; Beauty</a>
-                                                </li>--}}
+                                                </li> -->
                                             </ul>
                                         </li>
                                         <li class="mega-menu-col sl-viewproducts-holder tab-content">
@@ -879,7 +880,7 @@
                             <li class="nav-item">
                                 <a class="nav-link" href="aboutus.html">About</a>
                             </li>
-                            <li class="menu-item-has-mega-menu mega-menu-nav-pages">
+                            <!-- <li class="menu-item-has-mega-menu mega-menu-nav-pages">
                                 <a href="javascript:void(0);">Service Providers</a>
                                 <div class="mega-menu">
                                     <ul class="mega-menu-row">
@@ -975,14 +976,14 @@
                                         </li>
                                     </ul>
                                 </div>
-                            </li>
-                            <li class="nav-item">
+                            </li> -->
+                            <!-- <li class="nav-item">
                                 <a href="vendor-single.html">Vendor Products</a>
-                            </li>
-                            <li class="nav-item">
+                            </li> -->
+                            <!-- <li class="nav-item">
                                 <a class="nav-link" href="contact.html">Contact</a>
-                            </li>
-                            <li class="nav-item sl-dropdown">
+                            </li> -->
+                            <!-- <li class="nav-item sl-dropdown">
                                 <a href="javascript:void(0);">Page</a>
                                 <ul class="sl-dropdown__menu">
                                     <li class="nav-item">
@@ -1037,11 +1038,11 @@
                                         <a href="404.html">404 Error</a>
                                     </li>
                                 </ul>
-                            </li>
+                            </li> -->
                         </ul>
                     </div>
                 </nav>
-                <div class="sl-lower-right">
+             <!--    <div class="sl-lower-right">
                     <div class="sl-lower-right__content">
                         <i class="fas fa-mobile-alt"></i>
                         <p>Expreience our mobile app - <a href="javascript:void(0);">Download Now</a></p>
@@ -1086,10 +1087,10 @@
                 </div>
                 <div class="sl-main-lowerBackbtn">
                     <a href="javascript:void(0);"><i class="ti-close"></i></a>
-                </div>
+                </div> -->
              <div class="sl-main-header">
                            Language:
-                  <select name="target" class="target">
+                  <select name="target" class="target form-control">
                     <option>Select</option>
                     <option value="en" @if(Session::get("target") == "en") selected="selected" @endif>English</option>
                     <option value="zh-CN" @if(Session::get("target") == "zh-CN") selected="selected" @endif>Chinese</option>

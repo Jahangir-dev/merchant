@@ -22,112 +22,26 @@
                     </div>
                 </div>
                 <div class="sl-category sl-row">
+
                     @foreach($categories as $index => $category)
+                   
                         @if($index < 10)
                     <div class="sl-col sl-col-sm-1-of-2 sl-col-md-1-of-3 sl-col-lg-1-of-4 sl-col-xl-1-of-5">
                         <div class="sl-category__service">
-                            <img src="{{asset('/storage/'.$category->image)}}" alt="image Description">
+                            <img src="{{asset('/storage/'.$category->image)}}" alt="image Description"/>
                             <div class="sl-category__description">
                                 <a href="{{route('web.category.show', ['slug' => $category->slug])}}">
                                     <h5>{{ translateText($category->name) }}</h5>
                                 </a>
-                                <span>{{translateText('12,568 Providers')}}</span>
+                                <span>{{translateText('0 Providers')}}</span>
                             </div>
                             <a href="{{route('web.category.show', ['slug' => $category->slug])}}" class="sl-category__icon"><i class="ti-arrow-right"></i></a>
                         </div>
                     </div>
                         @endif
                     @endforeach
-{{--                    <div class="sl-col sl-col-sm-1-of-2 sl-col-md-1-of-3 sl-col-lg-1-of-4 sl-col-xl-1-of-5">
-                        <div class="sl-category__service">
-                            <img src="{{asset('frontend/images/index/category/img-02.jpg')}}" alt="image Description">
-                            <div class="sl-category__description">
-                                <h5>IT Services</h5>
-                                <span>11,756 Providers</span>
-                            </div>
-                            <a href="javascript:void(0);" class="sl-category__icon"><i class="ti-arrow-right"></i></a>
-                        </div>
-                    </div>
-                    <div class="sl-col sl-col-sm-1-of-2 sl-col-md-1-of-3 sl-col-lg-1-of-4 sl-col-xl-1-of-5">
-                        <div class="sl-category__service">
-                            <img src="{{asset('frontend/images/index/category/img-03.jpg')}}" alt="image Description">
-                            <div class="sl-category__description">
-                                <h5>Networking</h5>
-                                <span>11,125 Providers</span>
-                            </div>
-                            <a href="javascript:void(0);" class="sl-category__icon"><i class="ti-arrow-right"></i></a>
-                        </div>
-                    </div>
-                    <div class="sl-col sl-col-sm-1-of-2 sl-col-md-1-of-3 sl-col-lg-1-of-4 sl-col-xl-1-of-5">
-                        <div class="sl-category__service">
-                            <img src="{{asset('frontend/images/index/category/img-04.jpg')}}" alt="image Description">
-                            <div class="sl-category__description">
-                                <h5>Plumbing</h5>
-                                <span>10,045 Providers</span>
-                            </div>
-                            <a href="javascript:void(0);" class="sl-category__icon"><i class="ti-arrow-right"></i></a>
-                        </div>
-                    </div>
-                    <div class="sl-col sl-col-sm-1-of-2 sl-col-md-1-of-3 sl-col-lg-1-of-4 sl-col-xl-1-of-5">
-                        <div class="sl-category__service">
-                            <img src="{{asset('frontend/images/index/category/img-05.jpg')}}" alt="image Description">
-                            <div class="sl-category__description">
-                                <h5>Learning & Driver</h5>
-                                <span>10,575 Providers</span>
-                            </div>
-                            <a href="javascript:void(0);" class="sl-category__icon"><i class="ti-arrow-right"></i></a>
-                        </div>
-                    </div>
-                    <div class="sl-col sl-col-sm-1-of-2 sl-col-md-1-of-3 sl-col-lg-1-of-4 sl-col-xl-1-of-5">
-                        <div class="sl-category__service">
-                            <img src="{{asset('frontend/images/index/category/img-06.jpg')}}" alt="image Description">
-                            <div class="sl-category__description">
-                                <h5>Law & Finance</h5>
-                                <span>9,245 Providers</span>
-                            </div>
-                            <a href="javascript:void(0);" class="sl-category__icon"><i class="ti-arrow-right"></i></a>
-                        </div>
-                    </div>
-                    <div class="sl-col sl-col-sm-1-of-2 sl-col-md-1-of-3 sl-col-lg-1-of-4 sl-col-xl-1-of-5">
-                        <div class="sl-category__service">
-                            <img src="{{asset('frontend/images/index/category/img-07.jpg')}}" alt="image Description">
-                            <div class="sl-category__description">
-                                <h5>Medical</h5>
-                                <span>9,421 Providers</span>
-                            </div>
-                            <a href="javascript:void(0);" class="sl-category__icon"><i class="ti-arrow-right"></i></a>
-                        </div>
-                    </div>
-                    <div class="sl-col sl-col-sm-1-of-2 sl-col-md-1-of-3 sl-col-lg-1-of-4 sl-col-xl-1-of-5">
-                        <div class="sl-category__service">
-                            <img src="{{asset('frontend/images/index/category/img-08.jpg')}}" alt="image Description">
-                            <div class="sl-category__description">
-                                <h5>Handyman Services</h5>
-                                <span>7,123 Providers</span>
-                            </div>
-                            <a href="javascript:void(0);" class="sl-category__icon"><i class="ti-arrow-right"></i></a>
-                        </div>
-                    </div>
-                    <div class="sl-col sl-col-sm-1-of-2 sl-col-md-1-of-3 sl-col-lg-1-of-4 sl-col-xl-1-of-5">
-                        <div class="sl-category__service">
-                            <img src="{{asset('frontend/images/index/category/img-09.jpg')}}" alt="image Description">
-                            <div class="sl-category__description">
-                                <h5>Print & Publishing</h5>
-                                <span>5,058 Providers</span>
-                            </div>
-                            <a href="javascript:void(0);" class="sl-category__icon"><i class="ti-arrow-right"></i></a>
-                        </div>
-                    </div>
-                    <div class="sl-col sl-col-sm-1-of-2 sl-col-md-1-of-3 sl-col-lg-1-of-4 sl-col-xl-1-of-5">
-                        <div class="sl-category__service">
-                            <img src="{{asset('frontend/images/index/category/img-10.jpg')}}" alt="image Description">
-                            <div class="sl-category__description">
-                                <h5>House Cleaning</h5>
-                                <span>4,982 Providers</span>
-                            </div>
-                            <a href="javascript:void(0);" class="sl-category__icon"><i class="ti-arrow-right"></i></a>
-                        </div>
-                    </div>--}}
+
+                    
                 </div>
             </div>
         </section>
@@ -180,9 +94,9 @@
                 <div class="item">
                     <div class="sl-slider">
                         <figure>
-                            <a href="javascript:void(0);"><img src="{{asset('/storage/'. count($product->images) > 0 ? $product->images[0]->full : 'null')}}" alt="Image Description"></a>
-                            <a href="javascript:void(0);"><img src="{{asset(isset($product->user->profile->image))}}" alt="Image Description"></a>
-                            <a href="javascript:void(0);" class="sl-like"><i class="far fa-heart"></i></a>
+                            <a href="javascript:void(0);"><img src="{{asset('/storage/'. $product->images[0]->full)}}" alt="Image Description"></a>
+<!--                             <a href="javascript:void(0);"><img src="{{asset(isset($product->user->profile->image))}}" alt="Image Description"></a>
+ -->                            <a href="javascript:void(0);" class="sl-like"><i class="far fa-heart"></i></a>
                         </figure>
                         <div class="sl-slider__content">
                             <div class="sl-slider__header">
@@ -491,164 +405,7 @@
         </section>
         <!-- STATS END -->
         <!-- PACKAGES START -->
-        <section class="sl-main-section">
-            <div class="container">
-                <div class="row justify-content-center">
-                    <div class="col-lg-9 col-xl-8">
-                        <div class="sl-sectionHead">
-                            <div class="sl-sectionHead__title sl-below-line sl-below-line__active">
-                                <h2>{{translateText('Price You Can Afford')}}</h2>
-                            </div>
-                            <div class="sl-sectionHead__description">
-                                <p>{{translateText('Consectetur adipisicing elit sed do eiusmod tempor incididunt ut
-                                    labore et dolore magna aliqua enim adena minim veniam quis nostrud exercitation
-                                    ullamco laboris nisi ut aliquip ex ea commodo consequat')}}</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="sl-packagePlan">
-                    <div class="row">
-                        <div class="col-md-6 col-xl-4">
-                            <div class="sl-package">
-                                <div class="sl-package__title">
-                                    <img src="{{asset('frontend/images/index/packages/img-01.jpg')}}" alt="Image Description">
-                                    <h3>Basic Plan</h3>
-                                    <em>Starter Plan For Newbie</em>
-                                </div>
-                                <div class="sl-package__deal sl-bg-blue">
-                                    <div class="sl-package__price">
-                                        <h3><sup>$</sup>37</h3>
-                                        <p>\ Month</p>
-                                    </div>
-                                    <em>Includes all taxes*</em>
-                                </div>
-                                <div class="sl-package__footer">
-                                    <ul class="sl-package__details">
-                                        <li>
-                                            <p>No. Of Offer To Post</p>
-                                            <p>10</p>
-                                        </li>
-                                        <li>
-                                            <p>No. Of Featured Jobs</p>
-                                            <p class="sl-red-orange"><i class="ti-na"></i></p>
-                                        </li>
-                                        <li>
-                                            <p>Package Duration</p>
-                                            <p>30 Days</p>
-                                        </li>
-                                        <li>
-                                            <p>Best Freelancer Search</p>
-                                            <p>Yes</p>
-                                        </li>
-                                        <li>
-                                            <p>Professional Offer Template</p>
-                                            <p class="sl-red-orange"><i class="ti-na"></i></p>
-                                        </li>
-                                        <li>
-                                            <p>Free 07 Days Extension</p>
-                                            <p class="sl-red-orange"><i class="ti-na"></i></p>
-                                        </li>
-                                    </ul>
-                                    <a href="javascript:void(0)" class="btn sl-btn">Buy Now</a>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-md-6 col-xl-4">
-                            <div class="sl-package">
-                                <div class="sl-package__title">
-                                    <img src="{{asset('frontend/images/index/packages/img-02.jpg')}}" alt="Image Description">
-                                    <h3>Standard</h3>
-                                    <em>Populor Plan For Professionals</em>
-                                    <div class="sl-tag"><h6>Best Deal</h6></div>
-                                </div>
-                                <div class="sl-package__deal sl-bg-green">
-                                    <div class="sl-package__price">
-                                        <h3><sup>$</sup>79</h3>
-                                        <p>\ Month</p>
-                                    </div>
-                                    <em>Includes all taxes*</em>
-                                </div>
-                                <div class="sl-package__footer">
-                                    <ul class="sl-package__details">
-                                        <li>
-                                            <p>No. Of Offer To Post</p>
-                                            <p>10</p>
-                                        </li>
-                                        <li>
-                                            <p>No. Of Featured Jobs</p>
-                                            <p class="sl-green"><i class="ti-check"></i></p>
-                                        </li>
-                                        <li>
-                                            <p>Package Duration</p>
-                                            <p>30 Days</p>
-                                        </li>
-                                        <li>
-                                            <p>Best Freelancer Search</p>
-                                            <p>Yes</p>
-                                        </li>
-                                        <li>
-                                            <p>Professional Offer Template</p>
-                                            <p class="sl-red-orange"><i class="ti-na"></i></p>
-                                        </li>
-                                        <li>
-                                            <p>Free 07 Days Extension</p>
-                                            <p class="sl-green"><i class="ti-check"></i></p>
-                                        </li>
-                                    </ul>
-                                    <a href="javascript:void(0)" class="btn sl-btn">Buy Now</a>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-md-6 col-xl-4">
-                            <div class="sl-package">
-                                <div class="sl-package__title">
-                                    <img src="{{asset('frontend/images/index/packages/img-01.jpg')}}" alt="Image Description">
-                                    <h3>Extended</h3>
-                                    <em>Extended Plan For Managerial</em>
-                                </div>
-                                <div class="sl-package__deal sl-bg-red-orange">
-                                    <div class="sl-package__price">
-                                        <h3><sup>$</sup>199</h3>
-                                        <p>\ Month</p>
-                                    </div>
-                                    <em>Includes all taxes*</em>
-                                </div>
-                                <div class="sl-package__footer">
-                                    <ul class="sl-package__details">
-                                        <li>
-                                            <p>No. Of Offer To Post</p>
-                                            <p>10</p>
-                                        </li>
-                                        <li>
-                                            <p>No. Of Featured Jobs</p>
-                                            <p class="sl-green"><i class="ti-check"></i></p>
-                                        </li>
-                                        <li>
-                                            <p>Package Duration</p>
-                                            <p>30 Days</p>
-                                        </li>
-                                        <li>
-                                            <p>Best Freelancer Search</p>
-                                            <p>Yes</p>
-                                        </li>
-                                        <li>
-                                            <p>Professional Offer Template</p>
-                                            <p class="sl-green"><i class="ti-check"></i></p>
-                                        </li>
-                                        <li>
-                                            <p>translateText(Free 07 Days Extension)</p>
-                                            <p class="sl-green"><i class="ti-check"></i></p>
-                                        </li>
-                                    </ul>
-                                    <a href="javascript:void(0)" class="btn sl-btn">Buy Now</a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
+       
         <!-- PACKAGES END -->
         <!-- FEEDBACK START -->
         <section class="sl-feedbackBanner">
@@ -726,12 +483,15 @@
                         @php $count = 0 @endphp
                         @foreach($products as $index => $product)
                             @if($product->featured && $count < 8)
+                            
                             <div class="col-sm-6 col-lg-4 col-xl-3">
                                 <div class="sl-featuredProducts--post">
+                                    
                                     <figure>
-                                        <img src="{{asset('/storage/'. count($product->images) > 0 ? $product->images[0]->full : 'null')}}" alt="Image Description">
+                                        <img src="{{asset('storage/'.$product->images[0]->full)}}" alt="Image Description">
                                         <figcaption>
                                             <div class="sl-slider__tags">
+                                    
 {{--                                                <span class="sl-bg-red-orange">10% OFF</span>--}}
                                             </div>
                                             <a href="javascript:void(0);" class="sl-liked"><i class="far fa-heart"></i></a>

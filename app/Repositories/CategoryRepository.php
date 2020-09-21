@@ -9,7 +9,7 @@ use App\Contracts\CategoryContract;
 use Illuminate\Database\QueryException;
 use Illuminate\Database\Eloquent\ModelNotFoundException;
 use Doctrine\Instantiator\Exception\InvalidArgumentException;
-
+use Auth;
 /**
  * Class CategoryRepository
  *
@@ -74,8 +74,8 @@ class CategoryRepository extends BaseRepository implements CategoryContract
 
             $featured = $collection->has('featured') ? 1 : 0;
             $menu = $collection->has('menu') ? 1 : 0;
-
-            $merge = $collection->merge(compact('menu', 'image', 'featured'));
+            $user_id = Auth::user()->id;
+            $merge = $collection->merge(compact('menu', 'image', 'featured','user_id'));
 
             $category = new Category($merge->all());
 
