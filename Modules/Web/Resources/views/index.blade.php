@@ -33,7 +33,7 @@
                                 <a href="{{route('web.category.show', ['slug' => $category->slug])}}">
                                     <h5>{{ translateText($category->name) }}</h5>
                                 </a>
-                                <span>{{translateText('0 Providers')}}</span>
+                                <span>{{translateText('Providers')}}</span>
                             </div>
                             <a href="{{route('web.category.show', ['slug' => $category->slug])}}" class="sl-category__icon"><i class="ti-arrow-right"></i></a>
                         </div>
@@ -45,6 +45,7 @@
                 </div>
             </div>
         </section>
+
         <!-- CATEGORY END -->
         <!-- COMMUNITY START -->
         <section>
@@ -71,6 +72,7 @@
                 </div>
             </div>
         </section>
+
         <!-- COMMUNITY END -->
         <!-- SERVICE PROVIDER START -->
         <section class="sl-main-section">
@@ -136,6 +138,7 @@
                 @endforeach
             </div>
         </section>
+
         <!-- SERVICE PROVIDER END -->
         <!-- STATS START -->
         <section>
@@ -234,6 +237,7 @@
             </div>
         </section>
         <!-- FEEDBACK END -->
+
         <!-- FEATURED PRODUCTS START -->
         <section class="sl-main-section">
             <div class="container">
@@ -277,9 +281,10 @@
                                             </a>
                                         </div>
                                         <div class="sl-featuredProducts--post__price">
-                                            <h5>{{translateText($product->sale_price)}}</h5>
-                                            <h6>{{translateText($product->price)}}</h6>
+                                            <h5>{{$product->sale_price}}</h5>
+                                            <h6>{{$product->price}}</h6>
                                         </div>
+                                        
                                         <div class="sl-featureRating">
                                             <span class="sl-featureRating__stars"><span></span></span>
                                             <em>{{translateText('(1887 Feedback)')}}</em>
@@ -293,230 +298,7 @@
                             @endif
                         @endforeach
 
-                        {{--<div class="col-sm-6 col-lg-4 col-xl-3">
-                            <div class="sl-featuredProducts--post">
-                                <figure>
-                                    <img src="{{asset('frontend/images/index/featured-products/img-01.jpg')}}" alt="Image Description">
-                                    <figcaption>
-                                        <div class="sl-slider__tags">
-                                            <span class="sl-bg-red-orange">25% OFF</span>
-                                        </div>
-                                        <a href="javascript:void(0);"><i class="far fa-heart"></i></a>
-                                    </figcaption>
-                                </figure>
-                                <div class="sl-featuredProducts--post__content">
-                                    <div class="sl-featuredProducts--post__title">
-                                        <h6>Phanteks 614LTG special edition</h6>
-                                    </div>
-                                    <div class="sl-featuredProducts--post__price">
-                                        <h5>$212.30</h5>
-                                        <h6>$220.30</h6>
-                                    </div>
-                                    <div class="sl-featureRating">
-                                        <span class="sl-featureRating__stars"><span></span></span>
-                                        <em>(1887 Feedback)</em>
-                                    </div>
-                                    <em>By: <a href="javascript:void(0);">Onfleek Gaming Zone</a></em>
-                                    <button class="btn sl-btn">Add To Cart</button>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-sm-6 col-lg-4 col-xl-3">
-                            <div class="sl-featuredProducts--post">
-                                <figure>
-                                    <img src="{{asset('frontend/images/index/featured-products/img-02.jpg')}}" alt="Image Description">
-                                    <figcaption>
-                                        <div class="sl-slider__tags">
-                                            <span class="sl-bg-red-orange">10% OFF</span>
-                                        </div>
-                                        <a href="javascript:void(0);" class="sl-liked"><i class="far fa-heart"></i></a>
-                                    </figcaption>
-                                </figure>
-                                <div class="sl-featuredProducts--post__content">
-                                    <div class="sl-featuredProducts--post__title">
-                                        <h6>Linkwow 3 Outlet Power Strip</h6>
-                                    </div>
-                                    <div class="sl-featuredProducts--post__price">
-                                        <h5>$12.19</h5>
-                                        <h6>$19.99</h6>
-                                    </div>
-                                    <div class="sl-featureRating">
-                                        <span class="sl-featureRating__stars"><span></span></span>
-                                        <em>(1887 Feedback)</em>
-                                    </div>
-                                    <em>By: <a href="javascript:void(0);">Techsol Bros.</a></em>
-                                    <button class="btn sl-btn">Add To Cart</button>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-sm-6 col-lg-4 col-xl-3">
-                            <div class="sl-featuredProducts--post">
-                                <figure>
-                                    <img src="{{asset('frontend/images/index/featured-products/img-03.jpg')}}" alt="Image Description">
-                                    <figcaption>
-                                        <div class="sl-slider__tags">
-                                            <span class="sl-bg-red-orange">50% OFF</span>
-                                        </div>
-                                        <a href="javascript:void(0);" class="sl-liked"><i class="far fa-heart"></i></a>
-                                    </figcaption>
-                                </figure>
-                                <div class="sl-featuredProducts--post__content">
-                                    <div class="sl-featuredProducts--post__title">
-                                        <h6>Nub's Adventures Jailbreak</h6>
-                                    </div>
-                                    <div class="sl-featuredProducts--post__price">
-                                        <h5>$26.40</h5>
-                                        <h6>$30.50</h6>
-                                    </div>
-                                    <div class="sl-featureRating">
-                                        <span class="sl-featureRating__stars"><span></span></span>
-                                        <em>(1887 Feedback)</em>
-                                    </div>
-                                    <em>By: <a href="javascript:void(0);">Catepilar Fleet</a></em>
-                                    <button class="btn sl-btn">Add To Cart</button>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-sm-6 col-lg-4 col-xl-3">
-                            <div class="sl-featuredProducts--post">
-                                <figure>
-                                    <img src="{{asset('frontend/images/index/featured-products/img-04.jpg')}}" alt="Image Description">
-                                    <figcaption>
-                                        <div class="sl-slider__tags">
-                                            <span class="sl-bg-red-orange">12% OFF</span>
-                                        </div>
-                                        <a href="javascript:void(0);"><i class="far fa-heart"></i></a>
-                                    </figcaption>
-                                </figure>
-                                <div class="sl-featuredProducts--post__content">
-                                    <div class="sl-featuredProducts--post__title">
-                                        <h6>Kensington Contour 2.0 Backpack</h6>
-                                    </div>
-                                    <div class="sl-featuredProducts--post__price">
-                                        <h5>$12.19</h5>
-                                        <h6>$19.99</h6>
-                                    </div>
-                                    <div class="sl-featureRating">
-                                        <span class="sl-featureRating__stars"><span></span></span>
-                                        <em>(1887 Feedback)</em>
-                                    </div>
-                                    <em>By: <a href="javascript:void(0);">Bags & Bags Co.</a></em>
-                                    <button class="btn sl-btn">Add To Cart</button>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-sm-6 col-lg-4 col-xl-3">
-                            <div class="sl-featuredProducts--post">
-                                <figure>
-                                    <img src="{{asset('frontend/images/index/featured-products/img-05.jpg')}}" alt="Image Description">
-                                    <figcaption>
-                                        <div class="sl-slider__tags">
-                                            <span class="sl-bg-red-orange">25% OFF</span>
-                                        </div>
-                                        <a href="javascript:void(0);"><i class="far fa-heart"></i></a>
-                                    </figcaption>
-                                </figure>
-                                <div class="sl-featuredProducts--post__content">
-                                    <div class="sl-featuredProducts--post__title">
-                                        <h6>Digitus USB2.0 Serial Adapter</h6>
-                                    </div>
-                                    <div class="sl-featuredProducts--post__price">
-                                        <h5>$8.50</h5>
-                                        <h6>$19.99</h6>
-                                    </div>
-                                    <div class="sl-featureRating">
-                                        <span class="sl-featureRating__stars"><span></span></span>
-                                        <em>(1887 Feedback)</em>
-                                    </div>
-                                    <em>By: <a href="javascript:void(0);">Connecto Zolio</a></em>
-                                    <button class="btn sl-btn">Add To Cart</button>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-sm-6 col-lg-4 col-xl-3">
-                            <div class="sl-featuredProducts--post">
-                                <figure>
-                                    <img src="{{asset('frontend/images/index/featured-products/img-06.jpg')}}" alt="Image Description">
-                                    <figcaption>
-                                        <div class="sl-slider__tags">
-                                            <span class="sl-bg-red-orange">25% OFF</span>
-                                        </div>
-                                        <a href="javascript:void(0);"><i class="far fa-heart"></i></a>
-                                    </figcaption>
-                                </figure>
-                                <div class="sl-featuredProducts--post__content">
-                                    <div class="sl-featuredProducts--post__title">
-                                        <h6>Poppin Mouse Pad - Lime Green</h6>
-                                    </div>
-                                    <div class="sl-featuredProducts--post__price">
-                                        <h5>$19.79</h5>
-                                        <h6>$30.50</h6>
-                                    </div>
-                                    <div class="sl-featureRating">
-                                        <span class="sl-featureRating__stars"><span></span></span>
-                                        <em>(1887 Feedback)</em>
-                                    </div>
-                                    <em>By: <a href="javascript:void(0);">Office Mentor</a></em>
-                                    <button class="btn sl-btn">Add To Cart</button>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-sm-6 col-lg-4 col-xl-3">
-                            <div class="sl-featuredProducts--post">
-                                <figure>
-                                    <img src="{{asset('frontend/images/index/featured-products/img-07.jpg')}}" alt="Image Description">
-                                    <figcaption>
-                                        <div class="sl-slider__tags">
-                                            <span class="sl-bg-red-orange">50% OFF</span>
-                                        </div>
-                                        <a href="javascript:void(0);"><i class="far fa-heart"></i></a>
-                                    </figcaption>
-                                </figure>
-                                <div class="sl-featuredProducts--post__content">
-                                    <div class="sl-featuredProducts--post__title">
-                                        <h6>Fractal Design Define R6 PC Case</h6>
-                                    </div>
-                                    <div class="sl-featuredProducts--post__price">
-                                        <h5>$171.51</h5>
-                                        <h6>$180.99</h6>
-                                    </div>
-                                    <div class="sl-featureRating">
-                                        <span class="sl-featureRating__stars"><span></span></span>
-                                        <em>(1887 Feedback)</em>
-                                    </div>
-                                    <em>By: <a href="javascript:void(0);">Die Hard Gaming</a></em>
-                                    <button class="btn sl-btn">Add To Cart</button>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-sm-6 col-lg-4 col-xl-3">
-                            <div class="sl-featuredProducts--post">
-                                <figure>
-                                    <img src="{{asset('frontend/images/index/featured-products/img-08.jpg')}}" alt="Image Description">
-                                    <figcaption>
-                                        <div class="sl-slider__tags">
-                                            <span class="sl-bg-red-orange">12% OFF</span>
-                                        </div>
-                                        <a href="javascript:void(0);" class="sl-liked"><i class="far fa-heart"></i></a>
-                                    </figcaption>
-                                </figure>
-                                <div class="sl-featuredProducts--post__content">
-                                    <div class="sl-featuredProducts--post__title">
-                                        <h6>Thermaltake Pure ARGB Sync Case</h6>
-                                    </div>
-                                    <div class="sl-featuredProducts--post__price">
-                                        <h5>$44.36</h5>
-                                        <h6>$19.99</h6>
-                                    </div>
-                                    <div class="sl-featureRating">
-                                        <span class="sl-featureRating__stars"><span></span></span>
-                                        <em>(1887 Feedback)</em>
-                                    </div>
-                                    <em>By: <a href="javascript:void(0);">Infloz Corporation</a></em>
-                                    <button class="btn sl-btn">Add To Cart</button>
-                                </div>
-                            </div>
-                        </div>--}}
+                        
                     </div>
                 </div>
             </div>
