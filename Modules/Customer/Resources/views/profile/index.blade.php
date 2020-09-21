@@ -21,8 +21,9 @@
                                                           stroke-dasharray="90, 100" d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831"/>
                                                 </svg>
                                                 <span class="sl-percentage">80% Profile Completed</span>
+
                                                 <figure class="sl-userprofileimg">
-                                                    <img src="{{asset(isset($user->profile->image))}}" alt="img description">
+                                                    <img src="{{asset('frontend/images/insight/profile.jpg')}}" alt="img description">
                                                 </figure>
                                             </div>
                                             <div class="sl-title">
@@ -38,70 +39,13 @@
                                         </div>
                                         <nav id="sl-navdashboard" class="sl-navdashboard">
                                             <ul>
-                                                <li>
-                                                    <a href="dashboard-insight.html">
-                                                        <i class="ti-dashboard"></i><span>Insights</span>
-                                                    </a>
-                                                </li>
-                                                <li>
-                                                    <a href="dashboard-vendor.html">
-                                                        <i class="ti-shopping-cart"></i><span>Vendors</span>
-                                                    </a>
-                                                </li>
-                                                <li class="menu-item-has-children page_item_has_children">
-                                                    <a href="javascript:void(0);" class="sl-notification sl-noticolor1">
-                                                        <i class="ti-star"></i><span>Manage Appointments</span>
-                                                    </a>
-                                                    <ul class="sub-menu">
-                                                        <li><a href="dashboard-appointment-single.html">Appointment Single</a></li>
-                                                        <li><a href="dashboard-all-appointment.html">All Appointment</a></li>
-                                                        <li><a href="dashboard-manage-time-slots.html">Manage Time Slots</a></li>
-                                                        <li><a href="dashboard-manage-services.html">Manage Services &amp; Prices</a></li>
-                                                    </ul>
-                                                </li>
+                                                
                                                 <li class="sl-active">
-                                                    <a href="dashboard-profile-settings.html">
+                                                    <a href="{{route('customer.profile')}}">
                                                         <i class="ti-user"></i><span>Profile Settings</span>
                                                     </a>
                                                 </li>
-                                                <li class="menu-item-has-children page_item_has_children">
-                                                    <a href="javascript:void(0);">
-                                                        <i class="ti-bookmark-alt"></i><span>Manage Articles</span>
-                                                    </a>
-                                                    <ul class="sub-menu">
-                                                        <li><a href="dashboard-article-list.html">Articles List</a></li>
-                                                        <li><a href="dashboard-add-new-article.html">Add New Articles</a></li>
-                                                    </ul>
-                                                </li>
-                                                <li>
-                                                    <a href="dashboard-inbox.html">
-                                                        <i class="ti-email"></i><span>inbox</span>
-                                                    </a>
-                                                </li>
-                                                <li class="menu-item-has-children page_item_has_children">
-                                                    <a href="javascript:void(0);">
-                                                        <i class="ti-layers"></i><span>Packages &amp; Payouts</span>
-                                                    </a>
-                                                    <ul class="sub-menu">
-                                                        <li><a href="dashboard-buy-package.html">Packages</a></li>
-                                                        <li><a href="dashboard-all-payouts.html">Payouts</a></li>
-                                                    </ul>
-                                                </li>
-                                                <li>
-                                                    <a href="dashboard-my-favorites.html">
-                                                        <i class="ti-heart"></i><span>My Favorites</span>
-                                                    </a>
-                                                </li>
-                                                <li>
-                                                    <a href="dashboard-notifications.html">
-                                                        <i class="ti-bell"></i><span>Notifications</span>
-                                                    </a>
-                                                </li>
-                                                <li>
-                                                    <a href="dashboard-accountprivacy.html">
-                                                        <i class="ti-lock"></i><span>Account &amp; Privacy</span>
-                                                    </a>
-                                                </li>
+                                                
                                                 <li>
                                                     <a href="{{ route('logout') }}"
                                                        onclick="event.preventDefault();

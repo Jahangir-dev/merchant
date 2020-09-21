@@ -2,10 +2,10 @@
 <header>
     <div class="sl-main-header">
         <strong class="sl-main-header__logo">
-            <a href="{{route('web.index')}}"><img src="{{asset('frontend/images/main-logo.png')}}" alt="Logo"></a>
+            <a href="{{route('web.index')}}"><!-- <img src="{{asset('frontend/images/main-logo.png')}}" alt="Logo"> -->Logo Here</a>
         </strong>
-        Language:
-        <select name="target" class="target">
+        
+        <select name="target" class="target form-control">
             <option>Select</option>
             <option value="en" @if(Session::get("target") == "en") selected="selected" @endif>English</option>
             <option value="zh-CN" @if(Session::get("target") == "zh-CN") selected="selected" @endif>Chinese</option>
@@ -884,167 +884,9 @@
                                 </div>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" href="aboutus.html">About</a>
+                                <a class="nav-link" href="">About</a>
                             </li>
-                            <li class="menu-item-has-mega-menu mega-menu-nav-pages">
-                                <a href="javascript:void(0);">Service Providers</a>
-                                <div class="mega-menu">
-                                    <ul class="mega-menu-row">
-                                        <li class="mega-menu-col">
-                                            <ul>
-                                                <li class="mega-menu-title"><h3>Graphic &amp; Design</h3></li>
-                                                <li><a href="service-provider.html">Logo Design</a></li>
-                                                <li><a href="service-provider.html">Brand Style Guides<i class="sl-menutag sl-menutagnew">NEW</i></a></li>
-                                                <li><a href="service-provider.html">Game Design<i class="sl-menutag sl-menutagnew">NEW</i></a></li>
-                                                <li><a href="service-provider.html">Graphics for Streamers</a></li>
-                                                <li><a href="service-provider.html">Illustration</a></li>
-                                                <li><a href="service-provider.html"><i class="sl-menutag sl-menutaghot">hot</i>Brochure Design</a></li>
-                                                <li><a href="service-provider.html">Poster Design</a></li>
-                                                <li><a href="service-provider.html">Flyer Design</a></li>
-                                                <li><a href="service-provider.html">Book & Album Covers</a></li>
-                                            </ul>
-                                            <ul>
-                                                <li class="mega-menu-title"><h3>Business</h3></li>
-                                                <li><a href="service-provider.html">Virtual Assistant</a></li>
-                                                <li><a href="service-provider.html">Data Entry</a></li>
-                                                <li><a href="service-provider.html">Market Research</a></li>
-                                                <li><a href="service-provider.html">Product Research</a></li>
-                                                <li><a href="service-provider.html">Presentations</a></li>
-                                            </ul>
-                                        </li>
-                                        <li class="mega-menu-col">
-                                            <ul>
-                                                <li class="mega-menu-title"><h3>Digital Marketing</h3></li>
-                                                <li><a href="service-provider.html">Social Media Marketing</a></li>
-                                                <li><a href="service-provider.html">Content Marketing</a></li>
-                                                <li><a href="service-provider.html">Video Marketing</a></li>
-                                                <li><a href="service-provider.html">Email Marketing</a></li>
-                                                <li><a href="service-provider.html">Crowdfunding</a></li>
-                                            </ul>
-                                            <ul>
-                                                <li class="mega-menu-title"><h3>Writing &amp; Translation</h3></li>
-                                                <li><a href="service-provider.html">Articles &amp; Blog Posts</a></li>
-                                                <li><a href="service-provider.html">Resumes &amp; Cover Letters<i class="sl-menutag sl-menutaghot">hot</i></a></li>
-                                                <li><a href="service-provider.html">Technical Writing</a></li>
-                                                <li><a href="service-provider.html">Translation<i class="sl-menutag sl-menutagnew">New</i></a></li>
-                                            </ul>
-                                            <ul>
-                                                <li class="mega-menu-title"><h3>Lifestyle</h3></li>
-                                                <li><a href="service-provider.html">Online Lessons</a></li>
-                                                <li><a href="service-provider.html">Arts &amp; Crafts</a></li>
-                                                <li><a href="service-provider.html">Relationship Advice</a></li>
-                                                <li><a href="service-provider.html">Health, Nutrition &amp; Fitness</a></li>
-                                            </ul>
-                                        </li>
-                                        <li class="mega-menu-col">
-                                            <ul>
-                                                <li class="mega-menu-title"><h3>Video &amp; Animation</h3></li>
-                                                <li><a href="service-provider.html">Animated Explainers</a></li>
-                                                <li><a href="service-provider.html">Video Editing<i class="sl-menutag sl-menutagnew">NEW</i></a></li>
-                                                <li><a href="service-provider.html">Short Video Ads</a></li>
-                                                <li><a href="service-provider.html">Animated GIFs</a></li>
-                                                <li><a href="service-provider.html">Logo Animation</a></li>
-                                                <li><a href="service-provider.html">Intros &amp; Outros</a></li>
-                                                <li><a href="service-provider.html">Live Action Explainers</a></li>
-                                                <li><a href="service-provider.html">Character Animation</a></li>
-                                                <li><a href="service-provider.html">3D Product Animation</a></li>
-                                                <li><a href="service-provider.html">Lyric & Music Videos</a></li>
-                                                <li><a href="service-provider.html">Spokespersons Videos</a></li>
-                                            </ul>
-                                            <ul>
-                                                <li class="mega-menu-title"><h3>Marketplace Listing</h3></li>
-                                                <li><a href="service-provider.html">Product Descriptions<i class="sl-menutag sl-menutaghot">hot</i></a></li>
-                                                <li><a href="service-provider.html">Product Photography</a></li>
-                                                <li><a href="service-provider.html">Product Research</a></li>
-                                            </ul>
-                                        </li>
-                                        <li class="mega-menu-col">
-                                            <ul>
-                                                <li class="mega-menu-title"><h3>Programming &amp; Tech</h3></li>
-                                                <li><a href="service-provider.html">WordPress</a></li>
-                                                <li><a href="service-provider.html">Website Builders &amp; CMS</a></li>
-                                                <li><a href="service-provider.html">Game Development</a></li>
-                                                <li><a href="service-provider.html">Web Programming</a></li>
-                                                <li><a href="service-provider.html">E-Commerce Development</a></li>
-                                                <li><a href="service-provider.html"><i class="sl-menutag sl-menutaghot">hot</i>Mobile Apps &amp; Web</a></li>
-                                                <li><a href="service-provider.html">Desktop applications</a></li>
-                                                <li><a href="service-provider.html">Support &amp; IT</a></li>
-                                                <li><a href="service-provider.html">Chatbots</a></li>
-                                                <li><a href="service-provider.html">Data Analysis &amp; Reports</a></li>
-                                                <li><a href="service-provider.html">Convert Files</a></li>
-                                                <li><a href="service-provider.html">Databases</a></li>
-                                            </ul>
-                                            <ul>
-                                                <li class="mega-menu-title"><h3>Game Creation</h3></li>
-                                                <li><a href="service-provider.html">Game Development</a></li>
-                                                <li><a href="service-provider.html">Producers &amp; Composers</a></li>
-                                            </ul>
-                                        </li>
-                                    </ul>
-                                </div>
-                            </li>
-                            <li class="nav-item">
-                                <a href="vendor-single.html">Vendor Products</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link" href="contact.html">Contact</a>
-                            </li>
-                            <li class="nav-item sl-dropdown">
-                                <a href="javascript:void(0);">Page</a>
-                                <ul class="sl-dropdown__menu">
-                                    <li class="nav-item">
-                                        <a href="legalprivacy.html">legal Privacy</a>
-                                    </li>
-                                    <li class="menu-item-has-children page_item_has_children">
-                                        <a href="javascript:void(0);">Product</a>
-                                        <ul class="sub-menu">
-                                            <li>
-                                                <a href="product-single.html">Product Single</a>
-                                            </li>
-                                            <li class="current-menu-item">
-                                                <a href="search-result-products.html">Search Result Products</a>
-                                            </li>
-                                        </ul>
-                                    </li>
-                                    <li class="menu-item-has-children page_item_has_children">
-                                        <a href="javascript:void(0);">Blog</a>
-                                        <ul class="sub-menu">
-                                            <li>
-                                                <a href="blog-list.html">Blog list</a>
-                                            </li>
-                                            <li class="current-menu-item">
-                                                <a href="blog-grid.html">Blog Grid</a>
-                                            </li>
-                                            <li>
-                                                <a href="blog-single.html">Blog Single</a>
-                                            </li>
-                                        </ul>
-                                    </li>
-                                    <li class="menu-item-has-children page_item_has_children">
-                                        <a href="javascript:void(0);">Service</a>
-                                        <ul class="sub-menu">
-                                            <li>
-                                                <a href="service-provider.html">Service Provider</a>
-                                            </li>
-                                            <li class="current-menu-item">
-                                                <a href="service-provider-single.html">Service Provider Single</a>
-                                            </li>
-                                        </ul>
-                                    </li>
-                                    <li class="nav-item">
-                                        <a href="vendor-become.html">Vendor Become</a>
-                                    </li>
-                                    <li class="nav-item">
-                                        <a href="register.html">Register</a>
-                                    </li>
-                                    <li class="nav-item">
-                                        <a href="comingsoon.html">Comingsoon</a>
-                                    </li>
-                                    <li class="nav-item">
-                                        <a href="404.html">404 Error</a>
-                                    </li>
-                                </ul>
-                            </li>
+                            
                         </ul>
                     </div>
                 </nav>

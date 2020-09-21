@@ -10,7 +10,7 @@
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>BootStrap HTML5 CSS3 Theme</title>
+    <title>Groupon Hk</title>
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="apple-touch-icon" href="{{asset('frontend/apple-touch-icon.html')}}">
@@ -193,8 +193,9 @@
                             <figure class="sl-registercontent__img">
                                 <img src="{{asset('frontend/images/register/img-01.jpg')}}" alt="img">
                                 <figcaption>
-                                    <strong class="sl-registerlogo">
-                                        <a href="index.html"><img src="{{asset('frontend/images/register/logo.png')}}" alt="Images Description"></a>
+                                    <strong class="sl-registerlogo" style="color: #fff; font-size: 18px;">
+                                        <!-- <a href="index.html"><img src="{{asset('frontend/images/register/logo.png')}}" alt="Images Description"></a> -->
+                                        <a href="{{url('/')}}">Logo Here</a>
                                     </strong>
                                     <div class="sl-registertitle">
                                         <h4>{{translateText('We’re Spreading Day by Day')}}</h4>

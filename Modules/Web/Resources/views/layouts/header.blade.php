@@ -1,8 +1,8 @@
 <!-- HEADER START -->
 <header>
     <div class="sl-main-header">
-        <strong class="sl-main-header__logo">
-            <a href="{{route('web.index')}}"><img src="{{asset('frontend/images/main-logo.png')}}" alt="Logo"></a>
+        <strong class="sl-main-header__logo" style="color:#fff;">
+            <a href="{{route('web.index')}}"><!-- <img src="{{asset('frontend/images/main-logo.png')}}" alt="Logo"> --> Logo Here</a>
         </strong>
         <div class="sl-main-header__content">
             <div class="sl-main-header__upper">
@@ -355,10 +355,10 @@
                                                             </div>
                                                             <div class="sl-productsinfo">
                                                                 <div class="sl-dropdown__cart">
-                                                                    <div class="sl-productsinfo__title">
+                                                                    <!-- <div class="sl-productsinfo__title">
                                                                         <h6>Audio and Television</h6>
                                                                         <a href="vendor-single.html">{{translateText('Show All')}}</a>
-                                                                    </div>
+                                                                    </div> -->
                                                                     <ul>
                                                                         @foreach($category->products as $index => $product)
                                                                             <li>
