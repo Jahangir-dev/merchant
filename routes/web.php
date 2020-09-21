@@ -33,7 +33,7 @@ Route::namespace('Auth')->group(function() {
 Route::namespace("Admin")->prefix('admin')->group(function() {
 
 	Route::get('/profile', 'HomeController@myProfile')->name('admin.profile');
-	
+
 	Route::post('/myprofile/update/{id}', 'HomeController@updateProfile')->name('admin.myprofile.update');
 
 	Route::get('/ip', 'IPAddressController@index')->name('admin.ip');

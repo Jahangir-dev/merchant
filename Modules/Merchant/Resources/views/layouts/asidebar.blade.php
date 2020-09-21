@@ -55,6 +55,15 @@
                                     <li><a href="{{route('merchant.deals.create')}}">{{translateText('Create Coupons')}}</a></li>
                                 </ul>
                             </li>
+                            <li class="menu-item-has-children page_item_has_children">
+                                <a href="javascript:void(0);" class="sl-notification sl-noticolor1">
+                                    <i class="ti-star"></i><span>Manage {{translateText('Products')}}</span>
+                                </a>
+                                <ul class="sub-menu" style="{{ (\Request::route()->getName() == 'merchant.products') ? 'display: block'  : (\Request::route()->getName() == 'merchant.products.create') ? 'display: block' : '' }}">
+                                    <li><a href="{{route('merchant.products')}}">{{translateText('Product')}}</a></li>
+                                    <li><a href="{{route('merchant.products.create')}}">{{translateText('Create Products')}}</a></li>
+                                </ul>
+                            </li>
                         </ul>
                     </nav>
                 </div>

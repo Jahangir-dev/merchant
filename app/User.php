@@ -72,4 +72,5 @@ class User extends Authenticatable implements MustVerifyEmail
         return $this->hasMany('App\Models\Brand', 'user_id', 'id');
     }
 
+
 }

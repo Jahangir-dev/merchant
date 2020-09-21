@@ -5,7 +5,7 @@ Route::group(['prefix'  =>  'admin'], function () {
     Route::get('login', 'Admin\LoginController@showLoginForm')->name('admin.login');
     Route::post('login', 'Admin\LoginController@login')->name('admin.login.post');
     Route::get('logout', 'Admin\LoginController@logout')->name('admin.logout');
-    
+
 
     Route::group(['middleware' => ['auth:admin']], function () {
 
@@ -76,7 +76,7 @@ Route::group(['prefix'  =>  'admin'], function () {
         });
 
         Route::get('/profile', 'Admin\HomeController@myProfile')->name('admin.profile');
-  
+
   Route::post('/myprofile/update/{id}', 'Admin\HomeController@updateProfile')->name('admin.myprofile.update');
 
   Route::get('/ip', 'Admin\IPAddressController@index')->name('admin.ip');
@@ -88,7 +88,7 @@ Route::group(['prefix'  =>  'admin'], function () {
   Route::get('/user/block/ip/{id}', 'Admin\HomeController@userIpBlock')->name('admin.user.block.ip');
   Route::get('/user/unblock/ip/{id}', 'Admin\HomeController@userIpUnBlock')->name('admin.user.unblock.ip');
 
-  
+
 
   Route::get('/merchants', 'Admin\HomeController@merchantsList')->name('admin.merchants.list');
   Route::get('/merchants/edit/{id}', 'Admin\HomeController@edit')->name('admin.merchants.edit');
