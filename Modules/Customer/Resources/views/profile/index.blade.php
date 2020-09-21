@@ -82,7 +82,7 @@
                         <div class="sl-tab sl-profileSetting">
                             <nav class="nav">
                                 <div class="nav nav-tabs" id="nav-tab" role="tablist">
-                                    <a class="nav-item nav-link active" id="nav-companyDetail-tab" data-toggle="tab" href="#nav-companyDetail" role="tab" aria-controls="nav-companyDetail" aria-selected="true">Basic/Company Detail</a>
+                                    <a class="nav-item nav-link active" id="nav-companyDetail-tab" data-toggle="tab" href="#nav-companyDetail" role="tab" aria-controls="nav-companyDetail" aria-selected="true">Basic/profile Detail</a>
                                     <a class="nav-item nav-link" id="nav-aboutDescription-tab" data-toggle="tab" href="#nav-aboutDescription" role="tab" aria-controls="nav-aboutDescription" aria-selected="true">About Description</a>
 {{--                                    <a class="nav-item nav-link" id="nav-experience-tab" data-toggle="tab" href="#nav-experience" role="tab" aria-controls="nav-experience" aria-selected="true">Experience & Awards</a>--}}
 {{--                                    <a class="nav-item nav-link" id="nav-gallery-tab" data-toggle="tab" href="#nav-gallery" role="tab" aria-controls="nav-gallery" aria-selected="true">Audio Video Gallery</a>--}}
@@ -101,7 +101,7 @@
                                                     <div class="form-group form-group-half">
                                                         <input class="form-control sl-form-control" name="last_name" value="{{$user->last_name}}" type="text" placeholder="Last Name*">
                                                     </div>
-                                                    <div class="form-group form-group-half">
+                                                    <!-- <div class="form-group form-group-half">
                                                         <label class="sl-profileSetting__toltip">
                                                             <input class="form-control sl-form-control" name="company_name" value="{{isset($user->profile->company_name)}}" type="text" placeholder="Company Title">
                                                             <i class="ti-help-alt toltip-content" data-tipso="name"></i>
@@ -112,7 +112,7 @@
                                                             <input class="form-control sl-form-control" name="slogan" value="{{isset($user->profile->slogan)}}" type="text" placeholder="Add Slogan Here">
                                                             <i class="ti-help-alt toltip-content" data-tipso="name"></i>
                                                         </label>
-                                                    </div>
+                                                    </div> -->
                                                     <div class="form-group form-group-half">
                                                         <input class="form-control sl-form-control" name="phone_number" value="{{isset($user->profile->phone_number)}}" type="number" placeholder="Phone">
                                                     </div>
@@ -122,9 +122,9 @@
                                                     <div class="form-group form-group-half">
                                                         <input class="form-control sl-form-control" name="mobile" value="{{isset($user->profile->mobile)}}" type="number" placeholder="Mobile">
                                                     </div>
-                                                    <div class="form-group form-group-half">
+                                                    <!-- <div class="form-group form-group-half">
                                                         <input class="form-control sl-form-control" name="website" value="{{isset($user->profile->website)}}" type="text" placeholder="Website Url">
-                                                    </div>
+                                                    </div> -->
                                                     {{--<div class="form-group sl-profileSetting__socialmedia">
                                                         <label class="sl-input-group sl-facebook">
                                                             <a class="sl-prepend" href="javascript:void(0);"><i class="fab fa-facebook-f"></i></a>
