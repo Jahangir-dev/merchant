@@ -6,7 +6,8 @@
             <div class="container">
                 <div class="row">
                     @include('merchant::layouts.asidebar')
-                                            
+                                              <nav id="sl-navdashboard" class="sl-navdashboard">
+                                            <ul>
                                                 <li>
                                                     <a href="{{ route('logout') }}"
                                                        onclick="event.preventDefault();

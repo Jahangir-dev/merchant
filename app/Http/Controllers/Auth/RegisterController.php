@@ -92,6 +92,7 @@ class RegisterController extends Controller
             'gender' => $data['gender'],
 
         ]);
+        notify()->success('User Created Successfully');
         $user->profile()->save($profile);
         return $user;
     }
@@ -99,6 +100,7 @@ class RegisterController extends Controller
 
     protected function createMerchent(Request $request)
     {
+        
         User::create([
             'first_name' => $request['first_name'],
             'last_name' => $request['last_name'],
@@ -107,6 +109,7 @@ class RegisterController extends Controller
             'ip_address' => \Request::ip(),
             'password' => Hash::make($request['password']),
         ]);
+        notify()->success('Merchant Updated Successfully');
         return redirect()->route('merchant.login');
     }
 
