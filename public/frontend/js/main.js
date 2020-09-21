@@ -427,6 +427,10 @@ if (toltip_content !== null) {
     placeholder: "Select Categories(s)",
     allowClear: true
   });
+	$('#sl-products').select2({
+    placeholder: "Select Products(s)",
+    allowClear: true
+  });
 	$('#sl-ameneties').select2({
     placeholder: "Select Ameneties & Features",
     allowClear: true

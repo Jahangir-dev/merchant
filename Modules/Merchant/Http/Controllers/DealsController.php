@@ -3,6 +3,7 @@
 namespace Modules\Merchant\Http\Controllers;
 
 use App\Deal;
+use App\Models\Product;
 use App\User;
 use Gabievi\Promocodes\Facades\Promocodes;
 use Illuminate\Contracts\Support\Renderable;
@@ -30,8 +31,9 @@ class DealsController extends Controller
      */
     public function create()
     {
+        $products = Product::where('user_id', Auth::id())->get();
         $user = User::where('id', Auth::id())->first();
-        return view('merchant::deals.create', compact('user'));
+        return view('merchant::deals.create', compact('user', 'products'));
     }
 
     /**
@@ -61,6 +63,13 @@ class DealsController extends Controller
                 'user_id' => Auth::id(),
                 'promo' => $promo['code'],
             ]);
+            foreach ($request['products'] as $product) {
+                DB::table('promocodes_products')->insert([
+                    'product_id' => $product,
+                    'promocode' => $promo['code'],
+                ]);
+            }
+
         }
         notify()->success('Coupon Generated Successfully!');
         return redirect()->route('merchant.deals');
