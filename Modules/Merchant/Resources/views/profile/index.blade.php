@@ -6,27 +6,7 @@
             <div class="container">
                 <div class="row">
                     @include('merchant::layouts.asidebar')
-                                              <nav id="sl-navdashboard" class="sl-navdashboard">
-                                            <ul>
-                                                <li>
-                                                    <a href="{{ route('logout') }}"
-                                                       onclick="event.preventDefault();
-                                                     document.getElementById('logout-form').submit();">
-                                                        <i class="ti-key"></i><span>{{ translateText('Logout') }}</span>
-                                                    </a>
-                                                    <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
-                                                        @csrf
-                                                    </form>
 
-                                                </li>
-                                            </ul>
-                                        </nav>
-                                    </div>
-                                   
-                                </div>
-                            </div>
-                        </aside>
-                    </div>
                     <div class="col-lg-8 col-xl-9">
                         <div class="sl-tab sl-profileSetting">
                             <nav class="nav">

@@ -64,6 +64,17 @@
                                     <li><a href="{{route('merchant.products.create')}}">{{translateText('Create Products')}}</a></li>
                                 </ul>
                             </li>
+                            <li>
+                                <a href="{{ route('logout') }}"
+                                   onclick="event.preventDefault();
+                                                     document.getElementById('logout-form').submit();">
+                                    <i class="ti-key"></i><span>{{ translateText('Logout') }}</span>
+                                </a>
+                                <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
+                                    @csrf
+                                </form>
+
+                            </li>
                         </ul>
                     </nav>
                 </div>

@@ -24,7 +24,7 @@
                 <div class="sl-category sl-row">
 
                     @foreach($categories as $index => $category)
-                   
+
                         @if($index < 10)
                     <div class="sl-col sl-col-sm-1-of-2 sl-col-md-1-of-3 sl-col-lg-1-of-4 sl-col-xl-1-of-5">
                         <div class="sl-category__service">
@@ -41,7 +41,7 @@
                         @endif
                     @endforeach
 
-                    
+
                 </div>
             </div>
         </section>
@@ -96,7 +96,7 @@
                 <div class="item">
                     <div class="sl-slider">
                         <figure>
-                            <a href="javascript:void(0);"><img src="{{asset('/storage/'. $product->images[0]->full)}}" alt="Image Description"></a>
+                            <a href="javascript:void(0);"><img src="{{asset('/storage/'. count($product->images) > 0 ? $product->images[0]->full : '')}}" alt="Image Description"></a>
 <!--                             <a href="javascript:void(0);"><img src="{{asset(isset($product->user->profile->image))}}" alt="Image Description"></a>
  -->      <a href="javascript:void(0);" class="sl-like"><i class="far fa-heart"></i></a>
                         </figure>
@@ -133,7 +133,7 @@
                         </div>
                     </div>
                 </div>
-              
+
                     @endif
                 @endforeach
             </div>
@@ -181,7 +181,7 @@
         </section>
         <!-- STATS END -->
         <!-- PACKAGES START -->
-       
+
         <!-- PACKAGES END -->
         <!-- FEEDBACK START -->
         <section class="sl-feedbackBanner">
@@ -260,15 +260,15 @@
                         @php $count = 0 @endphp
                         @foreach($products as $index => $product)
                             @if($product->featured && $count < 8)
-                            
+
                             <div class="col-sm-6 col-lg-4 col-xl-3">
                                 <div class="sl-featuredProducts--post">
-                                    
+
                                     <figure>
-                                        <img src="{{asset('storage/'.$product->images[0]->full)}}" alt="Image Description">
+                                        <img src="{{asset('storage/'. count($product->images) > 0 ? $product->images[0]->full : '')}}" alt="Image Description">
                                         <figcaption>
                                             <div class="sl-slider__tags">
-                                    
+
 {{--                                                <span class="sl-bg-red-orange">10% OFF</span>--}}
                                             </div>
                                             <a href="javascript:void(0);" class="sl-liked"><i class="far fa-heart"></i></a>
