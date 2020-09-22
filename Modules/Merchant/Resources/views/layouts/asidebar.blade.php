@@ -31,6 +31,11 @@
                     </div>
                     <nav id="sl-navdashboard" class="sl-navdashboard">
                         <ul>
+                            <li class="">
+                                <a href="">
+                                    <i class="ti-dashboard"></i><span>Dashboard</span>
+                                </a>
+                            </li>
                             <li class="{{ (\Request::route()->getName() == 'merchant.profile') ? 'sl-active' : '' }}">
                                 <a href="{{route('merchant.profile')}}">
                                     <i class="ti-user"></i><span>Profile Settings</span>
@@ -63,6 +68,11 @@
                                     <li><a href="{{route('merchant.products')}}">{{translateText('Product')}}</a></li>
                                     <li><a href="{{route('merchant.products.create')}}">{{translateText('Create Products')}}</a></li>
                                 </ul>
+                            </li>
+                            <li class="">
+                                <a href="">
+                                    <i class="ti-shopping-cart"></i><span>Orders</span>
+                                </a>
                             </li>
                             <li>
                                 <a href="{{ route('logout') }}"
