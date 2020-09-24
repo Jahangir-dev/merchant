@@ -20,9 +20,13 @@
     <link rel="stylesheet" href="{{asset('frontend/css/select2.min.css')}}">
     <link rel="stylesheet" href="{{asset('frontend/css/main.css')}}">
     <link rel="stylesheet" href="{{asset('frontend/css/prettyPhoto.css')}}">
-
+    @notifyCss
 </head>
+
     <body class="sl-home">
+    @include('notify::messages')
+
+
     <!-- Preloader Start -->
     <div class="preloader-outer">
         <div class="sl-preloader-holder">
@@ -42,6 +46,8 @@
     @include('web::layouts.footer')
     <!-- FOOTER END -->
         {{-- Laravel Mix - JS File --}}
+    <x:notify-messages />
+    @notifyJs
         {{-- <script src="{{ mix('js/web.js') }}"></script> --}}
     <script src="{{asset('frontend/js/vendor/jquery.min.js')}}"></script>
     <script src="{{asset('frontend/js/vendor/popper.min.js')}}"></script>
@@ -64,21 +70,140 @@
 
     <script src="{{asset('frontend/js/main.js')}}"></script>
     <script type="text/javascript">
-    $('.target').on('change',function(){
-          var target = $(this).val();
-          $.ajax({
-              url:"{{url('/setTarget')}}",
-              type:"POST",
-              dataType:'json',
-              data:{"_token": "{{ csrf_token() }}","target":target},
-              success: function(data) {
-                location.reload();
-              },
-              error: function(e) {
+        $( document ).ready(function getCartItems() {
+            getCartItem()
+        });
+        function myFunction(product) {
+            $.ajax({
+                url: 'addToCart',
+                type: 'post',
+                data: {
+                    _token: "{{ csrf_token() }}",
+                    product: product
+                },
+                success: function(response){
+                    document.querySelector('#cart-items-total').textContent = response.total
+                    getCartItem()
+                }
+            })
+        }
+        function cartItemDecrement(e) {
+            let self = this
+            console.log('decrement ', $(e).attr("data-id"), $(e).attr("data-quantity"))
+            let item_id = $(e).attr("data-id")
+            let quantity = $(e).attr("data-quantity")
+            $.ajax({
+                url: 'decrementCartItem',
+                type: 'post',
+                data: {
+                    _token: "{{ csrf_token() }}",
+                    item_id: item_id,
+                    quantity: quantity,
+                },
+                success: function(response){
+                    if (response.type === 'success') {
+                        getCartItem()
+                    }
+                }
+            })
 
-              }
-          });
-      });
+        }
+        function cartItemIncrement(e) {
+            let self = this
+            let item_id = $(e).attr("data-id")
+            let quantity = $(e).attr("data-quantity")
+            $.ajax({
+                url: 'incrementCartItem',
+                type: 'post',
+                data: {
+                    _token: "{{ csrf_token() }}",
+                    item_id: item_id,
+                    quantity: quantity,
+                },
+                success: function(response){
+                    if (response.type === 'success') {
+                        getCartItem()
+                    }
+                    console.log(response)
+                }
+            })
+        }
+        function cartItemDelete(e) {
+            let self = this
+            let item_id = $(e).attr("data-id")
+            let quantity = $(e).attr("data-quantity")
+            $.ajax({
+                url: 'cartItemDelete',
+                type: 'post',
+                data: {
+                    _token: "{{ csrf_token() }}",
+                    item_id: item_id,
+                    quantity: quantity,
+                },
+                success: function(response){
+                    if (response.type === 'success') {
+                        getCartItem()
+                    }
+                    console.log(response)
+                }
+            })
+        }
+
+        $('.target').on('change',function(){
+            var target = $(this).val();
+            $.ajax({
+                url:"{{url('/setTarget')}}",
+                type:"POST",
+                dataType:'json',
+                data:{"_token": "{{ csrf_token() }}","target":target},
+                success: function(data) {
+                    location.reload();
+                    },
+                error: function(e) {
+
+                }
+            });
+        });
+        function getCartItem() {
+            $.ajax({
+                url: 'getCartItems',
+                type: 'post',
+                data: {
+                    _token: "{{ csrf_token() }}",
+                },
+                success: function(response){
+                    console.log(response)
+                    document.querySelector('#cart-items-total').textContent = response.total
+                    let keys = Object. keys(response.items)
+                    let item = ''
+                    let total_price = 0
+                    let li = ''
+                    keys.forEach(function (key){
+                        console.log(response.items[key])
+                        item = response.items[key]
+                        total_price += parseFloat(item.price)
+
+                        li += `<li id="`+ key +`">
+                            <img src="{{asset('frontend/images/index/cart/img-03.png')}}" alt="Image Description">
+                            <div class="sl-dropdown__cart__description">
+                                <a class="sl-cart-title" href="javascript:void(0);">`+ item.name+`</a>
+                                <span class="sl-cart-price">`+item.price+`</span>
+                                <a class="sl-cart-delete" data-id="`+key+`" data-quantity="`+item.quantity+`" onclick="cartItemDelete(this)" href="javascript:void(0);">Delete Item</a>
+                            </div>
+                            <form class="sl-vlaue-btn">
+                                <a href="javascript:void(0);" data-id="`+key+`" data-quantity="`+item.quantity+`" onclick="cartItemDecrement(this)" class="sl-input-decrement">-</a>
+                                <input class="sl-input-number" type="number" value="`+item.quantity+`" min="0" max="1000">
+                                <a href="javascript:void(0);" data-id="`+key+`" data-quantity="`+item.quantity+`"  onclick="cartItemIncrement(this)" class="sl-input-increment">+</a>
+                            </form>
+                        </li>`
+                    })
+                    document.querySelector('#cart-items-total').textContent = response.total
+                    document.querySelector('#cart-items-list').innerHTML = li
+                    document.querySelector('#cart-total-price').textContent = total_price
+                }
+
+            })
+        }
   </script>
     </body>
 </html>

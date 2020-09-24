@@ -16,6 +16,8 @@ use Illuminate\Support\Carbon;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\File;
+use Cart;
+
 
 class ProductController extends Controller
 {
@@ -153,4 +155,6 @@ class ProductController extends Controller
         notify()->success('Image Deleted Successfully!');
         return redirect()->back();
     }
+
+
 }

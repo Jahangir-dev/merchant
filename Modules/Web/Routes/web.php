@@ -27,3 +27,17 @@ Route::prefix('web')->group(function() {
     Route::get('/product/{slug}','ProductController@show')->name('web.product.show');
 
 });
+
+//cart routes
+Route::post('/addToCart', 'ShoppingController@addToCart')->name('checkout.cart');
+Route::post('/getCartItems', 'ShoppingController@getCartItems')->name('get.cart.items');
+Route::post('/decrementCartItem', 'ShoppingController@decrementCartItem')->name('decrement.cart.items');
+Route::post('/incrementCartItem', 'ShoppingController@incrementCartItem')->name('increment.cart.items');
+Route::post('/cartItemDelete', 'ShoppingController@cartItemDelete')->name('delete.cart.items');
+Route::get('/cart', 'ShoppingController@getCart')->name('checkout.cart');
+Route::get('/cart/item/{id}/remove', 'ShoppingController@removeItem')->name('checkout.cart.remove');
+Route::get('/cart/clear', 'Shopping Controller@clearCart')->name('checkout.cart.clear');
+
+//checkout
+Route::get('/checkout','ShoppingController@checkout')->name('checkout.index');
+

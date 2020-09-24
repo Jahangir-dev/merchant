@@ -284,13 +284,13 @@
                                             <h5>{{$product->sale_price}}</h5>
                                             <h6>{{$product->price}}</h6>
                                         </div>
-                                        
+
                                         <div class="sl-featureRating">
                                             <span class="sl-featureRating__stars"><span></span></span>
                                             <em>{{translateText('(1887 Feedback)')}}</em>
                                         </div>
                                         <em>By: <a href="{{route('web.brand.show', ['slug' => $product->brand->slug])}}">{{translateText($product->brand->name)}}</a></em>
-                                        <button class="btn sl-btn">{{translateText('Add To Cart')}}</button>
+                                        <button onclick="myFunction({{ $product }})" class="btn sl-btn">{{translateText('Add To Cart')}}</button>
                                     </div>
                                 </div>
                             </div>
@@ -298,7 +298,7 @@
                             @endif
                         @endforeach
 
-                        
+
                     </div>
                 </div>
             </div>
@@ -306,4 +306,8 @@
         <!-- FEATURED PRODUCTS END -->
     </main>
     <!-- MAIN END -->
+    <script>
+        console.log()
+
+    </script>
 @endsection
