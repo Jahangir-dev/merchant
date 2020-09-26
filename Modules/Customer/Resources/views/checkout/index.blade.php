@@ -104,7 +104,7 @@
                                     </div>
                                 </div>
                                 <div class="row">
-                                        <button onclick="{{ route('proceed.to.payment') }}" class="btn btn-success sl-form-control">Proceed To checkout</button>
+                                        <a href="{{ route('customer.order') }}" class="btn btn-success sl-form-control">Proceed To checkout</a>
                                 </div>
                             </div>
                         </div>

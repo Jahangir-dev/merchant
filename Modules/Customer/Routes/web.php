@@ -34,6 +34,9 @@ Route::prefix('customer')->group(function() {
     Route::get('/checkout','ShoppingController@index')->name('customer.checkout.index');
     Route::post('/checkPromo','ShoppingController@checkPromo')->name('customer.check.promo');
 
+    Route::get('/order','ShoppingController@proceedToOrder')->name('customer.order');
+    Route::post('/order','ShoppingController@saveOrderDetails')->name('customer.order.details');
+
 });
 
 

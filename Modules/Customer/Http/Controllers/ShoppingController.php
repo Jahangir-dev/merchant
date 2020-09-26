@@ -3,6 +3,7 @@
 namespace Modules\Customer\Http\Controllers;
 
 use App\Deal;
+use App\Models\Order;
 use App\Models\Product;
 use App\User;
 use Cart;
@@ -237,36 +238,68 @@ class ShoppingController extends Controller
         }
         $deal_details = Deal::where('promo', $request['code'])->first();
         $promocodes_details = DB::table('promocodes')->where('code', $request['code'])->first();
+        $promo_validity = DB::table('promocode_user')->get();
 
-        if ($total_product < (int)$deal_details->min_product ) {
-            $json['type'] = 'error';
-            $json['message'] = 'Product limit less than minimum product';
-            return $json;
-        }
-        elseif ($total_product > (int)$deal_details->max_product) {
-            $json['type'] = 'error';
-            $json['message'] = 'Product limit greater than maximum product';
-            return $json;
-        }
-        else {
-            foreach ($discountable_products as $product) {
-//                quantity in cart
-                $quantity = ($items[$product->id]['quantity']);
-//                actual price
-                $price = ((float)$product->price) * $quantity;
-//                percentage to be applied
-                $percentage = (float)$promocodes_details->reward;
-//                discount
-                $discount = ((float)$price/100 * $percentage);
-                $discounted_price = $price - $discount;
-
-                \Cart::update($product->id, array(
-                    'price' => $discounted_price,
-                ));
-                $json['type'] = 'success';
-                $json['message'] = 'Promocode Applied';
+        if (count($promo_validity) < $promo_validity->quantity) {
+            if ($total_product < (int)$deal_details->min_product ) {
+                $json['type'] = 'error';
+                $json['message'] = 'Product limit less than minimum product';
                 return $json;
             }
+            elseif ($total_product > (int)$deal_details->max_product) {
+                $json['type'] = 'error';
+                $json['message'] = 'Product limit greater than maximum product';
+                return $json;
+            }
+            else {
+                foreach ($discountable_products as $product) {
+//                quantity in cart
+                    $quantity = ($items[$product->id]['quantity']);
+//                actual price
+                    $price = ((float)$product->price) * $quantity;
+//                percentage to be applied
+                    $percentage = (float)$promocodes_details->reward;
+//                discount
+                    $discount = ((float)$price/100 * $percentage);
+                    $discounted_price = $price - $discount;
+
+                    \Cart::update($product->id, array(
+                        'price' => $discounted_price,
+                    ));
+                    $json['type'] = 'success';
+                    $json['message'] = 'Promocode Applied';
+                    return $json;
+                }
+            }
         }
+        else {
+            $json['type'] = 'error';
+            $json['message'] = 'Promocode Not Expired';
+            return $json;
+        }
+        return $json;
+    }
+    public function proceedToOrder() {
+        $user = User::where('id', Auth::id())->first();
+        return view('customer::checkout.final', compact('user'));
+    }
+
+    public function saveOrderDetails(Request $request) {
+        $request['order_number'] = '#' . str_pad(mt_rand(999, 99999999) , 8, "0", STR_PAD_LEFT);
+        $request['user_id'] = Auth::id();
+        $request['grand_total'] =  \Cart::getSubTotal() ;
+        $request['item_count'] =  \Cart::getTotalQuantity() ;
+
+        $order = Order::create($request->all());
+        $items = \Cart::getContent();
+        foreach ($items->keys() as $item) {
+            DB::table('order_items')->insert([
+                'order_id' => $order->id,
+                'product_id' => $item,
+                'quantity' => $items[$item]['quantity'],
+                'price' => $items[$item]['price'],
+            ]);
+        }
+        return redirect()->route('home');
     }
 }
