@@ -60,6 +60,10 @@ class DealsController extends Controller
                 'start_date' => $start_date,
                 'end_date' => $end_date,
                 'status' => $request['status'],
+                'max_product' => $request['max_product'],
+                'min_product' => $request['min_product'],
+                'max_buyers' => 0,
+                'min_buyers' => 0,
                 'user_id' => Auth::id(),
                 'promo' => $promo['code'],
             ]);
@@ -93,10 +97,12 @@ class DealsController extends Controller
     public function edit($id)
     {
         $user = User::where('id', Auth::id())->first();
+        $products = Product::where('user_id', Auth::id())->get();
         $deal = Deal::where('id', $id)->first();
         $promocodes = DB::table('promocodes')->where('code', $deal->promo)->first();
-
-        return view('merchant::deals.edit', compact('user', 'deal', 'promocodes'));
+        $products_codes = DB::table('promocodes_products')->where('promocode', $deal->promo)->get();
+        $product_ids = $products_codes->pluck('product_id')->toArray();
+        return view('merchant::deals.edit', compact('user', 'deal', 'promocodes', 'products', 'products_codes', 'product_ids'));
     }
 
     /**
@@ -124,6 +130,17 @@ class DealsController extends Controller
             'expires_at' => $end_date,
             'data' => $request['description'],
         ]);
+        foreach ($request['products'] as $product) {
+            DB::table('promocodes_products')
+                ->where('product_id', $product->id)
+                ->where('promocode', $deal->promo)
+                ->delete();
+
+            DB::table('promocodes_products')->insert([
+                'product_id' => $product,
+                'promocode' => $deal['promo'],
+            ]);
+        }
         notify()->success('Coupon Updated Successfully!');
         return redirect()->route('merchant.deals');
     }

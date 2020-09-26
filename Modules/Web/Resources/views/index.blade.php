@@ -107,8 +107,8 @@
                                     <a href="javascript:void(0);" class="sl-bg-green">Verified</a>
                                 </div>
                                 @php $category = $product->categories->first(); @endphp
-                                <a href="{{route('web.category.show', ['slug' => $category ? $category->slug : 'null'])}}">{{translateText($category ? $category->name : '')}}</a>
-                                <h5><a href="{{route('web.product.show', ['slug' => $product ? $product->slug : 'null'])}}">{{translateText($product->name)}}</a></h5>
+                                <a href="{{route('web.category.show', ['slug' => $category ? $category->slug : 'null'])}}">{{$category ? $category->name : ''}}</a>
+                                <h5><a href="{{route('web.product.show', ['slug' => $product ? $product->slug : 'null'])}}">{{$product->name}}</a></h5>
                                 <div class="sl-featureRating">
                                     <span class="sl-featureRating__stars"><span></span></span>
                                     <em>(1887 Feedback)</em>

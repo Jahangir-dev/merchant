@@ -1,14 +1,16 @@
 <?php
 
-namespace Modules\Web\Http\Controllers;
-use App\Models\Product;
-use Cart;
+namespace Modules\Customer\Http\Controllers;
 
+use App\Deal;
+use App\Models\Product;
+use App\User;
+use Cart;
 use Illuminate\Contracts\Support\Renderable;
 use Illuminate\Http\Request;
 use Illuminate\Routing\Controller;
 use Illuminate\Support\Facades\Auth;
-use PhpParser\Node\Expr\Array_;
+use Illuminate\Support\Facades\DB;
 
 class ShoppingController extends Controller
 {
@@ -18,8 +20,12 @@ class ShoppingController extends Controller
      */
     public function index()
     {
-        return view('web::index');
+        $user = User::where('id',Auth::user()->id)->with('profile')->first();
+        $items = \Cart::getContent();
+
+        return view('customer::checkout.index', compact('user', 'items'));
     }
+
 
     /**
      * Show the form for creating a new resource.
@@ -27,7 +33,7 @@ class ShoppingController extends Controller
      */
     public function create()
     {
-        return view('web::create');
+        return view('customer::create');
     }
 
     /**
@@ -47,7 +53,7 @@ class ShoppingController extends Controller
      */
     public function show($id)
     {
-        return view('web::show');
+        return view('customer::show');
     }
 
     /**
@@ -57,7 +63,7 @@ class ShoppingController extends Controller
      */
     public function edit($id)
     {
-        return view('web::edit');
+        return view('customer::edit');
     }
 
     /**
@@ -128,6 +134,31 @@ class ShoppingController extends Controller
 
     public function getCartItems() {
         $items = \Cart::getContent();
+
+
+        $json = Array();
+        $json['total'] = count($items);
+        $json['items'] = $items;
+        $json['type'] = 'success';
+        return $json;
+    }
+
+    public function getCartItemDiscounted() {
+        $items = \Cart::getContent();
+
+        foreach ($items->keys() as $id) {
+            $product = Product::where('id', $id)->first();
+            if ($product->sale_price !== '') {
+                $price = $product->sale_price;
+            }
+            else {
+                $price = $product->price;
+            }
+            \Cart::update($product->id, array(
+                'price' => $price,
+            ));
+        }
+
         $json = Array();
         $json['total'] = count($items);
         $json['items'] = $items;
@@ -180,11 +211,62 @@ class ShoppingController extends Controller
     public function checkout() {
         if (Auth::user()) {
             $items = \Cart::getContent();
-            return view('customer::checkout.index', compact('items'));
+            return view('web::checkout.index', compact('items'));
         }
         else {
             notify()->warning('You are not logged');
             return  redirect()->back();
+        }
+    }
+
+    public function checkPromo(Request $request) {
+        $json = Array();
+        $items = \Cart::getContent();
+        $discountable_products = [];
+        $total_product = 0;
+        foreach ($items->keys() as $id) {
+            $product = Product::where('id', $id)->with('codes')->first();
+            foreach ($product->codes as $code) {
+                if ($code->promo === $request['code']) {
+                    array_push($discountable_products, $product);
+                }
+            }
+            $quantity = 0;
+            $quantity = (int)($items[$id]['quantity']);
+            $total_product += $quantity;
+        }
+        $deal_details = Deal::where('promo', $request['code'])->first();
+        $promocodes_details = DB::table('promocodes')->where('code', $request['code'])->first();
+
+        if ($total_product < (int)$deal_details->min_product ) {
+            $json['type'] = 'error';
+            $json['message'] = 'Product limit less than minimum product';
+            return $json;
+        }
+        elseif ($total_product > (int)$deal_details->max_product) {
+            $json['type'] = 'error';
+            $json['message'] = 'Product limit greater than maximum product';
+            return $json;
+        }
+        else {
+            foreach ($discountable_products as $product) {
+//                quantity in cart
+                $quantity = ($items[$product->id]['quantity']);
+//                actual price
+                $price = ((float)$product->price) * $quantity;
+//                percentage to be applied
+                $percentage = (float)$promocodes_details->reward;
+//                discount
+                $discount = ((float)$price/100 * $percentage);
+                $discounted_price = $price - $discount;
+
+                \Cart::update($product->id, array(
+                    'price' => $discounted_price,
+                ));
+                $json['type'] = 'success';
+                $json['message'] = 'Promocode Applied';
+                return $json;
+            }
         }
     }
 }

@@ -58,6 +58,7 @@
                                     <thead>
                                     <tr>
                                         <th>{{translateText('Data')}}</th>
+                                        <th>{{translateText('Code')}}</th>
                                         <th>{{translateText('Details')}}</th>
                                         <th>{{translateText('Action')}}</th>
                                     </tr>

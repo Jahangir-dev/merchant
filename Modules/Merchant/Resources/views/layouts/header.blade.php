@@ -4,7 +4,7 @@
         <strong class="sl-main-header__logo" style="color:#fff;">
             <a href="{{route('web.index')}}"><!-- <img src="{{asset('frontend/images/main-logo.png')}}" alt="Logo"> --> Logo Here</a>
         </strong>
-        
+
 
         <div class="sl-main-header__content">
             <div class="sl-main-header__upper">
@@ -50,8 +50,8 @@
                 <div class="sl-main-form__btn">
                     <a href="javascript:void(0);" class="btn sl-btn sl-btn-active"><i class="ti-search"></i></a>
                 </div>
-                <div class="sl-topbar-notify">
-                    
+                {{--<div class="sl-topbar-notify">
+
                     <div class="sl-topbar-notify__icons dropdown">
                         <a href="javascript:void(0);" class="sl-topbar-notify__anchor" id="slCart" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                             <i class="ti-shopping-cart"></i>
@@ -113,7 +113,7 @@
                             </div>
                         </div>
                     </div>
-                </div>
+                </div>--}}
                 @guest
                     <div class="sl-user">
                         <a href="javascript:void(0);" data-toggle="modal" data-target="#loginpopup">
@@ -132,7 +132,7 @@
                             <i class="ti-angle-down"></i>
                         </a>
                         <ul class="sl-usermenu">
-                     
+
 
                             @if($user->role->name == 'Merchant')
                                 <li>
@@ -765,7 +765,7 @@
                             <li class="nav-item">
                                 <a class="nav-link" href="">About</a>
                             </li>
-                        
+
                         </ul>
                     </div>
                 </nav>

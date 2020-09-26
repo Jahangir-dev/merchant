@@ -42,32 +42,11 @@
                                                         <h6>Select Categories</h6>
                                                     </div>
                                                     <label class="sl-aboutDescription__inputBtn">
-                                                        <select name="category[]" id="sl-languages" class="form-control sl-form-control select2-hidden-accessible" multiple="" data-select2-id="sl-languages" tabindex="-1" aria-hidden="true">
-                                                            <option data-select2-id="13">Chinese</option>
-                                                            <option data-select2-id="14">English</option>
-                                                            <option data-select2-id="15">Urdu</option>
-                                                            <option data-select2-id="16">Japanese</option>
+                                                        <select name="products[]" id="sl-products" class="form-control sl-form-control" multiple="multiple" required>
+                                                            @foreach($products as $product)
+                                                                <option @php in_array($product->id, $product_ids) ? ' selected ' : '' @endphp value="{{$product->id}}">{{ $product->name }}</option>
+                                                            @endforeach
                                                         </select>
-                                                        <span class="select2 select2-container select2-container--default select2-container--below select2-container--focus" dir="ltr" data-select2-id="1" style="width: 663px;">
-                                                            <span class="selection">
-                                                                <span class="select2-selection select2-selection--multiple" role="combobox" aria-haspopup="true" aria-expanded="false" tabindex="-1" aria-disabled="false">
-                                                                    <ul class="select2-selection__rendered">
-                                                                        <span class="select2-selection__clear" title="Remove all items" data-select2-id="27">
-                                                                            ×
-                                                                        </span>
-                                                                        <li class="select2-selection__choice" title="English" data-select2-id="24">
-                                                                            <span class="select2-selection__choice__remove" role="presentation">×</span>English</li>
-                                                                        <li class="select2-selection__choice" title="Urdu" data-select2-id="25">
-                                                                            <span class="select2-selection__choice__remove" role="presentation">×</span>Urdu</li>
-                                                                        <li class="select2-selection__choice" title="Japanese" data-select2-id="26">
-                                                                            <span class="select2-selection__choice__remove" role="presentation">×</span>Japanese</li>
-                                                                        <li class="select2-search select2-search--inline"><input class="select2-search__field" type="search" tabindex="0" autocomplete="off" autocapitalize="none" spellcheck="false" role="searchbox" aria-autocomplete="list" placeholder="" style="width: 0.75em;">
-                                                                        </li>
-                                                                    </ul>
-                                                                </span>
-                                                            </span>
-                                                            <span class="dropdown-wrapper" aria-hidden="true"></span></span>
-                                                        <a href="javascript:void(0);" class="btn sl-btn">Add Now</a>
                                                     </label>
                                                 </div>
                                                 <div class="form-group">
@@ -75,6 +54,24 @@
                                                         <h6>{{translateText('Details')}}</h6>
                                                     </div>
                                                     <textarea name="description" id="sl-tinymceeditor1" class="sl-tinymceeditor" placeholder="Description" style="visibility: hidden;"> {!! $promocodes->data !!} </textarea>
+                                                </div>
+
+                                                <div class="form-group form-group-half">
+                                                    <div class="sl-aboutDescription__title">
+                                                        <h6>{{translateText('Minimum Products')}}</h6>
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <input name="min_product" value="{{$product->min_product}}" type="number" class="form-control sl-form-control" placeholder="{{translateText('Amount')}}">
+                                                    </div>
+                                                </div>
+
+                                                <div class="form-group form-group-half">
+                                                    <div class="sl-aboutDescription__title">
+                                                        <h6>{{translateText('Maximum Products')}}</h6>
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <input name="max_product" value="{{$product->max_product}}" type="number" class="form-control sl-form-control" placeholder="{{translateText('Amount')}}">
+                                                    </div>
                                                 </div>
 
                                                 <div class="form-group form-group-half">

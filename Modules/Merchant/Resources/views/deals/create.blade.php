@@ -58,6 +58,24 @@
 
                                                 <div class="form-group form-group-half">
                                                     <div class="sl-aboutDescription__title">
+                                                        <h6>{{translateText('Minimum Products')}}</h6>
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <input name="min_product" type="number" class="form-control sl-form-control" placeholder="{{translateText('Amount')}}">
+                                                    </div>
+                                                </div>
+
+                                                <div class="form-group form-group-half">
+                                                    <div class="sl-aboutDescription__title">
+                                                        <h6>{{translateText('Maximum Products')}}</h6>
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <input name="max_product" type="number" class="form-control sl-form-control" placeholder="{{translateText('Amount')}}">
+                                                    </div>
+                                                </div>
+
+                                                <div class="form-group form-group-half">
+                                                    <div class="sl-aboutDescription__title">
                                                         <h6>{{translateText('Amount')}}</h6>
                                                     </div>
                                                     <div class="form-group">

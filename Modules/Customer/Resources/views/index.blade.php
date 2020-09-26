@@ -1,4 +1,4 @@
-@extends('customer::layouts.master')
+@extends('web::layouts.master')
 
 @section('content')
     <!-- MAIN START -->
