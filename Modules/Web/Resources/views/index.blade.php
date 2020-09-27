@@ -271,7 +271,7 @@
 
 {{--                                                <span class="sl-bg-red-orange">10% OFF</span>--}}
                                             </div>
-                                            <a href="javascript:void(0);" class="sl-liked"><i class="far fa-heart"></i></a>
+                                            <a id="wist-list-{{ $product->id }}" onclick="addToWishList({{ $product->id }})" href="javascript:void(0);" class=""><i class="far fa-heart"></i></a>
                                         </figcaption>
                                     </figure>
                                     <div class="sl-featuredProducts--post__content">

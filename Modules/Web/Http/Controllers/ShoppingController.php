@@ -4,6 +4,7 @@ namespace Modules\Web\Http\Controllers;
 use App\Models\Product;
 use Cart;
 
+use App\User;
 use Illuminate\Contracts\Support\Renderable;
 use Illuminate\Http\Request;
 use Illuminate\Routing\Controller;
@@ -106,6 +107,7 @@ class ShoppingController extends Controller
         $data['items'] = $items;
         $data['total'] = count($items);
         $data['type'] = 'success';
+        $data['message'] = 'Product add to cart successfully';
         return $data;
     }
 
@@ -147,6 +149,7 @@ class ShoppingController extends Controller
 
         $json = Array();
         $json['type'] = 'success';
+        $json['message'] = 'Product Decremented successfully';
         return $json;
     }
 
@@ -186,5 +189,68 @@ class ShoppingController extends Controller
             notify()->warning('You are not logged');
             return  redirect()->back();
         }
+    }
+
+    public function addToWishList(Request $request) {
+        $saved_item = Array();
+        $json = Array();
+        if (Auth::user()) {
+            $user = User::where('id', Auth::id())->first();
+            $wishlist = json_decode($user->saved_items);
+
+            if ($wishlist == []) {
+                $saved_item[] = $request['id'];
+                $user = User::where('id', Auth::id())->update([
+                    'saved_items' => $saved_item
+                ]);
+                $json['type'] = 'added';
+                $json['message'] = 'Add to wishlist successfully';
+            }
+            elseif((array_search($request['id'], $wishlist))) {
+                $index = array_search($request['id'], $wishlist);
+                unset($wishlist[$index]);
+                $user = User::where('id', Auth::id())->update([
+                    'saved_items' => $wishlist
+                ]);
+                $json['type'] = 'removed';
+                $json['message'] = 'Removed from wishlist successfully';
+            }
+            else {
+                array_push( $wishlist, $request['id'] );
+                $user = User::where('id', Auth::id())->update([
+                    'saved_items' => $wishlist
+                ]);
+                    $json['type'] = 'added';
+                $json['message'] = 'Add to wishlist successfully';
+            }
+            return $json;
+        }
+        else {
+            $json['type'] = 'error';
+            $json['message'] = 'you are not logged in';
+        }
+        return $json;
+    }
+
+    public function getWishList() {
+        $json = Array();
+        if (Auth::user()) {
+            $user = User::where('id', Auth::id())->first();
+            $wishlist = $user->saved_items;
+            if ($wishlist == null) {
+                $json['type'] = 'null';
+                $json['list'] = null;
+            }
+            else {
+                $json['type'] = 'not null';
+                $json['list'] = json_decode($wishlist);
+            }
+            return $json;
+        }
+        else {
+            $json['type'] = 'error';
+            $json['message'] = 'you are not logged in';
+        }
+        return $json;
     }
 }

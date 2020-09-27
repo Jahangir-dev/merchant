@@ -69,11 +69,14 @@
                                     <li><a href="{{route('merchant.products.create')}}">{{translateText('Create Products')}}</a></li>
                                 </ul>
                             </li>
+<<<<<<< Updated upstream
                             <li class="">
                                 <a href="">
                                     <i class="ti-shopping-cart"></i><span>Orders</span>
                                 </a>
                             </li>
+=======
+>>>>>>> Stashed changes
                             <li>
                                 <a href="{{ route('logout') }}"
                                    onclick="event.preventDefault();

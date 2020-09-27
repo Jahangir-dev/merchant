@@ -37,3 +37,7 @@ Route::get('/cart/clear', 'Shopping Controller@clearCart')->name('checkout.cart.
 //checkout
 Route::get('/checkout','ShoppingController@checkout')->name('checkout.index');
 
+//wishlist
+Route::post('/addToWishList','ShoppingController@addToWishList')->name('add.to.wishlist');
+Route::post('/getWishList','ShoppingController@getWishList')->name('get.wishlist');
+

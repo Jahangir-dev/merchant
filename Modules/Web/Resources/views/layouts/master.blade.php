@@ -22,6 +22,16 @@
     <link rel="stylesheet" href="{{asset('frontend/css/bootstrap-datepicker.min.css')}}">
     <link rel="stylesheet" href="{{asset('frontend/css/dashboard.css')}}">
     <link rel="stylesheet" href="{{asset('frontend/css/prettyPhoto.css')}}">
+
+    <!-- CSS -->
+    <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/alertifyjs@1.13.1/build/css/alertify.min.css"/>
+    <!-- Default theme -->
+    <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/alertifyjs@1.13.1/build/css/themes/default.min.css"/>
+    <!-- Semantic UI theme -->
+    <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/alertifyjs@1.13.1/build/css/themes/semantic.min.css"/>
+    <!-- Bootstrap theme -->
+    <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/alertifyjs@1.13.1/build/css/themes/bootstrap.min.css"/>
+
     <script src="https://cdn.tiny.cloud/1/no-api-key/tinymce/5/tinymce.min.js" referrerpolicy="origin"></script>
     <script>tinymce.init({selector:'textarea'});</script>
     @notifyCss
@@ -78,11 +88,13 @@
     <script type="text/javascript" charset="utf8" src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.53/pdfmake.min.js"></script>
     <script type="text/javascript" charset="utf8" src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.53/vfs_fonts.js"></script>
     <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/buttons/1.6.4/js/buttons.html5.min.js"></script>
+    <script src="//cdn.jsdelivr.net/npm/alertifyjs@1.13.1/build/alertify.min.js"></script>
 
 
     <script type="text/javascript">
         $( document ).ready(function getCartItems() {
             getCartItem()
+            getWishList()
         });
         function myFunction(product) {
             $.ajax({
@@ -94,6 +106,7 @@
                 },
                 success: function(response){
                     document.querySelector('#cart-items-total').textContent = response.total
+                    alertify.success(response.message);
                     getCartItem()
                 }
             })
@@ -113,6 +126,7 @@
                 },
                 success: function(response){
                     if (response.type === 'success') {
+                        alertify.success(response.message);
                         getCartItem()
                     }
                 }
@@ -134,6 +148,7 @@
                 },
                 success: function(response){
                     if (response.type === 'success') {
+                        alertify.success(response.message);
                         getCartItem()
                     }
                     console.log(response)
@@ -154,6 +169,7 @@
                 },
                 success: function(response){
                     if (response.type === 'success') {
+                        alertify.success(response.message);
                         getCartItem()
                     }
                     console.log(response)
@@ -189,6 +205,7 @@
                 success: function(response){
                     if (response.message === 'success') {
                         console.log('success', response.message)
+                        alertify.success(response.message);
                         getCartItemDiscounted()
                     }
                 }
@@ -344,6 +361,54 @@
             })
         }
 
+        function addToWishList(id) {
+            $.ajax({
+                url: 'addToWishList',
+                type: 'post',
+                data: {
+                    _token: "{{ csrf_token() }}",
+                    id: id,
+                },
+                success: function(response){
+                    if (response.type === 'added') {
+                        console.log('success', response.message)
+                        alertify.success(response.message);
+
+                        getWishList()
+                    }
+                    else if (response.type === 'removed') {
+                        console.log('success', response.message)
+                        alertify.success(response.message);
+
+                        getWishList()
+                    }
+                }
+            })
+        }
+        function getWishList() {
+            let ele = document.querySelectorAll('.sl-liked')
+            if(ele !== null){
+                ele.forEach(function (e){
+                    e.classList.remove('sl-liked')
+                })
+            }
+            $.ajax({
+                url: 'getWishList',
+                type: 'post',
+                data: {
+                    _token: "{{ csrf_token() }}",
+                },
+                success: function(response){
+                    if (response.type === "not null") {
+                        response.list.forEach(function (l){
+                            if (document.querySelector('#wist-list-'+l)){
+                                document.querySelector('#wist-list-'+l).classList.add('sl-liked')
+                            }
+                        })
+                    }
+                }
+            })
+        }
   </script>
     </body>
 </html>
