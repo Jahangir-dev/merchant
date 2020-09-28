@@ -58,6 +58,7 @@ class ProductController extends Controller
             'special_price' => $request['special_price'],
             'quantity' => $request['quantity'],
             'weight' => $request['weight'],
+            'featured' => 1,
             'user_id' => Auth::id()
         ]);
         $product->categories()->attach($request['category']);
