@@ -54,7 +54,7 @@
 
                             <i class="ti-shopping-cart"></i>
                             <span class="sl-topbar-notify__circle">
-                                <em id="cart-items-total" class="sl-bg-blue">12</em>
+                                <em id="cart-items-total" class="sl-bg-blue">0</em>
                             </span>
                         </a>
 
@@ -86,7 +86,7 @@
                     </div>
                 @else
                     @php
-                        $user = \App\User::where('id', Auth::user()->id)->with('role')->first()
+                        $user = \App\User::where('id', \Auth::id())->with('role')->first()
                     @endphp
                     <div class="sl-user sl-userdropdown">
                         <a href="javascript:void(0);">
@@ -205,6 +205,131 @@
                                     </ul>
                                 </div>
                             </li>
+@php $brands = \App\Models\Brand::with('products')->get(); @endphp
+                            <li class="menu-item-has-mega-menu mega-menu-nav-pages">
+                                <a href="javascript:void(0);">Service Providers</a>
+                                <div class="mega-menu">
+                                    <ul class="mega-menu-row">
+                                        <li class="mega-menu-col">
+                                            @foreach($brands as $index => $brand)
+                                                @if($index < 3)
+                                                    <ul>
+                                                        <li class="mega-menu-title"><h3>{{ $brand->name }}</h3></li>
+                                                        @foreach($brand->products as $product)
+                                                            <li><a href="{{route('web.brand.show', ['slug' => $brand->slug])}}">{{ $product->name }}</a></li>
+                                                        @endforeach
+                                                    </ul>
+                                                @endif
+                                            @endforeach
+                                        </li>
+                                        <li class="mega-menu-col">
+                                            @foreach($brands as $index => $brand)
+                                                @if($index < 6 && $index > 2)
+                                                    <ul>
+                                                        <li class="mega-menu-title"><h3>{{ $brand->name }}</h3></li>
+                                                        @foreach($brand->products as $product)
+                                                            <li><a href="{{route('web.brand.show', ['slug' => $brand->slug])}}">{{ $product->name }}</a></li>
+                                                        @endforeach
+                                                    </ul>
+                                                @endif
+                                            @endforeach
+                                        </li>
+                                        <li class="mega-menu-col">
+                                            @foreach($brands as $index => $brand)
+                                                @if($index < 9 && $index > 5)
+                                                    <ul>
+                                                        <li class="mega-menu-title"><h3>{{ $brand->name }}</h3></li>
+                                                        @foreach($brand->products as $product)
+                                                            <li><a href="{{route('web.brand.show', ['slug' => $brand->slug])}}">{{ $product->name }}</a></li>
+                                                        @endforeach
+                                                    </ul>
+                                                @endif
+                                            @endforeach
+                                        </li>
+                                        <li class="mega-menu-col">
+                                            @foreach($brands as $index => $brand)
+                                                @if($index < 12 && $index > 8)
+                                                    <ul>
+                                                        <li class="mega-menu-title"><h3>{{ $brand->name }}</h3></li>
+                                                        @foreach($brand->products as $product)
+                                                            <li><a href="{{route('web.brand.show', ['slug' => $brand->slug])}}">{{ $product->name }}</a></li>
+                                                        @endforeach
+                                                    </ul>
+                                                @endif
+                                            @endforeach
+                                        </li>
+                                        {{--<li class="mega-menu-col">
+                                            <ul>
+                                                <li class="mega-menu-title"><h3>Digital Marketing</h3></li>
+                                                <li><a href="service-provider.html">Social Media Marketing</a></li>
+                                                <li><a href="service-provider.html">Content Marketing</a></li>
+                                                <li><a href="service-provider.html">Video Marketing</a></li>
+                                                <li><a href="service-provider.html">Email Marketing</a></li>
+                                                <li><a href="service-provider.html">Crowdfunding</a></li>
+                                            </ul>
+                                            <ul>
+                                                <li class="mega-menu-title"><h3>Writing &amp; Translation</h3></li>
+                                                <li><a href="service-provider.html">Articles &amp; Blog Posts</a></li>
+                                                <li><a href="service-provider.html">Resumes &amp; Cover Letters<i class="sl-menutag sl-menutaghot">hot</i></a></li>
+                                                <li><a href="service-provider.html">Technical Writing</a></li>
+                                                <li><a href="service-provider.html">Translation<i class="sl-menutag sl-menutagnew">New</i></a></li>
+                                            </ul>
+                                            <ul>
+                                                <li class="mega-menu-title"><h3>Lifestyle</h3></li>
+                                                <li><a href="service-provider.html">Online Lessons</a></li>
+                                                <li><a href="service-provider.html">Arts &amp; Crafts</a></li>
+                                                <li><a href="service-provider.html">Relationship Advice</a></li>
+                                                <li><a href="service-provider.html">Health, Nutrition &amp; Fitness</a></li>
+                                            </ul>
+                                        </li>
+                                        <li class="mega-menu-col">
+                                            <ul>
+                                                <li class="mega-menu-title"><h3>Video &amp; Animation</h3></li>
+                                                <li><a href="service-provider.html">Animated Explainers</a></li>
+                                                <li><a href="service-provider.html">Video Editing<i class="sl-menutag sl-menutagnew">NEW</i></a></li>
+                                                <li><a href="service-provider.html">Short Video Ads</a></li>
+                                                <li><a href="service-provider.html">Animated GIFs</a></li>
+                                                <li><a href="service-provider.html">Logo Animation</a></li>
+                                                <li><a href="service-provider.html">Intros &amp; Outros</a></li>
+                                                <li><a href="service-provider.html">Live Action Explainers</a></li>
+                                                <li><a href="service-provider.html">Character Animation</a></li>
+                                                <li><a href="service-provider.html">3D Product Animation</a></li>
+                                                <li><a href="service-provider.html">Lyric & Music Videos</a></li>
+                                                <li><a href="service-provider.html">Spokespersons Videos</a></li>
+                                            </ul>
+                                            <ul>
+                                                <li class="mega-menu-title"><h3>Marketplace Listing</h3></li>
+                                                <li><a href="service-provider.html">Product Descriptions<i class="sl-menutag sl-menutaghot">hot</i></a></li>
+                                                <li><a href="service-provider.html">Product Photography</a></li>
+                                                <li><a href="service-provider.html">Product Research</a></li>
+                                            </ul>
+                                        </li>
+                                        <li class="mega-menu-col">
+                                            <ul>
+                                                <li class="mega-menu-title"><h3>Programming &amp; Tech</h3></li>
+                                                <li><a href="service-provider.html">WordPress</a></li>
+                                                <li><a href="service-provider.html">Website Builders &amp; CMS</a></li>
+                                                <li><a href="service-provider.html">Game Development</a></li>
+                                                <li><a href="service-provider.html">Web Programming</a></li>
+                                                <li><a href="service-provider.html">E-Commerce Development</a></li>
+                                                <li><a href="service-provider.html"><i class="sl-menutag sl-menutaghot">hot</i>Mobile Apps &amp; Web</a></li>
+                                                <li><a href="service-provider.html">Desktop applications</a></li>
+                                                <li><a href="service-provider.html">Support &amp; IT</a></li>
+                                                <li><a href="service-provider.html">Chatbots</a></li>
+                                                <li><a href="service-provider.html">Data Analysis &amp; Reports</a></li>
+                                                <li><a href="service-provider.html">Convert Files</a></li>
+                                                <li><a href="service-provider.html">Databases</a></li>
+                                            </ul>
+                                            <ul>
+                                                <li class="mega-menu-title"><h3>Game Creation</h3></li>
+                                                <li><a href="service-provider.html">Game Development</a></li>
+                                                <li><a href="service-provider.html">Producers &amp; Composers</a></li>
+                                            </ul>
+                                        </li>--}}
+                                    </ul>
+                                </div>
+                            </li>
+
                             <li class="nav-item">
                                 <a class="nav-link" href="">About</a>
                             </li>

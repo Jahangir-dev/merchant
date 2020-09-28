@@ -4,6 +4,7 @@ namespace Modules\Web\Http\Controllers;
 
 use App\Models\Brand;
 use App\Models\Product;
+use App\User;
 use Illuminate\Contracts\Support\Renderable;
 use Illuminate\Http\Request;
 use Illuminate\Routing\Controller;
@@ -78,5 +79,11 @@ class BrandController extends Controller
     public function destroy($id)
     {
         //
+    }
+
+    public function showVendor($id) {
+        $user = User::where('id', $id)->with('products')->with('profile')->first();
+
+        return view('web::vendor.show', compact('user'));
     }
 }

@@ -18,6 +18,8 @@ Route::prefix('web')->group(function() {
     Route::get('/forgot-password', 'RegisterController@forgot')->name('web.forgot-password');
 //    Brands Route
     Route::get('/brand/{slug}','BrandController@show')->name('web.brand.show');
+//    vendor
+    Route::get('/vendor/{id}','BrandController@showVendor')->name('web.vendor.show');
 //    Category
     Route::get('/category/{slug}','CategoryController@show')->name('web.category.show');
 //    Product

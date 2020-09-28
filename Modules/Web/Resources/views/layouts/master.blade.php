@@ -113,7 +113,6 @@
         }
         function cartItemDecrement(e) {
             let self = this
-            console.log('decrement ', $(e).attr("data-id"), $(e).attr("data-quantity"))
             let item_id = $(e).attr("data-id")
             let quantity = $(e).attr("data-quantity")
             $.ajax({
@@ -134,7 +133,6 @@
 
         }
         function cartItemIncrement(e) {
-            console.log('here')
             let self = this
             let item_id = $(e).attr("data-id")
             let quantity = $(e).attr("data-quantity")
@@ -151,7 +149,6 @@
                         alertify.success(response.message);
                         getCartItem()
                     }
-                    console.log(response)
                 }
             })
         }
@@ -172,7 +169,6 @@
                         alertify.success(response.message);
                         getCartItem()
                     }
-                    console.log(response)
                 }
             })
         }
@@ -204,9 +200,13 @@
                 },
                 success: function(response){
                     if (response.message === 'success') {
-                        console.log('success', response.message)
+
                         alertify.success(response.message);
                         getCartItemDiscounted()
+                    }
+                    else{
+
+                        alertify.error(response.message);
                     }
                 }
             })
@@ -220,7 +220,6 @@
                     _token: "{{ csrf_token() }}",
                 },
                 success: function(response){
-                    console.log(response)
                     document.querySelector('#cart-items-total').textContent = response.total
                     let keys = Object. keys(response.items)
                     let item = ''
@@ -236,12 +235,10 @@
                                     </thead>
                                     <tbody>`
                     keys.forEach(function (key){
-                        console.log(response.items[key])
                         item = response.items[key]
                         total_price += parseFloat(item.price) * parseInt(item.quantity)
-                        console.log('quantity ',item.quantity)
+                        console.log(total_price)
                         if (item.quantity === 0) {
-                            console.log('#tr-'+key)
                             $('#tr-'+key).remove();
                         }
 
@@ -278,10 +275,13 @@
                                 <td><span class="border p-2" id="checkout-total-price">`+total_price+`</span></td>
                                 <td></td>
                             </tr>`
-                        document.querySelector('#cart-items-total').textContent = response.total
-                    document.querySelector('#cart-items-list').innerHTML = li
-                    document.querySelector('#checkout-cart-item').innerHTML = tr
+                    document.querySelector('#cart-items-total').textContent = response.total
                     document.querySelector('#cart-total-price').textContent = total_price
+
+                    document.querySelector('#cart-items-list').innerHTML = li
+                    if (document.querySelector('#checkout-cart-item')) {
+                        document.querySelector('#checkout-cart-item').innerHTML = tr
+                    }
                 }
 
             })
@@ -294,7 +294,6 @@
                     _token: "{{ csrf_token() }}",
                 },
                 success: function(response){
-                    console.log(response)
                     document.querySelector('#cart-items-total').textContent = response.total
                     let keys = Object. keys(response.items)
                     let item = ''
@@ -310,12 +309,9 @@
                                     </thead>
                                     <tbody>`
                     keys.forEach(function (key){
-                        console.log(response.items[key])
                         item = response.items[key]
                         total_price += parseFloat(item.price) * parseInt(item.quantity)
-                        console.log('quantity ',item.quantity)
                         if (item.quantity === 0) {
-                            console.log('#tr-'+key)
                             $('#tr-'+key).remove();
                         }
 
@@ -352,7 +348,7 @@
                                 <td><span class="border p-2" id="checkout-total-price">`+total_price+`</span></td>
                                 <td></td>
                             </tr>`
-                        document.querySelector('#cart-items-total').textContent = response.total
+                    document.querySelector('#cart-items-total').textContent = response.total
                     document.querySelector('#cart-items-list').innerHTML = li
                     document.querySelector('#checkout-cart-item').innerHTML = tr
                     document.querySelector('#cart-total-price').textContent = total_price
@@ -371,13 +367,11 @@
                 },
                 success: function(response){
                     if (response.type === 'added') {
-                        console.log('success', response.message)
                         alertify.success(response.message);
 
                         getWishList()
                     }
                     else if (response.type === 'removed') {
-                        console.log('success', response.message)
                         alertify.success(response.message);
 
                         getWishList()

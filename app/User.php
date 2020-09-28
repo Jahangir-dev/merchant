@@ -61,7 +61,7 @@ class User extends Authenticatable implements MustVerifyEmail
     }
 
     public function products() {
-        return $this->hasMany('App\Models\Product', 'user_id', 'id');
+        return $this->hasMany('App\Models\Product', 'user_id', 'id')->with('images')->with('categories')->with('brand');
     }
 
     public function categories() {

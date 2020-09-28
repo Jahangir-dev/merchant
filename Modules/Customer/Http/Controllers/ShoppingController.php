@@ -210,12 +210,18 @@ class ShoppingController extends Controller
     }
 
     public function checkout() {
-        if (Auth::user()) {
-            $items = \Cart::getContent();
-            return view('web::checkout.index', compact('items'));
+        $items = \Cart::getContent();
+        if (count($items->keys()) > 0) {
+            if (Auth::user()) {
+                return view('web::checkout.index', compact('items'));
+            }
+            else {
+                notify()->warning('You are not logged');
+                return  redirect()->back();
+            }
         }
         else {
-            notify()->warning('You are not logged');
+            notify()->warning('Add items to cart');
             return  redirect()->back();
         }
     }
@@ -240,43 +246,50 @@ class ShoppingController extends Controller
         $promocodes_details = DB::table('promocodes')->where('code', $request['code'])->first();
         $promo_validity = DB::table('promocode_user')->get();
 
-        if (count($promo_validity) < $promo_validity->quantity) {
-            if ($total_product < (int)$deal_details->min_product ) {
-                $json['type'] = 'error';
-                $json['message'] = 'Product limit less than minimum product';
-                return $json;
-            }
-            elseif ($total_product > (int)$deal_details->max_product) {
-                $json['type'] = 'error';
-                $json['message'] = 'Product limit greater than maximum product';
-                return $json;
-            }
-            else {
-                foreach ($discountable_products as $product) {
-//                quantity in cart
-                    $quantity = ($items[$product->id]['quantity']);
-//                actual price
-                    $price = ((float)$product->price) * $quantity;
-//                percentage to be applied
-                    $percentage = (float)$promocodes_details->reward;
-//                discount
-                    $discount = ((float)$price/100 * $percentage);
-                    $discounted_price = $price - $discount;
-
-                    \Cart::update($product->id, array(
-                        'price' => $discounted_price,
-                    ));
-                    $json['type'] = 'success';
-                    $json['message'] = 'Promocode Applied';
+        if (count($discountable_products) > 0) {
+            if (count($promo_validity) < $promo_validity->quantity) {
+                if ($total_product < (int)$deal_details->min_product ) {
+                    $json['type'] = 'error';
+                    $json['message'] = 'Product limit less than minimum product';
                     return $json;
                 }
+                elseif ($total_product > (int)$deal_details->max_product) {
+                    $json['type'] = 'error';
+                    $json['message'] = 'Product limit greater than maximum product';
+                    return $json;
+                }
+                else {
+                    foreach ($discountable_products as $product) {
+//                quantity in cart
+                        $quantity = ($items[$product->id]['quantity']);
+//                actual price
+                        $price = ((float)$product->price) * $quantity;
+//                percentage to be applied
+                        $percentage = (float)$promocodes_details->reward;
+//                discount
+                        $discount = ((float)$price/100 * $percentage);
+                        $discounted_price = $price - $discount;
+
+                        \Cart::update($product->id, array(
+                            'price' => $discounted_price,
+                        ));
+                        $json['type'] = 'success';
+                        $json['message'] = 'Promocode Applied';
+                        return $json;
+                    }
+                }
+            }
+            else {
+                $json['type'] = 'error';
+                $json['message'] = 'Promocode Not Expired';
+                return $json;
             }
         }
         else {
+            $json['message'] = 'Promocode is not valid for these products';
             $json['type'] = 'error';
-            $json['message'] = 'Promocode Not Expired';
-            return $json;
         }
+
         return $json;
     }
     public function proceedToOrder() {

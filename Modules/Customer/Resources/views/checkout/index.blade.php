@@ -10,59 +10,6 @@
                     <div class="col-lg-8 col-xl-9">
                         <div class="sl-dashboardbox">
                             <div class="sl-dashboardbox__title">
-                                <h2>Payment Method</h2>
-                            </div>
-                            <div class="sl-dashboardbox__content">
-                                <div id="sl-payment-accordion" class="sl-payment-method accordion">
-                                    <div class="sl-payment-method__content">
-                                        <div class="sl-bank" data-toggle="collapse" role="list" data-target="#collapse1" aria-expanded="false">
-                                            <div class="sl-payment-method__bank">
-                                                <div class="sl-payment-method__radio">
-                                                    <img src="images/all-payouts/img-01.jpg" alt="Image Description">
-                                                </div>
-                                                <div class="sl-payment-method__description">
-                                                    <h5>Paypal</h5>
-                                                    <p>All earnings will be sent direct to your paypal account</p>
-                                                </div>
-                                                <div class="sl-payment-method__btn">
-                                                    <a href="javascript:void(0);" class="btn sl-btn">Select</a>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div id="collapse1" class="collapse at-class" data-parent="#sl-payment-accordion">
-                                            <div class="sl-payment-method__dropdown">
-                                                <input class="form-control sl-form-control" type="text" placeholder="Enter Your Paypal ID*">
-                                                <p>* You need to add your paypal ID above field. For more about <a href="javascript:void(0);">Paypal</a><a href="javascript:void(0);">Create an account</a></p>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="sl-payment-method__content">
-                                        <div class="sl-bank" data-toggle="collapse" role="list" data-target="#collapse2" aria-expanded="false">
-                                            <div class="sl-payment-method__bank">
-                                                <div class="sl-payment-method__radio">
-                                                    <img src="images/all-payouts/img-02.jpg" alt="Image Description">
-                                                </div>
-                                                <div class="sl-payment-method__description">
-                                                    <h5>Bank Transfer</h5>
-                                                    <p>All earnings will be sent direct to your bank account</p>
-                                                </div>
-                                                <div class="sl-payment-method__btn">
-                                                    <a href="javascript:void(0);" class="btn sl-btn">Select</a>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div id="collapse2" class="collapse at-class" data-parent="#sl-payment-accordion">
-                                            <div class="sl-payment-method__dropdown">
-                                                <input class="form-control sl-form-control" type="text" placeholder="Enter Your Bank Account*">
-                                                <p>* You need to add your Bank Account above field.</p>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="sl-dashboardbox">
-                            <div class="sl-dashboardbox__title">
                                 <h2>All Payouts</h2>
                             </div>
                             <div class="sl-dashboardbox__content">
