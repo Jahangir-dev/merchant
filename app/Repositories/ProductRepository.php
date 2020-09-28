@@ -99,7 +99,7 @@ class ProductRepository extends BaseRepository implements ProductContract
         $status = $collection->has('status') ? 1 : 0;
 
         $merge = $collection->merge(compact('status', 'featured'));
-
+        $merge->user_id = Auth::id();
         $product->update($merge->all());
 
         if ($collection->has('categories')) {
