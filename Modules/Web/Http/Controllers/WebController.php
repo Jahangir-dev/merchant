@@ -18,18 +18,6 @@ class WebController extends Controller
      */
     public function index()
     {
-        $Product = Product::find(388); // assuming you have a Product model with id, name, description & price
-        $rowId = 456; // generate a unique() row ID
-        $userID = 2; // the user ID to bind the cart contents
-       $result =  \Cart::session($userID)->add(array(
-            'id' => $rowId,
-            'name' => $Product->name,
-            'price' => $Product->price,
-            'quantity' => 4,
-            'attributes' => array(),
-            'associatedModel' => $Product
-        ));
-
 
         $session_id = session()->getId();
         $merchants = User::where('role_id', '2')->with('products')->get();

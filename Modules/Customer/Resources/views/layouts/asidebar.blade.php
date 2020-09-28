@@ -22,7 +22,7 @@
                             <div class="sl-slider__tags">
                                 <span class="sl-bg-red-orange">Featured</span><span class="sl-bg-green">Verified</span>
                             </div>
-                            <h3><a href="javascript:void(0);"> {{$user->first_name}} {{$user->last_name}} </a></h3>
+                            <h3><a href="javascript:void(0);"> {{Auth::User()->first_name}} {{Auth::User()->last_name}} </a></h3>
                             <div class="sl-featureRating">
                                 <span class="sl-featureRating__stars"><span></span></span>
                                 <em>(1642 Feedback)</em>
