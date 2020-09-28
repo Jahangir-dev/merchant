@@ -424,8 +424,14 @@
                                 <div class="col-sm-6 col-lg-4 col-xl-3">
                                     <div class="sl-slider">
                                         <figure>
-                                            <a href="javascript:void(0);"><img src="{{count($product->images) > 0 ? $product->images[0]->full : ''}}" alt="Image Description"></a>
-                                            <a href="javascript:void(0);"><img src="{{($user->profile->image)}}" alt="Image Description"></a>
+                                            <a href="javascript:void(0);">@if(count($product->images) > 0)
+                                        <img src="{{asset('storage/'.$product->images[0]->full )}}" alt="Image Description">
+                                        @else 
+                                        <img src="{{asset('storage/')}}" alt="Image Description">
+                                        @endif</a></a>
+                                        @if($user->profile != null)
+                                            <a href="javascript:void(0);"><img src="{{$user->profile->image}}" alt="Image Description"></a>
+                                        @endif
                                             <a href="javascript:void(0);" class="sl-like"><i class="far fa-heart"></i></a>
                                         </figure>
                                         <div class="sl-slider__content">
@@ -469,7 +475,7 @@
                             @endforeach
                         </div>
                     </div>
-                    <div class="sl-pagination">
+                    <!-- <div class="sl-pagination">
                         <div class="sl-pagination__button-left">
                             <a class="btn sl-btn sl-btn-small" href="javascript:void(0);"><span class="lnr lnr-chevron-left"></span></a>
                         </div>
@@ -484,7 +490,7 @@
                         <div class="sl-pagination__button-right">
                             <a class="btn sl-btn sl-btn-small sl-btn-active" href="javascript:void(0);"><span class="lnr lnr-chevron-right"></span></a>
                         </div>
-                    </div>
+                    </div> -->
                 </div>
             </div>
         </section>

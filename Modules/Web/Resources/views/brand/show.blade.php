@@ -43,10 +43,15 @@
                     <h4>Products</h4>
                     <div class="row">
                         @foreach($brand->products as $product)
+                        
                             <div class="col-sm-6 col-lg-4 col-xl-3">
                                 <div class="sl-featuredProducts--post">
                                     <figure>
-                                        <img src="{{asset('/storage/'.$product->full)}}" alt="Image Description">
+                                        @if(count($product->images) > 0)
+                                        <img src="{{asset('storage/'.$product->images[0]->full )}}" alt="Image Description">
+                                        @else 
+                                        <img src="{{asset('storage/')}}" alt="Image Description">
+                                        @endif</a>
                                         <figcaption>
                                             <div class="sl-slider__tags">
                                                 <span class="sl-bg-red-orange">25% OFF</span>

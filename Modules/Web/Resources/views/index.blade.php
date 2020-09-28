@@ -96,7 +96,12 @@
                 <div class="item">
                     <div class="sl-slider">
                         <figure>
-                            <a href="javascript:void(0);"><img src="{{asset('/storage/'. count($product->images) > 0 ? $product->images[0]->full : '')}}" alt="Image Description"></a>
+                            <a href="javascript:void(0);">
+                                @if(count($product->images) > 0)
+                                        <img src="{{asset('storage/'.$product->images[0]->full )}}" alt="Image Description">
+                                        @else 
+                                        <img src="{{asset('storage/')}}" alt="Image Description">
+                                        @endif</a>
 <!--                             <a href="javascript:void(0);"><img src="{{asset(isset($product->user->profile->image))}}" alt="Image Description"></a>
  -->      <a href="javascript:void(0);" class="sl-like"><i class="far fa-heart"></i></a>
                         </figure>
@@ -265,7 +270,11 @@
                                 <div class="sl-featuredProducts--post">
 
                                     <figure>
-                                        <img src="{{asset('storage/'. count($product->images) > 0 ? $product->images[0]->full : '')}}" alt="Image Description">
+                                        @if(count($product->images) > 0)
+                                        <img src="{{asset('storage/'.$product->images[0]->full )}}" alt="Image Description">
+                                        @else 
+                                        <img src="{{asset('storage/')}}" alt="Image Description">
+                                        @endif
                                         <figcaption>
                                             <div class="sl-slider__tags">
 
