@@ -318,30 +318,30 @@
         },
         {
             "name": "doctrine/dbal",
-            "version": "2.10.4",
+            "version": "2.11.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/doctrine/dbal.git",
-                "reference": "47433196b6390d14409a33885ee42b6208160643"
+                "reference": "0d4e1a8b29dd987704842f0465aded378f441dca"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/doctrine/dbal/zipball/47433196b6390d14409a33885ee42b6208160643",
-                "reference": "47433196b6390d14409a33885ee42b6208160643",
+                "url": "https://api.github.com/repos/doctrine/dbal/zipball/0d4e1a8b29dd987704842f0465aded378f441dca",
+                "reference": "0d4e1a8b29dd987704842f0465aded378f441dca",
                 "shasum": ""
             },
             "require": {
                 "doctrine/cache": "^1.0",
                 "doctrine/event-manager": "^1.0",
                 "ext-pdo": "*",
-                "php": "^7.2"
+                "php": "^7.3"
             },
             "require-dev": {
                 "doctrine/coding-standard": "^8.1",
                 "jetbrains/phpstorm-stubs": "^2019.1",
                 "nikic/php-parser": "^4.4",
                 "phpstan/phpstan": "^0.12.40",
-                "phpunit/phpunit": "^8.5.5",
+                "phpunit/phpunit": "^9.3",
                 "psalm/plugin-phpunit": "^0.10.0",
                 "symfony/console": "^2.0.5|^3.0|^4.0|^5.0",
                 "vimeo/psalm": "^3.14.2"
@@ -355,8 +355,7 @@
             "type": "library",
             "extra": {
                 "branch-alias": {
-                    "dev-master": "2.10.x-dev",
-                    "dev-develop": "3.0.x-dev"
+                    "dev-master": "4.0.x-dev"
                 }
             },
             "autoload": {
@@ -409,7 +408,7 @@
                 "sqlserver",
                 "sqlsrv"
             ],
-            "time": "2020-09-12T21:20:41+00:00"
+            "time": "2020-09-20T23:24:53+00:00"
         },
         {
             "name": "doctrine/event-manager",
@@ -726,16 +725,16 @@
         },
         {
             "name": "egulias/email-validator",
-            "version": "2.1.20",
+            "version": "2.1.22",
             "source": {
                 "type": "git",
                 "url": "https://github.com/egulias/EmailValidator.git",
-                "reference": "f46887bc48db66c7f38f668eb7d6ae54583617ff"
+                "reference": "68e418ec08fbfc6f58f6fd2eea70ca8efc8cc7d5"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/egulias/EmailValidator/zipball/f46887bc48db66c7f38f668eb7d6ae54583617ff",
-                "reference": "f46887bc48db66c7f38f668eb7d6ae54583617ff",
+                "url": "https://api.github.com/repos/egulias/EmailValidator/zipball/68e418ec08fbfc6f58f6fd2eea70ca8efc8cc7d5",
+                "reference": "68e418ec08fbfc6f58f6fd2eea70ca8efc8cc7d5",
                 "shasum": ""
             },
             "require": {
@@ -780,7 +779,7 @@
                 "validation",
                 "validator"
             ],
-            "time": "2020-09-06T13:44:32+00:00"
+            "time": "2020-09-26T15:48:38+00:00"
         },
         {
             "name": "fideloper/proxy",
@@ -1381,16 +1380,16 @@
         },
         {
             "name": "laravel/ui",
-            "version": "v2.4.0",
+            "version": "v2.4.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/laravel/ui.git",
-                "reference": "f5398544a9cd4804a42d09ce51735e37cd51ea2d"
+                "reference": "1c69ae3e8b52fe6c9eaf83b43c6dd8ef5c3f9e2c"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/laravel/ui/zipball/f5398544a9cd4804a42d09ce51735e37cd51ea2d",
-                "reference": "f5398544a9cd4804a42d09ce51735e37cd51ea2d",
+                "url": "https://api.github.com/repos/laravel/ui/zipball/1c69ae3e8b52fe6c9eaf83b43c6dd8ef5c3f9e2c",
+                "reference": "1c69ae3e8b52fe6c9eaf83b43c6dd8ef5c3f9e2c",
                 "shasum": ""
             },
             "require": {
@@ -1432,7 +1431,7 @@
                 "laravel",
                 "ui"
             ],
-            "time": "2020-09-11T15:31:52+00:00"
+            "time": "2020-09-22T16:51:51+00:00"
         },
         {
             "name": "laravelcollective/html",
@@ -1722,16 +1721,16 @@
         },
         {
             "name": "league/mime-type-detection",
-            "version": "1.4.0",
+            "version": "1.5.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/thephpleague/mime-type-detection.git",
-                "reference": "fda190b62b962d96a069fcc414d781db66d65b69"
+                "reference": "ea2fbfc988bade315acd5967e6d02274086d0f28"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/thephpleague/mime-type-detection/zipball/fda190b62b962d96a069fcc414d781db66d65b69",
-                "reference": "fda190b62b962d96a069fcc414d781db66d65b69",
+                "url": "https://api.github.com/repos/thephpleague/mime-type-detection/zipball/ea2fbfc988bade315acd5967e6d02274086d0f28",
+                "reference": "ea2fbfc988bade315acd5967e6d02274086d0f28",
                 "shasum": ""
             },
             "require": {
@@ -1759,7 +1758,7 @@
                 }
             ],
             "description": "Mime-type detection for Flysystem",
-            "time": "2020-08-09T10:34:01+00:00"
+            "time": "2020-09-21T18:10:53+00:00"
         },
         {
             "name": "league/oauth1-client",
@@ -2312,16 +2311,16 @@
         },
         {
             "name": "nesbot/carbon",
-            "version": "2.40.0",
+            "version": "2.40.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/briannesbitt/Carbon.git",
-                "reference": "6c7646154181013ecd55e80c201b9fd873c6ee5d"
+                "reference": "d9a76d8b7eb0f97cf3a82529393245212f40ba3b"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/briannesbitt/Carbon/zipball/6c7646154181013ecd55e80c201b9fd873c6ee5d",
-                "reference": "6c7646154181013ecd55e80c201b9fd873c6ee5d",
+                "url": "https://api.github.com/repos/briannesbitt/Carbon/zipball/d9a76d8b7eb0f97cf3a82529393245212f40ba3b",
+                "reference": "d9a76d8b7eb0f97cf3a82529393245212f40ba3b",
                 "shasum": ""
             },
             "require": {
@@ -2387,20 +2386,20 @@
                 "datetime",
                 "time"
             ],
-            "time": "2020-09-11T19:00:58+00:00"
+            "time": "2020-09-23T08:17:37+00:00"
         },
         {
             "name": "nikic/php-parser",
-            "version": "v4.10.0",
+            "version": "v4.10.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/nikic/PHP-Parser.git",
-                "reference": "1c13d05035deff45f1230ca68bd7d74d621762d9"
+                "reference": "658f1be311a230e0907f5dfe0213742aff0596de"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/nikic/PHP-Parser/zipball/1c13d05035deff45f1230ca68bd7d74d621762d9",
-                "reference": "1c13d05035deff45f1230ca68bd7d74d621762d9",
+                "url": "https://api.github.com/repos/nikic/PHP-Parser/zipball/658f1be311a230e0907f5dfe0213742aff0596de",
+                "reference": "658f1be311a230e0907f5dfe0213742aff0596de",
                 "shasum": ""
             },
             "require": {
@@ -2439,7 +2438,7 @@
                 "parser",
                 "php"
             ],
-            "time": "2020-09-19T14:52:48+00:00"
+            "time": "2020-09-26T10:30:38+00:00"
         },
         {
             "name": "nwidart/laravel-modules",
@@ -3418,22 +3417,22 @@
         },
         {
             "name": "spatie/laravel-newsletter",
-            "version": "4.8.0",
+            "version": "4.8.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/spatie/laravel-newsletter.git",
-                "reference": "ac00cbe4662e64bde4f2f732935047e917919215"
+                "reference": "996aefb353a43eb30c09bbbbc967921d01639d56"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spatie/laravel-newsletter/zipball/ac00cbe4662e64bde4f2f732935047e917919215",
-                "reference": "ac00cbe4662e64bde4f2f732935047e917919215",
+                "url": "https://api.github.com/repos/spatie/laravel-newsletter/zipball/996aefb353a43eb30c09bbbbc967921d01639d56",
+                "reference": "996aefb353a43eb30c09bbbbc967921d01639d56",
                 "shasum": ""
             },
             "require": {
                 "drewm/mailchimp-api": "^2.4",
-                "illuminate/support": "~5.8.0|^6.0|^7.0",
-                "php": "~7.2"
+                "illuminate/support": "~5.8.0|^6.0|^7.0|^8.0",
+                "php": "^7.3"
             },
             "require-dev": {
                 "mockery/mockery": "^1.3",
@@ -3474,7 +3473,7 @@
                 "mailchimp",
                 "newsletter"
             ],
-            "time": "2020-03-03T12:49:27+00:00"
+            "time": "2020-09-09T09:31:58+00:00"
         },
         {
             "name": "swiftmailer/swiftmailer",
@@ -6321,30 +6320,33 @@
         },
         {
             "name": "mockery/mockery",
-            "version": "1.3.3",
+            "version": "1.4.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/mockery/mockery.git",
-                "reference": "60fa2f67f6e4d3634bb4a45ff3171fa52215800d"
+                "reference": "20cab678faed06fac225193be281ea0fddb43b93"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/mockery/mockery/zipball/60fa2f67f6e4d3634bb4a45ff3171fa52215800d",
-                "reference": "60fa2f67f6e4d3634bb4a45ff3171fa52215800d",
+                "url": "https://api.github.com/repos/mockery/mockery/zipball/20cab678faed06fac225193be281ea0fddb43b93",
+                "reference": "20cab678faed06fac225193be281ea0fddb43b93",
                 "shasum": ""
             },
             "require": {
                 "hamcrest/hamcrest-php": "^2.0.1",
                 "lib-pcre": ">=7.0",
-                "php": ">=5.6.0"
+                "php": "^7.3 || ^8.0"
+            },
+            "conflict": {
+                "phpunit/phpunit": "<8.0"
             },
             "require-dev": {
-                "phpunit/phpunit": "^5.7.10|^6.5|^7.5|^8.5|^9.3"
+                "phpunit/phpunit": "^8.5 || ^9.3"
             },
             "type": "library",
             "extra": {
                 "branch-alias": {
-                    "dev-master": "1.3.x-dev"
+                    "dev-master": "1.4.x-dev"
                 }
             },
             "autoload": {
@@ -6382,7 +6384,7 @@
                 "test double",
                 "testing"
             ],
-            "time": "2020-08-11T18:10:21+00:00"
+            "time": "2020-08-11T18:10:13+00:00"
         },
         {
             "name": "myclabs/deep-copy",
