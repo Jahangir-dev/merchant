@@ -8,7 +8,7 @@
         <select name="target" class="target form-control">
             <option>Select</option>
             <option value="en" @if(Session::get("target") == "en") selected="selected" @endif>English</option>
-            <option value="zh-CN" @if(Session::get("target") == "zh-CN") selected="selected" @endif>Chinese</option>
+            <option value="cn" @if(Session::get("target") == "cn") selected="selected" @endif>Chinese</option>
         </select><br>
 
         <div class="sl-main-header__content">
@@ -190,8 +190,8 @@
                     @endphp
                     <div class="sl-user sl-userdropdown">
                         <a href="javascript:void(0);">
-                            <img src="{{asset('frontend/images/insight/user-img.jpg')}}" alt="Image Description">
-                            <span class="sl-user__description"><em class="d-block">{{ $user->first_name }}</em>{{ $user->last_name }}</span>
+                            <img src="{{asset('frontend/images/insight/user-img.jpg')}}" alt="Image Description"> 
+                            <span class="sl-user__description"><em class="d-block">{{translateText(Auth::user()->first_name)}}</em>{{translateText(Auth::user()->last_name)}}</span>
                             <i class="ti-angle-down"></i>
                         </a>
                         <ul class="sl-usermenu">

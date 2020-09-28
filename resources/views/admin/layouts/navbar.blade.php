@@ -16,7 +16,7 @@
     <select name="target" class="target form-control">
         <option>Select</option>
         <option value="en" @if(Session::get("target") == "en") selected="selected" @endif>English</option>
-        <option value="zh-CN" @if(Session::get("target") == "zh-CN") selected="selected" @endif>Chinese</option>
+        <option value="zh-CN" @if(Session::get("target") == "cn") selected="selected" @endif>Chinese</option>
   </select>
 </div>
     <!-- Right navbar links -->
