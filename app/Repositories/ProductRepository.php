@@ -9,7 +9,7 @@ use App\Contracts\ProductContract;
 use Illuminate\Database\QueryException;
 use Illuminate\Database\Eloquent\ModelNotFoundException;
 use Doctrine\Instantiator\Exception\InvalidArgumentException;
-
+use Auth;
 /**
  * Class ProductRepository
  *
@@ -72,7 +72,7 @@ class ProductRepository extends BaseRepository implements ProductContract
             $merge = $collection->merge(compact('status', 'featured'));
 
             $product = new Product($merge->all());
-
+            $product->user_id = Auth::id();
             $product->save();
 
             if ($collection->has('categories')) {
