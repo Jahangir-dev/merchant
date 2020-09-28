@@ -33,7 +33,10 @@
                                                         <input name="price" value="{{$product->price}}" class="form-control sl-form-control" type="text" placeholder="Price" required>
                                                     </div>
                                                     <div class="form-group form-group-half">
-                                                        <input name="special_price" value="{{$product->special_price}}" class="form-control sl-form-control" type="email" placeholder="Special Price*" required>
+                                                        <input name="special_price" value="{{$product->special_price}}" class="form-control sl-form-control" type="number" placeholder="Special Price*" required>
+                                                    </div>
+                                                    <div class="form-group form-group-half">
+                                                        <input name="quantity" value="{{$product->quantity}}" class="form-control sl-form-control" type="number" placeholder="Quantity*" required>
                                                     </div>
                                                     @php
                                                         $cate = Array();

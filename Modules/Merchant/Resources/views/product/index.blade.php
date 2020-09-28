@@ -21,6 +21,7 @@
                                         <th>{{translateText('Brand')}}</th>
                                         <th>{{translateText('Categories')}}</th>
                                         <th>{{translateText('Price / Sale Price')}}</th>
+                                        <th>{{translateText('Quantity')}}</th>
                                         <th>{{translateText('Status')}}</th>
                                         <th>{{translateText('Featured')}}</th>
                                         <th>{{translateText('Actions')}}</th>
@@ -57,6 +58,9 @@
                                             {{$product->price}} / {{$product->sale_price}}
                                         </td>
                                         <td>
+                                            {{$product->quantity}}
+                                        </td>
+                                        <td>
                                             {{$product->status}}
                                         </td>
                                         <td>
@@ -82,6 +86,7 @@
                                         <th>{{translateText('Brand')}}</th>
                                         <th>{{translateText('Categories')}}</th>
                                         <th>{{translateText('Price / Sale Price')}}</th>
+                                        <th>{{translateText('Quantity')}}</th>
                                         <th>{{translateText('Status')}}</th>
                                         <th>{{translateText('Featured')}}</th>
                                         <th>{{translateText('Actions')}}</th>

@@ -37,6 +37,9 @@
                                                         <div class="form-group form-group-half">
                                                             <input name="special_price" class="form-control sl-form-control" type="text" placeholder="Special Price*" required>
                                                         </div>
+                                                         <div class="form-group form-group-half">
+                                                            <input name="quantity" class="form-control sl-form-control" type="number" placeholder="Quantity" required>
+                                                        </div>
                                                         <div class="form-group">
                                                             <div class="sl-aboutDescription__title">
                                                                 <h6>Select Categories</h6>
