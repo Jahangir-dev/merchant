@@ -104,4 +104,9 @@ Route::group(['prefix'  =>  'admin'], function () {
     Route::get('/deal', 'Admin\DealsController@index')->name('admin.deal');
     Route::get('/deal/create', 'Admin\DealsController@create')->name('admin.deal.create');
     });
+
+
+    Route::get('send-mails', 'Admin\MailChimpController@store')->name('subscribe-newsletter');
+    Route::get('check-subscribe', 'Admin\MailChimpController@checkSubscribed')->name('subscribe-check');
+
 });

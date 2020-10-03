@@ -4,11 +4,15 @@
         <strong class="sl-main-header__logo" style="color:#fff;">
             <a href="{{route('web.index')}}"><!-- <img src="{{asset('frontend/images/main-logo.png')}}" alt="Logo"> --> Logo Here</a>
         </strong>
+        @php
+        $merchants = \App\User::where('role_id', '2')->get();
+        @endphp
         <div class="sl-main-header__content">
             <div class="sl-main-header__upper">
-                <form class="sl-main-form">
+                <form method="post" action="{{route('search')}}" class="sl-main-form">
+                    @csrf
                     <div class="sl-form-group sl-main-form__input1 sl-loading">
-                        <input class="form-control sl-form-control" type="text" placeholder="Search anything you want">
+                        <input name="search" class="form-control sl-form-control" type="text" placeholder="Search anything you want">
                     </div>
                     <div class="sl-form-group sl-main-form__input2">
                         <input class="form-control sl-form-control" type="text" placeholder="Detect my location">
@@ -24,27 +28,28 @@
                     </div>
                     <div class="sl-form-group sl-main-form__input3">
                         <div class="sl-select">
-                            <select>
-                                <option hidden="">Service Providers</option>
-                                <option>type 1</option>
-                                <option>type 2</option>
-                                <option>type 3</option>
+                            <select name="merchant">
+                                <option value="null" hidden="">Service Providers</option>
+                                @foreach($merchants as $merchant)
+                                <option value="{{ $merchant->id }}"> {{ $merchant->first_name }} {{ $merchant->last_name }} </option>
+                                @endforeach
                             </select>
                         </div>
                     </div>
+                    <div class="sl-input-group">
+                        <button type="submit" href="javascript:void(0);" class="btn sl-btn sl-btn-active sl-advance-btn">
+                            <span>Search Now</span>
+                            <span>
+                                    <em class="sl-advance-icon">
+                                        <i></i>
+                                        <i></i>
+                                        <i></i>
+                                    </em>
+                                </span>
+                        </button>
+                    </div>
                 </form>
-                <div class="sl-input-group">
-                    <a href="javascript:void(0);" class="btn sl-btn sl-btn-active sl-advance-btn">
-                        <span>Search Now</span>
-                        <span>
-                                <em class="sl-advance-icon">
-                                    <i></i>
-                                    <i></i>
-                                    <i></i>
-                                </em>
-                            </span>
-                    </a>
-                </div>
+
                 <div class="sl-main-form__btn">
                     <a href="javascript:void(0);" class="btn sl-btn sl-btn-active"><i class="ti-search"></i></a>
                 </div>

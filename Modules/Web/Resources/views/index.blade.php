@@ -99,7 +99,7 @@
                             <a href="javascript:void(0);">
                                 @if(count($product->images) > 0)
                                         <img src="{{asset('storage/'.$product->images[0]->full )}}" alt="Image Description">
-                                        @else 
+                                        @else
                                         <img src="{{asset('storage/')}}" alt="Image Description">
                                         @endif</a>
 <!--                             <a href="javascript:void(0);"><img src="{{asset(isset($product->user->profile->image))}}" alt="Image Description"></a>
@@ -272,7 +272,7 @@
                                     <figure>
                                         @if(count($product->images) > 0)
                                         <img src="{{asset('storage/'.$product->images[0]->full )}}" alt="Image Description">
-                                        @else 
+                                        @else
                                         <img src="{{asset('storage/')}}" alt="Image Description">
                                         @endif
                                         <figcaption>
@@ -315,8 +315,38 @@
         <!-- FEATURED PRODUCTS END -->
     </main>
     <!-- MAIN END -->
-    <script>
-        console.log()
 
+    <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+        <div class="modal-dialog modal-lg" role="document">
+            <div class="modal-content">
+                <div class="modal-header bg-primary text-center">
+                    <h1 class="modal-title" id="myModalLabel">Subscribe to our Newsletter.</h1>
+                    <button type="button" class="modal-header close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>
+
+                </div>
+                <div class="modal-body">
+                    <div class="row">
+                        <form action="{{route('subscribe-newsletter')}}">
+                            <div class="form-group col-md-12">
+                                <div class="input-group">
+                                    <span class="input-group-append">@</span>
+                                    <input type="email" name="user_email" class="form-control input-lg"  placeholder="Your email here">
+                                </div>
+                            </div>
+                            <div class="form-group col-md-12">
+                                <input type="submit" class="btn btn-primary btn-lg btn-block" value="Subscribe">
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        console.log('hello world')
+        window.onload = function (){
+            $('#myModal').modal('show');
+        }
     </script>
 @endsection
