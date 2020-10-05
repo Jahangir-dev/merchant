@@ -9,8 +9,7 @@
         @endphp
         <div class="sl-main-header__content">
             <div class="sl-main-header__upper">
-                <form method="post" action="{{route('search')}}" class="sl-main-form">
-                    @csrf
+                <form method="get" action="{{route('search')}}" role="search" class="sl-main-form">
                     <div class="sl-form-group sl-main-form__input1 sl-loading">
                         <input name="search" class="form-control sl-form-control" type="text" placeholder="Search anything you want">
                     </div>

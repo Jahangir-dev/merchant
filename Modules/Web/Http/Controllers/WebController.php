@@ -9,6 +9,7 @@ use App\User;
 use Illuminate\Contracts\Support\Renderable;
 use Illuminate\Http\Request;
 use Illuminate\Routing\Controller;
+use Illuminate\Support\Facades\DB;
 
 class WebController extends Controller
 {
@@ -18,13 +19,13 @@ class WebController extends Controller
      */
     public function index()
     {
-
+        $sale_products = DB::table('promocodes_products')->pluck('product_id')->toArray();
         $session_id = session()->getId();
         $merchants = User::where('role_id', '2')->with('products')->get();
         $categories = Category::where('menu', '1')->get();
         $brands = Brand::all();
         $products = Product::with('categories')->with('brand')->with('user')->get();
-        return view('web::index', compact('products', 'categories', 'brands', 'merchants', 'session_id'));
+        return view('web::index', compact('products', 'categories','sale_products', 'brands', 'merchants', 'session_id'));
     }
 
     /**

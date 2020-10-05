@@ -7,6 +7,7 @@ use App\Models\Product;
 use Illuminate\Contracts\Support\Renderable;
 use Illuminate\Http\Request;
 use Illuminate\Routing\Controller;
+use Illuminate\Support\Facades\DB;
 
 class SearchController extends Controller
 {
@@ -81,18 +82,62 @@ class SearchController extends Controller
 
 
     public function searchResults(Request $request) {
+
+        $sale_products = DB::table('promocodes_products')->pluck('product_id')->toArray();
+
+        $keyword = !empty($_GET['search']) ? $_GET['search'] : '';
+        $price = !empty($_GET['price']) ? $_GET['price'] : '';
+        $merchant = !empty($_GET['merchant']) ? $_GET['merchant'] : '';
+        $categories = !empty($_GET['categories']) ? $_GET['categories'] : '';
+
+        $words = explode(' - ', $price);
+        $ending_price = array_pop($words);
+        $starting_price = implode(' ', $words);
+
+        $starting_price = str_replace('$', '', $starting_price); // Replaces all spaces with hyphens.
+        $ending_price = str_replace('$', '', $ending_price); // Replaces all spaces with hyphens.
+
+//        dd($ending_price, $starting_price, $merchants);
+
+        $products = Product::
+            with('categories')
+            ->with('user')
+            ->with('brand')
+            ->with('images');
+        if ($keyword !== '') {
+            $products = $products
+                ->where('name', 'LIKE', "%{$keyword}%");
+        }
+        if ($price !== '') {
+            $products = $products
+                ->where('price', '<=', $ending_price)
+                ->where('price', '>=', $starting_price);
+        }
+        if ($merchant !== '' && $merchant !== 'null') {
+            $products = $products->where('user_id', $merchant);
+        }
+        if ($categories !== '') {
+            foreach($categories as $key => $value) {
+
+                $products->whereHas('categories', function($q) use ($value) {
+                    $q->where('category_id', $value);
+                })->get();
+
+            }
+        }
+
         $categories = Category::all();
-        $keyword = $request->search;
-        $products = Product::query()
-            ->where('name', 'LIKE', "%{$request->search}%")
+/*        $products = Product::query()
+            ->where('name', 'LIKE', "%{$keyword}%")
             ->with('categories')
             ->with('user')
             ->with('brand')
             ->with('images')
-            ->get();
-        if ($request->merchant !== 'null') {
-            $products = $products->where('user_id', $request->merchant);
-        }
-        return view('web::search.index', compact('products', 'categories', 'keyword'));
+            ->paginate(6);*/
+        /*if ($merchant !== 'null') {
+            $products = $products->where('user_id', $merchant);
+        }*/
+        $products = $products->paginate(6);
+        return view('web::search.index', compact('products', 'categories', 'keyword', 'sale_products'));
     }
 }

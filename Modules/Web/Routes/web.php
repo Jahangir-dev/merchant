@@ -43,4 +43,4 @@ Route::get('/checkout','ShoppingController@checkout')->name('checkout.index');
 Route::post('/addToWishList','ShoppingController@addToWishList')->name('add.to.wishlist');
 Route::post('/getWishList','ShoppingController@getWishList')->name('get.wishlist');
 
-Route::post('/search', 'SearchController@searchResults')->name('search');
+Route::get('/search', 'SearchController@searchResults')->name('search');

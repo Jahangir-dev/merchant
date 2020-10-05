@@ -277,8 +277,9 @@
                                         @endif
                                         <figcaption>
                                             <div class="sl-slider__tags">
-
-{{--                                                <span class="sl-bg-red-orange">10% OFF</span>--}}
+                                                @if(in_array($product->id, $sale_products))
+                                                    <span class="sl-bg-red-orange">sale</span>
+                                                @endif
                                             </div>
                                             <a id="wist-list-{{ $product->id }}" onclick="addToWishList({{ $product->id }})" href="javascript:void(0);" class=""><i class="far fa-heart"></i></a>
                                         </figcaption>
@@ -344,7 +345,6 @@
     </div>
 
     <script>
-        console.log('hello world')
         window.onload = function (){
             $('#myModal').modal('show');
         }
