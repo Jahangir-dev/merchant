@@ -334,7 +334,7 @@ class ShoppingController extends Controller
                 $json['type'] = 'added';
                 $json['message'] = 'Add to wishlist successfully';
             }
-            elseif(array_search($request['id'], $wishlist)) {
+            elseif(in_array($request['id'], $wishlist)) {
                 $index = array_search($request['id'], $wishlist);
                 if ($index !== false) {
                     unset($wishlist[$index]);
