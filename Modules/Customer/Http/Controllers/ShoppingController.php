@@ -315,4 +315,75 @@ class ShoppingController extends Controller
         }
         return redirect()->route('home');
     }
+
+    public function addToWishList(Request $request) {
+        $saved_item = Array();
+        $json = Array();
+        if (Auth::user()) {
+            $user = User::where('id', Auth::id())->first();
+            $wishlist = [];
+            if ($user->saved_items !== null) {
+                $wishlist = json_decode($user->saved_items, true);
+            }
+//dd(array_search($request['id'], $wishlist));
+            if ($wishlist == []) {
+                $saved_item[] = $request['id'];
+                $user = User::where('id', Auth::id())->update([
+                    'saved_items' => $saved_item
+                ]);
+                $json['type'] = 'added';
+                $json['message'] = 'Add to wishlist successfully';
+            }
+            elseif(array_search($request['id'], $wishlist)) {
+                $index = array_search($request['id'], $wishlist);
+                if ($index !== false) {
+                    unset($wishlist[$index]);
+                }
+                $wishlist = array_values($wishlist);
+                $wishlist = json_encode($wishlist);
+                $user = User::where('id', Auth::id())->update([
+                    'saved_items' => $wishlist
+                ]);
+                $json['type'] = 'removed';
+                $json['message'] = 'Removed from wishlist successfully';
+            }
+            else {
+                array_push( $wishlist, $request['id'] );
+                $wishlist = json_encode($wishlist);
+                $user = User::where('id', Auth::id())->update([
+                    'saved_items' => $wishlist
+                ]);
+                $json['type'] = 'added';
+                $json['message'] = 'Add to wishlist successfully';
+            }
+            return $json;
+        }
+        else {
+            $json['type'] = 'error';
+            $json['message'] = 'you are not logged in';
+        }
+        return $json;
+    }
+
+    public function getWishList() {
+        $json = Array();
+        if (Auth::user()) {
+            $user = User::where('id', Auth::id())->first();
+            $wishlist = $user->saved_items;
+            if ($wishlist == null) {
+                $json['type'] = 'null';
+                $json['list'] = null;
+            }
+            else {
+                $json['type'] = 'not null';
+                $json['list'] = json_decode($wishlist);
+            }
+            return $json;
+        }
+        else {
+            $json['type'] = 'error';
+            $json['message'] = 'you are not logged in';
+        }
+        return $json;
+    }a
 }

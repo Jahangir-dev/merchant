@@ -2,9 +2,13 @@
 
 namespace Modules\Customer\Http\Controllers;
 
+use App\Models\Product;
+use App\User;
 use Illuminate\Contracts\Support\Renderable;
 use Illuminate\Http\Request;
 use Illuminate\Routing\Controller;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
 
 class CustomerController extends Controller
 {
@@ -75,5 +79,21 @@ class CustomerController extends Controller
     public function destroy($id)
     {
         //
+    }
+
+
+    public function wishListItem() {
+        $wishlist = User::where('id', Auth::id())->first();
+        $sale_products = DB::table('promocodes_products')->pluck('product_id')->toArray();
+
+
+        if ($wishlist->saved_items !== null && $wishlist->saved_items !== []) {
+            $wishlist = (json_decode($wishlist->saved_items, true));
+        }
+        else {
+            $wishlist = [];
+        }
+        $products = Product::whereIn('id', $wishlist)->get();
+        return view('customer::favourite.index', compact('products', 'sale_products'));
     }
 }

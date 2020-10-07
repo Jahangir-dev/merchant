@@ -196,8 +196,11 @@ class ShoppingController extends Controller
         $json = Array();
         if (Auth::user()) {
             $user = User::where('id', Auth::id())->first();
-            $wishlist = json_decode($user->saved_items);
-
+            $wishlist = [];
+            if ($user->saved_items !== null) {
+                $wishlist = json_decode($user->saved_items, true);
+            }
+//dd(array_search($request['id'], $wishlist));
             if ($wishlist == []) {
                 $saved_item[] = $request['id'];
                 $user = User::where('id', Auth::id())->update([
@@ -206,9 +209,13 @@ class ShoppingController extends Controller
                 $json['type'] = 'added';
                 $json['message'] = 'Add to wishlist successfully';
             }
-            elseif((array_search($request['id'], $wishlist))) {
+            elseif(array_search($request['id'], $wishlist)) {
                 $index = array_search($request['id'], $wishlist);
-                unset($wishlist[$index]);
+                if ($index !== false) {
+                    unset($wishlist[$index]);
+                }
+                $wishlist = array_values($wishlist);
+                $wishlist = json_encode($wishlist);
                 $user = User::where('id', Auth::id())->update([
                     'saved_items' => $wishlist
                 ]);
@@ -217,6 +224,7 @@ class ShoppingController extends Controller
             }
             else {
                 array_push( $wishlist, $request['id'] );
+                $wishlist = json_encode($wishlist);
                 $user = User::where('id', Auth::id())->update([
                     'saved_items' => $wishlist
                 ]);

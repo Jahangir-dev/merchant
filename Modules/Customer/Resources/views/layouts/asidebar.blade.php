@@ -41,8 +41,8 @@
                                     <i class="ti-user"></i><span>Profile Settings</span>
                                 </a>
                             </li>
-                            <li>
-                                <a href="#">
+                            <li class="{{ Route::currentRouteName() == 'wish-list-items' ? 'sl-active' : ''}}">
+                                <a href="{{ route('wish-list-items') }}">
                                     <i class="ti-heart"></i><span>My Favorites</span>
                                 </a>
                             </li>

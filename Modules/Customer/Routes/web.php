@@ -37,6 +37,11 @@ Route::prefix('customer')->group(function() {
     Route::get('/order','ShoppingController@proceedToOrder')->name('customer.order');
     Route::post('/order','ShoppingController@saveOrderDetails')->name('customer.order.details');
 
+    Route::post('/addToWishList','ShoppingController@addToWishList')->name('add.to.wishlist');
+    Route::post('/getWishList','ShoppingController@getWishList')->name('get.wishlist');
+
+    Route::get('/wish-list-items', 'CustomerController@wishListItem')->name('wish-list-items');
+
 });
 
 
