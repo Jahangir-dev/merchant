@@ -385,5 +385,5 @@ class ShoppingController extends Controller
             $json['message'] = 'you are not logged in';
         }
         return $json;
-    }a
+    }
 }

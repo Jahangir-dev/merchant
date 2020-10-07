@@ -373,8 +373,10 @@
                     }
                     else if (response.type === 'removed') {
                         alertify.success(response.message);
-
                         getWishList()
+                    }
+                    else if (response.type === 'error') {
+                        alertify.message(response.message);
                     }
                 }
             })
