@@ -298,7 +298,7 @@ class ShoppingController extends Controller
     }
 
     public function saveOrderDetails(Request $request) {
-        $request['order_number'] = '#' . str_pad(mt_rand(999, 99999999) , 8, "0", STR_PAD_LEFT);
+        $request['order_number'] = str_pad(mt_rand(999, 99999999) , 8, "0", STR_PAD_LEFT);
         $request['user_id'] = Auth::id();
         $request['grand_total'] =  \Cart::getSubTotal() ;
         $request['item_count'] =  \Cart::getTotalQuantity() ;

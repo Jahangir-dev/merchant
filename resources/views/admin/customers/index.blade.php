@@ -5,7 +5,7 @@
     <div class="alert alert-success">
         {{ session()->get('success') }}
     </div>
-    @endif  
+    @endif
     <br>
         <div class="container-fluid">
             <div class="row">
@@ -23,6 +23,7 @@
                                     <th>{{translateText('First Name')}}</th>
                                     <th>{{translateText('Last Name')}}</th>
                                     <th>{{translateText('Email')}}</th>
+                                    <th>{{translateText('Phone')}}</th>
                                     <th>{{translateText('Ip Address')}}</th>
                                     <th>{{translateText('Actions')}}</th>
                                 </tr>
@@ -35,6 +36,7 @@
                                         <td>{{translateText($user->first_name)}}</td>
                                         <td>{{translateText($user->last_name)}}</td>
                                         <td>{{translateText($user->email)}}</td>
+                                        <td>{{translateText($user->profile->phone)}}</td>
                                         <td>
                                             {{translateText($user->ip_address)}}
                                             @if($ips->contains('ip_address', $user->ip_address))

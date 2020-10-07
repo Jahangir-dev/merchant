@@ -24,6 +24,8 @@
                                     <th>{{translateText('Last Name')}}</th>
                                     <th>{{translateText('Email')}}</th>
                                     <th>{{translateText('Ip Address')}}</th>
+                                    <th>{{translateText('Company')}}</th>
+                                    <th>{{translateText('Phone')}}</th>
                                     <th>{{translateText('Actions')}}</th>
                                 </tr>
                                 </thead>
@@ -47,6 +49,12 @@
                                                 </a>
                                             @endif
                                         </td>
+                                        <td>
+                                            @foreach($user->brands as $brand)
+                                                <p> {{$brand->name}} </p>
+                                            @endforeach
+                                        </td>
+                                        <td>{{translateText($user->profile->phone_number)}}</td>
                                         <td>
                                             <label class="radio-inline">
 

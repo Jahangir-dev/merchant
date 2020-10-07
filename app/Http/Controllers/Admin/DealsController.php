@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Admin;
 
+use App\Deal;
 use App\Http\Controllers\Controller;
 use App\Promocode;
 use Illuminate\Http\Request;
@@ -26,7 +27,8 @@ class DealsController extends Controller
     public function index()
     {
         //
-        return view('admin.deals.index');
+        $deals = Deal::with('user')->with('products')->get();
+        return view('admin.deals.index', compact('deals'));
     }
 
     /**

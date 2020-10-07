@@ -70,9 +70,9 @@ Route::group(['prefix'  =>  'admin'], function () {
 
         });
 
-        Route::group(['prefix' => 'orders'], function () {
+        Route::group(['prefix' => '/orders'], function () {
            Route::get('/', 'Admin\OrderController@index')->name('admin.orders.index');
-           Route::get('/{order}/show', 'Admin\OrderController@show')->name('admin.orders.show');
+           Route::get('/show/{order}', 'Admin\OrderController@show')->name('admin.orders.show');
         });
 
         Route::get('/profile', 'Admin\HomeController@myProfile')->name('admin.profile');

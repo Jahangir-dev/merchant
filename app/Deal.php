@@ -10,10 +10,10 @@ class Deal extends Model
     protected $guarded = [];
 
     public function user() {
-        $this->hasOne('App\User');
+        return $this->hasOne('App\User', 'id', 'user_id');
     }
 
     public function products() {
-        return $this->belongsToMany('App\Product', 'promocodes_products', 'promocode', 'product_id', 'promo');
+        return $this->belongsToMany('App\Models\Product', 'promocodes_products', 'promocode', 'product_id', 'promo');
     }
 }

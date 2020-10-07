@@ -8,7 +8,7 @@
             <p>{{ $subTitle }}</p>
         </div>
     </div>
-    
+
         <div class="col-md-12 mt-3">
             <div class="tile">
                 <div class="tile-body">
@@ -28,7 +28,7 @@
                         @foreach($orders as $order)
                             <tr>
                                 <td>{{ $order->order_number }}</td>
-                                <td>{{ $order->user->fullName }}</td>
+                                <td>{{ $order->first_name }} {{ $order->last_name }}</td>
                                 <td class="text-center">{{ config('settings.currency_symbol') }}{{ $order->grand_total }}</td>
                                 <td class="text-center">{{ $order->item_count }}</td>
                                 <td class="text-center">
@@ -43,7 +43,7 @@
                                 </td>
                                 <td class="text-center">
                                     <div class="btn-group" role="group" aria-label="Second group">
-                                        <a href="{{ route('admin.orders.show', $order->order_number) }}" class="btn btn-sm btn-primary"><i class="fa fa-edit"></i></a>
+                                        <a href="{{ route('admin.orders.show', ['order' => $order->order_number]) }}" class="btn btn-sm btn-primary"><i class="fa fa-edit"></i></a>
                                     </div>
                                 </td>
                             </tr>
