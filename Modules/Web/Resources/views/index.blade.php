@@ -330,7 +330,7 @@
                         <form action="{{route('subscribe-newsletter')}}">
                             <div class="form-group col-md-12">
                                 <div class="input-group">
-                                    <span class="input-group-append">@</span>
+                                    <span class="input-group-append"></span>
                                     <input type="email" name="user_email" class="form-control input-lg"  placeholder="Your email here">
                                 </div>
                             </div>
