@@ -28,7 +28,6 @@
         "yajra/laravel-datatables": "1.5",
         "yajra/laravel-datatables-oracle": "~9.0",
         "zgabievi/promocodes": "^8.1",
-         "paypal/rest-api-sdk-php": "^1.14"
     },
     "require-dev": {
         "facade/ignition": "^2.0",
