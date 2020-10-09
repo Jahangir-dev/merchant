@@ -1,11 +1,11 @@
-@extends('customer::layouts.master')
+@extends('merchant::layouts.master')
 @section('content')
     <!-- MAIN START -->
     <main class="sl-main">
         <div class="sl-main-section">
             <div class="container">
                 <div class="row">
-                    @include('customer::layouts.asidebar')
+                    @include('merchant::layouts.asidebar')
                     <div class="col-lg-8 col-xl-9">
                         <div class="sl-dashboardbox sl-addNewArticle">
                             <div class="sl-dashboardbox__title">
@@ -20,6 +20,7 @@
                                         <th>{{translateText('Last Name')}}</th>
                                         <th>{{translateText('Order Amount')}}</th>
                                         <th>{{translateText('Qty.')}}</th>
+                                        <th>{{translateText('Product')}}</th>
                                         <th>{{translateText('Status')}}</th>
                                     </tr>
                                     </thead>
@@ -41,11 +42,14 @@
                                             {{ config('settings.currency_symbol') }}{{ round($order->grand_total, 2) }}
                                         </td>
                                         <td>
-                                            {{ $order->item_count }
+                                            {{ $order->item_count }}
                                         </td>
                                         <td>
-                                            {{$product->quantity}}
+                                            <a href="{{route('web.product.show', ['slug' => $order->product_slug])}}" target="_blank">
+                                            {{$order->product_name}}
+                                        </a>
                                         </td>
+                                        <td><span class="badge badge-success">{{ strtoupper($order->status) }}</span></td>
                                       
                                     </tr>
                                     @endforeach

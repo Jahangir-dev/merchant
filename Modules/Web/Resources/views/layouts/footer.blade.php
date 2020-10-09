@@ -151,9 +151,9 @@
                 <div class="col-md-6 col-lg-3">
                     <div class="sl-footerCenter__newsletter">
                         <h6>Signup Newsletter</h6>
-                        <form>
+                       <form action="{{route('subscribe-newsletter')}}">
                             <div class="sl-input-group">
-                                <input class="form-control sl-form-control sl-prepend" type="email" placeholder="Enter Your Email" required="">
+                                <input class="form-control sl-form-control sl-prepend" type="email" name="user_email" placeholder="Enter Your Email" required="">
                                 <button type="submit" class="btn sl-btn sl-btn-active sl-append"><i class="lnr lnr-arrow-right"></i></button>
                             </div>
                         </form>

@@ -61,7 +61,7 @@ class User extends Authenticatable implements MustVerifyEmail
     }
 
     public function products() {
-        return $this->hasMany('App\Models\Product', 'user_id', 'id')->with('images')->with('categories')->with('brand');
+        return $this->hasMany('App\Models\Product', 'user_id', 'id')->with('images')->with('categories')->with('brand')->with('orders');
     }
 
     public function categories() {
@@ -75,7 +75,7 @@ class User extends Authenticatable implements MustVerifyEmail
       public function orders()
     {
         return $this->hasMany(Order::class);
-    }
+    } 
 
      public function getFullNameAttribute()
     {
