@@ -26,6 +26,7 @@ Route::prefix('merchant')->group(function() {
     Route::post('/deals/store', 'DealsController@store')->name('merchant.deals.store');
     Route::get('/deals/edit/{id}', 'DealsController@edit')->name('merchant.deals.edit');
     Route::post('/deals/update/{id}', 'DealsController@update')->name('merchant.deals.update');
+    Route::post('/deals/delete', 'DealsController@destroy')->name('merchant.deal.delete');
 
 //    Products
     Route::get('/products', 'ProductController@index')->name('merchant.products');

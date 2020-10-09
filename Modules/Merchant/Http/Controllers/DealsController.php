@@ -131,7 +131,7 @@ class DealsController extends Controller
             'data' => $request['description'],
         ]);
         foreach ($request['products'] as $product) {
-        
+
             DB::table('promocodes_products')
                 ->where('product_id', intval($product))
                 ->where('promocode', $deal->promo)
@@ -151,9 +151,21 @@ class DealsController extends Controller
      * @param int $id
      * @return Renderable
      */
-    public function destroy($id)
+    public function destroy(Request $request)
     {
         //
-        notify()->success('Coupon Deleted Successfully!');
+        $deal = Deal::where('id', $request->id)->first();
+        if ($deal->promo !== $request->code) {
+            notify()->error('Your redeem code is not correct');
+            return redirect()->back();
+        }
+        else {
+            Deal::where('promo', $request->code)->delete();
+            DB::table('promocodes')->where('code', $request->code)->delete();
+            DB::table('promocodes_products')->where('promocode', $request->code)->delete();
+            notify()->success('Coupon Deleted Successfully!');
+            return redirect()->back();
+        }
+
     }
 }
