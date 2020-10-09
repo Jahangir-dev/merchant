@@ -20,6 +20,7 @@
                                         <th>{{translateText('Last Name')}}</th>
                                         <th>{{translateText('Order Amount')}}</th>
                                         <th>{{translateText('Qty.')}}</th>
+                                        <th>{{translateText('Product')}}</th>
                                         <th>{{translateText('Status')}}</th>
                                     </tr>
                                     </thead>
@@ -41,11 +42,14 @@
                                             {{ config('settings.currency_symbol') }}{{ round($order->grand_total, 2) }}
                                         </td>
                                         <td>
-                                            {{ $order->item_count }
+                                            {{ $order->item_count }}
                                         </td>
                                         <td>
-                                            {{$product->quantity}}
+                                            <a href="{{route('web.product.show', ['slug' => $order->product_slug])}}" target="_blank">
+                                            {{$order->product_name}}
+                                        </a>
                                         </td>
+                                        <td><span class="badge badge-success">{{ strtoupper($order->status) }}</span></td>
                                       
                                     </tr>
                                     @endforeach

@@ -40,6 +40,8 @@ Route::prefix('merchant')->group(function() {
 //    Route::post('/profile/experience/update', 'UserController@updateAbout')->name('merchant.profile.experience.update');
     Route::post('/profile/media/update', 'UserController@updateMedia')->name('merchant.profile.media.update');
 
+     Route::get('account/orders', 'AccountController@getOrders')->name('account.orders');
+
 });
 
 

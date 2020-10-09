@@ -344,9 +344,9 @@
         </div>
     </div>
 
-    <script>
+   <!--  <script>
         window.onload = function (){
             $('#myModal').modal('show');
         }
-    </script>
+    </script> -->
 @endsection

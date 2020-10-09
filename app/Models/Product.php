@@ -74,7 +74,10 @@ class Product extends Model
     public function user() {
         return $this->hasOne('App\User', 'id', 'user_id')->with('profile');
     }
-
+    public function orders()
+    {
+        return $this->hasMany(OrderItem::class,'product_id','id')->with('orderItems');
+    } 
     public function codes() {
         return $this->belongsToMany('App\Deal', 'promocodes_products', 'product_id', 'promocode', 'id', 'promo');
     }
