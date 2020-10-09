@@ -23,7 +23,8 @@ class WebController extends Controller
         $session_id = session()->getId();
         $merchants = User::where('role_id', '2')->with('products')->get();
         $categories = Category::where('menu', '1')->get();
-        $brands = Brand::all();
+        $brands = Brand::with('user')->get();
+
         $products = Product::with('categories')->with('brand')->with('user')->get();
         return view('web::index', compact('products', 'categories','sale_products', 'brands', 'merchants', 'session_id'));
     }

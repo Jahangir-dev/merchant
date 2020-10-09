@@ -34,11 +34,11 @@
                                     <i class="ti-user"></i><span>Profile Settings</span>
                                 </a>
                             </li>
-                            <li>
+                           <!--  <li>
                                 <a href="#">
                                     <i class="ti-heart"></i><span>My Favorites</span>
                                 </a>
-                            </li>
+                            </li> -->
 {{--                            <li class="{{ (\Request::route()->getName() == 'merchant.deals') ? 'sl-active' : '' }}">
                                 <a href="{{route('merchant.deals')}}">
                                     <i class="ti-user"></i><span>{{translateText('Coupons')}}</span>

@@ -10,7 +10,7 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 use Session;
-
+use App\Brand;
 class HomeController extends Controller
 {
     /**
@@ -41,7 +41,7 @@ class HomeController extends Controller
         $merchant = User::whereHas('role', function($q){
              $q->where('name', 'merchant');
         })->get();
-
+        
         return view('admin.home', compact('users','products','customers','merchant','orders'));
     }
     public function setTarget(Request $request){

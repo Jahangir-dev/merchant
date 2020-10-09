@@ -75,6 +75,7 @@
 
         <!-- COMMUNITY END -->
         <!-- SERVICE PROVIDER START -->
+        @if($brands != null)
         <section class="sl-main-section">
             <div class="container">
                 <div class="row justify-content-center">
@@ -91,37 +92,31 @@
                 </div>
             </div>
             <div id="slCategoryOwl" class="owl-carousel owl-theme sl-owl-nav">
-                @foreach($products as $index => $product)
-                    @if($index < 10)
+                @foreach($brands as $brand)
+                    
                 <div class="item">
                     <div class="sl-slider">
                         <figure>
-                            <a href="javascript:void(0);">
-                                @if(count($product->images) > 0)
-                                        <img src="{{asset('storage/'.$product->images[0]->full )}}" alt="Image Description">
-                                        @else
-                                        <img src="{{asset('storage/')}}" alt="Image Description">
-                                        @endif</a>
-<!--                             <a href="javascript:void(0);"><img src="{{asset(isset($product->user->profile->image))}}" alt="Image Description"></a>
- -->      <a href="javascript:void(0);" class="sl-like"><i class="far fa-heart"></i></a>
+                            <!-- <a href="javascript:void(0);"><img src="{{asset('storage/'.$brand->logo )}}" alt="Image Description"></a> -->
+                            <a href="javascript:void(0);"><img src="{{asset('storage/'.$brand->logo )}}" alt="Image Description"></a>
+                            <!-- <a href="javascript:void(0);" class="sl-like"><i class="far fa-heart"></i></a> -->
                         </figure>
                         <div class="sl-slider__content">
                             <div class="sl-slider__header">
                                 <div class="sl-slider__tags">
-                                    <a href="javascript:void(0);" class="sl-bg-red-orange">Featured</a>
-                                    <a href="javascript:void(0);" class="sl-bg-green">Verified</a>
+                                  <!--   <a href="javascript:void(0);" class="sl-bg-red-orange">Featured</a>
+                                    <a href="javascript:void(0);" class="sl-bg-green">Verified</a> -->
                                 </div>
-                                @php $category = $product->categories->first(); @endphp
-                                <a href="{{route('web.category.show', ['slug' => $category ? $category->slug : 'null'])}}">{{$category ? $category->name : ''}}</a>
-                                <h5><a href="{{route('web.product.show', ['slug' => $product ? $product->slug : 'null'])}}">{{$product->name}}</a></h5>
+                                <a href="{{route('web.brand.show', ['slug' => $brand->slug])}}">{{translateText($brand->name)}}</a>
+                                <!-- <h5><a href="javascript:void(0);">A Place Where We Care Life</a></h5> -->
                                 <div class="sl-featureRating">
-                                    <span class="sl-featureRating__stars"><span></span></span>
-                                    <em>(1887 Feedback)</em>
+                                    <!-- <span class="sl-featureRating__stars"><span></span></span>
+                                    <em>(1887 Feedback)</em> -->
                                 </div>
-                                <em>By: <a href="{{route('web.brand.show', ['slug' => $product->brand->slug])}}">{{translateText($product->brand->name)}}</a></em>
+                                <em>By: <a href="{{route('web.brand.show', ['slug' => $brand->slug])}}">{{translateText($brand['user']->first_name)}}</a></em></em>
                             </div>
                             <div class="sl-slider__footer">
-                                <em>Leeds, UK (<a href="javascript:void(0);">{{translateText(translateText('Directions'))}}</a>)</em>
+                                <em>Leeds, UK (<a href="javascript:void(0);">Directions</a>)</em>
                                 <div class="sl-shareHolder">
                                     <a href="javascript:void(0);" class="slShareHolder" ><i class="ti-more-alt"></i></a>
                                     <div class="sl-shareHolder__option">
@@ -138,12 +133,10 @@
                         </div>
                     </div>
                 </div>
-
-                    @endif
                 @endforeach
             </div>
         </section>
-
+        @endif
         <!-- SERVICE PROVIDER END -->
         <!-- STATS START -->
         <section>
