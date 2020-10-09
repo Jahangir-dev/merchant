@@ -5,6 +5,8 @@ namespace App\Http\Controllers\Admin;
 use Illuminate\Http\Request;
 use App\Contracts\BrandContract;
 use App\Http\Controllers\BaseController;
+use App\User;
+use App\Role;
 
 class BrandController extends BaseController
 {
@@ -28,7 +30,15 @@ class BrandController extends BaseController
     public function index()
     {
         $brands = $this->brandRepository->listBrands();
+        
+        $brands = $brands->filter(function($brand){
+                    if(!empty($brand['user_id'])){
 
+                        $brand->first_name = User::where('id',$brand['user_id'])->pluck('first_name')->first();
+                    }
+                    return $brand;
+                 });
+                    
         $this->setPageTitle('Brands', 'List of all brands');
         return view('admin.brands.index', compact('brands'));
     }
@@ -37,9 +47,14 @@ class BrandController extends BaseController
      * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
      */
     public function create()
-    {
+    {   
+        $users = User::whereHas(
+                    'role', function($q){
+                        $q->where('type', 'merchant');
+                    })->get();
+        
         $this->setPageTitle('Brands', 'Create Brand');
-        return view('admin.brands.create');
+        return view('admin.brands.create',compact('users'));
     }
 
     /**
@@ -51,7 +66,8 @@ class BrandController extends BaseController
     {
         $this->validate($request, [
             'name'      =>  'required|max:191',
-            'image'     =>  'mimes:jpg,jpeg,png|max:1000'
+            'image'     =>  'mimes:jpg,jpeg,png|max:1000',
+            'user_id'  =>  'required'
         ]);
 
         $params = $request->except('_token');
@@ -72,8 +88,13 @@ class BrandController extends BaseController
     {
         $brand = $this->brandRepository->findBrandById($id);
 
+        $users = User::whereHas(
+                    'role', function($q){
+                        $q->where('type', 'merchant');
+                    })->get();
+
         $this->setPageTitle('Brands', 'Edit Brand : '.$brand->name);
-        return view('admin.brands.edit', compact('brand'));
+        return view('admin.brands.edit', compact('brand','users'));
     }
 
     /**

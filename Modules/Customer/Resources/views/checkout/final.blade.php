@@ -7,10 +7,10 @@
                     @include('customer::layouts.asidebar')
         <div class="sl-dashboardbox">
             <div class="sl-dashboardbox__title">
-                <h2>Payment Method</h2>
+                <h2>Proceed</h2>
             </div>
             <div class="sl-dashboardbox__content">
-            <form action="{{route('customer.order.details')}}" method="POST" role="form">
+            <form action="{{route('checkout.place.order')}}" method="POST" role="form">
                 @csrf
                 <div class="row">
                     <div class="col-md-8">
@@ -22,35 +22,35 @@
                                 <div class="form-row">
                                     <div class="col form-group">
                                         <label>First name</label>
-                                        <input type="text" class="form-control" name="first_name">
+                                        <input type="text" class="form-control" name="first_name" required="">
                                     </div>
                                     <div class="col form-group">
                                         <label>Last name</label>
-                                        <input type="text" class="form-control" name="last_name">
+                                        <input type="text" class="form-control" name="last_name" required="">
                                     </div>
                                 </div>
                                 <div class="form-group">
                                     <label>Address</label>
-                                    <input type="text" class="form-control" name="address">
+                                    <input type="text" class="form-control" name="address" required="">
                                 </div>
                                 <div class="form-row">
                                     <div class="form-group col-md-6">
                                         <label>City</label>
-                                        <input type="text" class="form-control" name="city">
+                                        <input type="text" class="form-control" name="city" required="">
                                     </div>
                                     <div class="form-group col-md-6">
                                         <label>Country</label>
-                                        <input type="text" class="form-control" name="country">
+                                        <input type="text" class="form-control" name="country" required="">
                                     </div>
                                 </div>
                                 <div class="form-row">
                                     <div class="form-group  col-md-6">
                                         <label>Post Code</label>
-                                        <input type="text" class="form-control" name="post_code">
+                                        <input type="text" class="form-control" name="post_code" required="">
                                     </div>
                                     <div class="form-group  col-md-6">
                                         <label>Phone Number</label>
-                                        <input type="text" class="form-control" name="phone_number">
+                                        <input type="text" class="form-control" name="phone_number" required="">
                                     </div>
                                 </div>
                                 <div class="form-group">

@@ -480,7 +480,13 @@
                                                                             <a class="sl-deleteImg" href="{{route('merchant.product.delete.image', ['id' => $image->id])}}"><i class="fas fa-times"></i>Delete</a>
                                                                         </figure>
                                                                     </div>
-                                                                @endforeach
+                     <br>                                           @endforeach
+    <div class="row">
+                   
+                    <div class="col-sm-7">
+                      <img src="#" id="profile-img-tag" width="200px"  style="display: none" />   <!--for preview purpose -->
+                    </div>
+      </div>
                                                                 {{--<div class="sl-col-1-of-2 sl-col-md-1-of-3 sl-col-xl-1-of-4">
                                                                     <figure class="sl-galleryTab__gallery--item">
                                                                         <img src="images/profile-settings/gallery/img-01.jpg" alt="Image Description">
@@ -552,4 +558,25 @@
     </main>
     <!-- MAIN END -->
 @endsection
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.js" integrity="sha512-WNLxfP/8cVYL9sj8Jnp6et0BkubLP31jhTG9vhL/F5uEZmg5wEzKoXp1kJslzPQWwPT1eyMiSxlKCgzHLOTOTQ==" crossorigin="anonymous"></script>
 
+<script type="text/javascript">
+    function readURL(input) {
+        
+        if (input.files && input.files[0]) {
+            var reader = new FileReader();
+            
+            reader.onload = function (e) {
+                $('#profile-img-tag').attr('src', e.target.result);
+                $('#profile-img-tag').show();
+            }
+            reader.readAsDataURL(input.files[0]);
+        }
+    }
+     $(document).ready(function(){
+            $("#file5").change(function(){
+                
+                readURL(this);
+            });
+    });
+</script>

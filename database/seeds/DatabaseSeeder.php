@@ -55,6 +55,9 @@ class DatabaseSeeder extends Seeder
                 'category_id' => $faker->numberBetween($min = 1, $max = 100),
             ]);
         }
-
+        $this->call(SettingsTableSeeder::class);
+        $this->call(CategoriesTableSeeder::class);
+        $this->call(AttributesTableSeeder::class);
+        $this->call(AttributeValuesTableSeeder::class);
     }
 }

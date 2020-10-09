@@ -131,8 +131,9 @@ class DealsController extends Controller
             'data' => $request['description'],
         ]);
         foreach ($request['products'] as $product) {
+        
             DB::table('promocodes_products')
-                ->where('product_id', $product->id)
+                ->where('product_id', intval($product))
                 ->where('promocode', $deal->promo)
                 ->delete();
 

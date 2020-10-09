@@ -34,8 +34,17 @@
                                     <input class="form-control @error('logo') is-invalid @enderror" type="file" id="logo" name="logo"/>
                                     @error('logo') {{translateText(  $message) }} @enderror
                                 </div>
+                                
                             </div>
                         </div>
+                        <div class="form-group">
+                                    <label class="control-label">{{translateText('Merchant')}}</label>
+                                    <select name="user_id" id="merchnat" class="form-control">
+                                        @foreach($users as $user)
+                                            <option @if(isset($brand['user_id'])) @if($brand['user_id'] == $user['id']) selected="selected" @endif @endif value="{{$user['id']}}">{{$user['first_name']}}</option>
+                                       @endforeach
+                                    </select>
+                                </div>
                     </div>
                     <div class="tile-footer">
                         <button class="btn btn-primary" type="submit"><i class="fa fa-fw fa-lg fa-check-circle"></i>{{translateText( 'Save Brand')}}</button>

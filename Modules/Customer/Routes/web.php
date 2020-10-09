@@ -29,7 +29,7 @@ Route::prefix('customer')->group(function() {
     Route::post('/cartItemDelete', 'ShoppingController@cartItemDelete')->name('delete.cart.items');
     Route::get('/cart', 'ShoppingController@getCart')->name('checkout.cart');
     Route::get('/cart/item/{id}/remove', 'ShoppingController@removeItem')->name('checkout.cart.remove');
-    Route::get('/cart/clear', 'Shopping Controller@clearCart')->name('checkout.cart.clear');
+    Route::get('/cart/clear', 'ShoppingController@clearCart')->name('checkout.cart.clear');
 
     Route::get('/checkout','ShoppingController@index')->name('customer.checkout.index');
     Route::post('/checkPromo','ShoppingController@checkPromo')->name('customer.check.promo');
@@ -41,6 +41,14 @@ Route::prefix('customer')->group(function() {
     Route::post('/getWishList','ShoppingController@getWishList')->name('get.wishlist');
 
     Route::get('/wish-list-items', 'CustomerController@wishListItem')->name('wish-list-items');
+
+   
+    Route::post('/checkout/order', 'CheckoutController@placeOrder')->name('checkout.place.order');
+
+    Route::get('checkout/payment/complete', 'CheckoutController@complete')->name('checkout.payment.complete');
+
+    Route::get('account/orders', 'AccountController@getOrders')->name('account.orders');
+
 
 });
 

@@ -42,16 +42,18 @@
                                     </tr>
                                     </tbody>--}}
                                 </table>
-                                <div class="row">
+                                <div class="row mt-2">
                                     <div class="col-9">
                                         <input id="promo" name="promo" class="form-control sl-form-control" type="text" placeholder="Enter Your Promo">
                                     </div>
                                     <div class="col-3">
-                                        <button onclick="checkPromo()" class="btn btn-success sl-form-control">Apply Promo</button>
+                                        <button onclick="checkPromo()" class="btn btn-success sl-form-control" style="color:white">Apply Promo</button>
                                     </div>
                                 </div>
                                 <div class="row">
-                                        <a href="{{ route('customer.order') }}" class="btn btn-success sl-form-control">Proceed To checkout</a>
+                                     <div class="col-3 mt-2">
+                                        <a href="{{ route('customer.order') }}" class="btn btn-primary sl-form-control" style="padding-top: 9px;color: white;">Proceed To checkout</a>
+                                    </div>
                                 </div>
                             </div>
                         </div>

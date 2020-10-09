@@ -6,7 +6,7 @@ use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Gabievi\Promocodes\Traits\Rewardable;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
-
+use App\Models\Order;
 class User extends Authenticatable implements MustVerifyEmail
 {
     use Notifiable,Rewardable;
@@ -72,5 +72,13 @@ class User extends Authenticatable implements MustVerifyEmail
         return $this->hasMany('App\Models\Brand', 'user_id', 'id');
     }
 
+      public function orders()
+    {
+        return $this->hasMany(Order::class);
+    }
 
+     public function getFullNameAttribute()
+    {
+        return $this->first_name. ' '. $this->last_name;
+    }
 }

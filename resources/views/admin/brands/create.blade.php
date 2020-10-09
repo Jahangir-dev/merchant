@@ -15,7 +15,7 @@
                     @csrf
                     <div class="tile-body">
                         <div class="form-group">
-                            <label class="control-label" for="name">{{translateText(' Name')}} <span class="m-l-5 text-danger"> *</span></label>
+                            <label class="control-label" for="name">{{translateText('Name')}} <span class="m-l-5 text-danger"> *</span></label>
                             <input class="form-control @error('name') is-invalid @enderror" type="text" name="name" id="name" value="{{ old('name') }}"/>
                             @error('name') {{translateText(  $message )}} @enderror
                         </div>
@@ -23,6 +23,14 @@
                             <label class="control-label">{{translateText( 'Brand Logo')}}</label>
                             <input class="form-control @error('logo') is-invalid @enderror" type="file" id="logo" name="logo"/>
                             @error('logo') {{translateText(  $message )}} @enderror
+                        </div>
+                        <div class="form-group">
+                             <label class="control-label">{{translateText('Merchant')}}</label>
+                            <select name="user_id" id="merchnat" class="form-control">
+                                @foreach($users as $user)
+                               <option value="{{$user['id']}}">{{$user['first_name']}}</option>
+                               @endforeach
+                            </select>
                         </div>
                     </div>
                     <div class="tile-footer">

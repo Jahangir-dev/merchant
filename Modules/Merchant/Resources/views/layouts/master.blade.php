@@ -51,16 +51,26 @@
 {{--    @include('merchant::layouts.banner')--}}
 <!-- BANNER END -->
 <!-- MAIN START -->
-@include('notify::messages')
+
 
 @yield('content')
 <!-- MAIN END -->
 <!-- FOOTER START -->
 @include('merchant::layouts.footer')
 <!-- FOOTER END -->
+  @include('notify::messages')
+        
+        <x:notify-messages />
+        @notifyJs
+<style type="text/css">
+    .w-full {
+        position: absolute !important;
+        bottom: 30px !important;
+    }
+</style>
 {{-- Laravel Mix - JS File --}}
 {{-- <script src="{{ mix('js/merchant.js') }}"></script> --}}
-@notifyJs
+
 
 <script src="{{asset('frontend/js/vendor/jquery.min.js')}}"></script>
 <script src="{{asset('frontend/js/vendor/popper.min.js')}}"></script>

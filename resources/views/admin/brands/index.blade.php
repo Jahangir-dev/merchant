@@ -19,6 +19,7 @@
                             <th> # </th>
                             <th>{{translateText('Name')}} </th>
                             <th> {{translateText( 'Slug')}} </th>
+                            <th> {{translateText( 'Merchant')}} </th>
                             <th style="width:100px; min-width:100px;" class="text-center text-danger"><i class="fa fa-bolt"> </i></th>
                         </tr>
                         </thead>
@@ -28,6 +29,7 @@
                                 <td>{{ $brand->id }}</td>
                                 <td>{{translateText(  $brand->name )}}</td>
                                 <td>{{translateText( $brand->slug) }}</td>
+                                <td>{{translateText( $brand->first_name) }}</td>
                                 <td class="text-center">
                                     <div class="btn-group" role="group" aria-label="Second group">
                                         <a href="{{ route('admin.brands.edit', $brand->id) }}" class="btn btn-sm btn-primary"><i class="fa fa-edit"></i></a>

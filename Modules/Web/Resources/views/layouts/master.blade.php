@@ -53,15 +53,23 @@
     <!-- HEADER END -->
 
     <!-- MAIN START -->
-    @include('notify::messages')
 
     @yield('content')
     <!-- MAIN END -->
     <!-- FOOTER START -->
     @include('web::layouts.footer')
     <!-- FOOTER END -->
+    @include('notify::messages')
+        
+        <x:notify-messages />
+        @notifyJs
+<style type="text/css">
+    .w-full {
+        position: absolute !important;
+        bottom: 30px !important;
+    }
+</style>
         {{-- Laravel Mix - JS File --}}
-    @notifyJs
         {{-- <script src="{{ mix('js/web.js') }}"></script> --}}
     <script src="{{asset('frontend/js/vendor/jquery.min.js')}}"></script>
     <script src="{{asset('frontend/js/vendor/popper.min.js')}}"></script>
@@ -241,9 +249,9 @@
                         if (item.quantity === 0) {
                             $('#tr-'+key).remove();
                         }
-
+                        
                         li += `<li id="`+ key +`">
-                            <img src="{{asset('frontend/images/index/cart/img-03.png')}}" alt="Image Description">
+                            <img src="{{asset("storage/`+item.attributes[0]+`")}}" alt="Image Description" style="width:50px !important">
                             <div class="sl-dropdown__cart__description">
                                 <a class="sl-cart-title" href="javascript:void(0);">`+ item.name+`</a>
                                 <span class="sl-cart-price">`+item.price+`</span>

@@ -184,7 +184,6 @@ return [
         App\Providers\ViewComposerServiceProvider::class,
 
 
-
     ],
 
     /*

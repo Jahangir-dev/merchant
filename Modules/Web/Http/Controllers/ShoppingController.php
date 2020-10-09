@@ -90,18 +90,26 @@ class ShoppingController extends Controller
             array_push($names, $item->name);
         }
         $products = Product::whereIn('name', $names)->get();
-        dd($items, $names, $products);
+        
         return view('web::shopping.index');
     }
 
     public function addToCart(Request $request) {
         $data = Array();
         $pro = $request['product'];
+        
         $qty = '1';
+        if(count($pro['images']) > 0){
+
+            $productImage =$pro['images'][0]['full'];
+        } else {
+
+            $productImage = 'frontend/images/index/cart/img-03.png';
+        }
         /*$product = $this->productRepository->findProductById($request->input('productId'));
         $options = $request->except('_token', 'productId', 'price', 'qty');*/
 
-        $result = \Cart::add($pro['id'], $pro['name'], $pro['price'], $qty );
+        $result = \Cart::add($pro['id'], $pro['name'], $pro['price'], $qty,$productImage );
         $items = \Cart::getContent();
 
         $data['items'] = $items;
@@ -186,7 +194,7 @@ class ShoppingController extends Controller
             return view('customer::checkout.index', compact('items'));
         }
         else {
-            notify()->warning('You are not logged');
+            notify()->warning('Please login first');
             return  redirect()->back();
         }
     }
