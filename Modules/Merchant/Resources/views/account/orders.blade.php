@@ -1,11 +1,11 @@
-@extends('customer::layouts.master')
+@extends('merchant::layouts.master')
 @section('content')
     <!-- MAIN START -->
     <main class="sl-main">
         <div class="sl-main-section">
             <div class="container">
                 <div class="row">
-                    @include('customer::layouts.asidebar')
+                    @include('merchant::layouts.asidebar')
                     <div class="col-lg-8 col-xl-9">
                         <div class="sl-dashboardbox sl-addNewArticle">
                             <div class="sl-dashboardbox__title">

@@ -18,7 +18,7 @@
                             </figure>
                         </div>
                         <div class="sl-title">
-                            <h3><a href="javascript:void(0);"> {{$user->first_name}} {{$user->last_name}} </a></h3>
+                            <h3><a href="javascript:void(0);"> {{auth()->user()->first_name}} {{auth()->user()->last_name}} </a></h3>
                             
                         </div>
                     </div>
@@ -83,10 +83,10 @@
                         </ul>
                     </nav>
                 </div>
-                <div class="sl-sidebar-ad">
+                <!-- <div class="sl-sidebar-ad">
                     <a href="javascript:void(0);"><img src="{{asset('frontend/images/service-provider-single/ad.jpg')}}" alt="Image Description"></a>
                     <p>Advertisement<span>255px X 355px</span></p>
-                </div>
+                </div> -->
             </div>
         </div>
     </aside>
