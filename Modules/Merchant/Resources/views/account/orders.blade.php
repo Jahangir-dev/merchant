@@ -24,35 +24,37 @@
                                         <th>{{translateText('Status')}}</th>
                                     </tr>
                                     </thead>
+                                    
+                                    @if($orders[0] != "")
+                                        @foreach($orders as $order)
+                                        <tr>
+                                          
+                                            <td>
+                                                {{ $order->order_number }}
+                                            </td>
 
-                                    @foreach($orders as $order)
-                                    <tr>
-                                      
-                                        <td>
-                                            {{ $order->order_number }}
-                                        </td>
-
-                                        <td>
-                                           {{ $order->first_name }}
-                                        </td>
-                                        <td>
-                                            {{ $order->last_name }}
-                                        </td>
-                                        <td>
-                                            {{ config('settings.currency_symbol') }}{{ round($order->grand_total, 2) }}
-                                        </td>
-                                        <td>
-                                            {{ $order->item_count }}
-                                        </td>
-                                        <td>
-                                            <a href="{{route('web.product.show', ['slug' => $order->product_slug])}}" target="_blank">
-                                            {{$order->product_name}}
-                                        </a>
-                                        </td>
-                                        <td><span class="badge badge-success">{{ strtoupper($order->status) }}</span></td>
-                                      
-                                    </tr>
-                                    @endforeach
+                                            <td>
+                                               {{ $order->first_name }}
+                                            </td>
+                                            <td>
+                                                {{ $order->last_name }}
+                                            </td>
+                                            <td>
+                                                {{ config('settings.currency_symbol') }}{{ round($order->grand_total, 2) }}
+                                            </td>
+                                            <td>
+                                                {{ $order->item_count }}
+                                            </td>
+                                            <td>
+                                                <a href="{{route('web.product.show', ['slug' => $order->product_slug])}}" target="_blank">
+                                                {{$order->product_name}}
+                                            </a>
+                                            </td>
+                                            <td><span class="badge badge-success">{{ strtoupper($order->status) }}</span></td>
+                                          
+                                        </tr>
+                                        @endforeach
+                                    @endif
                                     <thead>
                                     <tr>
                                         <th>{{translateText('Order No.')}}</th>

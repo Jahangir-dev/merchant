@@ -49,7 +49,7 @@
                             </li>
 
                             <li class="{{ Route::currentRouteName() == 'customer.account.orders' ? 'sl-active' : ''}}">
-                                <a href="{{route('account.orders')}}">
+                                <a href="{{route('customer.account.orders')}}">
                                     <i class="ti-bookmark-alt"></i><span>{{ translateText('Orders') }}</span>
                                 </a>
                             </li>
@@ -67,10 +67,10 @@
                         </ul>
                     </nav>
                 </div>
-                <div class="sl-sidebar-ad">
+                <!--<div class="sl-sidebar-ad">
                     <a href="javascript:void(0);"><img src="{{asset('frontend/images/service-provider-single/ad.jpg')}}" alt="Image Description"></a>
                     <p>Advertisement<span>255px X 355px</span></p>
-                </div>
+                </div>-->
             </div>
         </div>
     </aside>
