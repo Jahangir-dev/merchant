@@ -102,7 +102,7 @@
     <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/buttons/1.6.4/js/buttons.html5.min.js"></script>
     <script src="//cdn.jsdelivr.net/npm/alertifyjs@1.13.1/build/alertify.min.js"></script>
 
-
+@stack('javascript')
     <script type="text/javascript">
         $( document ).ready(function getCartItems() {
             getCartItem()

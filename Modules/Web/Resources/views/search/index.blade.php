@@ -1,7 +1,19 @@
 @extends('web::layouts.master')
 @section('content')
 
+    @php
+        $keyword_s = !empty($_GET['search']) ? $_GET['search'] : '';
+        $price_s = !empty($_GET['price']) ? $_GET['price'] : '';
+        $merchant_s = !empty($_GET['merchant']) ? $_GET['merchant'] : '';
+        $categories_s = !empty($_GET['categories']) ? $_GET['categories'] : '';
 
+        $words = explode(' - ', $price_s);
+        $ending_price = array_pop($words);
+        $starting_price = implode(' ', $words);
+
+        $starting_price = json_decode(str_replace('$', '', $starting_price), true); // Replaces all spaces with hyphens.
+        $ending_price = json_decode(str_replace('$', '', $ending_price), true); // Replaces all spaces with hyphens.
+    @endphp
     <!-- MAIN START -->
     <main class="sl-main">
         <!-- SERVICE PROVIDER START -->
@@ -9,7 +21,7 @@
             <div class="container">
                 <div class="sl-filters">
                     <p><a href="javascript:void(0);">All Categories</a><i class="ti-angle-right"></i>{{ !empty($_GET['search']) ? $_GET['search'] : '' }} ({{count($products)}} Results)</p>
-                    <div class="sl-filters--sort">
+                    {{--<div class="sl-filters--sort">
                         <h6>Sort By:</h6>
                         <div class="sl-filters--sort__content">
                             <div class="sl-filters--sort__match">
@@ -21,7 +33,7 @@
                                 <a href="javascript:void(0);" class="btn sl-btn sl-btn-active sl-append"><i class="ti-layout-grid2"></i></a>
                             </div>
                         </div>
-                    </div>
+                    </div>--}}
                 </div>
                 <div class="row">
                     <div class="col-lg-4 col-xl-3">
@@ -41,10 +53,24 @@
                                                         <ul class="sl-sider-ul">
                                                             @foreach($categories as $index => $category)
                                                                 <div class="sl-checkbox">
-                                                                    <input value="{{ $category->id }}" id="categoryChildAudio-{{$index}}" type="checkbox" name="categories[]">
-                                                                    <label for="categoryChildAudio-{{$index}}">
-                                                                        <span class="sl-sidebar__form--text">{{ $category->name }}</span>
-                                                                    </label>
+                                                                    @if($categories_s)
+                                                                        @if(in_array($category->id, $categories_s))
+                                                                            <input value="{{ $category->id }}" checked id="categoryChildAudio-{{$index}}" type="checkbox" name="categories[]">
+                                                                            <label for="categoryChildAudio-{{$index}}">
+                                                                                <span class="sl-sidebar__form--text">{{ $category->name }}</span>
+                                                                            </label>
+                                                                        @else
+                                                                            <input value="{{ $category->id }}" id="categoryChildAudio-{{$index}}" type="checkbox" name="categories[]">
+                                                                            <label for="categoryChildAudio-{{$index}}">
+                                                                                <span class="sl-sidebar__form--text">{{ $category->name }}</span>
+                                                                            </label>
+                                                                        @endif
+                                                                    @else
+                                                                        <input value="{{ $category->id }}" id="categoryChildAudio-{{$index}}" type="checkbox" name="categories[]">
+                                                                        <label for="categoryChildAudio-{{$index}}">
+                                                                            <span class="sl-sidebar__form--text">{{ $category->name }}</span>
+                                                                        </label>
+                                                                    @endif
                                                                 </div>
                                                             @endforeach
                                                         </ul>
@@ -55,16 +81,16 @@
                                                     <div class="sl-distance-side">
                                                         <div class="sl-distance__description">
                                                             <label for="amount">Price:</label>
-                                                            <input name="price" type="text" id="amount" readonly>
+                                                            <input min="{{ (int)$ending_price }}" max="{{ (int)$starting_price }}"  name="price" type="text" id="amount" readonly>
                                                         </div>
                                                         <div id="slider-range"></div>
                                                     </div>
                                                 </div>
                                             </div>
-                                            <div class="sl-searchProductSidebar__btn">
+                                            {{--<div class="sl-searchProductSidebar__btn">
                                                 <button type="submit" class="btn sl-btn sl-btn-active" href="javascript:void(0);">Apply Filter</button>
                                                 <a class="btn sl-btn sl-btn-reset" href="javascript:void(0);">Reset all</a>
-                                            </div>
+                                            </div>--}}
                                         </form>
                                     </div>
                                 </div>
@@ -112,9 +138,9 @@
                                 @endforeach
                             </div>
                             <div class="sl-pagination">
-                                <div class="sl-pagination__button-left">
+                                {{--<div class="sl-pagination__button-left">
                                     <a class="btn sl-btn sl-btn-small" href="javascript:void(0);"><span class="lnr lnr-chevron-left"></span></a>
-                                </div>
+                                </div>--}}
                                 <div class="sl-pagination__button-num">
 
                                     {!! $products->render() !!}
@@ -126,9 +152,9 @@
                                     <a class="btn sl-btn sl-btn-small" href="javascript:void(0);"><span class="sl-more">...</span></a>
                                     <a class="btn sl-btn sl-btn-small" href="javascript:void(0);"><span>50</span></a>--}}
                                 </div>
-                                <div class="sl-pagination__button-right">
+                                {{--<div class="sl-pagination__button-right">
                                     <a class="btn sl-btn sl-btn-small sl-btn-active" href="javascript:void(0);"><span class="lnr lnr-chevron-right"></span></a>
-                                </div>
+                                </div>--}}
                             </div>
                         </div>
                     </div>
@@ -140,4 +166,35 @@
     <!-- MAIN END -->
 
 
+
+
 @endsection
+
+
+@prepend('javascript')
+    <script>
+
+        let s_p = {!! (int)$starting_price !!};
+        s_p = parseInt(s_p)
+        let e_p = {!! (int)$ending_price !!};
+        e_p = parseInt(e_p)
+        var sliderRange = document.querySelector('#slider-range')
+        if (sliderRange !== null) {
+            console.log($( "#amount" ), s_p, e_p)
+            $( function() {
+                $( "#slider-range" ).slider({
+                    range: true,
+                    min: 0,
+                    max: 2000,
+                    values: [ s_p, e_p ],
+                    slide: function( event, ui ) {
+                        $( "#amount" ).val( "$" + ui.values[ 0 ] + " - $" + ui.values[ 1 ] );
+                    }
+                });
+                $( "#amount" ).val( "$" + $( "#slider-range" ).slider( "values", 0 ) +
+                    " - $" + $( "#slider-range" ).slider( "values", 1 ) );
+            } );
+        }
+
+    </script>
+@endprepend
