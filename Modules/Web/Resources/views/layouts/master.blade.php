@@ -263,7 +263,7 @@
                     keys.forEach(function (key){
                         item = response.items[key]
                         total_price += parseFloat(item.price) * parseInt(item.quantity)
-                        console.log(total_price)
+                        console.log(item)
                         if (item.quantity === 0) {
                             $('#tr-'+key).remove();
                         }

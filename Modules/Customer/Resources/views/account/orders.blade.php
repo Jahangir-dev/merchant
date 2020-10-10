@@ -41,11 +41,9 @@
                                             {{ config('settings.currency_symbol') }}{{ round($order->grand_total, 2) }}
                                         </td>
                                         <td>
-                                            {{ $order->item_count }
+                                            {{ $order->item_count }}
                                         </td>
-                                        <td>
-                                            {{$product->quantity}}
-                                        </td>
+                                         <td><span class="badge badge-success">{{ strtoupper($order->status) }}</span></td>
                                       
                                     </tr>
                                     @endforeach
