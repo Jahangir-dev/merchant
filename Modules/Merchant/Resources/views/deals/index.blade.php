@@ -50,8 +50,11 @@
                                                 {{--<div class="sl-newAppointments__services--description">
                                                     <h6> {{translateText('Services:')}}</h6>
                                                 </div>--}}
-                                                <a href="{{route('merchant.deals.edit', ['id' => $deal->id])}}" class="btn sl-btn sl-btn-md">{{translateText('edit')}}</a>
+                                                <a href="{{route('merchant.deals.edit', ['id' => $deal->id])}}"><i class="fa fa-pen" aria-hidden="true"></i></a>
+                                                <a onclick="deleteDeal({{$deal->id}})" href="javascript:void(0)"><i class="fa fa-trash" aria-hidden="true"></i></a>
+
                                             </div>
+
                                         </td>
                                     </tr>
                                     @endforeach
@@ -85,164 +88,48 @@
                         </div>
                     </div>
 
-                    {{--<div class="col-lg-8 col-xl-9">
-                        <div class="sl-buyPackage">
-                            <div class="sl-buyPackage__count sl-detailNoti sl-busy-before">
-                                <div class="sl-buyPackage__count--content">
-                                    <div class="sl-buyPackage__count--title">
-                                        <h4>Gold Package</h4>
-                                        <h6>Will Expire in:</h6>
-                                    </div>
-                                    <ul id="sl-packagecounter" class="sl-packagecounter sl-buyPackage__count--down"><li><div class="sl-buyPackage__heading"><h3>138</h3><h6>Days</h6></div></li><li><div class="sl-buyPackage__heading"><h3>09</h3><h6>Hours</h6></div></li><li><div class="sl-buyPackage__heading"><h3>57</h3><h6>Minutes</h6></div></li><li><div class="sl-buyPackage__heading"><h3>59</h3><h6>Seconds</h6></div></li></ul>
-                                </div>
-                            </div>
-                            <div class="sl-buyPackage__count--btn">
-                                <a href="javascript:void(0);" class="btn sl-btn">Renew Now</a>
-                                <p>Click the button above to renew package</p>
-                            </div>
-                        </div>
-                        <div class="sl-buyPackages">
-                            <div class="sl-buyPackages__title">
-                                <h6>Buy a Package</h6>
-                            </div>
-                            <div class="sl-buyPackagesCard">
-                                <div class="sl-buyPackagesCard__card">
-                                    <div class="sl-buyPackagesCard__card--content">
-                                        <img src="{{asset('frontend/images/buy-package/card/img-01.jpg')}}" alt="Images Description">
-                                        <strong><sup>$</sup>199</strong>
-                                        <h5>Silver Package</h5>
-                                        <p><em>include all taxes <i class="ti-info-alt toltip-content tipso_style" data-tipso="Plus Member"></i></em></p>
-                                    </div>
-                                    <div class="sl-buyPackagesCard__feature">
-                                        <h6>Package Features:</h6>
-                                        <ul>
-                                            <li>
-                                                <p>No. of products to post:</p>
-                                                <span>05</span>
-                                            </li>
-                                            <li>
-                                                <p>No. of featured products:</p>
-                                                <span>03</span>
-                                            </li>
-                                            <li>
-                                                <p>No. of free products:</p>
-                                                <span>02</span>
-                                            </li>
-                                            <li>
-                                                <p>Option to add photo slider:</p>
-                                                <span class="sl-red-orange"><i class="fas fa-times-circle"></i></span>
-                                            </li>
-                                            <li>
-                                                <p>Option to upload video demo:</p>
-                                                <span class="sl-red-orange"><i class="fas fa-times-circle"></i></span>
-                                            </li>
-                                            <li>
-                                                <p>Product Post photos limit:</p>
-                                                <span>10</span>
-                                            </li>
-                                            <li>
-                                                <p>Top rated tag:</p>
-                                                <span class="sl-red-orange"><i class="fas fa-times-circle"></i></span>
-                                            </li>
-                                        </ul>
-                                        <a href="javascript:void(0);" class="btn sl-btn">Buy Now</a>
-                                    </div>
-                                </div>
-                                <div class="sl-buyPackagesCard__card sl-goldPackage">
-                                    <div class="sl-buyPackagesCard__card--content">
-                                        <img src="{{asset('frontend/images/buy-package/card/img-02.jpg')}}" alt="Images Description">
-                                        <strong><sup>$</sup>499</strong>
-                                        <h5>Gold Package</h5>
-                                        <p><em>include all taxes <i class="ti-info-alt toltip-content tipso_style" data-tipso="Plus Member"></i></em></p>
-                                        <div class="sl-slider__tags">
-                                            <span class="sl-bg-red-orange">POPULAR</span>
-                                        </div>
-                                    </div>
-                                    <div class="sl-buyPackagesCard__feature">
-                                        <h6>Package Features:</h6>
-                                        <ul>
-                                            <li>
-                                                <p>No. of products to post:</p>
-                                                <span>15</span>
-                                            </li>
-                                            <li>
-                                                <p>No. of featured products:</p>
-                                                <span>05</span>
-                                            </li>
-                                            <li>
-                                                <p>No. of free products:</p>
-                                                <span>10</span>
-                                            </li>
-                                            <li>
-                                                <p>Option to add photo slider:</p>
-                                                <span class="sl-green2"><i class="fas fa-check-circle"></i></span>
-                                            </li>
-                                            <li>
-                                                <p>Option to upload video demo:</p>
-                                                <span class="sl-green2"><i class="fas fa-check-circle"></i></span>
-                                            </li>
-                                            <li>
-                                                <p>Product Post photos limit:</p>
-                                                <span>30</span>
-                                            </li>
-                                            <li>
-                                                <p>Top rated tag:</p>
-                                                <span class="sl-red-orange"><i class="fas fa-times-circle"></i></span>
-                                            </li>
-                                        </ul>
-                                        <a href="javascript:void(0);" class="btn sl-btn sl-btn-active">Buy Now</a>
-                                    </div>
-                                </div>
-                                <div class="sl-buyPackagesCard__card">
-                                    <div class="sl-buyPackagesCard__card--content">
-                                        <img src="{{asset('frontend/images/buy-package/card/img-03.jpg')}}" alt="Images Description">
-                                        <strong><sup>$</sup>1099</strong>
-                                        <h5>Platinium Package</h5>
-                                        <p><em>include all taxes <i class="ti-info-alt toltip-content tipso_style" data-tipso="Plus Member"></i></em></p>
-                                    </div>
-                                    <div class="sl-buyPackagesCard__feature">
-                                        <h6>Package Features:</h6>
-                                        <ul>
-                                            <li>
-                                                <p>No. of products to post:</p>
-                                                <span>30</span>
-                                            </li>
-                                            <li>
-                                                <p>No. of featured products:</p>
-                                                <span>20</span>
-                                            </li>
-                                            <li>
-                                                <p>No. of free products:</p>
-                                                <span>10</span>
-                                            </li>
-                                            <li>
-                                                <p>Option to add photo slider:</p>
-                                                <span class="sl-green2"><i class="fas fa-check-circle"></i></span>
-                                            </li>
-                                            <li>
-                                                <p>Option to upload video demo:</p>
-                                                <span class="sl-green2"><i class="fas fa-check-circle"></i></span>
-                                            </li>
-                                            <li>
-                                                <p>Product Post photos limit:</p>
-                                                <span>50+</span>
-                                            </li>
-                                            <li>
-                                                <p>Top rated tag:</p>
-                                                <span class="sl-green2"><i class="fas fa-check-circle"></i></span>
-                                            </li>
-                                        </ul>
-                                        <a href="javascript:void(0);" class="btn sl-btn">Buy Now</a>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>--}}
 
                 </div>
             </div>
         </div>
     </main>
+
+    <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+        <div class="modal-dialog modal-lg" role="document">
+            <div class="modal-content">
+                <div class="modal-header bg-primary text-center">
+                    <h1 class="modal-title" id="myModalLabel">Enter Redemption Code to delete</h1>
+                    <button type="button" class="modal-header close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>
+
+                </div>
+                <div class="modal-body">
+                    <div class="row">
+                        <form method="post" action="{{route('merchant.deal.delete')}}">
+                            @csrf
+                            <div class="form-group col-md-12">
+                                <div class="input-group">
+                                    <span class="input-group-append"></span>
+                                    <input id="dealId" type="hidden" value="" name="id">
+                                    <input type="text" name="code" class="form-control input-lg"  placeholder="Redemption Code Enter Here">
+                                </div>
+                            </div>
+                            <div class="form-group col-md-12">
+                                <input type="submit" class="btn btn-primary btn-lg btn-block" value="Delete">
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
     <!-- MAIN END -->
 @endsection
 
+<script>
+    function deleteDeal(id) {
+        $('#myModal').modal('show');
+        document.querySelector('#dealId').value = id
+        console.log(document.querySelector('#dealId').value)
+    }
+</script>

@@ -60,7 +60,7 @@
     @include('web::layouts.footer')
     <!-- FOOTER END -->
     @include('notify::messages')
-        
+
         <x:notify-messages />
         @notifyJs
 <style type="text/css">
@@ -102,7 +102,7 @@
     <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/buttons/1.6.4/js/buttons.html5.min.js"></script>
     <script src="//cdn.jsdelivr.net/npm/alertifyjs@1.13.1/build/alertify.min.js"></script>
 
-
+@stack('javascript')
     <script type="text/javascript">
         $( document ).ready(function getCartItems() {
             getCartItem()
@@ -203,18 +203,32 @@
 
         function checkPromo() {
             let promoCode = document.querySelector('#promo').value
+            if(promoCode === '') {
+                alertify.error('Enter promocode');
+                return
+            }
             $.ajax({
-                url: 'checkPromo',
+                url: '/customer/checkPromo',
                 type: 'post',
                 data: {
                     _token: "{{ csrf_token() }}",
                     code: promoCode,
                 },
                 success: function(response){
-                    if (response.message === 'success') {
+                    if (response.type === 'success') {
+                        console.log(response)
+                            let keys = Object. keys(response.discountable_products)
+                            keys.forEach(function (key) {
+                                let product = response.discountable_products[key]
+                                let quantity = response.items[product.id].quantity
+                                let discount = ((product.price / 100) * response.discount) * quantity
+                                let total = document.querySelector('#checkout-total-price').textContent
+                                document.querySelector('#checkout-total-price').textContent = parseInt(total - discount)
+                                document.querySelector('#total_price').value = parseInt(total - discount)
+                            })
 
                         alertify.success(response.message);
-                        getCartItemDiscounted()
+                        // getCartItemDiscounted()
                     }
                     else{
 
@@ -253,7 +267,7 @@
                         if (item.quantity === 0) {
                             $('#tr-'+key).remove();
                         }
-                        
+
                         li += `<li id="`+ key +`">
                             <img src="{{asset("storage/`+item.attributes[0]+`")}}" alt="Image Description" style="width:50px !important">
                             <div class="sl-dropdown__cart__description">

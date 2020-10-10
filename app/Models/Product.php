@@ -17,7 +17,7 @@ class Product extends Model
      */
     protected $fillable = [
         'brand_id', 'sku', 'name', 'slug', 'description', 'quantity',
-        'weight', 'price', 'sale_price', 'status', 'featured', 'user_id'
+        'weight', 'price', 'sale_price', 'status', 'featured', 'user_id', 'address', 'latitude', 'longitude'
     ];
 
     /**
@@ -77,7 +77,7 @@ class Product extends Model
     public function orders()
     {
         return $this->hasMany(OrderItem::class,'product_id','id')->with('orderItems');
-    } 
+    }
     public function codes() {
         return $this->belongsToMany('App\Deal', 'promocodes_products', 'product_id', 'promocode', 'id', 'promo');
     }

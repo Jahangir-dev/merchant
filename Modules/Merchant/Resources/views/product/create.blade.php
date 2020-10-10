@@ -64,6 +64,11 @@
                                                         <div class="form-group form-group-half">
                                                             <input name="weight" class="form-control sl-form-control" type="text" placeholder="Weight" required>
                                                         </div>
+                                                        <div class="form-group form-group-half">
+                                                            <input id="autocomplete" name="address" class="form-control sl-form-control" type="text" placeholder="Address" required>
+                                                            <input id="latitude" name="latitude" class="form-control sl-form-control" type="hidden" placeholder="Address" required>
+                                                            <input id="longitude" name="longitude" class="form-control sl-form-control" type="hidden" placeholder="Address" required>
+                                                        </div>
                                                         <div class="form-group form-group">
                                                             <textarea name="description" class="form-control sl-form-control" type="text" placeholder="Description"></textarea>
                                                         </div>

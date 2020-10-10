@@ -274,7 +274,7 @@ if (sliderRangeMin !== null) {
     $( "#amountfour" ).val($( "#slider-range-min" ).slider( "value" ) + " km" );
   } );
 }
-var sliderRange = document.getElementById('slider-range')
+/*var sliderRange = document.getElementById('slider-range')
 if (sliderRange !== null) {
   $( function() {
 		$( "#slider-range" ).slider({
@@ -289,7 +289,7 @@ if (sliderRange !== null) {
 		$( "#amount" ).val( "$" + $( "#slider-range" ).slider( "values", 0 ) +
 		  " - $" + $( "#slider-range" ).slider( "values", 1 ) );
 	  } );
-}
+}*/
 /* SLIDER RANGE MIN END */
 var search = document.getElementById('sl-search')
 if (search !== null) {

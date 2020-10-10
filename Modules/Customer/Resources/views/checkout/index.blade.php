@@ -42,19 +42,24 @@
                                     </tr>
                                     </tbody>--}}
                                 </table>
-                                <div class="row mt-2">
-                                    <div class="col-9">
-                                        <input id="promo" name="promo" class="form-control sl-form-control" type="text" placeholder="Enter Your Promo">
+                                <form method="post" action="{{ route('customer.order') }}">
+                                    @csrf
+                                    <div class="row mt-2">
+                                        <div class="col-9">
+                                            <input id="promo" name="code" class="form-control sl-form-control" type="text" placeholder="Enter Your Promo">
+                                            <input id="total_price" name="total_price" class="form-control sl-form-control" type="hidden" placeholder="Enter Your Promo">
+                                        </div>
+                                        <div class="col-3">
+                                            <a onclick="checkPromo()" class="btn btn-success sl-form-control" style="color:white">Apply Promo</a>
+                                        </div>
                                     </div>
-                                    <div class="col-3">
-                                        <button onclick="checkPromo()" class="btn btn-success sl-form-control" style="color:white">Apply Promo</button>
+                                    <div class="row">
+                                        <div class="col-3 mt-2">
+                                            <button class="btn btn-primary sl-form-control" style="padding-top: 9px;color: white;">Proceed To checkout</button>
+                                        </div>
                                     </div>
-                                </div>
-                                <div class="row">
-                                     <div class="col-3 mt-2">
-                                        <a href="{{ route('customer.order') }}" class="btn btn-primary sl-form-control" style="padding-top: 9px;color: white;">Proceed To checkout</a>
-                                    </div>
-                                </div>
+                                </form>
+
                             </div>
                         </div>
                     </div>

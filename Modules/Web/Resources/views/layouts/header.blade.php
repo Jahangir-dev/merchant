@@ -8,7 +8,7 @@
         $merchants = \App\User::where('role_id', '2')->get();
         @endphp
         <div class="sl-main-header__content">
-            <div class="sl-main-header__upper">
+            <div class="sl-main-header__upper sl-navbar-search">
                 <form method="get" action="{{route('search')}}" role="search" class="sl-main-form">
                     <div class="sl-form-group sl-main-form__input1 sl-loading">
                         <input name="search" class="form-control sl-form-control" type="text" placeholder="Search anything you want">

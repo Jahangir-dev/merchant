@@ -426,7 +426,7 @@
                                         <figure>
                                             <a href="javascript:void(0);">@if(count($product->images) > 0)
                                         <img src="{{asset('storage/'.$product->images[0]->full )}}" alt="Image Description">
-                                        @else 
+                                        @else
                                         <img src="{{asset('storage/')}}" alt="Image Description">
                                         @endif</a></a>
                                         @if($user->profile != null)
@@ -455,7 +455,7 @@
                                                 <em>By: <a href="javascript:void(0);">{{ $user->first_name }} {{ $user->last_name }}</a></em>
                                             </div>
                                             <div class="sl-slider__footer">
-                                                <em>Leeds, UK (<a href="javascript:void(0);">Directions</a>)</em>
+                                                <em>{{$product->address}}(<a href="{{'https://maps.google.com/?q='.$product->latitude.'+'.$product->longitude}}">{{translateText(translateText('Directions'))}}</a>)</em>
                                                 <div class="sl-shareHolder">
                                                     <a href="javascript:void(0);" class="slShareHolder" ><i class="ti-more-alt"></i></a>
                                                     <div class="sl-shareHolder__option">

@@ -20,6 +20,12 @@
                             @error('name') {{translateText(  $message )}} @enderror
                         </div>
                         <div class="form-group">
+                            <input id="autocomplete" name="address" class="form-control @error('name') is-invalid @enderror" type="text" placeholder="Address" required>
+                            <input id="latitude" name="latitude" class="form-control @error('name') is-invalid @enderror" type="hidden" placeholder="Address" required>
+                            <input id="longitude" name="longitude" class="form-control @error('name') is-invalid @enderror" type="hidden" placeholder="Address" required>
+                            @error('name') {{translateText(  $message )}} @enderror
+                        </div>
+                        <div class="form-group">
                             <label class="control-label">{{translateText( 'Brand Logo')}}</label>
                             <input class="form-control @error('logo') is-invalid @enderror" type="file" id="logo" name="logo"/>
                             @error('logo') {{translateText(  $message )}} @enderror
