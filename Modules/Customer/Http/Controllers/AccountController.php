@@ -11,6 +11,7 @@ class AccountController extends Controller
     {
 
         $orders = auth()->user()->orders;	
+        
         if(count($orders) ==  0)
         {
         	$orders = [];

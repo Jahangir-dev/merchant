@@ -340,7 +340,7 @@
                         if (item.quantity === 0) {
                             $('#tr-'+key).remove();
                         }
-
+                        
                         li += `<li id="`+ key +`">
                             <img src="{{asset('frontend/images/index/cart/img-03.png')}}" alt="Image Description">
                             <div class="sl-dropdown__cart__description">
