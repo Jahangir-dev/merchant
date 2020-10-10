@@ -15,7 +15,7 @@ class Brand extends Model
     /**
      * @var array
      */
-    protected $fillable = ['name', 'slug', 'logo','user_id'];
+    protected $fillable = ['name', 'slug', 'logo','user_id', 'address', 'latitude', 'longitude'];
 
     /**
      * @param $value
@@ -38,5 +38,5 @@ class Brand extends Model
         return $this->hasOne('App\User', 'id', 'user_id');
     }
 
-   
+
 }

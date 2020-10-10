@@ -93,7 +93,7 @@
             </div>
             <div id="slCategoryOwl" class="owl-carousel owl-theme sl-owl-nav">
                 @foreach($brands as $brand)
-                    
+
                 <div class="item">
                     <div class="sl-slider">
                         <figure>
@@ -113,10 +113,11 @@
                                     <!-- <span class="sl-featureRating__stars"><span></span></span>
                                     <em>(1887 Feedback)</em> -->
                                 </div>
-                                <em>By: <a href="{{route('web.brand.show', ['slug' => $brand->slug])}}">{{translateText($brand['user']->first_name)}}</a></em></em>
+                                <em>By: <a href="{{route('web.brand.show', ['slug' => $brand->slug])}}">{{translateText($brand['user']->first_name)}}</a></em>
                             </div>
                             <div class="sl-slider__footer">
-                                <em>Leeds, UK (<a href="javascript:void(0);">Directions</a>)</em>
+                                <em>{{$brand->address}}(<a href="{{'https://maps.google.com/?q='.$brand->latitude.'+'.$brand->longitude}}">{{translateText(translateText('Directions'))}}</a>)</em>
+
                                 <div class="sl-shareHolder">
                                     <a href="javascript:void(0);" class="slShareHolder" ><i class="ti-more-alt"></i></a>
                                     <div class="sl-shareHolder__option">
@@ -294,6 +295,9 @@
                                         </div>
                                         <em>By: <a href="{{route('web.brand.show', ['slug' => $product->brand->slug])}}">{{translateText($product->brand->name)}}</a></em>
                                         <button onclick="myFunction({{ $product }})" class="btn sl-btn">{{translateText('Add To Cart')}}</button>
+                                        <div class="sl-slider__footer">
+                                            <em>{{$product->address}}(<a href="{{'https://maps.google.com/?q='.$product->latitude.'+'.$product->longitude}}">{{translateText(translateText('Directions'))}}</a>)</em>
+                                        </div>
                                     </div>
                                 </div>
                             </div>

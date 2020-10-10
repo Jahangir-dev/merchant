@@ -1,4 +1,5 @@
-<!DOCTYPE html>
+<!DOCTYPE HTML>
+
 <html lang="en">
 <head>
     <meta charset="utf-8">
@@ -59,7 +60,7 @@
 @include('merchant::layouts.footer')
 <!-- FOOTER END -->
   @include('notify::messages')
-        
+
         <x:notify-messages />
         @notifyJs
 <style type="text/css">
@@ -114,6 +115,32 @@
 <script src="{{asset('frontend/js/vendor/bootstrap-datepicker.min.js')}}"></script>
 <script src="{{asset('frontend/js/vendor/prettyPhoto.js')}}"></script>
 {{--<script src="{{asset('frontend/js/vendor/tinymce/tinymce.min4bb5.js?apiKey=4cuu2crphif3fuls3yb1pe4qrun9pkq99vltezv2lv6sogci')}}"></script>--}}
-<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBJ3q6w3hiHe_MIbB1Jy31bGOwL8LYlwJw"></script>
+
+{{-- javascript code --}}
+<script src='http://maps.googleapis.com/maps/api/js?v=3&sensor=false&amp;libraries=places&key=AIzaSyCTtKFT6ROLiapWLQf-ATNCdy5fn_VJ68s'></script>
+
+{{--<script src="https://maps.google.com/maps/api/js?key=AIzaSyCfLDEqciJFYH4niKBKrOdLD3UzGgz-9DM=places&callback=initAutocomplete" type="text/javascript"></script>--}}
+<script>
+    /*    $(document).ready(function() {
+            $("#lat_area").addClass("d-none");
+            $("#long_area").addClass("d-none");
+        });*/
+
+    $(document).ready(function (){
+        console.log('hello world')
+        google.maps.event.addDomListener(window, 'load', initialize);
+
+        function initialize() {
+            var input = document.getElementById('autocomplete');
+            var autocomplete = new google.maps.places.Autocomplete(input);
+            autocomplete.addListener('place_changed', function() {
+                var place = autocomplete.getPlace();
+                $('#latitude').val(place.geometry['location'].lat());
+                $('#longitude').val(place.geometry['location'].lng());
+            });
+        }
+    })
+
+</script>
 </body>
 </html>
