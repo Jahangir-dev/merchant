@@ -47,10 +47,8 @@
                             </span>
                     </a>
                 </div>
-                <div class="sl-main-form__btn">
-                    <a href="javascript:void(0);" class="btn sl-btn sl-btn-active"><i class="ti-search"></i></a>
-                </div>
-                {{--<div class="sl-topbar-notify">
+               
+                <div class="sl-topbar-notify" style="display: none">
 
                     <div class="sl-topbar-notify__icons dropdown">
                         <a href="javascript:void(0);" class="sl-topbar-notify__anchor" id="slCart" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -113,15 +111,15 @@
                             </div>
                         </div>
                     </div>
-                </div>--}}
-                @guest
+                    </div>
+                    @guest
                     <div class="sl-user">
                         <a href="javascript:void(0);" data-toggle="modal" data-target="#loginpopup">
                             <i class="fa fa-user"></i>
                             <span class="sl-user__description"><em class="d-block">{{translateText('Login')}}</em></span>
                         </a>
                     </div>
-                @else
+                    @else
                     @php
                         $user = \App\User::where('id', Auth::user()->id)->with('role')->first()
                     @endphp
@@ -172,14 +170,14 @@
                 <div class="sl-main-upperBackbtn">
                     <a href="javascript:void(0);"><i class="ti-close"></i></a>
                 </div>
-            </div>
+                </div>
 
-            @php
-                $categories = App\Models\Category::where('menu', true)->with('products')->get();
-            @endphp
+                @php
+                    $categories = App\Models\Category::where('menu', true)->with('products')->get();
+                @endphp
 
 
-            <div class="sl-main-header__lower">
+                <div class="sl-main-header__lower">
                 <nav class="navbar-expand-lg">
                     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#slMainNavbar" aria-expanded="false" aria-label="Toggle navigation">
                         <i class="lnr lnr-menu"></i>
@@ -840,3 +838,15 @@
     </div>
 </header>
 <!-- HEADER END -->
+<style type="text/css">
+    .sl-main-form {
+
+        display: flex;
+        width: 718px !important;
+    }
+    .sl-input-group {
+
+        display: block !important;
+        margin-top:37px;
+    }
+</style>

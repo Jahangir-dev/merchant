@@ -79,7 +79,7 @@
                     </div>
                 </div>
                 @guest
-                    <div class="sl-user" style="display: contents">
+                    <div class="sl-user" style="display: flex;">
                         <a href="javascript:void(0);" data-toggle="modal" data-target="#loginpopup">
                             <i class="fa fa-user"></i>
                             <span class="sl-user__description"><em class="d-block">{{translateText('Login')}}</em></span>
@@ -89,7 +89,7 @@
                     @php
                         $user = \App\User::where('id', \Auth::id())->with('role')->first()
                     @endphp
-                    <div class="sl-user sl-userdropdown">
+                    <div class="sl-user sl-userdropdown"  style="display: flex;">
                         <a href="javascript:void(0);">
                             <img src="{{asset('frontend/images/insight/user-img.jpg')}}" alt="Image Description">
                             <span class="sl-user__description"><em class="d-block">{{ $user->first_name }}</em>{{ $user->last_name }}</span>
@@ -411,3 +411,4 @@
     </div>
 </header>
 <!-- HEADER END -->
+
