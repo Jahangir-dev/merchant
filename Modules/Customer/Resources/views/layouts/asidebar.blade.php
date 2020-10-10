@@ -49,7 +49,7 @@
                             </li>
 
                             <li class="{{ Route::currentRouteName() == 'customer.account.orders' ? 'sl-active' : ''}}">
-                                <a href="{{route('account.orders')}}">
+                                <a href="{{route('customer.account.orders')}}">
                                     <i class="ti-bookmark-alt"></i><span>{{ translateText('Orders') }}</span>
                                 </a>
                             </li>

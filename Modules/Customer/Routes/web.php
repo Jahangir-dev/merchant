@@ -47,7 +47,7 @@ Route::prefix('customer')->group(function() {
 
     Route::get('checkout/payment/complete', 'CheckoutController@complete')->name('checkout.payment.complete');
 
-    Route::get('account/orders', 'AccountController@getOrders')->name('account.orders');
+    Route::get('account/orders', 'AccountController@getOrders')->name('customer.account.orders');
 
 
 });
