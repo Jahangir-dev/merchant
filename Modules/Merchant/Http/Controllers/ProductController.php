@@ -53,9 +53,12 @@ class ProductController extends Controller
         $product = Product::create([
             'brand_id' => $request['brand_id'],
             'sku' => $request['sku'],
+            'latitude' => $request['latitude'],
+            'longitude' => $request['longitude'],
+            'address' => $request['address'],
             'name' => $request['name'],
             'price' => $request['price'],
-            'special_price' => $request['special_price'],
+            'sale_price' => $request['special_price'],
             'quantity' => $request['quantity'],
             'weight' => $request['weight'],
             'featured' => 1,
@@ -102,7 +105,7 @@ class ProductController extends Controller
     public function update(Request $request, $id)
     {
         //
-        $start_date = (Carbon::parse($request['start_date']))->toDateString();
+/*        $start_date = (Carbon::parse($request['start_date']))->toDateString();
         $end_date = (Carbon::parse($request['end_date']))->toDateString();
 
         $deal =Deal::where('id', $id)->first();
@@ -119,7 +122,28 @@ class ProductController extends Controller
             'data' => $request['description'],
         ]);
         notify()->success('Coupon Updated Successfully!');
-        return redirect()->route('merchant.product');
+        return redirect()->route('merchant.product');*/
+
+        $product = Product::where('id', $id)->update([
+            'brand_id' => $request['brand_id'],
+            'sku' => $request['sku'],
+            'latitude' => $request['latitude'],
+            'longitude' => $request['longitude'],
+            'address' => $request['address'],
+            'name' => $request['name'],
+            'price' => $request['price'],
+            'sale_price' => $request['special_price'],
+            'quantity' => $request['quantity'],
+            'weight' => $request['weight'],
+            'featured' => 1,
+        ]);
+        $product = Product::where('id', $id)->with('categories')->first();
+        $product->categories()->sync([]);
+        $product->categories()->attach($request['category']);
+
+
+        notify()->success('Product Created Successfully!');
+        return redirect()->route('merchant.products');
     }
 
     /**

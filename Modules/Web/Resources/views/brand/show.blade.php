@@ -49,7 +49,7 @@
                                     <figure>
                                         @if(count($product->images) > 0)
                                         <img src="{{asset('storage/'.$product->images[0]->full )}}" alt="Image Description">
-                                        @else 
+                                        @else
                                         <img src="{{asset('storage/')}}" alt="Image Description">
                                         @endif</a>
                                         <figcaption>
@@ -75,6 +75,9 @@
                                         </div>
                                         <em>By: <a href="{{route('web.vendor.show', ['id' => $product->user->id])}}">{{translateText($brand->name)}}</a></em>
                                         <button class="btn sl-btn">{{translateText('Add To Cart')}}</button>
+                                        <div class="sl-slider__footer">
+                                            <em>{{$product->address}}(<a href="{{'https://maps.google.com/?q='.$product->latitude.'+'.$product->longitude}}">{{translateText(translateText('Directions'))}}</a>)</em>
+                                        </div>
                                     </div>
                                 </div>
                             </div>

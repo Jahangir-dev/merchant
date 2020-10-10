@@ -113,7 +113,6 @@
 <script src="{{asset('frontend/js/flexnav.min.js')}}"></script>
 <script src="{{asset('frontend/js/magnific.min.js')}}"></script>
 <script src="{{asset('frontend/js/tweet.min.js')}}"></script>
-<script src="http://maps.googleapis.com/maps/api/js?sensor=false"></script>
 <script src="{{asset('frontend/js/gmap3.min.js')}}"></script>
 <script src="{{asset('frontend/js/wilto_slider.min.js')}}"></script>
 <script src="{{asset('frontend/js/mediaelement.min.js')}}"></script>

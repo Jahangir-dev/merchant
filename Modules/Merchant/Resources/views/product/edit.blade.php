@@ -20,7 +20,8 @@
                             <div id="nav-tabContent" class="tab-content">
                                 <div class="tab-pane fade show active" id="nav-companyDetail" role="tabpanel" aria-labelledby="nav-companyDetail-tab">
                                     <div class="sl-dashboardbox__content">
-                                        <form class="sl-form sl-manageServices">
+                                        <form method="post" action="{{ route('merchant.products.update', ['id' => $product->id]) }}" class="sl-form sl-manageServices">
+                                            @csrf
                                             <fieldset>
                                                 <div class="sl-form__wrap">
                                                     <div class="form-group form-group">
@@ -33,7 +34,7 @@
                                                         <input name="price" value="{{$product->price}}" class="form-control sl-form-control" type="text" placeholder="Price" required>
                                                     </div>
                                                     <div class="form-group form-group-half">
-                                                        <input name="special_price" value="{{$product->special_price}}" class="form-control sl-form-control" type="number" placeholder="Special Price*" required>
+                                                        <input name="special_price" value="{{$product->sale_price}}" class="form-control sl-form-control" type="number" placeholder="Special Price*" required>
                                                     </div>
                                                     <div class="form-group form-group-half">
                                                         <input name="quantity" value="{{$product->quantity}}" class="form-control sl-form-control" type="number" placeholder="Quantity*" required>
@@ -72,6 +73,11 @@
                                                     </div>
                                                     <div class="form-group form-group-half">
                                                         <input name="weight" value="{{$product->weight}}" class="form-control sl-form-control" type="text" placeholder="Weight" required>
+                                                    </div>
+                                                    <div class="form-group form-group-half">
+                                                        <input id="autocomplete" value="{{$product->address}}" name="address" class="form-control sl-form-control" type="text" placeholder="Address" required>
+                                                        <input id="latitude" value="{{$product->latitude}}" name="latitude" class="form-control sl-form-control" type="hidden" placeholder="Address" required>
+                                                        <input id="longitude" value="{{$product->longitude}}" name="longitude" class="form-control sl-form-control" type="hidden" placeholder="Address" required>
                                                     </div>
                                                     <div class="form-group form-group">
                                                         <textarea name="description" class="form-control sl-form-control" type="text" placeholder="Description" required> {!! $product->description !!} </textarea>
@@ -482,7 +488,7 @@
                                                                     </div>
                      <br>                                           @endforeach
     <div class="row">
-                   
+
                     <div class="col-sm-7">
                       <img src="#" id="profile-img-tag" width="200px"  style="display: none" />   <!--for preview purpose -->
                     </div>
@@ -562,10 +568,10 @@
 
 <script type="text/javascript">
     function readURL(input) {
-        
+
         if (input.files && input.files[0]) {
             var reader = new FileReader();
-            
+
             reader.onload = function (e) {
                 $('#profile-img-tag').attr('src', e.target.result);
                 $('#profile-img-tag').show();
@@ -575,7 +581,7 @@
     }
      $(document).ready(function(){
             $("#file5").change(function(){
-                
+
                 readURL(this);
             });
     });

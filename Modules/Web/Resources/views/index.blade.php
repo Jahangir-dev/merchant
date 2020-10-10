@@ -121,7 +121,7 @@
                                 <em>By: <a href="{{route('web.brand.show', ['slug' => $product->brand->slug])}}">{{translateText($product->brand->name)}}</a></em>
                             </div>
                             <div class="sl-slider__footer">
-                                <em>Leeds, UK (<a href="javascript:void(0);">{{translateText(translateText('Directions'))}}</a>)</em>
+                                <em>{{$product->address}}(<a href="{{'https://maps.google.com/?q='.$product->latitude.'+'.$product->longitude}}">{{translateText(translateText('Directions'))}}</a>)</em>
                                 <div class="sl-shareHolder">
                                     <a href="javascript:void(0);" class="slShareHolder" ><i class="ti-more-alt"></i></a>
                                     <div class="sl-shareHolder__option">
@@ -301,6 +301,9 @@
                                         </div>
                                         <em>By: <a href="{{route('web.brand.show', ['slug' => $product->brand->slug])}}">{{translateText($product->brand->name)}}</a></em>
                                         <button onclick="myFunction({{ $product }})" class="btn sl-btn">{{translateText('Add To Cart')}}</button>
+                                        <div class="sl-slider__footer">
+                                            <em>{{$product->address}}(<a href="{{'https://maps.google.com/?q='.$product->latitude.'+'.$product->longitude}}">{{translateText(translateText('Directions'))}}</a>)</em>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
