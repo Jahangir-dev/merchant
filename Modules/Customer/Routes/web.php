@@ -34,7 +34,7 @@ Route::prefix('customer')->group(function() {
     Route::get('/checkout','ShoppingController@index')->name('customer.checkout.index');
     Route::post('/checkPromo','ShoppingController@checkPromo')->name('customer.check.promo');
 
-    Route::get('/order','ShoppingController@proceedToOrder')->name('customer.order');
+    Route::post('/order/info','ShoppingController@proceedToOrder')->name('customer.order');
     Route::post('/order','ShoppingController@saveOrderDetails')->name('customer.order.details');
 
     Route::post('/addToWishList','ShoppingController@addToWishList')->name('add.to.wishlist');
@@ -42,7 +42,7 @@ Route::prefix('customer')->group(function() {
 
     Route::get('/wish-list-items', 'CustomerController@wishListItem')->name('wish-list-items');
 
-   
+
     Route::post('/checkout/order', 'CheckoutController@placeOrder')->name('checkout.place.order');
 
     Route::get('checkout/payment/complete', 'CheckoutController@complete')->name('checkout.payment.complete');

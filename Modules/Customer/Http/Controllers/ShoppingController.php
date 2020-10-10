@@ -107,7 +107,7 @@ class ShoppingController extends Controller
         /*$product = $this->productRepository->findProductById($request->input('productId'));
         $options = $request->except('_token', 'productId', 'price', 'qty');*/
 
-        $result = \Cart::add($pro['id'], $pro['name'], $pro['price'], $qty );
+        $result = \Cart::add($pro['id'], $pro['name'], $pro['price'] * $qty, $qty );
         $items = \Cart::getContent();
 
         $data['items'] = $items;
@@ -179,6 +179,7 @@ class ShoppingController extends Controller
 
         $json = Array();
         $json['type'] = 'success';
+        $json['message'] = 'Product decremented successfully';
         return $json;
     }
 
@@ -231,6 +232,7 @@ class ShoppingController extends Controller
         $items = \Cart::getContent();
         $discountable_products = [];
         $total_product = 0;
+        $discountable_products_quantity = 0;
         foreach ($items->keys() as $id) {
             $product = Product::where('id', $id)->with('codes')->first();
             foreach ($product->codes as $code) {
@@ -244,16 +246,21 @@ class ShoppingController extends Controller
         }
         $deal_details = Deal::where('promo', $request['code'])->first();
         $promocodes_details = DB::table('promocodes')->where('code', $request['code'])->first();
-        $promo_validity = DB::table('promocode_user')->get();
+        $promo_validity = DB::table('promocode_user')->where('promocode_id', $promocodes_details->id)->get();
+
+        foreach($discountable_products as $product) {
+            $quantity = $items[$product->id]['quantity'];
+            $discountable_products_quantity += $quantity;
+        }
 
         if (count($discountable_products) > 0) {
-            if (count($promo_validity) < $promo_validity->quantity) {
-                if ($total_product < (int)$deal_details->min_product ) {
+            if (count($promo_validity) < $promocodes_details->quantity) {
+                if ($discountable_products_quantity < json_decode($deal_details->min_product, true) ) {
                     $json['type'] = 'error';
                     $json['message'] = 'Product limit less than minimum product';
                     return $json;
                 }
-                elseif ($total_product > (int)$deal_details->max_product) {
+                elseif ($discountable_products_quantity > json_decode($deal_details->max_product)) {
                     $json['type'] = 'error';
                     $json['message'] = 'Product limit greater than maximum product';
                     return $json;
@@ -270,18 +277,22 @@ class ShoppingController extends Controller
                         $discount = ((float)$price/100 * $percentage);
                         $discounted_price = $price - $discount;
 
-                        \Cart::update($product->id, array(
+                        /*\Cart::update($product->id, array(
                             'price' => $discounted_price,
-                        ));
-                        $json['type'] = 'success';
-                        $json['message'] = 'Promocode Applied';
-                        return $json;
+                        ));*/
+
                     }
+                    $json['type'] = 'success';
+                    $json['discountable_products'] = $discountable_products;
+                    $json['discount'] = $promocodes_details->reward;
+                    $json['items'] = $items;
+                    $json['message'] = 'Promocode Applied';
+                    return $json;
                 }
             }
             else {
                 $json['type'] = 'error';
-                $json['message'] = 'Promocode Not Expired';
+                $json['message'] = 'Promocode Expired';
                 return $json;
             }
         }
@@ -292,9 +303,14 @@ class ShoppingController extends Controller
 
         return $json;
     }
-    public function proceedToOrder() {
-        $user = User::where('id', Auth::id())->first();
-        return view('customer::checkout.final', compact('user'));
+    public function proceedToOrder(Request $request) {
+//        dd($request->all());
+        $total_price = $request['total_price'];
+        $promocode = $request['code'];
+
+
+        $user = User::where('id', Auth::id())->with('profile')->first();
+        return view('customer::checkout.final', compact('user', 'promocode', 'total_price'));
     }
 
     public function saveOrderDetails(Request $request) {

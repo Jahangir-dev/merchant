@@ -22,11 +22,11 @@
                                 <div class="form-row">
                                     <div class="col form-group">
                                         <label>First name</label>
-                                        <input type="text" class="form-control" name="first_name" required="">
+                                        <input type="text" value="{{$user->first_name}}" class="form-control" name="first_name" required="">
                                     </div>
                                     <div class="col form-group">
                                         <label>Last name</label>
-                                        <input type="text" class="form-control" name="last_name" required="">
+                                        <input type="text" value="{{$user->last_name}}" class="form-control" name="last_name" required="">
                                     </div>
                                 </div>
                                 <div class="form-group">
@@ -50,7 +50,7 @@
                                     </div>
                                     <div class="form-group  col-md-6">
                                         <label>Phone Number</label>
-                                        <input type="text" class="form-control" name="phone_number" required="">
+                                        <input type="text" value="{{$user->profile->phone_number}}" class="form-control" name="phone_number" required="">
                                     </div>
                                 </div>
                                 <div class="form-group">
@@ -75,11 +75,14 @@
                                     <article class="card-body">
                                         <dl class="dlist-align">
                                             <dt>Total cost: </dt>
-                                            <dd class="text-right h5 b"> {{ config('settings.currency_symbol') }}{{ \Cart::getSubTotal() }} </dd>
+                                            <dd class="text-right h5 b"> {{ config('settings.currency_symbol') }}{{ $total_price }} </dd>
                                         </dl>
                                     </article>
                                 </div>
                             </div>
+                            <input type="hidden" class="form-control" name="code" value="{{ $promocode }}">
+                            <input type="hidden" class="form-control" name="grand_total" value="{{ $total_price }}">
+
                             <div class="col-md-12 mt-4">
                                 <button type="submit" class="subscribe btn btn-success btn-lg btn-block">Place Order</button>
                             </div>
