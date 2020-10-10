@@ -60,6 +60,7 @@
                                         <th>{{translateText('Last Name')}}</th>
                                         <th>{{translateText('Order Amount')}}</th>
                                         <th>{{translateText('Qty.')}}</th>
+                                          <th>{{translateText('Product')}}</th>
                                         <th>{{translateText('Status')}}</th>
                                     </tr>
                                     </thead>

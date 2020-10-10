@@ -68,6 +68,10 @@
         position: absolute !important;
         bottom: 30px !important;
     }
+    .owl-carousel {
+
+        z-index: 0 !important;
+    }
 </style>
         {{-- Laravel Mix - JS File --}}
         {{-- <script src="{{ mix('js/web.js') }}"></script> --}}
