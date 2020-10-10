@@ -10,7 +10,7 @@
         <div class="sl-main-header__content">
             <div class="sl-main-header__upper sl-navbar-search">
                 <form method="get" action="{{route('search')}}" role="search" class="sl-main-form">
-                    <div class="sl-form-group sl-main-form__input1 sl-loading">
+                    <div class="sl-form-group sl-main-form__input1">
                         <input name="search" class="form-control sl-form-control" type="text" placeholder="Search anything you want">
                     </div>
                     <div class="sl-form-group sl-main-form__input2">
@@ -49,10 +49,7 @@
                     </div>
                 </form>
 
-                <div class="sl-main-form__btn">
-                    <a href="javascript:void(0);" class="btn sl-btn sl-btn-active"><i class="ti-search"></i></a>
-                </div>
-                <div class="sl-topbar-notify">
+                <div class="sl-topbar-notify" style="display: block;">
                     <div class="sl-topbar-notify__icons dropdown">
                         <a href="javascript:void(0);" class="sl-topbar-notify__anchor" id="slCart" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
 
@@ -134,9 +131,7 @@
                         </ul>
                     </div>
                 @endguest
-                <div class="sl-main-upperBackbtn">
-                    <a href="javascript:void(0);"><i class="ti-close"></i></a>
-                </div>
+               
             </div>
 
             @php
@@ -209,7 +204,7 @@
                                     </ul>
                                 </div>
                             </li>
-@php $brands = \App\Models\Brand::with('products')->get(); @endphp
+                    @php $brands = \App\Models\Brand::with('products')->get(); @endphp
                             <li class="menu-item-has-mega-menu mega-menu-nav-pages">
                                 <a href="javascript:void(0);">Service Providers</a>
                                 <div class="mega-menu">
