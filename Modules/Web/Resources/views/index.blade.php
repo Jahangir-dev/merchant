@@ -116,7 +116,8 @@
                                 <em>By: <a href="{{route('web.brand.show', ['slug' => $brand->slug])}}">{{translateText($brand['user']->first_name)}}</a></em>
                             </div>
                             <div class="sl-slider__footer">
-                                <em>Leeds, UK (<a href="javascript:void(0);">Directions</a>)</em>
+                                <em>{{$brand->address}}(<a href="{{'https://maps.google.com/?q='.$brand->latitude.'+'.$brand->longitude}}">{{translateText(translateText('Directions'))}}</a>)</em>
+
                                 <div class="sl-shareHolder">
                                     <a href="javascript:void(0);" class="slShareHolder" ><i class="ti-more-alt"></i></a>
                                     <div class="sl-shareHolder__option">

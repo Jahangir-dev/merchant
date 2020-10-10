@@ -30,7 +30,7 @@ class BrandController extends BaseController
     public function index()
     {
         $brands = $this->brandRepository->listBrands();
-        
+
         $brands = $brands->filter(function($brand){
                     if(!empty($brand['user_id'])){
 
@@ -38,7 +38,7 @@ class BrandController extends BaseController
                     }
                     return $brand;
                  });
-                    
+
         $this->setPageTitle('Brands', 'List of all brands');
         return view('admin.brands.index', compact('brands'));
     }
@@ -47,12 +47,12 @@ class BrandController extends BaseController
      * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
      */
     public function create()
-    {   
+    {
         $users = User::whereHas(
                     'role', function($q){
                         $q->where('type', 'merchant');
                     })->get();
-        
+
         $this->setPageTitle('Brands', 'Create Brand');
         return view('admin.brands.create',compact('users'));
     }

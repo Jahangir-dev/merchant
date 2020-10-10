@@ -20,6 +20,13 @@
                             <input type="hidden" name="id" value="{{ $brand->id }}">
                             @error('name') {{translateText( $message )}} @enderror
                         </div>
+
+                        <div class="form-group">
+                            <input id="autocomplete" value="{{$brand->address}}" name="address" class="form-control @error('name') is-invalid @enderror" type="text" placeholder="Address" required>
+                            <input id="latitude" value="{{$brand->latitude}}" name="latitude" class="form-control @error('name') is-invalid @enderror" type="hidden" placeholder="Address" required>
+                            <input id="longitude" value="{{$brand->longitude}}" name="longitude" class="form-control @error('name') is-invalid @enderror" type="hidden" placeholder="Address" required>
+                            @error('name') {{translateText(  $message )}} @enderror
+                        </div>
                         <div class="form-group">
                             <div class="row">
                                     @if ($brand->logo != null)
@@ -34,7 +41,7 @@
                                     <input class="form-control @error('logo') is-invalid @enderror" type="file" id="logo" name="logo"/>
                                     @error('logo') {{translateText(  $message) }} @enderror
                                 </div>
-                                
+
                             </div>
                         </div>
                         <div class="form-group">
