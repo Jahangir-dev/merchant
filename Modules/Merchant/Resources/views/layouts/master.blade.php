@@ -117,7 +117,7 @@
 {{--<script src="{{asset('frontend/js/vendor/tinymce/tinymce.min4bb5.js?apiKey=4cuu2crphif3fuls3yb1pe4qrun9pkq99vltezv2lv6sogci')}}"></script>--}}
 
 {{-- javascript code --}}
-<script src='http://maps.googleapis.com/maps/api/js?v=3&sensor=false&amp;libraries=places&key=AIzaSyCTtKFT6ROLiapWLQf-ATNCdy5fn_VJ68s'></script>
+<script src='http://maps.googleapis.com/maps/api/js?v=3&sensor=false&amp;libraries=places&key=AIzaSyDsFhONz-5ZZce3E6N9V_VcjuW2NIhI4lc'></script>
 
 {{--<script src="https://maps.google.com/maps/api/js?key=AIzaSyCfLDEqciJFYH4niKBKrOdLD3UzGgz-9DM=places&callback=initAutocomplete" type="text/javascript"></script>--}}
 <script>
