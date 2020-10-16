@@ -6,15 +6,24 @@
         </strong>
         @php
         $merchants = \App\User::where('role_id', '2')->get();
+
+        $latitude = !empty($_GET['latitude']) ? $_GET['latitude'] : '';
+        $longitude = !empty($_GET['longitude']) ? $_GET['longitude'] : '';
+        $location = !empty($_GET['location']) ? $_GET['location'] : '';
+
+        $keyword = !empty($_GET['search']) ? $_GET['search'] : '';
+        $price = !empty($_GET['price']) ? $_GET['price'] : '';
+        $merchant = !empty($_GET['merchant']) ? $_GET['merchant'] : '';
+        $categories = !empty($_GET['categories']) ? $_GET['categories'] : '';
         @endphp
         <div class="sl-main-header__content">
             <div class="sl-main-header__upper sl-navbar-search">
                 <form method="get" action="{{route('search')}}" role="search" class="sl-main-form">
                     <div class="sl-form-group sl-main-form__input1">
-                        <input name="search" class="form-control sl-form-control" type="text" placeholder="Search anything you want">
+                        <input name="search" class="form-control sl-form-control" type="text" value="{{$keyword}}" placeholder="Search anything you want">
                     </div>
                     <div class="sl-form-group sl-main-form__input2">
-                        <input class="form-control sl-form-control" type="text" placeholder="Detect my location">
+                        <input id="autocomplete" name="location" class="form-control sl-form-control" type="text" value="{{$location}}" placeholder="Detect my location">
                         <a href="javascript:void(0);" class="sl-right-icon sl-arrow-icon"><i class="ti-angle-down"></i></a>
                         <a href="javascript:void(0);" class="sl-right-icon"><i class="ti-target"></i></a>
                         <div class="sl-distance">
@@ -25,6 +34,8 @@
                             <div id="slider-range-min"></div>
                         </div>
                     </div>
+                    <input type="text" style="display: none" name="latitude" id="latitude" value="{{$latitude}}">
+                    <input type="text" style="display: none" name="longitude" id="longitude" value="{{$longitude}}">
                     <div class="sl-form-group sl-main-form__input3">
                         <div class="sl-select">
                             <select name="merchant">
@@ -131,14 +142,10 @@
                         </ul>
                     </div>
                 @endguest
-               
             </div>
-
             @php
                 $categories = App\Models\Category::where('menu', true)->with('products')->get();
             @endphp
-
-
             <div class="sl-main-header__lower">
                 <nav class="navbar-expand-lg">
                     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#slMainNavbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -257,74 +264,6 @@
                                                 @endif
                                             @endforeach
                                         </li>
-                                        {{--<li class="mega-menu-col">
-                                            <ul>
-                                                <li class="mega-menu-title"><h3>Digital Marketing</h3></li>
-                                                <li><a href="service-provider.html">Social Media Marketing</a></li>
-                                                <li><a href="service-provider.html">Content Marketing</a></li>
-                                                <li><a href="service-provider.html">Video Marketing</a></li>
-                                                <li><a href="service-provider.html">Email Marketing</a></li>
-                                                <li><a href="service-provider.html">Crowdfunding</a></li>
-                                            </ul>
-                                            <ul>
-                                                <li class="mega-menu-title"><h3>Writing &amp; Translation</h3></li>
-                                                <li><a href="service-provider.html">Articles &amp; Blog Posts</a></li>
-                                                <li><a href="service-provider.html">Resumes &amp; Cover Letters<i class="sl-menutag sl-menutaghot">hot</i></a></li>
-                                                <li><a href="service-provider.html">Technical Writing</a></li>
-                                                <li><a href="service-provider.html">Translation<i class="sl-menutag sl-menutagnew">New</i></a></li>
-                                            </ul>
-                                            <ul>
-                                                <li class="mega-menu-title"><h3>Lifestyle</h3></li>
-                                                <li><a href="service-provider.html">Online Lessons</a></li>
-                                                <li><a href="service-provider.html">Arts &amp; Crafts</a></li>
-                                                <li><a href="service-provider.html">Relationship Advice</a></li>
-                                                <li><a href="service-provider.html">Health, Nutrition &amp; Fitness</a></li>
-                                            </ul>
-                                        </li>
-                                        <li class="mega-menu-col">
-                                            <ul>
-                                                <li class="mega-menu-title"><h3>Video &amp; Animation</h3></li>
-                                                <li><a href="service-provider.html">Animated Explainers</a></li>
-                                                <li><a href="service-provider.html">Video Editing<i class="sl-menutag sl-menutagnew">NEW</i></a></li>
-                                                <li><a href="service-provider.html">Short Video Ads</a></li>
-                                                <li><a href="service-provider.html">Animated GIFs</a></li>
-                                                <li><a href="service-provider.html">Logo Animation</a></li>
-                                                <li><a href="service-provider.html">Intros &amp; Outros</a></li>
-                                                <li><a href="service-provider.html">Live Action Explainers</a></li>
-                                                <li><a href="service-provider.html">Character Animation</a></li>
-                                                <li><a href="service-provider.html">3D Product Animation</a></li>
-                                                <li><a href="service-provider.html">Lyric & Music Videos</a></li>
-                                                <li><a href="service-provider.html">Spokespersons Videos</a></li>
-                                            </ul>
-                                            <ul>
-                                                <li class="mega-menu-title"><h3>Marketplace Listing</h3></li>
-                                                <li><a href="service-provider.html">Product Descriptions<i class="sl-menutag sl-menutaghot">hot</i></a></li>
-                                                <li><a href="service-provider.html">Product Photography</a></li>
-                                                <li><a href="service-provider.html">Product Research</a></li>
-                                            </ul>
-                                        </li>
-                                        <li class="mega-menu-col">
-                                            <ul>
-                                                <li class="mega-menu-title"><h3>Programming &amp; Tech</h3></li>
-                                                <li><a href="service-provider.html">WordPress</a></li>
-                                                <li><a href="service-provider.html">Website Builders &amp; CMS</a></li>
-                                                <li><a href="service-provider.html">Game Development</a></li>
-                                                <li><a href="service-provider.html">Web Programming</a></li>
-                                                <li><a href="service-provider.html">E-Commerce Development</a></li>
-                                                <li><a href="service-provider.html"><i class="sl-menutag sl-menutaghot">hot</i>Mobile Apps &amp; Web</a></li>
-                                                <li><a href="service-provider.html">Desktop applications</a></li>
-                                                <li><a href="service-provider.html">Support &amp; IT</a></li>
-                                                <li><a href="service-provider.html">Chatbots</a></li>
-                                                <li><a href="service-provider.html">Data Analysis &amp; Reports</a></li>
-                                                <li><a href="service-provider.html">Convert Files</a></li>
-                                                <li><a href="service-provider.html">Databases</a></li>
-                                            </ul>
-                                            <ul>
-                                                <li class="mega-menu-title"><h3>Game Creation</h3></li>
-                                                <li><a href="service-provider.html">Game Development</a></li>
-                                                <li><a href="service-provider.html">Producers &amp; Composers</a></li>
-                                            </ul>
-                                        </li>--}}
                                     </ul>
                                 </div>
                             </li>

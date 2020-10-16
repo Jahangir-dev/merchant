@@ -272,7 +272,11 @@
                                         <figcaption>
                                             <div class="sl-slider__tags">
                                                 @if(in_array($product->id, $sale_products))
-                                                    <span class="sl-bg-red-orange">sale</span>
+                                                    @php
+                                                        $percentage = $product->codes[0];
+                                                        $promocodes = DB::table('promocodes')->where('code', $percentage->promo)->first();
+                                                    @endphp
+                                                    <span class="sl-bg-red-orange"> {{$promocodes->reward}}% Off</span>
                                                 @endif
                                             </div>
                                             <a id="wist-list-{{ $product->id }}" onclick="addToWishList({{ $product->id }})" href="javascript:void(0);" class=""><i class="far fa-heart"></i></a>
@@ -295,9 +299,28 @@
                                         </div>
                                         <em>By: <a href="{{route('web.brand.show', ['slug' => $product->brand->slug])}}">{{translateText($product->brand->name)}}</a></em>
                                         <button onclick="myFunction({{ $product }})" class="btn sl-btn">{{translateText('Add To Cart')}}</button>
-                                        <div class="sl-slider__footer">
-                                            <em>{{$product->address}}(<a href="{{'https://maps.google.com/?q='.$product->latitude.'+'.$product->longitude}}">{{translateText(translateText('Directions'))}}</a>)</em>
+                                        <div class="row">
+                                            <div class="col-6">
+                                                <div class="sl-slider__footer">
+                                                    <em>{{$product->address}}(<a href="{{'https://maps.google.com/?q='.$product->latitude.'+'.$product->longitude}}">{{translateText(translateText('Directions'))}}</a>)</em>
+                                                </div>
+                                            </div>
+                                            <div class="col-6">
+                                                <div class="sl-slider__footer sl-slider__tags">
+                                                    @if(in_array($product->id, $sale_products))
+                                                        @php
+                                                            $date1=date_create(date("Y-m-d"));
+                                                            $date2=date_create($product->codes[0]->end_date);
+                                                            $diff=date_diff($date1,$date2);
+                                                        @endphp
+                                                        <span class="sl-bg-red-orange">{{ $diff->days }} Days Left</span>
+                                                    @endif
+                                                </div>
+                                            </div>
+
+
                                         </div>
+
                                     </div>
                                 </div>
                             </div>

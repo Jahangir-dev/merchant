@@ -85,6 +85,9 @@ class SearchController extends Controller
 
         $sale_products = DB::table('promocodes_products')->pluck('product_id')->toArray();
 
+        $latitude = !empty($_GET['latitude']) ? $_GET['latitude'] : '';
+        $longitude = !empty($_GET['longitude']) ? $_GET['longitude'] : '';
+
         $keyword = !empty($_GET['search']) ? $_GET['search'] : '';
         $price = !empty($_GET['price']) ? $_GET['price'] : '';
         $merchant = !empty($_GET['merchant']) ? $_GET['merchant'] : '';
@@ -104,6 +107,15 @@ class SearchController extends Controller
             ->with('user')
             ->with('brand')
             ->with('images');
+        if ($latitude !== '') {
+            $products = $products
+                ->where('latitude', 'LIKE', "%{$latitude}%");
+        }
+        if ($longitude !== '') {
+            $products = $products
+                ->where('longitude', 'LIKE', "%{$longitude}%");
+        }
+
         if ($keyword !== '') {
             $products = $products
                 ->where('name', 'LIKE', "%{$keyword}%");
