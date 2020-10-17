@@ -110,4 +110,7 @@ Route::group(['prefix'  =>  'admin'], function () {
     Route::get('send-mails', 'Admin\MailChimpController@store')->name('subscribe-newsletter');
     Route::get('check-subscribe', 'Admin\MailChimpController@checkSubscribed')->name('subscribe-check');
 
+    Route::resource('/coupon', 'Admin\CouponController');
+  Route::post('/coupon/bulk_delete', 'Admin\CouponController@bulk_delete');
+  Route::get('dropdown', 'Admin\CouponController@dropdown');
 });

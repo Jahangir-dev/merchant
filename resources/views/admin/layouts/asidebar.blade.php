@@ -61,7 +61,19 @@
                         </p>
                     </a>
                 </li>
-
+            <li class="nav-item has-treeview">
+                <a href="#" class="nav-link {{ Route::currentRouteName() == 'admin.coupon' ? 'active' : null }}">
+                  <i class="nav-icon fas fa-chart-pie"></i>
+                  <p>
+                    Coupon
+                    <i class="right fas fa-angle-left"></i>
+                  </p>
+                </a>
+                <ul class="nav nav-treeview">
+                  <li class="nav-item"><a href="{{url('admin/coupon/create')}}" class="nav-link"><i class="far fa-circle nav-icon"></i>Add Coupon</a></li>
+                    <li class="nav-item"><a href="{{route('coupon.index')}}" class="nav-link"><i class="far fa-circle nav-icon"></i> All Coupon</a></li>
+                </ul>
+          </li>
         <li class="nav-item">
             <a class="nav-link {{ Request::segment(2) === 'orders' ? 'active' : '' }}" href="{{ route('admin.orders.index') }}">
                 <i class="nav-icon fa fa-tasks"></i>
