@@ -25,7 +25,7 @@ class WebController extends Controller
         $categories = Category::where('menu', '1')->get();
         $brands = Brand::with('user')->get();
 
-        $products = Product::with('categories')->with('brand')->with('user')->get();
+        $products = Product::with('categories')->with('brand')->with('codes')->with('user')->get();
         return view('web::index', compact('products', 'categories','sale_products', 'brands', 'merchants', 'session_id'));
     }
 

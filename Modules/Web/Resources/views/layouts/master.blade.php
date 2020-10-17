@@ -54,6 +54,7 @@
 
     <!-- MAIN START -->
 
+
     @yield('content')
     <!-- MAIN END -->
     <!-- FOOTER START -->
@@ -101,6 +102,25 @@
     <script type="text/javascript" charset="utf8" src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.53/vfs_fonts.js"></script>
     <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/buttons/1.6.4/js/buttons.html5.min.js"></script>
     <script src="//cdn.jsdelivr.net/npm/alertifyjs@1.13.1/build/alertify.min.js"></script>
+
+    <script src='http://maps.googleapis.com/maps/api/js?v=3&sensor=false&amp;libraries=places&key=AIzaSyCTtKFT6ROLiapWLQf-ATNCdy5fn_VJ68s'></script>
+    <script>
+        $(document).ready(function (){
+            console.log('hello world')
+            google.maps.event.addDomListener(window, 'load', initialize);
+
+            function initialize() {
+                var input = document.getElementById('autocomplete');
+                var autocomplete = new google.maps.places.Autocomplete(input);
+                autocomplete.addListener('place_changed', function() {
+                    var place = autocomplete.getPlace();
+                    $('#latitude').val(place.geometry['location'].lat());
+                    $('#longitude').val(place.geometry['location'].lng());
+                });
+            }
+        })
+
+    </script>
 
 @stack('javascript')
     <script type="text/javascript">
@@ -340,7 +360,7 @@
                         if (item.quantity === 0) {
                             $('#tr-'+key).remove();
                         }
-                        
+
                         li += `<li id="`+ key +`">
                             <img src="{{asset('frontend/images/index/cart/img-03.png')}}" alt="Image Description">
                             <div class="sl-dropdown__cart__description">
