@@ -6,6 +6,40 @@
     <!-- BANNER END -->
     <!-- MAIN START -->
     <main class="sl-main">
+        <!-- COMMUNITY END -->
+        <!-- SERVICE PROVIDER START -->
+        <section class="sl-main-section">
+            <div class="container">
+                <div class="row justify-content-center">
+                    <div class="col-lg-9 col-xl-8">
+                        <div class="sl-sectionHead">
+                            <div class="sl-sectionHead__title sl-below-line sl-below-line__active">
+                                <h2>Coupons</h2>
+                            </div>
+                            <div class="sl-sectionHead__description">
+                                <p>Consectetur adipisicing elit sed do eiusmod tempor incididunt ut labore et dolore magna aliqua enim adena minim veniam quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div id="slCategoryOwl" class="owl-carousel owl-theme sl-owl-nav">
+                @if($coupons)
+                        @foreach($coupons as $coupan)
+                <div class="item">
+                    <div class="sl-slider">
+                        <figure>
+                            
+                            <a href="javascript:void(0);"><img src="{{ asset('images/coupon/'.$coupan->image) }}" alt="Image Description"></a>
+                            
+                        </figure>
+                        
+                    </div>
+                </div>
+                    @endforeach
+                @endif
+            </div>
+        </section>
         <!-- CATEGORY START -->
         <section class="sl-main-section">
             <div class="container">

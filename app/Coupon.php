@@ -20,7 +20,10 @@ class Coupon extends Model
  	{
  		return $this->belongsTo('App\Models\Category','category_id');
  	}
- 		
+ 	public function product()
+  {
+    return $this->belongsTo('App\Models\Product','category_id');
+  }	
  	public function user()
  	{
  		return $this->belongsTo('App\User');

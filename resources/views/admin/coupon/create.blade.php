@@ -4,7 +4,7 @@
 @section('content')
   <div class="app-title col-md-12">
         <div>
-            <h1><i class="fa fa-bar-chart"></i>  Add Coupon</h1>
+            <h1><i class="fa fa-bar-chart"></i>Add Coupon</h1>
         </div>
   </div>
   <div class="admin-form-main-block">
@@ -29,14 +29,10 @@
         </div>
         <div class="col-md-6">                              
           {{-- <input type="hidden" name="type" value="c">   --}}
-          <div class="form-group{{ $errors->has('user_id') ? ' has-error' : '' }}">
-            {!! Form::label('user_id', 'Select User*') !!} - <p class="inline info">Please select user name</p>
-            {!! Form::select('user_id', $all_users, null, ['class' => 'form-control select2', 'required']) !!}
-            <small class="text-danger">{{ $errors->first('user_id') }}</small>
-          </div>            
+                    
         
           <div class="form-group{{ $errors->has('category_id') ? ' has-error' : '' }}">
-              {!! Form::label('category_id', 'Select Category*') !!} - <p class="inline info">Please select category</p>
+              {!! Form::label('category_id', 'Select Product*') !!} - <p class="inline info">Please select product</p>
               {!! Form::select('category_id', $all_category, null, ['class' => 'form-control select2', 'required']) !!}
               <small class="text-danger">{{ $errors->first('category_id') }}</small>
           </div> 

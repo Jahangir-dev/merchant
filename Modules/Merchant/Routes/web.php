@@ -43,6 +43,11 @@ Route::prefix('merchant')->group(function() {
 
      Route::get('account/orders', 'AccountController@getOrders')->name('account.orders');
 
+    Route::resource('/mCoupon', 'CouponController');
+    Route::post('/coupon/bulk_delete', 'CouponController@bulk_delete');
+    Route::get('dropdown', 'CouponController@dropdown');
+    Route::post('/coupon/store','CouponController@store')->name('merchant.coupon.store');
+
 });
 
 

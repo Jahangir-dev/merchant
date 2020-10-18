@@ -47,9 +47,7 @@
                                         <td>{!! $promocodes->data !!}</td>
                                         <td>
                                             <div class="sl-newAppointments__services">
-                                                {{--<div class="sl-newAppointments__services--description">
-                                                    <h6> {{translateText('Services:')}}</h6>
-                                                </div>--}}
+                                               
                                                 <a href="{{route('merchant.deals.edit', ['id' => $deal->id])}}"><i class="fa fa-pen" aria-hidden="true"></i></a>
                                                 <a onclick="deleteDeal({{$deal->id}})" href="javascript:void(0)"><i class="fa fa-trash" aria-hidden="true"></i></a>
 

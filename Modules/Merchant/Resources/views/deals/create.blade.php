@@ -39,7 +39,7 @@
                                                 </div>
                                                 <div class="form-group">
                                                     <div class="sl-aboutDescription__title">
-                                                        <h6>Select Categories</h6>
+                                                        <h6>Select Products</h6>
                                                     </div>
                                                     <label class="sl-aboutDescription__inputBtn">
                                                         <select name="products[]" id="sl-products" class="form-control sl-form-control" multiple="multiple" required>

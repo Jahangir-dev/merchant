@@ -41,16 +41,25 @@
                             </li> -->
 {{--                            <li class="{{ (\Request::route()->getName() == 'merchant.deals') ? 'sl-active' : '' }}">
                                 <a href="{{route('merchant.deals')}}">
-                                    <i class="ti-user"></i><span>{{translateText('Coupons')}}</span>
+                                    <i class="ti-user"></i><span>{{translateText('Deals')}}</span>
                                 </a>
                             </li>--}}
                             <li class="menu-item-has-children page_item_has_children">
                                 <a href="javascript:void(0);" class="sl-notification sl-noticolor1">
-                                    <i class="ti-star"></i><span> {{translateText('Manage Coupons')}}</span>
+                                    <i class="ti-star"></i><span> {{translateText('Manage Deals')}}</span>
                                 </a>
                                 <ul class="sub-menu" style="{{ ((\Request::route()->getName() == 'merchant.deals') ? 'display: block'  : (\Request::route()->getName() == 'merchant.deals.create')) ? 'display: block' : '' }}">
-                                    <li><a href="{{route('merchant.deals')}}">{{translateText('Coupons')}}</a></li>
-                                    <li><a href="{{route('merchant.deals.create')}}">{{translateText('Create Coupons')}}</a></li>
+                                    <li><a href="{{route('merchant.deals')}}">{{translateText('Deals')}}</a></li>
+                                    <li><a href="{{route('merchant.deals.create')}}">{{translateText('Create Deals')}}</a></li>
+                                </ul>
+                            </li>
+                             <li class="menu-item-has-children page_item_has_children">
+                                <a href="javascript:void(0);" class="sl-notification sl-noticolor1">
+                                    <i class="ti-star"></i><span> {{translateText('Manage Copuan')}}</span>
+                                </a>
+                                <ul class="sub-menu" style="{{ ((\Request::route()->getName() == 'mCoupon.create') ? 'display: block'  : (\Request::route()->getName() == 'mCoupon.edit')) ? 'display: block' : '' }}">
+                                    <li><a href="{{route('mCoupon.index')}}">{{translateText('Coupans')}}</a></li>
+                                    <li><a href="{{url('merchant/mCoupon/create')}}">{{translateText('Create Coupans')}}</a></li>
                                 </ul>
                             </li>
                             <li class="menu-item-has-children page_item_has_children">

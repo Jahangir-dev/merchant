@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers\Admin;
+namespace App\Http\Controllers;
 
 use App\Coupon;
 use App\Models\Category;
@@ -15,10 +15,7 @@ use Illuminate\Support\Facades\Validator;
 
 class CouponController extends Controller
 {
-	public function __construct()
-    {
-        $this->middleware('auth:admin');
-    }
+
 	/**
 	 * Display a listing of the resource.
 	 *
@@ -27,9 +24,9 @@ class CouponController extends Controller
 	public function index()
 	{
 
-		$coupon = Coupon::orderBy('created_at','desc')->get();
+		$coupon = Coupon::orderBy('created_at','desc')->where('user_id', Auth::user()->id)->get();
 			
-		return view('admin.coupon.index', compact('coupon'));
+		return view('merchant::coupon.index', compact('coupon'));
 	}
 
 	/**
@@ -40,9 +37,9 @@ class CouponController extends Controller
 	public function create()
 	{		
 
-		$all_category = Product::all()->pluck('name','id');
+		$all_category = Product::where('user_id', Auth::user()->id)->pluck('name','id');
 
-		return view('admin.coupon.create', compact('all_category'));
+		return view('merchant::coupon.create', compact('all_category'));
 	}
 
 	/**
@@ -122,7 +119,7 @@ class CouponController extends Controller
 
 		$coupon->uni_id = $random;
     	$coupon->save();
-
+		notify()->success('Coupon has been added');
 		return back()->with('added', 'Coupon has been added');
 
 	}
@@ -135,7 +132,7 @@ class CouponController extends Controller
 	 */
 	public function show($id)
 	{
-		//
+		
 	}
 
 	/**
@@ -148,7 +145,7 @@ class CouponController extends Controller
 	{		
 		$coupon = Coupon::findOrFail($id);			
 		$all_category = Product::all()->pluck('name','id');		
-		return view('admin.coupon.edit', compact('coupon','all_category'));
+		return view('merchant::coupon.edit', compact('coupon','all_category'));
 	}
 
 	/**
@@ -247,8 +244,8 @@ class CouponController extends Controller
 		$coupon->slug = Str::slug($input['title'],'-');
 		$coupon->user_id = Auth::user()->id;
     	$coupon->save();
-
-		return redirect('admin/coupon')->with('updated', 'Coupon has been updated');
+    	notify()->success('Coupon has been updated');
+		return redirect('merchant/mCoupon')->with('updated', 'Coupon has been updated');
 	}
 
 
@@ -276,7 +273,7 @@ class CouponController extends Controller
 		}
 
 		$coupon->delete();
-
+		notify()->success('Coupon has been deleted');
 		return back()->with('deleted', 'Coupon has been deleted');
 	}
 

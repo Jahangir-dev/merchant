@@ -48,7 +48,7 @@
             
             <th>Title</th>
             
-            <th>Category</th>
+            <th>Product</th>
             {{-- <th>Price</th>
             <th>Discount</th>
             <th>Coupon code</th>
@@ -65,6 +65,7 @@
         @if (isset($coupon))
           <tbody>
             @foreach ($coupon as $key => $item)
+
               <tr>
                 <td>
                   <div class="inline">
@@ -84,7 +85,7 @@
                 
                 <td>{{\Illuminate\Support\Str::limit($item->title, 20)}}</td>
                 
-                <td>{{strtok($item->category->name, ' ')}}</td>
+                <td>{{strtok($item->product->name, ' ')}}</td>
                 {{-- <td>{{$item->price}}</td>
                 <td>{{$item->discount ? $item->discount : '0'}}</td>
                 <td>{{$item->code}}</td>

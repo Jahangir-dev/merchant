@@ -6,6 +6,7 @@ use App\Models\Brand;
 use App\Models\Category;
 use App\Models\Product;
 use App\User;
+use App\Coupon;
 use Illuminate\Contracts\Support\Renderable;
 use Illuminate\Http\Request;
 use Illuminate\Routing\Controller;
@@ -24,9 +25,9 @@ class WebController extends Controller
         $merchants = User::where('role_id', '2')->with('products')->get();
         $categories = Category::where('menu', '1')->get();
         $brands = Brand::with('user')->get();
-
+        $coupons = Coupon::orderBy('created_at','desc')->get();
         $products = Product::with('categories')->with('brand')->with('codes')->with('user')->get();
-        return view('web::index', compact('products', 'categories','sale_products', 'brands', 'merchants', 'session_id'));
+        return view('web::index', compact('products', 'categories','sale_products', 'brands', 'merchants', 'session_id','coupons'));
     }
 
     /**

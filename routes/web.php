@@ -28,7 +28,7 @@ Route::namespace('Auth')->group(function() {
 	Route::get('/forget', 'LoginController@forgetPassword')->name('forget');
 
 });
-
+Route::resource('/mCoupon', 'CouponController');
 /*
 Route::namespace("Admin")->prefix('admin')->group(function() {
 
