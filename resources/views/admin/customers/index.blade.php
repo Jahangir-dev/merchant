@@ -36,7 +36,11 @@
                                         <td>{{translateText($user->first_name)}}</td>
                                         <td>{{translateText($user->last_name)}}</td>
                                         <td>{{translateText($user->email)}}</td>
-                                        <td>{{translateText($user->profile->phone)}}</td>
+                                        <td>
+                                             @if(isset($user->profile->phone))
+                                            {{translateText($user->profile->phone)}}
+                                            @endif
+                                        </td>
                                         <td>
                                             {{translateText($user->ip_address)}}
                                             @if($ips->contains('ip_address', $user->ip_address))

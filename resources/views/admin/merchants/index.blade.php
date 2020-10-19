@@ -54,7 +54,12 @@
                                                 <p> {{$brand->name}} </p>
                                             @endforeach
                                         </td>
-                                        <td>{{translateText($user->profile->phone_number)}}</td>
+                                        <td>
+                                            @if(isset($user->profile->phone_number)) 
+                                            {{translateText($user->profile->phone_number)}}
+                                            
+                                            @endif
+                                        </td>
                                         <td>
                                             <label class="radio-inline">
 
