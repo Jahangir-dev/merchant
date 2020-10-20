@@ -228,7 +228,7 @@
                 return
             }
             $.ajax({
-                url: '/customer/checkPromo',
+                url: '{{route("/customer/checkPromo"}}',
                 type: 'post',
                 data: {
                     _token: "{{ csrf_token() }}",
