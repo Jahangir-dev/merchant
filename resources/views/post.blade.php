@@ -19,7 +19,7 @@
                         <div class="col-lg-7">
                             <div class="sl-product__description">
                                 <div class="sl-slider__tags">
-                                	@if(!empty($post->price))
+                                	@if($post->is_active == 1)
                                     <span class="sl-bg-red-orange">Paid</span>
                                     @else
                                     <span class="sl-bg-green">Free</span>
