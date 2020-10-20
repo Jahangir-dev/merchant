@@ -7,7 +7,7 @@ use App\Models\Product;
 use Illuminate\Contracts\Support\Renderable;
 use Illuminate\Http\Request;
 use Illuminate\Routing\Controller;
-
+use DB;
 class CategoryController extends Controller
 {
     /**
@@ -44,9 +44,9 @@ class CategoryController extends Controller
      * @return Renderable
      */
     public function show($id)
-    {
+    {    $sale_products = DB::table('promocodes_products')->pluck('product_id')->toArray();
         $category = Category::where('slug', $id)->with('products')->first();
-        return view('web::category.show', compact('category'));
+        return view('web::category.show', compact('category','sale_products'));
     }
 
     /**

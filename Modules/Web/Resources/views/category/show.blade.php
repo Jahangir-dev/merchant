@@ -162,6 +162,27 @@
                                         </div>
                                         <em>By: <a href="{{route('web.brand.show', ['slug' => $product->brand->slug])}}">{{translateText($product->brand->name)}}</a></em>
                                         <button class="btn sl-btn">{{translateText('Add To Cart')}}</button>
+                                         <div class="row">
+                                            <div class="col-6">
+                                                <div class="sl-slider__footer">
+                                                    <em>{{$product->address}}(<a href="{{'https://maps.google.com/?q='.$product->latitude.'+'.$product->longitude}}">{{translateText(translateText('Directions'))}}</a>)</em>
+                                                </div>
+                                            </div>
+                                            <div class="col-6">
+                                                <div class="sl-slider__footer sl-slider__tags">
+                                                    @if(in_array($product->id, $sale_products))
+                                                        @php
+                                                            $date1=date_create(date("Y-m-d"));
+                                                            $date2=date_create($product->codes[0]->end_date);
+                                                            $diff=date_diff($date1,$date2);
+                                                        @endphp
+                                                        <span class="sl-bg-red-orange">{{ $diff->days }} Days Left</span>
+                                                    @endif
+                                                </div>
+                                            </div>
+
+
+                                        </div>
                                     </div>
                                 </div>
                             </div>
