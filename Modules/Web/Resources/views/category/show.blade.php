@@ -161,7 +161,7 @@
                                             <em>({{translateText('1887 Feedback')}})</em>
                                         </div>
                                         <em>By: <a href="{{route('web.brand.show', ['slug' => $product->brand->slug])}}">{{translateText($product->brand->name)}}</a></em>
-                                        <button class="btn sl-btn">{{translateText('Add To Cart')}}</button>
+                                        <button onclick="myFunction({{ $product }})" class="btn sl-btn">{{translateText('Add To Cart')}}</button>
                                          <div class="row">
                                             <div class="col-6">
                                                 <div class="sl-slider__footer">
