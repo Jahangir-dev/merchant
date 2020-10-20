@@ -50,7 +50,11 @@
                                     </div>
                                     <div class="form-group  col-md-6">
                                         <label>Phone Number</label>
+                                        @if(isset($user->profile->phone_number))
                                         <input type="text" value="{{$user->profile->phone_number}}" class="form-control" name="phone_number" required="">
+                                        @else
+                                        <input type="text" value="" class="form-control" name="phone_number" required="">
+                                        @endif
                                     </div>
                                 </div>
                                 <div class="form-group">
