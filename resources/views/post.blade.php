@@ -29,7 +29,7 @@
                                
                                 <div class="sl-product__stars">
                                 	<div class="sl-appointment__location">
-	                                	@if(!empty($post->price))
+	                                	@if($post->is_active == 1)
 	                                    <em style="font-size: 20px;">Copuon Price: ${{$post->price != null ? $post->price : ''}}</em>
 	                                    @else
 	                                    <div class="sl-appointment__location">
@@ -119,14 +119,14 @@
 
 								@endphp
                                 <div class="sl-product__stock">
-                                	 @if($data_difference > 0)
+                                	 @if($data_difference >= 0)
                                     <h6>Status: <span class="sl-green">In Stock</span></h6>
                                     @else
                                     <h6>Status: <span class="sl-red">Expire</span></h6>
                                     @endif
                                     <div class="sl-product__stock--content">
                                        
-                                        @if($data_difference > 0)
+                                        @if($data_difference >= 0)
                                         <a href="javascript:void(0);" class="btn sl-btn sl-btn-active">Buy Now</a>
                                         @endif
                                     </div>
