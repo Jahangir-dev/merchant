@@ -26,16 +26,17 @@
                                     @endif
                                 </div>
                                 <h5>{!! $post->detail != null ? $post->detail : ''!!}</h5>
-                                <div class="sl-product__price">
-                                	@if(!empty($post->price))
-                                    <h3>{{$post->price != null ? $post->price : ''}}</h3>
-                                    @else
-                                    <div class="sl-appointment__location">
-                                            <em>Copuon Code: <b>{{$post->code != null ? $post->code : ''}}</b></em>
-                                        </div>
-                                    @endif
-                                </div>
+                               
                                 <div class="sl-product__stars">
+                                	<div class="sl-appointment__location">
+	                                	@if(!empty($post->price))
+	                                    <em style="font-size: 20px;">Copuon Price: ${{$post->price != null ? $post->price : ''}}</em>
+	                                    @else
+	                                    <div class="sl-appointment__location">
+	                                      <em style="font-size: 20px;">Copuon Code: {{$post->code != null ? $post->code : ''}}</em>
+	                                    </div>
+	                                    @endif
+                                	</div>
                                     <div class="sl-appointment__feature">
                                         
                                         <div class="sl-appointment__location">
