@@ -111,7 +111,7 @@
                                             <input class="sl-input-number" type="number" value="01" min="0" max="1000">
                                             <a href="javascript:void(0);" class="sl-input-increment">+</a>
                                         </form>
-                                       <button onclick="myFunction('{{ $product }}')" class="btn sl-btn">{{translateText('Add To Cart')}}</button>
+                                       <button onclick="myFunction({{ $product }})" class="btn sl-btn">{{translateText('Add To Cart')}}</button>
                                        
                                     </div>
                                 </div>
