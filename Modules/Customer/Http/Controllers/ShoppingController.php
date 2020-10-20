@@ -246,6 +246,7 @@ class ShoppingController extends Controller
         }
         $deal_details = Deal::where('promo', $request['code'])->first();
         $promocodes_details = DB::table('promocodes')->where('code', $request['code'])->first();
+        if($promocodes_details != null) {
         $promo_validity = DB::table('promocode_user')->where('promocode_id', $promocodes_details->id)->get();
 
         foreach($discountable_products as $product) {
@@ -289,6 +290,11 @@ class ShoppingController extends Controller
                     $json['message'] = 'Promocode Applied';
                     return $json;
                 }
+             } else {
+                $json['type'] = 'error';
+                $json['message'] = 'Promocode Not Found';
+                return $json;
+             }
             }
             else {
                 $json['type'] = 'error';
