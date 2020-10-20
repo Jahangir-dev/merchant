@@ -11,14 +11,14 @@
                             <div id="sl-sync1" class="sl-product__img owl-carousel owl-theme">
                                 <div class="sl-item item">
                                     <figure>
-                                        <img src="{{('/storage/'.$category->image)}}" alt="Image Description">
+                                        <img src="{{asset('/storage/'.$category->image)}}" alt="Image Description">
                                     </figure>
                                 </div>
                             </div>
                             <div id="sl-sync2" class="sl-product__thumbnail owl-carousel owl-theme">
                                 <div class="sl-item">
                                     <figure class="">
-                                        <img src="{{('/storage/'.$category->image)}}" alt="Image Description">
+                                        <img src="{{asset('/storage/'.$category->image)}}" alt="Image Description">
                                     </figure>
                                 </div>
                             </div>
@@ -132,10 +132,13 @@
                     <h4>Products</h4>
                     <div class="row">
                         @foreach($category->products as $product)
+                        
                             <div class="col-sm-6 col-lg-4 col-xl-3">
                                 <div class="sl-featuredProducts--post">
                                     <figure>
-                                        <img src="{{asset('/storage/'.$product->full)}}" alt="Image Description">
+                                        @if(isset($product->images[0]))
+                                        <img src="{{asset('storage/'.$product->images[0]->full )}}" alt="Image Description">
+                                        @endif
                                         <figcaption>
                                             <div class="sl-slider__tags">
                                                 <span class="sl-bg-red-orange">25% OFF</span>
