@@ -89,4 +89,12 @@ class WebController extends Controller
     {
         //
     }
+
+    public function post_show($uniID, $slug)
+    {
+        $post = Coupon::where('uni_id',$uniID)->where('slug',$slug)->first();
+        $user_name = User::where('id',$post['user_id'])->get();
+
+        return view('post', compact('post','user_name'));
+    } 
 }

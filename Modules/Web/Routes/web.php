@@ -24,7 +24,9 @@ Route::prefix('web')->group(function() {
     Route::get('/category/{slug}','CategoryController@show')->name('web.category.show');
 //    Product
     Route::get('/product/{slug}','ProductController@show')->name('web.product.show');
+
 });
+    Route::get('post/{uniID}/{slug}', 'WebController@post_show');
 
 //cart routes
 Route::post('/addToCart', 'ShoppingController@addToCart')->name('checkout.cart');
@@ -44,3 +46,4 @@ Route::post('/addToWishList','ShoppingController@addToWishList')->name('add.to.w
 Route::post('/getWishList','ShoppingController@getWishList')->name('get.wishlist');
 
 Route::get('/search', 'SearchController@searchResults')->name('search');
+

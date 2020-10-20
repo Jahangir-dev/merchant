@@ -26,14 +26,25 @@
             <div id="slCategoryOwl" class="owl-carousel owl-theme sl-owl-nav">
                 @if($coupons)
                         @foreach($coupons as $coupan)
+                        
                 <div class="item">
                     <div class="sl-slider">
                         <figure>
                             
-                            <a href="javascript:void(0);"><img src="{{ asset('images/coupon/'.$coupan->image) }}" alt="Image Description"></a>
+                            <a href="{{url('post/'.$coupan->uni_id.'/'.$coupan->slug)}}" ><img src="{{ asset('images/coupon/'.$coupan->image) }}" alt="Image Description"></a>
                             
                         </figure>
-                        
+                        <div class="sl-slider__content">
+                            <div class="sl-slider__header">
+                                <div class="sl-slider__tags">
+                                    @if(!empty($coupan->price))
+                                    <a href="{{url('post/'.$coupan->uni_id.'/'.$coupan->slug)}}"  class="sl-bg-red-orange">Paid</a>
+                                    @else
+                                    <a href="{{url('post/'.$coupan->uni_id.'/'.$coupan->slug)}}"  class="sl-bg-green">Free</a>
+                                    @endif
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
                     @endforeach

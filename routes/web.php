@@ -29,6 +29,7 @@ Route::namespace('Auth')->group(function() {
 
 });
 Route::resource('/mCoupon', 'CouponController');
+
 /*
 Route::namespace("Admin")->prefix('admin')->group(function() {
 
