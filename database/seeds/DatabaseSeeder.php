@@ -16,7 +16,7 @@ class DatabaseSeeder extends Seeder
         $faker = Faker\Factory::create();
 
 
-        for($i = 0; $i < 100; $i++) {
+        for($i = 0; $i < 20; $i++) {
             \App\Models\Category::create([
                 'name' => $faker->name,
                 'slug' => $faker->slug,
