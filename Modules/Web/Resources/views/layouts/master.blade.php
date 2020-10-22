@@ -130,7 +130,7 @@
         });
         function myFunction(product) {
             $.ajax({
-                url: 'addToCart',
+                url: '{{route("checkout.AddToCart")}}',
                 type: 'post',
                 data: {
                     _token: "{{ csrf_token() }}",
