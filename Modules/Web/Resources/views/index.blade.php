@@ -73,7 +73,7 @@
                         @if($index < 10)
                     <div class="sl-col sl-col-sm-1-of-2 sl-col-md-1-of-3 sl-col-lg-1-of-4 sl-col-xl-1-of-5">
                         <div class="sl-category__service">
-                            <img src="{{asset('/storage/'.$category->image)}}" alt="image Description"/>
+                            <img src="{{asset('/storage/'.$category->image)}}" alt="image Description" style="width: 150px" />
                             <div class="sl-category__description">
                                 <a href="{{route('web.category.show', ['slug' => $category->slug])}}">
                                     <h5>{{ translateText($category->name) }}</h5>
