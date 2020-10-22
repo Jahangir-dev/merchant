@@ -29,7 +29,7 @@ Route::prefix('web')->group(function() {
     Route::get('post/{uniID}/{slug}', 'WebController@post_show');
 
 //cart routes
-Route::post('/addToCart', 'ShoppingController@addToCart')->name('checkout.cart');
+Route::post('/addToCart', 'ShoppingController@addToCart')->name('checkout.AddToCart');
 Route::post('/getCartItems', 'ShoppingController@getCartItems')->name('get.cart.items');
 Route::post('/decrementCartItem', 'ShoppingController@decrementCartItem')->name('decrement.cart.items');
 Route::post('/incrementCartItem', 'ShoppingController@incrementCartItem')->name('increment.cart.items');
