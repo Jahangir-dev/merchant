@@ -333,7 +333,7 @@ class ShoppingController extends Controller
         return $json;
     }
     public function proceedToOrder(Request $request) {
-//        dd($request->all());
+      //dd($request->all());
         $total_price = $request['total_price'];
         $promocode = $request['code'];
 

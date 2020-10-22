@@ -23,6 +23,7 @@
                                     </thead>
                                     <tbody>
                                     @foreach($items as $item)
+
                                     <tr id="tr-{{ $item->id }}">
                                         <td data-label="Details">{{ $item->name }}</td>
                                         <td data-label="Price">{{ $item->price }}</td>
@@ -41,13 +42,14 @@
                                         <td><span class="border p-2" id="checkout-total-price"></span></td>
                                     </tr>
                                     </tbody>--}}
+                                    
                                 </table>
                                 <form method="post" action="{{ route('customer.order') }}">
                                     @csrf
                                     <div class="row mt-2">
                                         <div class="col-9">
                                             <input id="promo" name="code" class="form-control sl-form-control" type="text" placeholder="Enter Your Promo">
-                                            <input id="total_price" name="total_price" class="form-control sl-form-control" type="hidden" placeholder="Enter Your Promo">
+                                            <input id="total_price" name="total_price" class="form-control sl-form-control" type="hidden" value="{{\Cart::getSubTotal()}}" placeholder="Enter Your Promo">
                                         </div>
                                         <div class="col-3">
                                             <a onclick="checkPromo()" class="btn btn-success sl-form-control" style="color:white">Apply Promo</a>

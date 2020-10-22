@@ -30,8 +30,47 @@ class CheckoutController extends Controller
 
     public function placeOrder(Request $request)
     {
+         
+        $discountable_products = [];
 
-        $items = \Cart::getContent();
+        $coupon = Coupon::where('code',$request['code'])->get();
+        $deal_details = Deal::where('promo', $request['code'])->get();
+        if (count($coupon) > 0) {
+            $coupon = $coupon->first();
+
+            $today_time = strtotime(date("Y-m-d"));
+            $expire_time = strtotime($coupon->expiry);
+
+            if ($expire_time > $today_time) {
+                foreach ($discountable_products as $product) {
+                    if ($product->id == $coupon->category_id) {
+                        $json['type'] = 'success';
+                        $json['discountable_products'] = $discountable_products;
+                        $json['discount'] = $coupon->discount;
+                        $json['items'] = $items;
+                        $json['message'] = 'Promocode Applied';
+                    }
+                }
+                foreach ($discountable_products as $product) {
+//                quantity in cart
+                        $quantity = ($items[$product->id]['quantity']);
+//                actual price
+                        $price = ((float)$product->price) * $quantity;
+//                percentage to be applied
+                        $percentage = (float)$coupon->discount;
+//                discount
+                        $discount = ((float)$price/100 * $percentage);
+                        $discounted_price = $price - $discount;
+
+                        \Cart::update($product->id, array(
+                            'price' => $discounted_price,
+                        ));
+
+                    }
+            }
+        }
+        else if (count($deal_details) > 0) { 
+            $items = \Cart::getContent();
         $discountable_products = [];
         $total_product = 0;
         $discountable_products_quantity = 0;
@@ -97,15 +136,19 @@ class CheckoutController extends Controller
             $json['message'] = 'Promocode is not valid for these products';
             $json['type'] = 'error';
         }
+        }
+
+        
 
 
         // Before storing the order we should implement the
         // request validation which I leave it to you
         $order = $this->orderRepository->storeOrderDetails($request->all());
         $order->update([
-            'grand_total' => $request['grand_total'],
+            'grand_total' => (string)$request['grand_total'],
             'type' => 'order'
         ]);
+
         // You can add more control here to handle if the order is not stored properly
         if ($order) {
             \Cart::clear();
