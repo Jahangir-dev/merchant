@@ -38,7 +38,7 @@ class DatabaseSeeder extends Seeder
 
         for($i = 0; $i < 100; $i++) {
             \App\Models\Product::create([
-                'brand_id' => $faker->numberBetween($min = 1, $max = 50),
+                'brand_id' => $faker->numberBetween($min = 1, $max = 20),
                 'sku' => $faker->slug,
                 'name' => $faker->name,
                 'slug' => $faker->slug,
@@ -54,8 +54,8 @@ class DatabaseSeeder extends Seeder
         }
         for($i = 0; $i < 100; $i++) {
             DB::table('product_categories')->insert([
-                'product_id' => $faker->numberBetween($min = 356, $max = 506),
-                'category_id' => $faker->numberBetween($min = 1, $max = 100),
+                'product_id' => $faker->numberBetween($min = 1, $max = 20),
+                'category_id' => $faker->numberBetween($min = 1, $max = 20),
             ]);
         }
         //$this->call(SettingsTableSeeder::class);
