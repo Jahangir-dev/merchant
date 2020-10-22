@@ -2,6 +2,7 @@
 
 namespace Modules\Customer\Http\Controllers;
 
+use App\Coupon;
 use App\Deal;
 use App\Models\Order;
 use App\Models\Product;
@@ -235,8 +236,12 @@ class ShoppingController extends Controller
         $discountable_products = [];
         $total_product = 0;
         $discountable_products_quantity = 0;
+        $coupon = Coupon::where('code',$request['code'])->get();
         foreach ($items->keys() as $id) {
             $product = Product::where('id', $id)->with('codes')->first();
+            if (count($coupon) > 0) {
+                array_push($discountable_products, $product);
+            }
             foreach ($product->codes as $code) {
                 if ($code->promo === $request['code']) {
                     array_push($discountable_products, $product);
@@ -248,56 +253,72 @@ class ShoppingController extends Controller
         }
         $deal_details = Deal::where('promo', $request['code'])->first();
         $promocodes_details = DB::table('promocodes')->where('code', $request['code'])->first();
-        if($promocodes_details != null) {
-        $promo_validity = DB::table('promocode_user')->where('promocode_id', $promocodes_details->id)->get();
+        if (count($coupon) > 0) {
+            $coupon = $coupon->first();
 
-        foreach($discountable_products as $product) {
-            $quantity = $items[$product->id]['quantity'];
-            $discountable_products_quantity += $quantity;
-        }
+            $today_time = strtotime(date("Y-m-d"));
+            $expire_time = strtotime($coupon->expiry);
 
-        if (count($discountable_products) > 0) {
-            if (count($promo_validity) < $promocodes_details->quantity) {
-                if ($discountable_products_quantity < json_decode($deal_details->min_product, true) ) {
-                    $json['type'] = 'error';
-                    $json['message'] = 'Product limit less than minimum product';
-                    return $json;
-                }
-                elseif ($discountable_products_quantity > json_decode($deal_details->max_product)) {
-                    $json['type'] = 'error';
-                    $json['message'] = 'Product limit greater than maximum product';
-                    return $json;
-                }
-                else {
-                    foreach ($discountable_products as $product) {
-//                quantity in cart
-                        $quantity = ($items[$product->id]['quantity']);
-//                actual price
-                        $price = ((float)$product->price) * $quantity;
-//                percentage to be applied
-                        $percentage = (float)$promocodes_details->reward;
-//                discount
-                        $discount = ((float)$price/100 * $percentage);
-                        $discounted_price = $price - $discount;
-
-                        /*\Cart::update($product->id, array(
-                            'price' => $discounted_price,
-                        ));*/
-
+            if ($expire_time > $today_time) {
+                foreach ($discountable_products as $product) {
+                    if ($product->id == $coupon->category_id) {
+                        $json['type'] = 'success';
+                        $json['discountable_products'] = $discountable_products;
+                        $json['discount'] = $coupon->discount;
+                        $json['items'] = $items;
+                        $json['message'] = 'Promocode Applied';
+                        return $json;
                     }
-                    $json['type'] = 'success';
-                    $json['discountable_products'] = $discountable_products;
-                    $json['discount'] = $promocodes_details->reward;
-                    $json['items'] = $items;
-                    $json['message'] = 'Promocode Applied';
-                    return $json;
                 }
-             } else {
-                $json['type'] = 'error';
-                $json['message'] = 'Promocode Not Found';
-                return $json;
-             }
             }
+        }
+        elseif($promocodes_details != null) {
+            $promo_validity = DB::table('promocode_user')->where('promocode_id', $promocodes_details->id)->get();
+            foreach($discountable_products as $product) {
+                $quantity = $items[$product->id]['quantity'];
+                $discountable_products_quantity += $quantity;
+            }
+
+            if (count($discountable_products) > 0) {
+                if (count($promo_validity) < $promocodes_details->quantity) {
+                    if ($discountable_products_quantity < json_decode($deal_details->min_product, true) ) {
+                        $json['type'] = 'error';
+                        $json['message'] = 'Product limit less than minimum product';
+                        return $json;
+                    }
+                    elseif ($discountable_products_quantity > json_decode($deal_details->max_product)) {
+                        $json['type'] = 'error';
+                        $json['message'] = 'Product limit greater than maximum product';
+                        return $json;
+                    }
+                    else {
+                        foreach ($discountable_products as $product) {
+    //                quantity in cart
+                            $quantity = ($items[$product->id]['quantity']);
+    //                actual price
+                            $price = ((float)$product->price) * $quantity;
+    //                percentage to be applied
+                            $percentage = (float)$promocodes_details->reward;
+    //                discount
+                            $discount = ((float)$price/100 * $percentage);
+                            $discounted_price = $price - $discount;
+                            /*\Cart::update($product->id, array(
+                                'price' => $discounted_price,
+                            ));*/
+                        }
+                        $json['type'] = 'success';
+                        $json['discountable_products'] = $discountable_products;
+                        $json['discount'] = $promocodes_details->reward;
+                        $json['items'] = $items;
+                        $json['message'] = 'Promocode Applied';
+                        return $json;
+                    }
+                 } else {
+                    $json['type'] = 'error';
+                    $json['message'] = 'Promocode Not Found';
+                    return $json;
+                 }
+                }
             else {
                 $json['type'] = 'error';
                 $json['message'] = 'Promocode Expired';
