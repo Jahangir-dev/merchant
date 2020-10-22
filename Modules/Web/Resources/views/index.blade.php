@@ -26,13 +26,13 @@
             <div id="slCategoryOwl" class="owl-carousel owl-theme sl-owl-nav">
                 @if($coupons)
                         @foreach($coupons as $coupan)
-                        
+
                 <div class="item">
                     <div class="sl-slider">
                         <figure>
-                            
+
                             <a href="{{url('post/'.$coupan->uni_id.'/'.$coupan->slug)}}" ><img src="{{ asset('images/coupon/'.$coupan->image) }}" alt="Image Description"></a>
-                            
+
                         </figure>
                         <div class="sl-slider__content">
                             <div class="sl-slider__header">
@@ -338,10 +338,10 @@
                                             <h6>{{$product->price}}</h6>
                                         </div>
 
-                                        <div class="sl-featureRating">
+                                        {{--<div class="sl-featureRating">
                                             <span class="sl-featureRating__stars"><span></span></span>
                                             <em>{{translateText('(1887 Feedback)')}}</em>
-                                        </div>
+                                        </div>--}}
                                         <em>By: <a href="{{route('web.brand.show', ['slug' => $product->brand->slug])}}">{{translateText($product->brand->name)}}</a></em>
                                         <button onclick="myFunction({{ $product }})" class="btn sl-btn">{{translateText('Add To Cart')}}</button>
                                         <div class="row">

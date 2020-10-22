@@ -112,7 +112,7 @@
                                             <a href="javascript:void(0);" class="sl-input-increment">+</a>
                                         </form>
                                        <button onclick="myFunction({{ $product }})" class="btn sl-btn">{{translateText('Add To Cart')}}</button>
-                                       
+
                                     </div>
                                 </div>
                                 <div class="sl-product__safty">
@@ -488,118 +488,69 @@
                 <div class="sl-sellerRecommend">
                     <h4>Seller Recommendations</h4>
                     <div class="row">
-                        <div class="col-sm-6 col-lg-4 col-xl-3">
-                            <div class="sl-featuredProducts--post">
-                                <figure>
-                                    <img src="{{asset('frontend/images/index/featured-products/img-13.jpg')}}" alt="Image Description">
-                                    <figcaption>
-                                        <div class="sl-slider__tags">
-                                            <span class="sl-bg-red-orange">25% OFF</span>
+                        @foreach($products as $index =>  $product)
+                            @if($index < 4)
+                                <div class="col-sm-6 col-lg-4 col-xl-3">
+                                    <div class="sl-featuredProducts--post">
+                                        <figure>
+                                            @if(count($product->images) > 0)
+                                                <img src="{{asset('storage/'.$product->images[0]->full )}}" alt="Image Description">
+                                            @else
+                                                <img src="{{asset('storage/')}}" alt="Image Description">
+                                            @endif
+                                            <figcaption>
+                                                <div class="sl-slider__tags">
+                                                    @if(in_array($product->id, $sale_products))
+                                                        @php
+                                                            $percentage = $product->codes[0];
+                                                            $promocodes = DB::table('promocodes')->where('code', $percentage->promo)->first();
+                                                        @endphp
+                                                        <span class="sl-bg-red-orange"> {{$promocodes->reward}}% Off</span>
+                                                    @endif
+                                                </div>
+                                                <a id="wist-list-{{ $product->id }}" onclick="addToWishList({{ $product->id }})" href="javascript:void(0);" class=""><i class="far fa-heart"></i></a>
+                                            </figcaption>
+                                        </figure>
+                                        <div class="sl-featuredProducts--post__content">
+                                            <div class="sl-featuredProducts--post__title">
+                                                <h6>{{$product->name}}</h6>
+                                            </div>
+                                            <div class="sl-featuredProducts--post__price">
+                                                <h5>{{$product->price}}</h5>
+                                                <h6>{{$product->sale_price}}</h6>
+                                            </div>
+                                            {{--<div class="sl-featureRating">
+                                                <span class="sl-featureRating__stars"><span></span></span>
+                                                <em>(1887 Feedback)</em>
+                                            </div>--}}
+                                            <em>By: <a href="{{route('web.brand.show', ['slug' => $product->brand->slug])}}">{{translateText($product->brand->name)}}</a></em>
+                                            <button onclick="myFunction({{ $product }})" class="btn sl-btn">{{translateText('Add To Cart')}}</button>
+                                            <div class="row">
+                                                <div class="col-6">
+                                                    <div class="sl-slider__footer">
+                                                        <em>{{$product->address}}(<a href="{{'https://maps.google.com/?q='.$product->latitude.'+'.$product->longitude}}">{{translateText(translateText('Directions'))}}</a>)</em>
+                                                    </div>
+                                                </div>
+                                                <div class="col-6">
+                                                    <div class="sl-slider__footer sl-slider__tags">
+                                                        @if(in_array($product->id, $sale_products))
+                                                            @php
+                                                                $date1=date_create(date("Y-m-d"));
+                                                                $date2=date_create($product->codes[0]->end_date);
+                                                                $diff=date_diff($date1,$date2);
+                                                            @endphp
+                                                            <span class="sl-bg-red-orange">{{ $diff->days }} Days Left</span>
+                                                        @endif
+                                                    </div>
+                                                </div>
+
+
+                                            </div>
                                         </div>
-                                        <a href="javascript:void(0);"><i class="far fa-heart"></i></a>
-                                    </figcaption>
-                                </figure>
-                                <div class="sl-featuredProducts--post__content">
-                                    <div class="sl-featuredProducts--post__title">
-                                        <h6>Phanteks 614LTG special edition</h6>
                                     </div>
-                                    <div class="sl-featuredProducts--post__price">
-                                        <h5>$212.30</h5>
-                                        <h6>$220.30</h6>
-                                    </div>
-                                    <div class="sl-featureRating">
-                                        <span class="sl-featureRating__stars"><span></span></span>
-                                        <em>(1887 Feedback)</em>
-                                    </div>
-                                    <em>By: <a href="javascript:void(0);">Onfleek Gaming Zone</a></em>
-                                    <button class="btn sl-btn">Add To Cart</button>
                                 </div>
-                            </div>
-                        </div>
-                        <div class="col-sm-6 col-lg-4 col-xl-3">
-                            <div class="sl-featuredProducts--post">
-                                <figure>
-                                    <img src="{{asset('frontend/images/index/featured-products/img-14.jpg')}}" alt="Image Description">
-                                    <figcaption>
-                                        <div class="sl-slider__tags">
-                                            <span class="sl-bg-red-orange">10% OFF</span>
-                                        </div>
-                                        <a href="javascript:void(0);" class="sl-liked"><i class="far fa-heart"></i></a>
-                                    </figcaption>
-                                </figure>
-                                <div class="sl-featuredProducts--post__content">
-                                    <div class="sl-featuredProducts--post__title">
-                                        <h6>Linkwow 3 Outlet Power Strip</h6>
-                                    </div>
-                                    <div class="sl-featuredProducts--post__price">
-                                        <h5>$12.19</h5>
-                                        <h6>$19.99</h6>
-                                    </div>
-                                    <div class="sl-featureRating">
-                                        <span class="sl-featureRating__stars"><span></span></span>
-                                        <em>(1887 Feedback)</em>
-                                    </div>
-                                    <em>By: <a href="javascript:void(0);">Techsol Bros.</a></em>
-                                    <button class="btn sl-btn">Add To Cart</button>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-sm-6 col-lg-4 col-xl-3">
-                            <div class="sl-featuredProducts--post">
-                                <figure>
-                                    <img src="{{asset('frontend/images/index/featured-products/img-15.jpg')}}" alt="Image Description">
-                                    <figcaption>
-                                        <div class="sl-slider__tags">
-                                            <span class="sl-bg-red-orange">50% OFF</span>
-                                        </div>
-                                        <a href="javascript:void(0);" class="sl-liked"><i class="far fa-heart"></i></a>
-                                    </figcaption>
-                                </figure>
-                                <div class="sl-featuredProducts--post__content">
-                                    <div class="sl-featuredProducts--post__title">
-                                        <h6>Nub's Adventures Jailbreak</h6>
-                                    </div>
-                                    <div class="sl-featuredProducts--post__price">
-                                        <h5>$26.40</h5>
-                                        <h6>$30.50</h6>
-                                    </div>
-                                    <div class="sl-featureRating">
-                                        <span class="sl-featureRating__stars"><span></span></span>
-                                        <em>(1887 Feedback)</em>
-                                    </div>
-                                    <em>By: <a href="javascript:void(0);">Catepilar Fleet</a></em>
-                                    <button class="btn sl-btn">Add To Cart</button>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-sm-6 col-lg-4 col-xl-3">
-                            <div class="sl-featuredProducts--post">
-                                <figure>
-                                    <img src="{{asset('frontend/images/index/featured-products/img-16.jpg')}}" alt="Image Description">
-                                    <figcaption>
-                                        <div class="sl-slider__tags">
-                                            <span class="sl-bg-red-orange">12% OFF</span>
-                                        </div>
-                                        <a href="javascript:void(0);"><i class="far fa-heart"></i></a>
-                                    </figcaption>
-                                </figure>
-                                <div class="sl-featuredProducts--post__content">
-                                    <div class="sl-featuredProducts--post__title">
-                                        <h6>Kensington Contour 2.0 Backpack</h6>
-                                    </div>
-                                    <div class="sl-featuredProducts--post__price">
-                                        <h5>$12.19</h5>
-                                        <h6>$19.99</h6>
-                                    </div>
-                                    <div class="sl-featureRating">
-                                        <span class="sl-featureRating__stars"><span></span></span>
-                                        <em>(1887 Feedback)</em>
-                                    </div>
-                                    <em>By: <a href="javascript:void(0);">Bags &amp; Bags Co.</a></em>
-                                    <button class="btn sl-btn">Add To Cart</button>
-                                </div>
-                            </div>
-                        </div>
+                            @endif
+                        @endforeach
                     </div>
                 </div>
             </div>

@@ -6,6 +6,7 @@ use App\Models\Product;
 use Illuminate\Contracts\Support\Renderable;
 use Illuminate\Http\Request;
 use Illuminate\Routing\Controller;
+use Illuminate\Support\Facades\DB;
 
 class ProductController extends Controller
 {
@@ -44,8 +45,10 @@ class ProductController extends Controller
      */
     public function show($id)
     {
+        $sale_products = DB::table('promocodes_products')->pluck('product_id')->toArray();
         $product = Product::where('slug', $id)->with('categories')->with('brand')->with('user')->with('images')->first();
-        return view('web::product.show', compact('product'));
+        $products = Product::where('slug', '!=', $id)->with('categories')->with('brand')->with('user')->with('images')->get();
+        return view('web::product.show', compact('product', 'products', 'sale_products'));
     }
 
     /**
