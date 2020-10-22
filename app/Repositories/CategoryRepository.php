@@ -141,7 +141,7 @@ class CategoryRepository extends BaseRepository implements CategoryContract
     {
         return Category::orderByRaw('-name ASC')
             ->get()
-            ->nest()
+            //->nest()
             ->setIndent('|–– ')
             ->listsFlattened('name');
     }
