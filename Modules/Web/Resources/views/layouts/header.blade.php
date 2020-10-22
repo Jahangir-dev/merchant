@@ -24,15 +24,15 @@
                     </div>
                     <div class="sl-form-group sl-main-form__input2">
                         <input id="autocomplete" name="location" class="form-control sl-form-control" type="text" value="{{$location}}" placeholder="Detect my location">
-                        <a href="javascript:void(0);" class="sl-right-icon sl-arrow-icon"><i class="ti-angle-down"></i></a>
+                        <!-- <a href="javascript:void(0);" class="sl-right-icon sl-arrow-icon"><i class="ti-angle-down"></i></a> -->
                         <a href="javascript:void(0);" class="sl-right-icon"><i class="ti-target"></i></a>
-                        <div class="sl-distance">
+                         <!--<div class="sl-distance">
                             <div class="sl-distance__description">
                                 <label for="amountfour">Distance:</label>
                                 <input type="text" id="amountfour" readonly>
                             </div>
                             <div id="slider-range-min"></div>
-                        </div>
+                        </div> -->
                     </div>
                     <input type="text" style="display: none" name="latitude" id="latitude" value="{{$latitude}}">
                     <input type="text" style="display: none" name="longitude" id="longitude" value="{{$longitude}}">
@@ -170,33 +170,39 @@
                                         </li>
                                         <li class="mega-menu-col sl-viewproducts-holder tab-content">
                                             @foreach($categories as $index => $category)
+
                                                 @if($index < 10)
                                                     <div id="{{$category->slug}}" class="tab-pane fade @if($index == 0) active show @endif" >
                                                         <div class="sl-productstab">
                                                             <div class="sl-viewproducts">
                                                                 <figure class="sl-viewproducts__img">
-                                                                    <img src="{{asset('frontend/images/img-02.jpg')}}" alt="img description">
+                                                                   <img src="{{asset('/storage/'.$category->image)}}" alt="image Description" style="width: 150px;" />
                                                                     <a href="javascript:void(0);" class="sl-sellertag"><em>Best Seller</em></a>
                                                                 </figure>
                                                                 <div class="sl-viewproducts__content">
                                                                     <h3>{{$category->name}}</h3>
-                                                                    <div class="sl-featureRating">
+                                                                   <!--  <div class="sl-featureRating">
                                                                         <span class="sl-featureRating__stars"><span></span></span>
                                                                         <em>({{translateText('1648 Feedback')}})</em>
-                                                                    </div>
-                                                                    <a href="" class="btn sl-btn">{{ translateText('View Product') }}</a>
+                                                                    </div> -->
+                                                                    <a href="{{route('web.category.show', ['slug' => $category->slug])}}" class="btn sl-btn">{{ translateText('View Product') }}</a>
                                                                 </div>
                                                             </div>
                                                             <div class="sl-productsinfo">
                                                                 <div class="sl-dropdown__cart">
                                                                     <ul>
                                                                         @foreach($category->products as $index => $product)
+
                                                                             <li>
-                                                                                <img src="{{asset('frontend/images/index/cart/img-01.png')}}" alt="Image Description">
-                                                                                <div class="sl-dropdown__cart__description">
-                                                                                    <a class="sl-cart-title" href="javascript:void(0);">{{ translateText($product->name) }}</a>
-                                                                                    <span class="sl-cart-price">{{translateText($product->price)}}</span>
-                                                                                    <a class="sl-soldby" href="javascript:void(0);"><em>{{translateText('Sold by')}}</em> {{translateText('Life Simplify')}}</a>
+                                     @if(count($product->images) > 0)
+                                        <img src="{{asset('storage/'.$product->images[0]->full )}}" alt="Image Description" style="width: 50px">
+                                        @else
+                                        <img src="{{asset('storage/')}}" alt="Image Description">
+                                        @endif
+                                    <div class="sl-dropdown__cart__description">
+                                    <a class="sl-cart-title" href="javascript:void(0);">{{ translateText($product->name) }}</a>
+                                        <span class="sl-cart-price">{{translateText($product->price)}}</span>
+                                   <!--  <a class="sl-soldby" href="javascript:void(0);"><em>{{translateText('Sold by')}}</em> {{translateText('Life Simplify')}}</a> -->
                                                                                 </div>
                                                                             </li>
                                                                         @endforeach
@@ -280,7 +286,7 @@
              <div class="sl-main-header">
                            Language:
                   <select name="target" class="target form-control">
-                    <option>Select</option>
+                    <option>Choose language</option>
                     <option value="en" @if(Session::get("target") == "en") selected="selected" @endif>English</option>
                     <option value="zh-CN" @if(Session::get("target") == "zh-CN") selected="selected" @endif>Chinese</option>
                   </select>
