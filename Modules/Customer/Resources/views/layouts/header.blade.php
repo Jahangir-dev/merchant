@@ -2,11 +2,11 @@
 <header>
     <div class="sl-main-header">
         <strong class="sl-main-header__logo">
-            <a href="{{route('web.index')}}"><!-- <img src="{{asset('frontend/images/main-logo.png')}}" alt="Logo"> -->Logo Here</a>
+            <a href="{{route('web.index')}}"><img src="{{asset('frontend/images/main-logo.png')}}" alt="Logo"></a>
         </strong>
         
         <select name="target" class="target form-control">
-            <option>Select</option>
+            <option>Choose language</option>
             <option value="en" @if(Session::get("target") == "en") selected="selected" @endif>English</option>
             <option value="cn" @if(Session::get("target") == "cn") selected="selected" @endif>Chinese</option>
         </select><br>

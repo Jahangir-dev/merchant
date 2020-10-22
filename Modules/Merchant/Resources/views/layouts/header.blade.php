@@ -2,7 +2,7 @@
 <header>
     <div class="sl-main-header">
         <strong class="sl-main-header__logo" style="color:#fff;">
-            <a href="{{route('web.index')}}"><!-- <img src="{{asset('frontend/images/main-logo.png')}}" alt="Logo"> --> Logo Here</a>
+            <a href="{{route('web.index')}}"><img src="{{asset('frontend/images/main-logo.png')}}" alt="Logo"></a>
         </strong>
 
 
