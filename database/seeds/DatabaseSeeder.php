@@ -25,6 +25,7 @@ class DatabaseSeeder extends Seeder
                 'featured' => $faker->boolean($chanceOfGettingTrue = 50),
                 'menu' => $faker->boolean($chanceOfGettingTrue = 50),
                 'image' => $faker->slug,
+                'user_id' => $faker->numberBetween($min = 1, $max = 4),
             ]);
             \App\Models\Brand::create([
                 'name' => $faker->name,
@@ -47,9 +48,10 @@ class DatabaseSeeder extends Seeder
                 'sale_price' => '988',
                 'status' => $faker->numberBetween($min = 0, $max = 1),
                 'featured' => $faker->numberBetween($min = 0, $max = 1),
+                'user_id' => $faker->numberBetween($min = 1, $max = 4),
             ]);
         }
-        for($i = 0; $i < 1000; $i++) {
+        for($i = 0; $i < 100; $i++) {
             DB::table('product_categories')->insert([
                 'product_id' => $faker->numberBetween($min = 356, $max = 506),
                 'category_id' => $faker->numberBetween($min = 1, $max = 100),
