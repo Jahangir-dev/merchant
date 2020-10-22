@@ -47,7 +47,7 @@
                             </span>
                     </a>
                 </div>
-               
+
                 <div class="sl-topbar-notify" style="display: none">
 
                     <div class="sl-topbar-notify__icons dropdown">
@@ -229,10 +229,10 @@
                                                                 </figure>
                                                                 <div class="sl-viewproducts__content">
                                                                     <h3>{{$category->name}}</h3>
-                                                                    <div class="sl-featureRating">
+                                                                    {{--<div class="sl-featureRating">
                                                                         <span class="sl-featureRating__stars"><span></span></span>
                                                                         <em>({{translateText('1648 Feedback')}})</em>
-                                                                    </div>
+                                                                    </div>--}}
                                                                     <a href="vendor-single.html" class="btn sl-btn">{{ translateText('View Product') }}</a>
                                                                 </div>
                                                             </div>

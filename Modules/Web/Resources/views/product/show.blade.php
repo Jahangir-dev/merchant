@@ -39,10 +39,10 @@
                                 </div>
                                 <div class="sl-product__stars">
                                     <div class="sl-appointment__feature">
-                                        <div class="sl-featureRating">
+                                        {{--<div class="sl-featureRating">
                                             <span class="sl-featureRating__stars"><span></span></span>
                                             <em>({{translateText('1642 Feedback')}})</em>
-                                        </div>
+                                        </div>--}}
                                         <div class="sl-appointment__location">
                                             <em>By: <a href="javascript:void(0);">Onfleek Gaming Zone</a></em>
                                         </div>
@@ -127,7 +127,7 @@
                     </div>
                 </div>
             </div>
-            <div id="sl-twocolumns" class="sl-twocolumns sl-inner-product">
+            {{--<div id="sl-twocolumns" class="sl-twocolumns sl-inner-product">
                 <div class="container">
                     <div class="row">
                         <div class="col-lg-4 col-xl-3">
@@ -221,7 +221,7 @@
                                                 </div>
                                                 <img src="{{asset('frontend/images/product-single/img-03.jpg')}}" alt="Image Description">
                                             </div>
-                                            {{--<div class="sl-tab__text">
+                                            --}}{{--<div class="sl-tab__text">
                                                 <h5>Came With Beast Inside Beauty</h5>
                                                 <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt utnaloek labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip extainea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore.</p>
                                             </div>
@@ -259,7 +259,7 @@
                                                 <div class="w-100">
                                                     <p>Weuia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eostateums asdeyyqui ratione voluptatem sequi nesciunt. Neque porro quisquam est, qui dolorem ipsum quia dolor sitam amet, sasctetur, adipisci velit, sed quia non numquam eius modi</p>
                                                 </div>
-                                            </div>--}}
+                                            </div>--}}{{--
                                         </div>
                                     </div>
                                     <div class="tab-pane fade" id="nav-faqs" role="tabpanel" aria-labelledby="nav-faqs-tab">
@@ -481,7 +481,7 @@
                         </div>
                     </div>
                 </div>
-            </div>
+            </div>--}}
         </section>
         <section>
             <div class="container">

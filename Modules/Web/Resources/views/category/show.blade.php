@@ -132,7 +132,7 @@
                     <h4>Products</h4>
                     <div class="row">
                         @foreach($category->products as $product)
-                        
+
                             <div class="col-sm-6 col-lg-4 col-xl-3">
                                 <div class="sl-featuredProducts--post">
                                     <figure>
@@ -156,10 +156,10 @@
                                             <h5>{{translateText($product->sale_price)}}</h5>
                                             <h6>{{translateText($product->price)}}</h6>
                                         </div>
-                                        <div class="sl-featureRating">
+                                        {{--<div class="sl-featureRating">
                                             <span class="sl-featureRating__stars"><span></span></span>
                                             <em>({{translateText('1887 Feedback')}})</em>
-                                        </div>
+                                        </div>--}}
                                         <em>By: <a href="{{route('web.brand.show', ['slug' => $product->brand->slug])}}">{{translateText($product->brand->name)}}</a></em>
                                         <button onclick="myFunction({{ $product }})" class="btn sl-btn">{{translateText('Add To Cart')}}</button>
                                          <div class="row">

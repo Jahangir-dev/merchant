@@ -4,7 +4,7 @@
         <strong class="sl-main-header__logo">
             <a href="{{route('web.index')}}"><img src="{{asset('frontend/images/main-logo.png')}}" alt="Logo"></a>
         </strong>
-        
+
         <select name="target" class="target form-control">
             <option>Choose language</option>
             <option value="en" @if(Session::get("target") == "en") selected="selected" @endif>English</option>
@@ -190,7 +190,7 @@
                     @endphp
                     <div class="sl-user sl-userdropdown">
                         <a href="javascript:void(0);">
-                            <img src="{{asset('frontend/images/insight/user-img.jpg')}}" alt="Image Description"> 
+                            <img src="{{asset('frontend/images/insight/user-img.jpg')}}" alt="Image Description">
                             <span class="sl-user__description"><em class="d-block">{{translateText(Auth::user()->first_name)}}</em>{{translateText(Auth::user()->last_name)}}</span>
                             <i class="ti-angle-down"></i>
                         </a>
@@ -352,10 +352,10 @@
                                                                 </figure>
                                                                 <div class="sl-viewproducts__content">
                                                                     <h3>{{$category->name}}</h3>
-                                                                    <div class="sl-featureRating">
+                                                                    {{--<div class="sl-featureRating">
                                                                         <span class="sl-featureRating__stars"><span></span></span>
                                                                         <em>({{translateText('1648 Feedback')}})</em>
-                                                                    </div>
+                                                                    </div>--}}
                                                                     <a href="vendor-single.html" class="btn sl-btn">{{ translateText('View Product') }}</a>
                                                                 </div>
                                                             </div>
@@ -886,7 +886,7 @@
                             <li class="nav-item">
                                 <a class="nav-link" href="">About</a>
                             </li>
-                            
+
                         </ul>
                     </div>
                 </nav>
