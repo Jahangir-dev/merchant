@@ -111,7 +111,7 @@
             <div class="row">
                 <div class="col-lg-6">
                     <div class="sl-footerCenter__logoSection">
-                        <a href="javascript:void(0);"><img src="{{asset('frontend/images/index/footer/footer-logo.png')}}" alt="Image Description"></a>
+                        <a href="javascript:void(0);"><img src="{{asset('frontend/images/index/footer/footer-logo.png')}}" style="width: 200px;" alt="Image Description"></a>
                         <p>Consectetur adipisicing elit sed do eiusmod tempor incididunt labore etolore magna aliqua enim adena minim veniam quistane nostrud catate ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
                         <ul class="sl-brands">
                             <li><a href="javascript:void(0);"><i class="fab fa-facebook-f"></i></a></li>
@@ -170,7 +170,7 @@
     <div class="sl-footerLower">
         <div class="container">
             <div class="sl-footerLower__content">
-                <p>Copyrights © 2019. All Rights Reserved by <a href="javascript:void(0);">Amentotech</a>.</p>
+                <p>Copyrights © 2020. All Rights Reserved by <a href="javascript:void(0);">Groupon Hk</a>.</p>
                 <ul class="sl-payments">
                     <li><a href="javascript:void(0);"><img src="{{asset('frontend/images/index/footer/payments/img-01.jpg')}}" alt="Image Description"></a></li>
                     <li><a href="javascript:void(0);"><img src="{{asset('frontend/images/index/footer/payments/img-02.jpg')}}" alt="Image Description"></a></li>
