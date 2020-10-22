@@ -126,10 +126,10 @@
                                                     <h5>{{$product->price}}</h5>
                                                     <h6>{{$product->sale_price}}</h6>
                                                 </div>
-                                                <div class="sl-featureRating">
+                                                {{--<div class="sl-featureRating">
                                                     <span class="sl-featureRating__stars"><span></span></span>
                                                     <em>(1887 Feedback)</em>
-                                                </div>
+                                                </div>--}}
                                                 <em>By: <a href="javascript:void(0);">{{$product->user->first_name}} {{$product->user->last_name}}</a></em>
                                                 <button onclick="myFunction({{ $product }})" class="btn sl-btn">{{translateText('Add To Cart')}}</button>
                                             </div>
