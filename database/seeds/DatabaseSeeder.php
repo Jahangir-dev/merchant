@@ -31,6 +31,7 @@ class DatabaseSeeder extends Seeder
                 'name' => $faker->name,
                 'slug' => $faker->slug,
                 'logo' => $faker->slug,
+                'user_id' => $faker->numberBetween($min = 1, $max = 4),
             ]);
 
         }
