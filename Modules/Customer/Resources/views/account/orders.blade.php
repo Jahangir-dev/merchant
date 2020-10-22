@@ -20,6 +20,7 @@
                                         <th>{{translateText('Last Name')}}</th>
                                         <th>{{translateText('Order Amount')}}</th>
                                         <th>{{translateText('Qty.')}}</th>
+                                        <th>{{translateText('Type')}}</th>
                                         <th>{{translateText('Status')}}</th>
                                     </tr>
                                     </thead>
@@ -41,7 +42,18 @@
                                             {{ config('settings.currency_symbol') }}{{ round($order->grand_total, 2) }}
                                         </td>
                                         <td>
+                                            @if($order->type == 'coupon')
+                                                1
+                                            @else
                                             {{ $order->item_count }}
+                                            @endif
+                                        </td>
+                                        <td>
+                                            @if($order->type == 'coupon')
+                                            <span class="badge badge-success">{{ strtoupper($order->type) }}</span>
+                                            @elseif ($order->type == 'order')
+                                            <span class="badge badge-success">{{ strtoupper('Product') }}</span>
+                                            @endif
                                         </td>
                                          <td><span class="badge badge-success">{{ strtoupper($order->status) }}</span></td>
                                       
@@ -54,6 +66,7 @@
                                         <th>{{translateText('Last Name')}}</th>
                                         <th>{{translateText('Order Amount')}}</th>
                                         <th>{{translateText('Qty.')}}</th>
+                                        <th>{{translateText('Type')}}</th>
                                         <th>{{translateText('Status')}}</th>
                                     </tr>
                                     </thead>

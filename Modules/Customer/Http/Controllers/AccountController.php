@@ -15,6 +15,7 @@ class AccountController extends Controller
 
         $allOrders = auth()->user()->orders;	
         $orders = [];
+       
         if(count($allOrders) ==  0)
         {
         	$orders [] = '';
@@ -22,7 +23,7 @@ class AccountController extends Controller
 
         	foreach ($allOrders as $key => $order) {
         		# code...
-        		if($order['type'] == 'order')
+        		if($order['type'] == 'order' || $order['type'] == 'coupon')
         		{
         			$orders [] = $order;
         		}
