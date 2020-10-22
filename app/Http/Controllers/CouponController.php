@@ -259,9 +259,6 @@ class CouponController extends Controller
 	{
 		$coupon = Coupon::findOrFail($id);
 
-		$coupon->comments()->delete();
-
-    $coupon->likes()->delete();
 
 		if ($coupon->image != null) {
 

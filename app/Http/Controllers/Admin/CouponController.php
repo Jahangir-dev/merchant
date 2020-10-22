@@ -65,47 +65,47 @@ class CouponController extends Controller
 		$input = $request->all();
 
 		if (isset($input['type']))
-    {
-      $request->validate([
+    	{
+      		$request->validate([
 				'code' => 'required'
 			]);
-    }
+    	}
 
 		if (!isset($input['type']))
-    {
-      $input['type'] = 'd';
-    }
-    else{
-    	$input['type'] = 'c';
-    }
+    	{
+      		$input['type'] = 'd';
+    	}
+   		else{
+    		$input['type'] = 'c';
+    	}
 
 		if ($file = $request->file('image')) {
 			
-			$optimizeImage = Image::make($file);
-      $optimizePath = public_path().'/images/coupon/';
-      $name = time().$file->getClientOriginalName();
-      $optimizeImage->save($optimizePath.$name, 72);
+		  $optimizeImage = Image::make($file);
+	      $optimizePath = public_path().'/images/coupon/';
+	      $name = time().$file->getClientOriginalName();
+	      $optimizeImage->save($optimizePath.$name, 72);
 
-			$input['image'] = $name;
+		  $input['image'] = $name;
 
 		}
 
 		if (!isset($input['is_featured']))
-    {
-      $input['is_featured'] = 0;
-    }
-    if (!isset($input['is_exclusive']))
-    {
-      $input['is_exclusive'] = 0;
-    }
-    if (!isset($input['is_verified']))
-    {
-      $input['is_verified'] = 0;
-    }
-    if (!isset($input['is_active']))
-    {
-      $input['is_active'] = 0;
-    }
+    	{
+      		$input['is_featured'] = 0;
+    	}
+	    if (!isset($input['is_exclusive']))
+	    {
+	      $input['is_exclusive'] = 0;
+	    }
+	    if (!isset($input['is_verified']))
+	    {
+	      $input['is_verified'] = 0;
+	    }
+	    if (!isset($input['is_active']))
+	    {
+	      $input['is_active'] = 0;
+	    }
 		
     	$input['user_id'] = Auth::user()->id;
 		$coupon = Coupon::create($input);
@@ -122,7 +122,7 @@ class CouponController extends Controller
 
 		$coupon->uni_id = $random;
     	$coupon->save();
-
+    	notify()->success('Coupon has been added');
 		return back()->with('added', 'Coupon has been added');
 
 	}
@@ -247,7 +247,7 @@ class CouponController extends Controller
 		$coupon->slug = Str::slug($input['title'],'-');
 		$coupon->user_id = Auth::user()->id;
     	$coupon->save();
-
+    	notify()->success('Coupon has been updated');
 		return redirect('admin/coupon')->with('updated', 'Coupon has been updated');
 	}
 
@@ -262,9 +262,6 @@ class CouponController extends Controller
 	{
 		$coupon = Coupon::findOrFail($id);
 
-		$coupon->comments()->delete();
-
-    $coupon->likes()->delete();
 
 		if ($coupon->image != null) {
 
@@ -276,7 +273,7 @@ class CouponController extends Controller
 		}
 
 		$coupon->delete();
-
+		notify()->success('Coupon has been deleted');
 		return back()->with('deleted', 'Coupon has been deleted');
 	}
 
@@ -296,7 +293,7 @@ class CouponController extends Controller
 			$this->destroy($checked);
 			
 		}
-
+		
 		return back()->with('deleted', 'Coupon has been deleted');   
 	}
 

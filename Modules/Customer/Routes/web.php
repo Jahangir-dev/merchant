@@ -45,9 +45,13 @@ Route::prefix('customer')->group(function() {
 
     Route::post('/checkout/order', 'CheckoutController@placeOrder')->name('checkout.place.order');
 
+    Route::post('/checkout/coupon', 'CheckoutController@placeOrderCoupon')->name('checkout.place.coupon');
+
     Route::get('checkout/payment/complete', 'CheckoutController@complete')->name('checkout.payment.complete');
 
     Route::get('account/orders', 'AccountController@getOrders')->name('customer.account.orders');
+
+    Route::get('account/coupons', 'AccountController@getCoupons')->name('customer.account.coupons');
 
 
 });

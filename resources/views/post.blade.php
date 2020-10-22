@@ -120,14 +120,14 @@
 								@endphp
                                 <div class="sl-product__stock">
                                 	 @if($data_difference >= 0)
-                                    <h6>Status: <span class="sl-green">In Stock</span></h6>
+                                    <h6>Status: <span class="sl-green">Availabe</span></h6>
                                     @else
                                     <h6>Status: <span class="sl-red">Expire</span></h6>
                                     @endif
                                     <div class="sl-product__stock--content">
                                        
-                                        @if($data_difference >= 0)
-                                        <a href="javascript:void(0);" class="btn sl-btn sl-btn-active">Buy Now</a>
+                                        @if($data_difference >= 0 && $post->is_active == 1)
+                                        <a href="{{url('/checkout/'.$post->uni_id)}}" class="btn sl-btn sl-btn-active">Buy Now</a>
                                         @endif
                                     </div>
                                 </div>

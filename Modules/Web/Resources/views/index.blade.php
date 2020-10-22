@@ -37,7 +37,7 @@
                         <div class="sl-slider__content">
                             <div class="sl-slider__header">
                                 <div class="sl-slider__tags">
-                                    @if(!empty($coupan->price))
+                                    @if($coupan->is_active == 1)
                                     <a href="{{url('post/'.$coupan->uni_id.'/'.$coupan->slug)}}"  class="sl-bg-red-orange">Paid</a>
                                     @else
                                     <a href="{{url('post/'.$coupan->uni_id.'/'.$coupan->slug)}}"  class="sl-bg-green">Free</a>

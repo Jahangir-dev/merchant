@@ -3,6 +3,8 @@
 namespace Modules\Customer\Http\Controllers;
 
 use App\Deal;
+use App\Coupon;
+use App\PurchaseCoupons;
 use App\Models\Product;
 use Cart;
 use App\Models\Order;
@@ -11,6 +13,8 @@ use App\Services\PayPalService;
 use App\Contracts\OrderContract;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Auth;
+use Session;
 
 class CheckoutController extends Controller
 {
@@ -27,7 +31,7 @@ class CheckoutController extends Controller
     public function placeOrder(Request $request)
     {
 
-                $items = \Cart::getContent();
+        $items = \Cart::getContent();
         $discountable_products = [];
         $total_product = 0;
         $discountable_products_quantity = 0;
@@ -99,7 +103,8 @@ class CheckoutController extends Controller
         // request validation which I leave it to you
         $order = $this->orderRepository->storeOrderDetails($request->all());
         $order->update([
-            'grand_total' => $request['grand_total']
+            'grand_total' => $request['grand_total'],
+            'type' => 'order'
         ]);
         // You can add more control here to handle if the order is not stored properly
         if ($order) {
@@ -118,12 +123,44 @@ class CheckoutController extends Controller
         $status = $this->payPal->completePayment($paymentId, $payerId);
 
         $order = Order::where('order_number', $status['invoiceId'])->first();
+        
+        if($order['type'] != 'coupon' || $order['type'] != 'order')
+        {
+            $coupon = Coupon::where('uni_id', $order['type'])->first();
+            $order->type = 'coupon';
+            $code = $coupon['uni_id'];
+            PurchaseCoupons::create([
+                'user_id' => Auth::user()->id,
+                'coupon' => $code
+            ]);
+
+        } else {
+
+            $code = '';
+        }
+
         $order->status = 'processing';
         $order->payment_status = 1;
         $order->payment_method = 'PayPal -'.$status['salesId'];
         $order->save();
 
         Cart::clear();
-        return view('customer::success', compact('order'));
+        return view('customer::success', compact('order','code'));
+    }
+
+     public function placeOrderCoupon(Request $request)
+    {  
+         $order = $this->orderRepository->storeOrderDetails($request->all());
+
+          $order->update([
+            'grand_total' => $request['grand_total'],
+            'type' =>  $request['code']
+        ]);
+        // You can add more control here to handle if the order is not stored properly
+        if ($order) {
+            $this->payPal->processPayment($order);
+        }
+
+        return redirect()->back()->with('message','Order not placed');
     }
 }

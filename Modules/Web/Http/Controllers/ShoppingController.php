@@ -3,7 +3,7 @@
 namespace Modules\Web\Http\Controllers;
 use App\Models\Product;
 use Cart;
-
+use App\Coupon;
 use App\User;
 use Illuminate\Contracts\Support\Renderable;
 use Illuminate\Http\Request;
@@ -198,7 +198,28 @@ class ShoppingController extends Controller
             return  redirect()->back();
         }
     }
-
+    public function checkoutCopoun($id) {
+            if (Auth::user()) {
+            $coupons = Coupon::where('uni_id',$id)->get();
+            
+            if(count($coupons) > 0)
+            {
+                $coupon = $coupons[0];
+            }
+            if($coupons[0]->is_active != 1)
+            {
+                notify()->warning('Coupon is free');
+            } else {
+                $user = User::where('id', Auth::id())->with('profile')->first();
+                $total_price =$coupons[0]->price;
+                $promocode = $id; 
+                return view('customer::checkout.coupon', compact('coupon','user','total_price','promocode'));
+            }
+         }else {
+            notify()->warning('Please login first');
+            return  redirect()->back();
+        }
+    }
     public function addToWishList(Request $request) {
         $saved_item = Array();
         $json = Array();

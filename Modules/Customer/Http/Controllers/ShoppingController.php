@@ -226,7 +226,9 @@ class ShoppingController extends Controller
             return  redirect()->back();
         }
     }
-
+    public function checkoutCopoun(Request $request) {
+            dd($request);
+    }
     public function checkPromo(Request $request) {
         $json = Array();
         $items = \Cart::getContent();

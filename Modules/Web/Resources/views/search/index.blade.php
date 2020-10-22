@@ -87,10 +87,10 @@
                                                     </div>
                                                 </div>
                                             </div>
-                                            {{--<div class="sl-searchProductSidebar__btn">
+                                            <div class="sl-searchProductSidebar__btn">
                                                 <button type="submit" class="btn sl-btn sl-btn-active" href="javascript:void(0);">Apply Filter</button>
-                                                <a class="btn sl-btn sl-btn-reset" href="javascript:void(0);">Reset all</a>
-                                            </div>--}}
+                                                <!-- <a class="btn sl-btn sl-btn-reset" href="javascript:void(0);">Reset all</a> -->
+                                            </div>
                                         </form>
                                     </div>
                                 </div>

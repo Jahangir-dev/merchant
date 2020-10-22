@@ -53,6 +53,11 @@
                                     <i class="ti-bookmark-alt"></i><span>{{ translateText('Orders') }}</span>
                                 </a>
                             </li>
+                             <li class="{{ Route::currentRouteName() == 'customer.account.coupons' ? 'sl-active' : ''}}">
+                                <a href="{{route('customer.account.coupons')}}">
+                                    <i class="ti-bookmark-alt"></i><span>{{ translateText('Coupons') }}</span>
+                                </a>
+                            </li>
                             <li>
                                 <a href="{{ route('logout') }}"
                                    onclick="event.preventDefault();
