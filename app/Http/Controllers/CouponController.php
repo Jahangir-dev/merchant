@@ -25,7 +25,7 @@ class CouponController extends Controller
 	{
 
 		$coupon = Coupon::orderBy('created_at','desc')->where('user_id', Auth::user()->id)->get();
-			
+
 		return view('merchant::coupon.index', compact('coupon'));
 	}
 
@@ -35,7 +35,7 @@ class CouponController extends Controller
 	 * @return \Illuminate\Http\Response
 	 */
 	public function create()
-	{		
+	{
 
 		$all_category = Product::where('user_id', Auth::user()->id)->pluck('name','id');
 
@@ -77,7 +77,7 @@ class CouponController extends Controller
     }
 
 		if ($file = $request->file('image')) {
-			
+
 			$optimizeImage = Image::make($file);
       $optimizePath = public_path().'/images/coupon/';
       $name = time().$file->getClientOriginalName();
@@ -103,7 +103,7 @@ class CouponController extends Controller
     {
       $input['is_active'] = 0;
     }
-		
+
     	$input['user_id'] = Auth::user()->id;
 		$coupon = Coupon::create($input);
 
@@ -132,7 +132,7 @@ class CouponController extends Controller
 	 */
 	public function show($id)
 	{
-		
+
 	}
 
 	/**
@@ -142,9 +142,9 @@ class CouponController extends Controller
 	 * @return \Illuminate\Http\Response
 	 */
 	public function edit($id)
-	{		
-		$coupon = Coupon::findOrFail($id);			
-		$all_category = Product::all()->pluck('name','id');		
+	{
+		$coupon = Coupon::findOrFail($id);
+		$all_category = Product::all()->pluck('name','id');
 		return view('merchant::coupon.edit', compact('coupon','all_category'));
 	}
 
@@ -191,12 +191,12 @@ class CouponController extends Controller
     }
 
 		if ($file = $request->file('image')) {
-			
+
 			if ($coupon->image != null) {
-				
+
 				$image_file = @file_get_contents(public_path().'/images/coupon/'.$coupon->image);
 
-				if($image_file){		
+				if($image_file){
 					unlink(public_path().'/images/coupon/'.$coupon->image);
 				}
 
@@ -210,7 +210,7 @@ class CouponController extends Controller
 			$input['image'] = $name;
 
 		}
-		
+
 		if (!isset($input['is_featured']))
     {
       $input['is_featured'] = '0';
@@ -239,7 +239,7 @@ class CouponController extends Controller
     else{
       $input['is_active'] = '1';
     }
-    
+
 		$coupon->update($input);
 		$coupon->slug = Str::slug($input['title'],'-');
 		$coupon->user_id = Auth::user()->id;
@@ -264,7 +264,7 @@ class CouponController extends Controller
 
 			$image_file = @file_get_contents(public_path().'/images/coupon/'.$coupon->image);
 
-				if($image_file){		
+				if($image_file){
 					unlink(public_path().'/images/coupon/'.$coupon->image);
 				}
 		}
@@ -288,13 +288,13 @@ class CouponController extends Controller
 		foreach ($request->checked as $checked) {
 
 			$this->destroy($checked);
-			
+
 		}
 
-		return back()->with('deleted', 'Coupon has been deleted');   
+		return back()->with('deleted', 'Coupon has been deleted');
 	}
 
- public function dropdown(Request $request) 
+ public function dropdown(Request $request)
   {
     $state = $request['state'];
     if($state == 'true'){
