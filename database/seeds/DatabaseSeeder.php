@@ -16,7 +16,7 @@ class DatabaseSeeder extends Seeder
         $faker = Faker\Factory::create();
 
 
-/*        for($i = 0; $i < 100; $i++) {
+        for($i = 0; $i < 100; $i++) {
             \App\Models\Category::create([
                 'name' => $faker->name,
                 'slug' => $faker->slug,
@@ -32,9 +32,9 @@ class DatabaseSeeder extends Seeder
                 'logo' => $faker->slug,
             ]);
 
-        }*/
+        }
 
-/*        for($i = 0; $i < 1000; $i++) {
+        for($i = 0; $i < 100; $i++) {
             \App\Models\Product::create([
                 'brand_id' => $faker->numberBetween($min = 1, $max = 50),
                 'sku' => $faker->slug,
@@ -48,14 +48,14 @@ class DatabaseSeeder extends Seeder
                 'status' => $faker->numberBetween($min = 0, $max = 1),
                 'featured' => $faker->numberBetween($min = 0, $max = 1),
             ]);
-        }*/
+        }
         for($i = 0; $i < 1000; $i++) {
             DB::table('product_categories')->insert([
                 'product_id' => $faker->numberBetween($min = 356, $max = 506),
                 'category_id' => $faker->numberBetween($min = 1, $max = 100),
             ]);
         }
-        $this->call(SettingsTableSeeder::class);
+        //$this->call(SettingsTableSeeder::class);
         $this->call(CategoriesTableSeeder::class);
         $this->call(AttributesTableSeeder::class);
         $this->call(AttributeValuesTableSeeder::class);
