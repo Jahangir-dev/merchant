@@ -1,4 +1,4 @@
-@extends('customer::layouts.master')
+@extends('web::layouts.master')
 @section('title', 'Order Completed')
 @section('content')
 <main class="sl-main">
