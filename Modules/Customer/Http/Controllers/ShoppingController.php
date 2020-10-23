@@ -3,6 +3,7 @@
 namespace Modules\Customer\Http\Controllers;
 
 use App\Coupon;
+use App\PurchaseCoupons;
 use App\Deal;
 use App\Models\Order;
 use App\Models\Product;
@@ -237,6 +238,7 @@ class ShoppingController extends Controller
         $total_product = 0;
         $discountable_products_quantity = 0;
         $coupon = Coupon::where('code',$request['code'])->get();
+        
         foreach ($items->keys() as $id) {
             $product = Product::where('id', $id)->with('codes')->first();
             if (count($coupon) > 0) {
@@ -255,7 +257,10 @@ class ShoppingController extends Controller
         $promocodes_details = DB::table('promocodes')->where('code', $request['code'])->first();
         if (count($coupon) > 0) {
             $coupon = $coupon->first();
-
+            $status = PurchaseCoupons::where('coupon',$coupon['uni_id'])->where('user_id',  Auth::user()->id)->get()->pluck('status'); 
+            
+           if($status[0] == null || $status[0] == 0)
+           {
             $today_time = strtotime(date("Y-m-d"));
             $expire_time = strtotime($coupon->expiry);
 
@@ -270,7 +275,20 @@ class ShoppingController extends Controller
                         return $json;
                     }
                 }
-            }
+            } else {
+
+                 $json['type'] = 'error';
+                    $json['message'] = 'Coupon code is expired';
+                    return $json;
+
+                } 
+            } else {
+
+                 $json['type'] = 'error';
+                    $json['message'] = 'You have already used this coupon';
+                    return $json;
+
+                }
         }
         elseif($promocodes_details != null) {
             $promo_validity = DB::table('promocode_user')->where('promocode_id', $promocodes_details->id)->get();
