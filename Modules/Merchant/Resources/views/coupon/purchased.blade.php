@@ -28,6 +28,7 @@
                                         <th>Discount</th>
                                         <th>Coupon code</th>
                                         <th>User Name</th>
+                                        <th>{{translateText('Coupon status')}}</th>
                                         <th>Paid/Free</th>
                                         
                                     
@@ -35,7 +36,26 @@
                                     @if (isset($coupon))
                                       <tbody>
                                         @foreach ($coupon as $key => $item)
-                                       
+
+                                         @php
+                                    
+                                    $today_date = Carbon\Carbon::now();
+
+                                    
+                                        $expire_date = Carbon\Carbon::createFromFormat('Y-m-d', $item->expiry);
+                                        $data_difference = $today_date->diffInDays($expire_date, false);  //false param
+
+                                        if($data_difference > 0) {
+                                            //not expired
+                                        }
+                                        elseif($data_difference < 0) {
+                                            //expired
+                                        } else {
+                                            //today
+                                        }
+                                    
+
+                                    @endphp
                                          <tr>
                                           <td>{{$key+1}}</td>
                                            <td>
@@ -52,11 +72,17 @@
                                             <td>{{$item->discount ? $item->discount : '0'}}</td>
                                             <td>{{$item->code}}</td>
                                             <td>{{strtok($item->user_name,' ')}}</td>
-                                            <td>{{$item->is_active == '1' ? 'Paid' : 'Free'}}</td>
                                             
-                                           
-                                          
-                                          
+                                             <td>
+                                             @if($data_difference >= 0)
+                                            <span class="badge badge-success">Active</span>
+                                            @else 
+                                                <span class="badge badge-warning">
+                                                    Expire
+                                                </span> 
+                                            @endif
+                                        </td>
+                                           <td>{{$item->is_active == '1' ? 'Paid' : 'Free'}}</td>
                                           
                                         </tr>
                                         @endforeach

@@ -74,7 +74,7 @@
               {!! Form::text('discount', null, ['class' => 'form-control']) !!}
               <small class="text-danger">{{ $errors->first('discount') }}</small>
           </div>
-          <div id="ccode" class="form-group{{ $errors->has('code') ? ' has-error' : '' }}">
+          <div id="ccode" class="form-group{{ $errors->has('code') ? ' has-error' : '' }}" style="display: none !important">
               {!! Form::label('code', 'Coupon Code*') !!} - <p class="inline info">Please enter coupon code</p>
               {!! Form::text('code', null, ['class' => 'form-control']) !!}
               <small class="text-danger">{{ $errors->first('code') }}</small>
@@ -172,13 +172,13 @@
         this.value = (Number(this.checked));
     });
 
-    var loadstate = $('#CouponCheckBox').bootstrapSwitch('state');
+   /* var loadstate = $('#CouponCheckBox').bootstrapSwitch('state');
     if(loadstate == false){                                   
       $("#ccode").hide();
     }
     else{ 
       $("#ccode").show();
-    }
+    }*/
     $('#CouponCheckBox').on('switchChange.bootstrapSwitch', function (event, state) {     
       var urlLike = '{{ url('dropdown') }}';   
       var up = $('#forum_category_id').empty();

@@ -110,6 +110,29 @@
             ]
         } );
     } );
+
+    function deleteItem(id) {
+         if(!confirm("Do you really want to do this?")) {
+       return false;
+     }
+
+    $.ajax(
+        {
+          url: "mCoupon/"+id, //or you can use url: "company/"+id,
+          type: 'DELETE',
+          data: {
+             _token: "{{ csrf_token() }}",
+                id: id
+        },
+        success: function (response){
+
+          location.reload();
+
+            
+        }
+     });
+      return false;
+    }
 </script>
 
 <script src="{{asset('frontend/js/vendor/bootstrap-datepicker.min.js')}}"></script>

@@ -48,7 +48,7 @@ Route::prefix('merchant')->group(function() {
     Route::post('/coupon/bulk_delete', 'CouponController@bulk_delete');
     Route::get('dropdown', 'CouponController@dropdown');
     Route::post('/coupon/store','CouponController@store')->name('merchant.coupon.store');
-
+    Route::get('/coupon/delete/{id}', 'CouponController@delete');
 });
 
 

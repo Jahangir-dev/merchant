@@ -3,6 +3,7 @@
 namespace Modules\Merchant\Http\Controllers;
 
 use App\Coupon;
+use App\PurchaseCoupons;
 use App\Models\Category;
 use App\Models\Product;
 use App\User;
@@ -50,31 +51,38 @@ class CouponController extends Controller
 	 */
 	public function store(Request $request)
 	{
+		
 		$request->validate([
 			'title' => 'required|min:3',
 			'detail' => 'required|min:3',
-			'price' => 'nullable|numeric',
 			'discount' => 'nullable|numeric',
-			'link' => 'nullable|regex:#^https?://#',
 			'image' => 'nullable|image|mimes:jpg,png,gif,jpeg',
+			'expiry'=>'required'
 		]);
 
 		$input = $request->all();
 
-		if (isset($input['type']))
-    {
-      $request->validate([
-				'code' => 'required'
-			]);
-    }
+		if (isset($input['is_active'])== 1)
+	    {
+	      $request->validate([
+					'price' => 'required'
+				]);
+	    }
 
-		if (!isset($input['type']))
-    {
-      $input['type'] = 'd';
-    }
-    else{
+	     $today_date = \Carbon\Carbon::now();                            
+         $expire_date = \Carbon\Carbon::createFromFormat('Y-m-d', $input['expiry']);
+         $data_difference = $today_date->diffInDays($expire_date, false);  //false param
+
+        if($data_difference < 0) {
+            notify()->error('Please Add Future Date');
+            return back();
+        }
+        
+
+	 	$code = $this->generateRandomString(6);
     	$input['type'] = 'c';
-    }
+    	$input['code'] = $code;
+    	
 
 		if ($file = $request->file('image')) {
 			
@@ -160,35 +168,35 @@ class CouponController extends Controller
 		$request->validate([
 			'title' => 'required|min:3',
 			'detail' => 'required|min:3',
-			'price' => 'nullable|numeric',
 			'discount' => 'nullable|numeric',
-			'link' => 'nullable|regex:#^https?://#',
 			'image' => 'nullable|image|mimes:jpg,png,gif,jpeg',
+			'expiry'=>'required'
 		]);
 
 		$coupon = Coupon::findOrFail($id);
 
 		$input = $request->all();
 
-		if (isset($input['type']))
-    {
-      $request->validate([
-				'code' => 'required'
-			]);
-    }
+	if (isset($input['is_active'])== 1)
+	    {
+	      $request->validate([
+					'price' => 'required'
+				]);
+	    }
 
-		if (!isset($input['type']))
-    {
-      $input['type'] = 'd';
-    }
-    else{
+	     $today_date = \Carbon\Carbon::now();                            
+         $expire_date = \Carbon\Carbon::createFromFormat('Y-m-d', $input['expiry']);
+         $data_difference = $today_date->diffInDays($expire_date, false);  //false param
+
+        if($data_difference < 0) {
+            notify()->error('Please Add Future Date');
+            return back();
+        }
+        
+
+	 	$code = $this->generateRandomString(6);
     	$input['type'] = 'c';
-    }
-
-    if($coupon->type == 'c' && $input['type'] == 'd')
-    {
-      $input['code'] = null;
-    }
+    	
 
 		if ($file = $request->file('image')) {
 			
@@ -259,10 +267,7 @@ class CouponController extends Controller
 	{
 		$coupon = Coupon::findOrFail($id);
 
-		$coupon->comments()->delete();
-
-    $coupon->likes()->delete();
-
+		
 		if ($coupon->image != null) {
 
 			$image_file = @file_get_contents(public_path().'/images/coupon/'.$coupon->image);
@@ -274,7 +279,9 @@ class CouponController extends Controller
 
 		$coupon->delete();
 		notify()->success('Coupon has been deleted');
-		return back()->with('deleted', 'Coupon has been deleted');
+		 return response()->json([
+        'message' => 'Data deleted successfully!'
+      ]);
 	}
 
 	public function bulk_delete(Request $request)
@@ -308,5 +315,51 @@ class CouponController extends Controller
     }
     return response()->json($drop);
   }
+public function purchase()
+  {
+  	
+  	$coupon = Coupon::orderBy('created_at','desc')->with('pCoupon')->where('user_id', Auth::user()->id)->get();
+  	$coupon = $coupon->filter(function($coup){
+                if($coup['pCoupon']){ 
+                  	
+                  $user = User::where('id',$coup['pCoupon']['user_id'])->get()->pluck('first_name');
+                  $coup->user_name = $user[0];
+                  
+                  return $coup;
+               }
+           });
+  	
+  	return view('merchant::coupon.purchased',compact('coupon'));
+  }
 
+  public  function generateRandomString($length = 20) {
+        $characters = '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ';
+        $charactersLength = strlen($characters);
+        $randomString = '';
+        for ($i = 0; $i < $length; $i++) {
+            $randomString .= $characters[rand(0, $charactersLength - 1)];
+        }
+        return $randomString;
+    }
+
+    	public function delete($id)
+	{
+		$coupon = Coupon::findOrFail($id);
+
+		
+		if ($coupon->image != null) {
+
+			$image_file = @file_get_contents(public_path().'/images/coupon/'.$coupon->image);
+
+				if($image_file){		
+					unlink(public_path().'/images/coupon/'.$coupon->image);
+				}
+		}
+
+		$coupon->delete();
+		notify()->success('Coupon has been deleted');
+		 return response()->json([
+        'message' => 'Data deleted successfully!'
+      ]);
+	}
 }

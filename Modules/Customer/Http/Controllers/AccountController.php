@@ -38,9 +38,10 @@ class AccountController extends Controller
     	$coups = PurchaseCoupons::where('user_id',Auth::user()->id)->get();
     	$coupons = [];
     	foreach ($coups as $key => $coup) {
-    		$data = Coupon::where('uni_id',$coup['coupon'])->get();
+    		$data = Coupon::where('uni_id',$coup['coupon'])->with('pCoupon')->get();
     		$coupons [] = $data;
     	}
+        
         return view('customer::account.coupons', compact('coupons'));
     }
 }

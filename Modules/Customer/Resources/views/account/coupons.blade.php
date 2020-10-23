@@ -1,4 +1,4 @@
-@extends('customer::layouts.master')
+@extends('web::layouts.master')
 @section('content')
     <!-- MAIN START -->
     <main class="sl-main">
@@ -67,7 +67,16 @@
                                                 </span> 
                                             @endif
                                         </td>
-                                        <td></td>
+                                        <td>
+                                             @if($order[0]['pCoupon']['status'] == null || $order[0]['pCoupon']['status'] == 0)
+                                            <span class="badge badge-success">Available</span>
+                                            @else 
+                                                <span class="badge badge-warning">
+                                                    USED
+                                                </span> 
+                                            @endif
+
+                                        </td>
                                       
                                     </tr>
                                     @endforeach

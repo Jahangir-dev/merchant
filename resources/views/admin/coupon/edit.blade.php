@@ -73,7 +73,7 @@
           </div>
           <div id="ccode" class="form-group{{ $errors->has('code') ? ' has-error' : '' }}">
             {!! Form::label('code', 'Coupon Code*') !!} - <p class="inline info">Please enter coupon code</p>
-            {!! Form::text('code', null, ['class' => 'form-control']) !!}
+            {!! Form::text('code', null, ['class' => 'form-control','readonly']) !!}
             <small class="text-danger">{{ $errors->first('code') }}</small>
           </div>
          

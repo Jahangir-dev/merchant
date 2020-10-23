@@ -53,57 +53,62 @@ class CouponController extends Controller
 		$request->validate([
 			'title' => 'required|min:3',
 			'detail' => 'required|min:3',
-			'price' => 'nullable|numeric',
 			'discount' => 'nullable|numeric',
-			'link' => 'nullable|regex:#^https?://#',
+			'expiry'=>'required',
 			'image' => 'nullable|image|mimes:jpg,png,gif,jpeg',
 		]);
 
 		$input = $request->all();
 
-		if (isset($input['type']))
-    {
-      $request->validate([
-				'code' => 'required'
-			]);
-    }
+		if (isset($input['is_active'])== 1)
+	    {
+	      $request->validate([
+					'price' => 'required'
+				]);
+	    }
 
-		if (!isset($input['type']))
-    {
-      $input['type'] = 'd';
-    }
-    else{
+	     $today_date = \Carbon\Carbon::now();                            
+         $expire_date = \Carbon\Carbon::createFromFormat('Y-m-d', $input['expiry']);
+         $data_difference = $today_date->diffInDays($expire_date, false);  //false param
+
+        if($data_difference < 0) {
+            notify()->error('Please Add Future Date');
+            return back();
+        }
+        
+
+	 	$code = $this->generateRandomString(6);
     	$input['type'] = 'c';
-    }
+    	$input['code'] = $code;
 
 		if ($file = $request->file('image')) {
+			
+		  $optimizeImage = Image::make($file);
+	      $optimizePath = public_path().'/images/coupon/';
+	      $name = time().$file->getClientOriginalName();
+	      $optimizeImage->save($optimizePath.$name, 72);
 
-			$optimizeImage = Image::make($file);
-      $optimizePath = public_path().'/images/coupon/';
-      $name = time().$file->getClientOriginalName();
-      $optimizeImage->save($optimizePath.$name, 72);
-
-			$input['image'] = $name;
+		  $input['image'] = $name;
 
 		}
 
 		if (!isset($input['is_featured']))
-    {
-      $input['is_featured'] = 0;
-    }
-    if (!isset($input['is_exclusive']))
-    {
-      $input['is_exclusive'] = 0;
-    }
-    if (!isset($input['is_verified']))
-    {
-      $input['is_verified'] = 0;
-    }
-    if (!isset($input['is_active']))
-    {
-      $input['is_active'] = 0;
-    }
-
+    	{
+      		$input['is_featured'] = 0;
+    	}
+	    if (!isset($input['is_exclusive']))
+	    {
+	      $input['is_exclusive'] = 0;
+	    }
+	    if (!isset($input['is_verified']))
+	    {
+	      $input['is_verified'] = 0;
+	    }
+	    if (!isset($input['is_active']))
+	    {
+	      $input['is_active'] = 0;
+	    }
+		
     	$input['user_id'] = Auth::user()->id;
 		$coupon = Coupon::create($input);
 
@@ -119,7 +124,7 @@ class CouponController extends Controller
 
 		$coupon->uni_id = $random;
     	$coupon->save();
-		notify()->success('Coupon has been added');
+    	notify()->success('Coupon has been added');
 		return back()->with('added', 'Coupon has been added');
 
 	}
@@ -160,43 +165,43 @@ class CouponController extends Controller
 		$request->validate([
 			'title' => 'required|min:3',
 			'detail' => 'required|min:3',
-			'price' => 'nullable|numeric',
 			'discount' => 'nullable|numeric',
-			'link' => 'nullable|regex:#^https?://#',
 			'image' => 'nullable|image|mimes:jpg,png,gif,jpeg',
+			'expiry'=>'required'
 		]);
 
 		$coupon = Coupon::findOrFail($id);
 
 		$input = $request->all();
+		
+	if (isset($input['is_active'])== 1)
+	    {
+	      $request->validate([
+					'price' => 'required'
+				]);
+	    }
 
-		if (isset($input['type']))
-    {
-      $request->validate([
-				'code' => 'required'
-			]);
-    }
+	     $today_date = \Carbon\Carbon::now();                            
+         $expire_date = \Carbon\Carbon::createFromFormat('Y-m-d', $input['expiry']);
+         $data_difference = $today_date->diffInDays($expire_date, false);  //false param
 
-		if (!isset($input['type']))
-    {
-      $input['type'] = 'd';
-    }
-    else{
+        if($data_difference < 0) {
+            notify()->error('Please Add Future Date');
+            return back();
+        }
+        
+
+	 	$code = $this->generateRandomString(6);
     	$input['type'] = 'c';
-    }
-
-    if($coupon->type == 'c' && $input['type'] == 'd')
-    {
-      $input['code'] = null;
-    }
+    	
 
 		if ($file = $request->file('image')) {
-
+			
 			if ($coupon->image != null) {
-
+				
 				$image_file = @file_get_contents(public_path().'/images/coupon/'.$coupon->image);
 
-				if($image_file){
+				if($image_file){		
 					unlink(public_path().'/images/coupon/'.$coupon->image);
 				}
 
@@ -210,7 +215,7 @@ class CouponController extends Controller
 			$input['image'] = $name;
 
 		}
-
+		
 		if (!isset($input['is_featured']))
     {
       $input['is_featured'] = '0';
@@ -239,13 +244,13 @@ class CouponController extends Controller
     else{
       $input['is_active'] = '1';
     }
-
+    
 		$coupon->update($input);
 		$coupon->slug = Str::slug($input['title'],'-');
 		$coupon->user_id = Auth::user()->id;
     	$coupon->save();
     	notify()->success('Coupon has been updated');
-		return redirect('merchant/mCoupon')->with('updated', 'Coupon has been updated');
+		return redirect()->back()->with('updated', 'Coupon has been updated');
 	}
 
 
@@ -305,5 +310,13 @@ class CouponController extends Controller
     }
     return response()->json($drop);
   }
-
+ public  function generateRandomString($length = 20) {
+        $characters = '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ';
+        $charactersLength = strlen($characters);
+        $randomString = '';
+        for ($i = 0; $i < $length; $i++) {
+            $randomString .= $characters[rand(0, $charactersLength - 1)];
+        }
+        return $randomString;
+    }
 }

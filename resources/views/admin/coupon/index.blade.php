@@ -49,6 +49,7 @@
             <th>Title</th>
             
             <th>Product</th>
+            <th>Coupon code</th>
             {{-- <th>Price</th>
             <th>Discount</th>
             <th>Coupon code</th>
@@ -57,7 +58,7 @@
             
             {{-- <th>Like</th>
             <th>Dislike</th> --}}
-            
+            <th>Expiry</th>
             <th>Paid/Free</th>
             <th>Actions</th>
           </tr>
@@ -86,6 +87,7 @@
                 <td>{{\Illuminate\Support\Str::limit($item->title, 20)}}</td>
                 
                 <td>{{strtok($item->product->name, ' ')}}</td>
+                <td>{{$item->code}}</td>
                 {{-- <td>{{$item->price}}</td>
                 <td>{{$item->discount ? $item->discount : '0'}}</td>
                 <td>{{$item->code}}</td>
@@ -95,7 +97,7 @@
                 
                {{--  <td>{{$item->likes()->where('value','1')->count()}}</td>
                 <td>{{$item->likes()->where('value','-1')->count()}}</td> --}}
-                
+                <td>{{$item->expiry}}</td>
                 <td>{{$item->is_active == '1' ? 'Paid' : 'Free'}}</td>
                 <td>
                   <div class="admin-table-action-block">

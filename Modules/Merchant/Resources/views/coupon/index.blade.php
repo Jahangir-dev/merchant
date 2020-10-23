@@ -58,29 +58,9 @@
                   <div class="admin-table-action-block">
                     <a href="{{route('mCoupon.edit', $item->id)}}" data-toggle="tooltip" data-original-title="Edit" ><i class="fa fa-pen" aria-hidden="true"></i></a>
                     <!-- Delete Modal -->
-                    <button type="button" data-toggle="modal" data-target="#{{$item->id}}deleteModal"><i class="fa fa-trash" aria-hidden="true"></i> </button>
+                    <button type="button" onclick="deleteItem({{$item->id}})"><i class="fa fa-trash" aria-hidden="true"></i> </button>
                     <!-- Modal -->
-                    <div id="{{$item->id}}deleteModal" class="delete-modal modal fade" role="dialog">
-                      <div class="modal-dialog modal-sm">
-                        <!-- Modal content-->
-                        <div class="modal-content">
-                          <div class="modal-header">
-                            <button type="button" class="close" data-dismiss="modal">&times;</button>
-                            <div class="delete-icon"></div>
-                          </div>
-                          <div class="modal-body text-center">
-                            <h4 class="modal-heading">Are You Sure ?</h4>
-                            <p>Do you really want to delete these records? This process cannot be undone.</p>
-                          </div>
-                          <div class="modal-footer">
-                            {!! Form::open(['method' => 'DELETE', 'action' => ['Admin\CouponController@destroy', $item->id]]) !!}
-                                <button type="reset" class="btn btn-gray translate-y-3" data-dismiss="modal">No</button>
-                                <button type="submit" class="btn btn-danger">Yes</button>
-                            {!! Form::close() !!}
-                          </div>
-                        </div>
-                      </div>
-                    </div>
+                 
                   </div>
                 </td>
                                           

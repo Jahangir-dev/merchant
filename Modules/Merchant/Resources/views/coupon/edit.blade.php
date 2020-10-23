@@ -30,12 +30,12 @@
                                                 </div> 
                                               </div>
                                                <div class="form-group{{ $errors->has('title') ? ' has-error' : '' }}">
-              {!! Form::label('title', 'Coupon Name/Title*') !!} - <p class="inline info">Please enter coupon name</p>
+              {!! Form::label('title', 'Coupon Name/Title*') !!} 
               {!! Form::text('title', null, ['class' => 'form-control', 'required']) !!}
               <small class="text-danger">{{ $errors->first('title') }}</small>
           </div>
-          <div class="summernote-main form-group{{ $errors->has('detail') ? ' has-error' : '' }}">
-              {!! Form::label('detail', 'Description*') !!} - <p class="inline info">Please enter deal description</p>
+          <div class="summernote-main form-group{{ $errors->has('detail') ? ' has-error' : '' }}"  style="z-index:0 !important">
+              {!! Form::label('detail', 'Description*') !!} 
               {!! Form::textarea('detail', null, ['id' => 'summernote-main', 'class' => 'form-control']) !!}
               <small class="text-danger">{{ $errors->first('detail') }}</small>
           </div>
@@ -48,23 +48,23 @@
           </div>          
 
           <div class="col-md-6 form-group{{ $errors->has('price') ? ' has-error' : '' }}">
-              {!! Form::label('price', 'Price') !!} - <p class="inline info">Please enter deal price</p>
+              {!! Form::label('price', 'Price') !!} 
               {!! Form::text('price', null, ['class' => 'form-control']) !!}
               <small class="text-danger">{{ $errors->first('price') }}</small>
           </div> 
           <div class="col-md-6 form-group{{ $errors->has('discount') ? ' has-error' : '' }}">
-              {!! Form::label('discount', 'Discount') !!} - <p class="inline info">Please enter discount on deal</p>
+              {!! Form::label('discount', 'Discount') !!} 
               {!! Form::text('discount', null, ['class' => 'form-control']) !!}
               <small class="text-danger">{{ $errors->first('discount') }}</small>
           </div>
           <div id="ccode" class="col-md-6 form-group{{ $errors->has('code') ? ' has-error' : '' }}">
-              {!! Form::label('code', 'Coupon Code*') !!} - <p class="inline info">Please enter coupon code</p>
-              {!! Form::text('code', null, ['class' => 'form-control']) !!}
+              {!! Form::label('code', 'Coupon Code*') !!} 
+              {!! Form::text('code', null, ['class' => 'form-control','readonly']) !!}
               <small class="text-danger">{{ $errors->first('code') }}</small>
           </div> 
           
           <div class="col-md-6 form-group{{ $errors->has('expiry') ? ' has-error' : '' }}">
-              {!! Form::label('expiry', 'Expiry Date') !!} - <p class="inline info">Please enter deal expiry date</p>
+              {!! Form::label('expiry', 'Expiry Date') !!} 
               {!! Form::date('expiry', null, ['class' => 'form-control date-picker']) !!}
               <small class="text-danger">{{ $errors->first('expiry') }}</small>
           </div>
