@@ -273,7 +273,7 @@
 
         function getCartItem() {
             $.ajax({
-                url: 'getCartItems',
+                url: '{{route('get.cart.items')}}',
                 type: 'post',
                 data: {
                     _token: "{{ csrf_token() }}",
@@ -448,7 +448,7 @@
                 })
             }
             $.ajax({
-                url: 'getWishList',
+                url: '{{route('get.wishlist')}}',
                 type: 'post',
                 data: {
                     _token: "{{ csrf_token() }}",

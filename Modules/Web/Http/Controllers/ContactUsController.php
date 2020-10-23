@@ -2,13 +2,11 @@
 
 namespace Modules\Web\Http\Controllers;
 
-use App\Models\Category;
-use App\Models\Product;
 use Illuminate\Contracts\Support\Renderable;
 use Illuminate\Http\Request;
 use Illuminate\Routing\Controller;
-use DB;
-class CategoryController extends Controller
+
+class ContactUsController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -36,6 +34,19 @@ class CategoryController extends Controller
     public function store(Request $request)
     {
         //
+
+        \Mail::send('contact_email',
+            array(
+                'name' => $request->get('first_name').' '.$request->get('first_name'),
+                'email' => $request->get('email'),
+                'subject' => $request->get('subject'),
+                'user_message' => $request->get('description'),
+            ), function($message) use ($request)
+            {
+                $message->from($request->email);
+                $message->to('jahangir.dev8@gmail.com');
+            });
+        return redirect()->back();
     }
 
     /**
@@ -43,11 +54,9 @@ class CategoryController extends Controller
      * @param int $id
      * @return Renderable
      */
-    public function show($id)
+    public function show()
     {
-        $sale_products = DB::table('promocodes_products')->pluck('product_id')->toArray();
-        $category = Category::where('slug', $id)->with('products')->first();
-        return view('web::category.show', compact('category','sale_products'));
+        return view('web::contact-us.index');
     }
 
     /**

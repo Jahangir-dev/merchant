@@ -135,34 +135,44 @@
 
                             <div class="col-sm-6 col-lg-4 col-xl-3">
                                 <div class="sl-featuredProducts--post">
+
                                     <figure>
-                                        @if(isset($product->images[0]))
-                                        <img src="{{asset('storage/'.$product->images[0]->full )}}" alt="Image Description">
+                                        @if(count($product->images) > 0)
+                                            <img src="{{asset('storage/'.$product->images[0]->full )}}" alt="Image Description">
+                                        @else
+                                            <img src="{{asset('storage/')}}" alt="Image Description">
                                         @endif
                                         <figcaption>
                                             <div class="sl-slider__tags">
-                                                <span class="sl-bg-red-orange">25% OFF</span>
+                                                @if(in_array($product->id, $sale_products))
+                                                    @php
+                                                        $percentage = $product->codes[0];
+                                                        $promocodes = DB::table('promocodes')->where('code', $percentage->promo)->first();
+                                                    @endphp
+                                                    <span class="sl-bg-red-orange"> {{$promocodes->reward}}% Off</span>
+                                                @endif
                                             </div>
-                                            <a href="javascript:void(0);"><i class="far fa-heart"></i></a>
+                                            <a id="wist-list-{{ $product->id }}" onclick="addToWishList({{ $product->id }})" href="javascript:void(0);" class=""><i class="far fa-heart"></i></a>
                                         </figcaption>
                                     </figure>
                                     <div class="sl-featuredProducts--post__content">
                                         <div class="sl-featuredProducts--post__title">
-                                            <a href="{{route('web.product.show', [$product->slug])}}">
-                                            <h6>{{translateText($product->name)}}</h6>
+                                            <a href="{{route('web.product.show', ['slug' => $product->slug])}}">
+                                                <h6>{{translateText($product->name)}}</h6>
                                             </a>
                                         </div>
                                         <div class="sl-featuredProducts--post__price">
-                                            <h5>{{translateText($product->sale_price)}}</h5>
-                                            <h6>{{translateText($product->price)}}</h6>
+                                            <h5>{{$product->sale_price}}</h5>
+                                            <h6>{{$product->price}}</h6>
                                         </div>
+
                                         {{--<div class="sl-featureRating">
                                             <span class="sl-featureRating__stars"><span></span></span>
-                                            <em>({{translateText('1887 Feedback')}})</em>
+                                            <em>{{translateText('(1887 Feedback)')}}</em>
                                         </div>--}}
                                         <em>By: <a href="{{route('web.brand.show', ['slug' => $product->brand->slug])}}">{{translateText($product->brand->name)}}</a></em>
                                         <button onclick="myFunction({{ $product }})" class="btn sl-btn">{{translateText('Add To Cart')}}</button>
-                                         <div class="row">
+                                        <div class="row">
                                             <div class="col-6">
                                                 <div class="sl-slider__footer">
                                                     <em>{{$product->address}}(<a href="{{'https://maps.google.com/?q='.$product->latitude.'+'.$product->longitude}}">{{translateText(translateText('Directions'))}}</a>)</em>
@@ -183,6 +193,7 @@
 
 
                                         </div>
+
                                     </div>
                                 </div>
                             </div>

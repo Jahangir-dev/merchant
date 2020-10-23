@@ -13,6 +13,9 @@
 
 Route::prefix('web')->group(function() {
 
+    Route::get('contact-us', 'ContactUsController@show')->name('contact');
+    Route::post('contact-us', 'ContactUsController@store')->name('contact.us');
+
     Route::get('/', 'WebController@index')->name('web.index');
     Route::get('/register', 'RegisterController@index')->name('web.register');
     Route::get('/forgot-password', 'RegisterController@forgot')->name('web.forgot-password');
