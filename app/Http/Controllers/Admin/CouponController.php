@@ -194,7 +194,6 @@ class CouponController extends Controller
         }
         
 
-	 	$code = $this->generateRandomString(6);
     	$input['type'] = 'c';
     	
 
