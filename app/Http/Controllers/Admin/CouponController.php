@@ -253,7 +253,7 @@ class CouponController extends Controller
 		$coupon->user_id = Auth::user()->id;
     	$coupon->save();
     	notify()->success('Coupon has been updated');
-		return redirect('merchant/coupon')->with('updated', 'Coupon has been updated');
+		return redirect()->back()->with('updated', 'Coupon has been updated');
 	}
 
 	/**
