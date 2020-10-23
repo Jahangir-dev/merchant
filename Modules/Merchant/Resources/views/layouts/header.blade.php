@@ -9,20 +9,14 @@
         <div class="sl-main-header__content">
             <div class="sl-main-header__upper">
                 <form class="sl-main-form">
-                    <div class="sl-form-group sl-main-form__input1 sl-loading">
+                    <div class="sl-form-group sl-main-form__input1">
                         <input class="form-control sl-form-control" type="text" placeholder="Search anything you want">
                     </div>
                     <div class="sl-form-group sl-main-form__input2">
                         <input class="form-control sl-form-control" type="text" placeholder="Detect my location">
-                        <a href="javascript:void(0);" class="sl-right-icon sl-arrow-icon"><i class="ti-angle-down"></i></a>
-                        <a href="javascript:void(0);" class="sl-right-icon"><i class="ti-target"></i></a>
-                        <div class="sl-distance">
-                            <div class="sl-distance__description">
-                                <label for="amountfour">Distance:</label>
-                                <input type="text" id="amountfour" readonly>
-                            </div>
-                            <div id="slider-range-min"></div>
-                        </div>
+                        
+                        <a href="javascript:void(0);" class="sl-right-icon" style="    margin-top: 16px;"><i class="ti-target"></i></a>
+                       
                     </div>
                     <div class="sl-form-group sl-main-form__input3">
                         <div class="sl-select">

@@ -3,7 +3,7 @@
 namespace App;
 use Auth;
 use Illuminate\Database\Eloquent\Model;
-
+use App\PurchaseCoupons;
 
 
 class Coupon extends Model
@@ -28,5 +28,13 @@ class Coupon extends Model
  	{
  		return $this->belongsTo('App\User');
  	} 	
-	
+	 public function pCoupon()
+  {
+    return $this->belongsTo('App\PurchaseCoupons','uni_id','coupon');
+  }
+
+   public function uCoupon()
+  {
+    return $this->belongsTo('App\User','user_id','id');
+  } 
 }
