@@ -199,10 +199,10 @@ class CheckoutController extends Controller
             $coupon = Coupon::where('uni_id', $order['type'])->first();
             if ($coupon) {
                 $order->type = 'coupon';
-                $code = $coupon['uni_id'];
+                $code = $coupon['code'];
                 PurchaseCoupons::create([
                     'user_id' => Auth::user()->id,
-                    'coupon' => $code
+                    'coupon' => $coupon['uni_id']
                 ]);
 
             }
