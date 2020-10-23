@@ -27,6 +27,7 @@
                                     @foreach($coupons as $key => $order)
                                     
                                     @if(count($order) > 0)
+
                                      @php
                                     
                                     $today_date = Carbon\Carbon::now();
