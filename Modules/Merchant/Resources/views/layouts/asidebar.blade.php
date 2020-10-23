@@ -58,8 +58,9 @@
                                     <i class="ti-star"></i><span> {{translateText('Manage Copuan')}}</span>
                                 </a>
                                 <ul class="sub-menu" style="{{ ((\Request::route()->getName() == 'mCoupon.create') ? 'display: block'  : (\Request::route()->getName() == 'mCoupon.edit')) ? 'display: block' : '' }}">
-                                    <li><a href="{{route('mCoupon.index')}}">{{translateText('Coupans')}}</a></li>
-                                    <li><a href="{{url('merchant/mCoupon/create')}}">{{translateText('Create Coupans')}}</a></li>
+                                    <li><a href="{{route('mCoupon.index')}}">{{translateText('Coupons')}}</a></li>
+                                    <li><a href="{{url('merchant/mCoupon/create')}}">{{translateText('Create Coupons')}}</a></li>
+                                    <li><a href="{{url('merchant/pCoupon/purchase')}}">{{translateText('Purchased Coupons')}}</a></li>
                                 </ul>
                             </li>
                             <li class="menu-item-has-children page_item_has_children">
