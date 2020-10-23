@@ -8,6 +8,7 @@ use App\PurchaseCoupons;
 use App\Models\Product;
 use Cart;
 use App\Models\Order;
+use Gabievi\Promocodes\Promocodes;
 use Illuminate\Http\Request;
 use App\Services\PayPalService;
 use App\Contracts\OrderContract;
@@ -30,7 +31,7 @@ class CheckoutController extends Controller
 
     public function placeOrder(Request $request)
     {
-         
+
         $discountable_products = [];
 
         $coupon = Coupon::where('code',$request['code'])->get();
@@ -69,7 +70,7 @@ class CheckoutController extends Controller
                     }
             }
         }
-        else if (count($deal_details) > 0) { 
+        else if (count($deal_details) > 0) {
             $items = \Cart::getContent();
         $discountable_products = [];
         $total_product = 0;
@@ -138,7 +139,7 @@ class CheckoutController extends Controller
         }
         }
 
-        
+
 
 
         // Before storing the order we should implement the
@@ -146,7 +147,8 @@ class CheckoutController extends Controller
         $order = $this->orderRepository->storeOrderDetails($request->all());
         $order->update([
             'grand_total' => (string)$request['grand_total'],
-            'type' => 'order'
+            'type' => 'order',
+            'code' => $request['code']
         ]);
 
         // You can add more control here to handle if the order is not stored properly
@@ -166,17 +168,44 @@ class CheckoutController extends Controller
         $status = $this->payPal->completePayment($paymentId, $payerId);
 
         $order = Order::where('order_number', $status['invoiceId'])->first();
-        
+
+        foreach ($order->items as $item) {
+            $product = Product::where('id', $item->product_id)->first();
+            $product->quantity = $product->quantity - $item->quantity;
+            $product->save();
+        }
+
+        if ($order) {
+            if ($order->code) {
+                $coupon = Coupon::where('code', $order->code)->first();
+                $promocode = Promocodes::where('code', $order->code)->first();
+                if ($coupon) {
+                    DB::table('purchase_coupons')->where('coupon', $coupon->uni_id)->update([
+                        'status' => 1
+                    ]);
+                }
+                else {
+                    DB::table('promocode_user')->insert([
+                        'user_id' => Auth::id(),
+                        'promocode_id' => $promocode->id,
+                        'used_at' => date("l jS F Y h:i:s A")
+                    ]);
+                }
+            }
+        }
+
         if($order['type'] != 'coupon' || $order['type'] != 'order')
         {
             $coupon = Coupon::where('uni_id', $order['type'])->first();
-            $order->type = 'coupon';
-            $code = $coupon['uni_id'];
-            PurchaseCoupons::create([
-                'user_id' => Auth::user()->id,
-                'coupon' => $code
-            ]);
+            if ($coupon) {
+                $order->type = 'coupon';
+                $code = $coupon['uni_id'];
+                PurchaseCoupons::create([
+                    'user_id' => Auth::user()->id,
+                    'coupon' => $code
+                ]);
 
+            }
         } else {
 
             $code = '';
@@ -192,7 +221,7 @@ class CheckoutController extends Controller
     }
 
      public function placeOrderCoupon(Request $request)
-    {  
+    {
          $order = $this->orderRepository->storeOrderDetails($request->all());
 
           $order->update([

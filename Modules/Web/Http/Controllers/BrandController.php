@@ -8,6 +8,7 @@ use App\User;
 use Illuminate\Contracts\Support\Renderable;
 use Illuminate\Http\Request;
 use Illuminate\Routing\Controller;
+use Illuminate\Support\Facades\DB;
 
 class BrandController extends Controller
 {
@@ -46,8 +47,9 @@ class BrandController extends Controller
      */
     public function show($id)
     {
+        $sale_products = DB::table('promocodes_products')->pluck('product_id')->toArray();
         $brand = Brand::where('slug', $id)->with('products')->first();
-        return view('web::brand.show', compact('brand'));
+        return view('web::brand.show', compact('brand', 'sale_products'));
     }
 
     /**
