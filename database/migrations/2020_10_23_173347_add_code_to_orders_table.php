@@ -15,7 +15,7 @@ class AddCodeToOrdersTable extends Migration
     {
         Schema::table('orders', function (Blueprint $table) {
             //
-            $table->string('code')->nullable();
+            $table->string('price')->nullable();
         });
     }
 
@@ -28,6 +28,7 @@ class AddCodeToOrdersTable extends Migration
     {
         Schema::table('orders', function (Blueprint $table) {
             //
+             $table->string('price')->nullable();
         });
     }
 }
