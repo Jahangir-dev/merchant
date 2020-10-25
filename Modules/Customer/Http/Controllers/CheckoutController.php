@@ -160,7 +160,9 @@ class CheckoutController extends Controller
                 $order->update([
                     'payment_method' => 'cash',
                 ]);
-                return redirect('/')->with('message','Order placed successfully');
+                Cart::clear();
+                $code = '';
+                return view('customer::success', compact('order','code'));
             }
         }
         return redirect()->back()->with('message','Order not placed');
