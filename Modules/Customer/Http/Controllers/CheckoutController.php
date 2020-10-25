@@ -158,6 +158,9 @@ class CheckoutController extends Controller
                 $this->payPal->processPayment($order);
             }
             else {
+                $order->update([
+                    'payment_method' => 'cash',
+                ]);
                 return redirect('/')->with('message','Order placed successfully');
             }
         }
