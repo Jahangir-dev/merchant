@@ -9,7 +9,7 @@
             <div class="sl-dashboardbox__title">
                 <h2>Proceed</h2>
             </div>
-            <div class="sl-dashboardbox__content">
+            <div class="sl-dashboardbox__content" style="padding: 20px !important;">
             <form action="{{route('checkout.place.order')}}" method="POST" role="form">
                 @csrf
                 <div class="row">
@@ -88,7 +88,8 @@
                             <input type="hidden" class="form-control" name="grand_total" value="{{ $total_price }}">
 
                             <div class="col-md-12 mt-4">
-                                <button type="submit" class="subscribe btn btn-success btn-lg btn-block">Place Order</button>
+                                <button type="submit"  value="paypal" name="action"  class="subscribe btn btn-success btn-lg btn-block">Pay with Paypal</button>
+                                <button type="submit" value="cash" name="action" class="subscribe btn btn-success btn-lg btn-block">Pay on delivery </button>
                             </div>
                         </div>
                     </div>

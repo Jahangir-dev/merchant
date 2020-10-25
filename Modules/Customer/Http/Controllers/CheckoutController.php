@@ -31,7 +31,6 @@ class CheckoutController extends Controller
 
     public function placeOrder(Request $request)
     {
-
         $discountable_products = [];
 
         $coupon = Coupon::where('code',$request['code'])->get();
@@ -153,10 +152,15 @@ class CheckoutController extends Controller
 
         // You can add more control here to handle if the order is not stored properly
         if ($order) {
-            \Cart::clear();
-            $this->payPal->processPayment($order);
-        }
 
+            \Cart::clear();
+            if ($request->input('action') == 'paypal') {
+                $this->payPal->processPayment($order);
+            }
+            else {
+                return redirect('/')->with('message','Order placed successfully');
+            }
+        }
         return redirect()->back()->with('message','Order not placed');
     }
 
