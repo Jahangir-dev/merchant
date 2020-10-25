@@ -146,11 +146,10 @@ class CheckoutController extends Controller
         // request validation which I leave it to you
         $order = $this->orderRepository->storeOrderDetails($request->all());
         $order->update([
-            'grand_total' => (string)$request['grand_total'],
             'type' => 'order',
             'code' => $request['code']
         ]);
-
+       
         // You can add more control here to handle if the order is not stored properly
         if ($order) {
             \Cart::clear();
@@ -183,8 +182,7 @@ class CheckoutController extends Controller
                     DB::table('purchase_coupons')->where('coupon', $coupon->uni_id)->update([
                         'status' => 1
                     ]);
-                }
-                else {
+                } else {
                     DB::table('promocode_user')->insert([
                         'user_id' => Auth::id(),
                         'promocode_id' => $promocode->id,
@@ -224,8 +222,7 @@ class CheckoutController extends Controller
     {
          $order = $this->orderRepository->storeOrderDetails($request->all());
 
-          $order->update([
-            'grand_total' => $request['grand_total'],
+        $order->update([
             'type' =>  $request['code']
         ]);
         // You can add more control here to handle if the order is not stored properly
