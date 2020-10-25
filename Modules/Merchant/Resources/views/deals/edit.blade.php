@@ -41,8 +41,9 @@
                                                     <div class="sl-aboutDescription__title">
                                                         <h6>Select Categories</h6>
                                                     </div>
-                                                    <label class="sl-aboutDescription__inputBtn">
-                                                        <select name="products[]" id="sl-products" class="form-control sl-form-control" multiple="multiple" required>
+                                                    @dd(in_array($product->id, $produtc_ids) );
+                                                    <label class="sl-aboutDescription__inputBtn"
+                        >                                <select name="products[]" id="sl-products" class="form-control sl-form-control" multiple="multiple" required>
                                                             @foreach($products as $product)
                                                                 <option @php in_array($product->id, $product_ids) ? ' selected ' : '' @endphp value="{{$product->id}}">{{ $product->name }}</option>
                                                             @endforeach
@@ -61,7 +62,7 @@
                                                         <h6>{{translateText('Minimum Products')}}</h6>
                                                     </div>
                                                     <div class="form-group">
-                                                        <input name="min_product" value="{{$product->min_product}}" type="number" class="form-control sl-form-control" placeholder="{{translateText('Amount')}}">
+                                                        <input name="min_product" value="{{$deal->min_product}}" type="number" class="form-control sl-form-control" placeholder="{{translateText('Amount')}}">
                                                     </div>
                                                 </div>
 
@@ -70,7 +71,7 @@
                                                         <h6>{{translateText('Maximum Products')}}</h6>
                                                     </div>
                                                     <div class="form-group">
-                                                        <input name="max_product" value="{{$product->max_product}}" type="number" class="form-control sl-form-control" placeholder="{{translateText('Amount')}}">
+                                                        <input name="max_product" value="{{$deal->max_product}}" type="number" class="form-control sl-form-control" placeholder="{{translateText('Amount')}}">
                                                     </div>
                                                 </div>
 
