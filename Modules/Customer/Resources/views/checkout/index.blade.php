@@ -42,7 +42,7 @@
                                         <td><span class="border p-2" id="checkout-total-price"></span></td>
                                     </tr>
                                     </tbody>--}}
-                                    
+
                                 </table>
                                 <form method="post" action="{{ route('customer.order') }}">
                                     @csrf
