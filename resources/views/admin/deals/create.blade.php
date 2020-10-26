@@ -14,7 +14,8 @@
               </div>
               <!-- /.card-header -->
               <!-- form start -->
-              <form role="form" id="quickForm">
+                <form action="{{route('admin.deal.save')}}" method="POST" class="sl-form sl-manageServices">
+                    @csrf
                 <div class="card-body">
                   <div class="row">
                   <div class="col-6">
@@ -37,22 +38,62 @@
                   <!-- /.input group -->
                 </div>
               </div>
-              <div class="col-6">
-                 <div class="form-group">
-                    <label for="minBuyer">Minimun Buyer</label>
-                    <input type="number" name="minBuyer" class="form-control" id="minBuyer" placeholder="Enter min number of buyers">
+
+              <div class="col-md-12">
+                  <div class="form-group">
+                      <label class="control-label" for="categories">{{translateText( 'Categories')}}</label>
+                      <select name="products[]" id="categories" class="form-control" multiple>
+                          @foreach($products as $category)
+                              <option value="{{ $category->id }}">{{translateText(  $category->name )}}</option>
+                          @endforeach
+                      </select>
                   </div>
-                </div>
-                 <div class="col-6">
+              </div>
+               <div class="col-6">
                  <div class="form-group">
-                    <label for="maxBuyer">Maximum Buyer</label>
-                    <input type="number" name="maxBuyer" class="form-control" id="maxBuyer" placeholder="Enter max number of buyers">
+                    <label for="maxBuyer">{{translateText('Minimum Products')}}</label>
+                    <input type="number" name="min_product" class="form-control" id="maxBuyer" placeholder="Enter max number of buyers">
                   </div>
                 </div>
                 <div class="col-6">
                  <div class="form-group">
-                    <label for="maxCoupn">Maximum Coupn</label>
-                    <input type="number" name="maxCoupn" class="form-control" id="maxCoupn" placeholder="Enter number of coupan">
+                    <label for="max_product">{{translateText('Maximum Products')}}</label>
+                    <input type="number" name="max_product" class="form-control" id="max_product" placeholder="Enter number of coupan">
+                  </div>
+                </div>
+                <div class="col-6">
+                 <div class="form-group">
+                    <label for="reward">{{translateText('Reward')}}</label>
+                    <input type="number" name="reward" class="form-control" id="reward" placeholder="Enter number of coupan">
+                  </div>
+                </div>
+                <div class="col-6">
+                 <div class="form-group">
+                    <label for="amount">{{translateText('Amount')}}</label>
+                    <input type="number" name="amount" class="form-control" id="amount" placeholder="Enter number of coupan">
+                  </div>
+                </div>
+                <div class="col-6">
+                 <div class="form-group">
+                    <label for="quantity">{{translateText('Quantity')}}</label>
+                    <input type="number" name="quantity" class="form-control" id="quantity" placeholder="Enter number of coupan">
+                  </div>
+                </div>
+                <div class="col-6">
+                 <div class="form-group">
+                    <label for="quantity">{{translateText('Quantity')}}</label>
+                    <select type="number" name="quantity" class="form-control" id="quantity">
+                        <option value="{{true}}" selected="">{{translateText('Active')}}</option>
+                        <option value="{{false}}">{{translateText('Disable')}}</option>
+                    </select>
+                  </div>
+                </div>
+
+
+                <div class="col-6">
+                  <div class="form-group">
+                      <label class="control-label" for="description">{{translateText( 'Description')}}</label>
+                      <textarea name="description" id="description" rows="8" class="form-control"></textarea>
                   </div>
                 </div>
               </div>
@@ -78,3 +119,11 @@
     <!-- /.content -->
 
 @endsection
+@push('scripts')
+    <script type="text/javascript" src="{{ asset('backend/js/plugins/select2.min.js') }}"></script>
+    <script>
+        $( document ).ready(function() {
+            $('#categories').select2();
+        });
+    </script>
+@endpush

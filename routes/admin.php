@@ -104,6 +104,7 @@ Route::group(['prefix'  =>  'admin'], function () {
 
     Route::get('/deal', 'Admin\DealsController@index')->name('admin.deal');
     Route::get('/deal/create', 'Admin\DealsController@create')->name('admin.deal.create');
+    Route::post('/deal/create', 'Admin\DealsController@store')->name('admin.deal.save');
     });
 
 

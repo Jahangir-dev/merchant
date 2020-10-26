@@ -4,9 +4,14 @@ namespace App\Http\Controllers\Admin;
 
 use App\Deal;
 use App\Http\Controllers\Controller;
+use App\Models\Product;
 use App\Promocode;
+use App\User;
+use Gabievi\Promocodes\Facades\Promocodes;
 use Illuminate\Http\Request;
+use Illuminate\Support\Carbon;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
 
 class DealsController extends Controller
 {
@@ -38,7 +43,10 @@ class DealsController extends Controller
      */
     public function create()
     {
-        return view('admin.deals.create');
+        $products = Product::all();
+        $user = User::where('id', Auth::id())->first();
+
+        return view('admin.deals.create', compact('user', 'products'));
     }
 
     /**
@@ -50,6 +58,43 @@ class DealsController extends Controller
     public function store(Request $request)
     {
         //
+        $words = explode(' - ', $request['datatime']);
+        $end_date = array_pop($words);
+        $start_date = implode(' ', $words);
+        $start_date = (Carbon::parse($start_date))->toDateString();
+        $end_date = (Carbon::parse($end_date))->toDateString();
+
+        $promos = Promocodes::createDisposable(
+            $amount = $request['amount'],
+            $reward = $request['reward'],
+            $data = $request['description'],
+            $expires_in = $end_date,
+            $quantity = $request['quantity']
+        );
+        foreach ($promos as $promo) {
+            Deal::create([
+                'title' => $request['title'],
+                'start_date' => $start_date,
+                'end_date' => $end_date,
+                'status' => $request['status'],
+                'max_product' => $request['max_product'],
+                'min_product' => $request['min_product'],
+                'max_buyers' => 0,
+                'min_buyers' => 0,
+                'user_id' => Auth::id(),
+                'promo' => $promo['code'],
+            ]);
+            foreach ($request['products'] as $product) {
+                DB::table('promocodes_products')->insert([
+                    'product_id' => $product,
+                    'promocode' => $promo['code'],
+                ]);
+            }
+
+        }
+        notify()->success('Coupon Generated Successfully!');
+        return redirect()->route('admin.deal');
+
     }
 
     /**
