@@ -249,7 +249,6 @@
                 },
                 success: function(response){
                     if (response.type === 'success') {
-                        console.log(response)
                             let keys = Object. keys(response.discountable_products)
                             keys.forEach(function (key) {
                                 let product = response.discountable_products[key]
@@ -259,7 +258,8 @@
                                 document.querySelector('#checkout-total-price').textContent = parseInt(total - discount)
                                 document.querySelector('#total_price').value = parseInt(total - discount)
                             })
-
+                        let checkPromoBtn = document.querySelector('#checkPromoBtn').style.display = 'none'
+                        console.log(checkPromoBtn)
                         alertify.success(response.message);
                         // getCartItemDiscounted()
                     }
