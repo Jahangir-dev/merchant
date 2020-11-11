@@ -27,7 +27,7 @@
                                                 </div>
                                                 <div class="form-group form-group-half">
                                                     <label data-provide="datepicker">
-                                                        <input name="start_date" type="text" id="sl-startdate" class="form-control sl-form-control" placeholder="Start From">
+                                                        <input name="start_date" type="date-time" id="sl-startdate" class="form-control sl-form-control" placeholder="Start From">
                                                         <a href="javascript:void(0);" class="sl-calendarbtn sl-right-icon"><i class="ti-calendar"></i></a>
                                                     </label>
                                                 </div>

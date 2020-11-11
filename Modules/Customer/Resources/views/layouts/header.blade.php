@@ -8,7 +8,7 @@
         <select name="target" class="target form-control">
             <option>Choose language</option>
             <option value="en" @if(Session::get("target") == "en") selected="selected" @endif>English</option>
-            <option value="cn" @if(Session::get("target") == "cn") selected="selected" @endif>Chinese</option>
+            <option value="zh-TW" @if(Session::get("target") == "zh-TW")  selected="selected" @endif>Chinese</option>
         </select><br>
 
         <div class="sl-main-header__content">
