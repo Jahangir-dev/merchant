@@ -52,7 +52,7 @@
                                             <input id="total_price" name="total_price" class="form-control sl-form-control" type="hidden" value="{{\Cart::getSubTotal()}}" placeholder="Enter Your Promo">
                                         </div>
                                         <div class="col-3">
-                                            <a onclick="checkPromo()" class="btn btn-success sl-form-control" style="color:white">Apply Promo</a>
+                                            <a onclick="checkPromo()" id="checkPromoBtn" class="btn btn-success sl-form-control" style="color:white">Apply Promo</a>
                                         </div>
                                     </div>
                                     <div class="row">

@@ -41,11 +41,14 @@
                                                     <div class="sl-aboutDescription__title">
                                                         <h6>Select Categories</h6>
                                                     </div>
-                                                    @dd(in_array($product->id, $produtc_ids) );
                                                     <label class="sl-aboutDescription__inputBtn"
                         >                                <select name="products[]" id="sl-products" class="form-control sl-form-control" multiple="multiple" required>
                                                             @foreach($products as $product)
-                                                                <option @php in_array($product->id, $product_ids) ? ' selected ' : '' @endphp value="{{$product->id}}">{{ $product->name }}</option>
+                                                                @if(in_array($product->id, $product_ids))
+                                                                <option selected value="{{$product->id}}">{{ $product->name }}</option>
+                                                                @else
+                                                                    <option value="{{$product->id}}">{{ $product->name }}</option>
+                                                                @endif
                                                             @endforeach
                                                         </select>
                                                     </label>
