@@ -18,7 +18,7 @@
                                     <li class="nav-item" style="width: 100%">
                                         <a class="nav-link active" id="sl-signupcustomer" data-toggle="tab" href="#signupcustomer" role="tab" aria-selected="true">
                                             <span><i class="fa fa-check"></i></span>
-                                            <h4>{{translateText('Signup As')}} {{translateText('Merchant')}}
+                                            <h4>{{translateText('Signup As')}} {{translateText('Customer')}}
                                             </h4>
                                             <i class="ti-info-alt toltip-content" data-tipso="Custome"></i>
                                         </a>
@@ -33,22 +33,24 @@
                                     </li> -->
                                 </ul>
                                 <div class="tab-content sl-signup" id="pills-tabContent">
-                                    <div class="tab-pane fade show active" id="signupprovider" role="tabpanel" aria-labelledby="sl-signupprovider">
+                                    <div class="tab-pane fade show active" id="signupcustomer" role="tabpanel" aria-labelledby="sl-signupcustomer">
                                         <form method="POST" action="{{ route('register') }}" class="sl-formtheme sl-signupform">
                                             @csrf
                                             <fieldset>
                                                 <div class="sl-signupform-wrap">
+                                                    <div class="form-group form-group-half form-group-icon">
+                                                        <i class="ti-info-alt toltip-content" data-tipso="name"></i>
+                                                        <input type="text" name="first_name" value="" class="form-control sl-form-control" placeholder="{{translateText('First Name *')}}" required="">
+                                                    </div>
+                                                    <div class="form-group form-group-half form-group-icon">
+                                                        <i class="ti-info-alt toltip-content" data-tipso="name"></i>
+                                                        <input type="text" name="last_name" value="" class="form-control sl-form-control" placeholder="{{translateText('Last Name *')}}" required="">
+                                                    </div>
                                                     <div class="form-group">
                                                         <input type="text" name="email" value="" class="form-control sl-form-control" placeholder="{{translateText('Email*')}}" required="">
                                                     </div>
                                                     <div class="form-group form-group-half">
-                                                        <input type="text" name="first_name" value="" class="form-control sl-form-control" placeholder="{{translateText('First Name*')}}" required="">
-                                                    </div>
-                                                    <div class="form-group form-group-half">
-                                                        <input type="text" name="last_name" value="" class="form-control sl-form-control" placeholder="{{translateText('Last Name*')}}" required="">
-                                                    </div>
-                                                    <div class="form-group form-group-half">
-                                                        <div class="sl-select">
+                                                        <div class="sl-select"  style="border: 1px solid #d2d6dc">
                                                             <select name="gender">
                                                                 <option value="" selected disabled>{{translateText('Gender*')}}</option>
                                                                 <option value="Male">{{translateText('Male')}}</option>
@@ -66,21 +68,30 @@
                                                     <div class="form-group form-group-half">
                                                         <input type="password" name="password_confirmation" value="" class="form-control sl-form-control" placeholder="{{translateText('Retype Password*')}}" required="">
                                                     </div>
+                                                    <div class="form-group form-group-half">
+                                                        <div class="sl-select" style="border: 1px solid #d2d6dc">
+                                                            <select name="gender">
+                                                                <option value="" selected disabled>{{translateText('City of Intrest*')}}</option>
+                                                                
+                                                            </select>
+                                                        </div>
+                                                    </div>
                                                     <div class="form-group sl-btnarea">
                                                         <div class="sl-checkbox">
-                                                            <input id="terms2" type="checkbox" name="category">
-                                                            <label for="terms2">
-                                                                <span>{{translateText('I agree to')}} <a href="javascript:void(0);">{{translateText('Terms and Conditions')}}</a></span>
+                                                            <input id="terms" type="checkbox" name="category">
+                                                            <label for="terms">
+                                                                <span>I agree to <a href="javascript:void(0);">{{translateText('Terms and Conditions')}}</a></span>
                                                             </label>
                                                         </div>
                                                         <button type="submit" class="btn sl-btn">{{translateText('Signup')}}</button>
                                                     </div>
+                                                     
                                                 </div>
                                             </fieldset>
-                                            <input type="hidden" value="2" name="role_id">
+                                            <input type="hidden" value="3" name="role_id">
                                         </form>
                                     </div>
-                                      
+                                    
                                 </div>
                                 <div class="sl-oroption">
                                     <span>or</span>
@@ -96,7 +107,7 @@
                         </div>
                         <div class="sl-registercontent">
                           <div class="sl-registersignarea">
-                            <div class="sl-registersignarea__title">
+                        	<div class="sl-registersignarea__title">
                                     <!-- <h3>{{translateText('Signup as customer')}}</h3> -->
                             </div>
                             <ul class="nav sl-registertabs" role="tablist">
@@ -112,7 +123,7 @@
                                <div class="tab-content sl-signup" id="pills-tabContent">
                                     <div class="tab-pane fade show active" id="signupcustomer" role="tabpanel" aria-labelledby="sl-signupcustomer">
 
-                                         <form method="POST" action="{{ route('login') }}" class="sl-formtheme sl-formlogin">
+                                    	 <form method="POST" action="{{ route('login') }}" class="sl-formtheme sl-formlogin">
                             @csrf
                             <fieldset>
                                 <div class="form-group">
@@ -142,14 +153,13 @@
                                         </label>
                                     </div>
                                 </div>
-
                             </fieldset>
                         </form>
                         <div class="sl-loginfooterinfo" style="margin-top: 40px">
-                            <a href="{{route('web.login')}}">{{translateText('Are  you a Customer?')}} {{translateText('Signin now')}}</a>
+                            <a href="{{route('web.register')}}">{{translateText('Are  you a Merchant?')}} {{translateText('Signin now')}}</a>
                             <a href="{{route('web.forgot-password')}}" class="sl-forgot-password">{{translateText('Forgot password?')}}</a>
                         </div>
-                        <span class="sl-optionsbar" style="margin-top: 30px"><em>or</em></span>
+                        <span class="sl-optionsbar" style="margin-top: 90px"><em>or</em></span>
                         <div class="sl-loginicon">
                             <ul>
                                 <li><a href="javascript:void(0);" class="sl-facebookbox"><i class="fab fa-facebook-f"></i>{{translateText('Via facebook') }}</a></li>
@@ -174,7 +184,7 @@
                                 </p>
                             </div>
                             <div class="sl-registerarea__footer" style="">
-                                <p style="font-size: 17px"> Are  you a Customer? <a href="{{ route('web.login') }}"> {{translateText('Sign in / Sign up')}}</a></p>
+                                <p style="font-size: 17px"> Are  you a Merchant? <a href="{{ route('web.register') }}"> {{translateText('Sign in / Sign up')}}</a></p>
                             </div>
                 </div>
             </div>
@@ -182,8 +192,8 @@
     </div>
 </main>    
 <style type="text/css">
-    .sl-registersignarea{
-        border-right: 1px solid #d2d6dc;
-    }
+	.sl-registersignarea{
+	    border-right: 1px solid #d2d6dc;
+	}
 </style>
 @endsection

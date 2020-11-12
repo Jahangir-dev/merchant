@@ -11,7 +11,7 @@ use Illuminate\Contracts\Support\Renderable;
 use Illuminate\Http\Request;
 use Illuminate\Routing\Controller;
 use Illuminate\Support\Facades\DB;
-
+use CodeItNow\BarcodeBundle\Utils\QrCode;
 class WebController extends Controller
 {
     /**
@@ -95,6 +95,17 @@ class WebController extends Controller
         $post = Coupon::where('uni_id',$uniID)->where('slug',$slug)->first();
         $user_name = User::where('id',$post['user_id'])->get();
 
-        return view('post', compact('post','user_name'));
+        $qrCode = new QrCode();
+        $qrCode
+            ->setText('i am doing it well')
+            ->setSize(300)
+            ->setPadding(10)
+            ->setErrorCorrection('high')
+            ->setForegroundColor(array('r' => 0, 'g' => 0, 'b' => 0, 'a' => 0))
+            ->setBackgroundColor(array('r' => 255, 'g' => 255, 'b' => 255, 'a' => 0))
+            ->setLabel('Scan Qr Code')
+            ->setLabelFontSize(16)
+            ->setImageType(QrCode::IMAGE_TYPE_PNG);
+        return view('post', compact('post','user_name','qrCode'));
     } 
 }
