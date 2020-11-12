@@ -91,9 +91,9 @@
                 </div>
                 @guest
                     <div class="sl-user" style="display: flex;">
-                        <a href="javascript:void(0);" data-toggle="modal" data-target="#loginpopup">
+                        <a href="{{route('web.login')}}">
                             <i class="fa fa-user"></i>
-                            <span class="sl-user__description"><em class="d-block">{{translateText('Login')}}</em></span>
+                            <span class="sl-user__description"><em class="d-block">{{translateText('Login / Signup')}}</em></span>
                         </a>
                     </div>
                 @else
