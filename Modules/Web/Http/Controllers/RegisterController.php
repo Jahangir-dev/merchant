@@ -80,4 +80,9 @@ class RegisterController extends Controller
     public function forgot() {
         return view('web::auth.reset');
     }
+
+    public function login()
+    {
+        return view('web::auth.login');
+    }
 }
